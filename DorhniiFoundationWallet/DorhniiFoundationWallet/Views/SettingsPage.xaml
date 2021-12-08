@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="DorhniiFoundationWallet.Views.SettingsPage">
+    <ContentPage.BindingContext>
+        <vm:SettingVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="10,10,10,0" >
+                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtSettings}" Style="{StaticResource PasswordPageLabelStyle}" TextColor="Black"/>
+                </Grid>
+                <ScrollView Grid.Row="1"  Style="{StaticResource TransactionPageScrollViewStyle}">
+                    <Grid RowSpacing="8" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Frame Grid.Row="0" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding SupportIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtSupport}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SupportCommand}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="1" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding PrivacyIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtPrivacy}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="2" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding TermsIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtTerms}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                        <Label Grid.Row="3" Text="{x:Static resource:Resource.txtProfile}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Margin="5,20,0,0"/>
+                        <Frame Grid.Row="4" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding AccountsIcon}" HeightRequest="35"/>
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtAccounts}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="5" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding LanguageIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtLanguage}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="6" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding FingerprintIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtFingerprint}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                        <Label Grid.Row="7" Text="{x:Static resource:Resource.txtSettings}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" Margin="5,20,0,0"/>
+                        <Frame Grid.Row="8" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding ShowSeedIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtShowSeedPhrase}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Grid.Row="9" BorderColor="White" HasShadow="True" Padding="8" Margin="5,5,5,5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding LogoutIcon}" HeightRequest="35" />
+                                <Label Grid.Column="1" Text="{x:Static resource:Resource.txtLogout}" VerticalOptions="CenterAndExpand" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </ScrollView>
+                <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent"></views:TabbedViewPage>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

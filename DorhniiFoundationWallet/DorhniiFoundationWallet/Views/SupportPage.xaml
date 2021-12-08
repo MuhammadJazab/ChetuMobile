@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" 
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             x:Class="DorhniiFoundationWallet.Views.SupportPage">
+    <ContentPage.BindingContext>
+        <vm:SupportVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="SteelBlue">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width=".15*"/>
+                        <ColumnDefinition Width=".70*"/>
+                        <ColumnDefinition Width=".15*"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton Grid.Column="0" Source="leftarrowWhite" HeightRequest="20" BackgroundColor="Transparent" Command="{Binding BackButtonCommand}"/>
+                    <Label Grid.Column="1" Text="Support" FontSize="Medium" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <!--<ImageButton Grid.Column="2" Source="ScanIcon"  HorizontalOptions="End" VerticalOptions="Center"  BackgroundColor="Transparent"/>-->
+                </Grid>
+               
+                <Frame Grid.Row="1" CornerRadius="0" BorderColor="Black" Padding="0" Margin="20" HasShadow="False">
+                    <cntrl:RendererEditor Placeholder="How can we help you..." Margin="2" PlaceholderColor="Black"  BackgroundColor="White"  HeightRequest="190" TextColor="Black" />
+                </Frame>
+                <Button Margin="20,10,20,20" Grid.Row="2" Text="Submit" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" BackgroundColor="SteelBlue"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="DorhniiFoundationWallet.Views.CoinsPage">
+    <ContentPage.BindingContext>
+        <vm:CoinVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="10,10,10,0" >
+                    <ImageButton Grid.Row="0" Command="{Binding BackButtonCommand}" Source="leftarrow.png" BackgroundColor="Transparent" HorizontalOptions="Start" HeightRequest="35"/>
+                    <Label Grid.Row="0" Text="Coin Name" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
+                    <Image Grid.Row="0" Source="appiconimage.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="35" />
+                </Grid>
+                <Grid Grid.Row="1" RowSpacing="8"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10,10,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Text="Balance" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                    <Label Grid.Row="1" Text="1,234.01 DHN" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                    <Grid Grid.Row="2" Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Row="0" Command="{Binding SendButtonCommand}" Source="sendarrow.png" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BorderWidth="2" CornerRadius="40" HeightRequest="70" WidthRequest="70" BorderColor="Black" Padding="9" BackgroundColor="Transparent"/>
+                        <ImageButton Grid.Row="0" Command="{Binding ReceiveButtonCommand}" Source="receivearrow.png" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BorderWidth="2" CornerRadius="40" HeightRequest="70" WidthRequest="70" BorderColor="Black" Padding="9" BackgroundColor="Transparent"/>
+                        <ImageButton Grid.Row="0" Source="swap.png" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BorderWidth="2" CornerRadius="40" HeightRequest="70" WidthRequest="70" BorderColor="Black" Padding="9" BackgroundColor="Transparent"/>
+                        <ImageButton Grid.Row="0" Source="fingerprint.png" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BorderWidth="2" CornerRadius="40" HeightRequest="70" WidthRequest="70" BorderColor="Black" Padding="9" BackgroundColor="Transparent"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Send" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Receive" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="2" Text="Swap" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="3" Text="Scan" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Grid>
+                <BoxView Grid.Row="2" BackgroundColor="Black" HeightRequest="2" HorizontalOptions="FillAndExpand" Margin="0,5,0,5"/>
+                <ListView Grid.Row="3" ItemsSource="{Binding TransactionList}" HorizontalOptions="FillAndExpand"  RowHeight="100" VerticalOptions="CenterAndExpand" SeparatorVisibility="Default" HasUnevenRows="True" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame  Padding="10" Margin="5" BorderColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50*"/>
+                                                <RowDefinition Height="50*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.RowSpan="2" Grid.Column="0" Source="{Binding SendReceiveTransactionImage}" />
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding TransactionDescription}" FontAttributes="Bold" FontSize="Small" TextColor="Black"/>
+                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding DateAndTime}" HorizontalOptions="EndAndExpand" FontSize="13" TextColor="Black"/>
+                                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding TransactionAmount}" HorizontalOptions="EndAndExpand" FontAttributes="Bold" FontSize="Small" TextColor="Black"/>
+                                            <Label Grid.Row="1" Grid.Column="3" Text="{Binding TransactionFee}" HorizontalOptions="EndAndExpand" TextColor="Black"/>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+               
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

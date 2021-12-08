@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             x:Class="DorhniiFoundationWallet.Views.ReceiveCoinPage">
+    <ContentPage.BindingContext>
+        <vm:ReceiveCoinsVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="SteelBlue">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width=".15*"/>
+                        <ColumnDefinition Width=".70*"/>
+                        <ColumnDefinition Width=".15*"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton Grid.Column="0" Source="leftarrowWhite" HeightRequest="20" BackgroundColor="Transparent" Command="{Binding BackButtonCommand}"/>
+                    <Label Grid.Column="1" Text="Receive Coin" FontSize="Medium" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <!--<ImageButton Grid.Column="2" Source="ScanIcon"  HorizontalOptions="End" VerticalOptions="Center"  BackgroundColor="Transparent"/>-->
+                </Grid>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" BackgroundColor="LightGray" VerticalOptions="FillAndExpand">
+                        <StackLayout Margin="10"  Orientation="Vertical" Spacing="0" VerticalOptions="Center">
+                            <Label Text="Share this address to receive payments. To protect your privacy, new addresses are generated automatically once you use them." FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                           
+                        </StackLayout>
+                    </Grid>
+                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                        <StackLayout Margin="10" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#f5f2f2" HeightRequest="120" WidthRequest="120">
+                            <Image Margin="15" Source="QRScan" HeightRequest="100" WidthRequest="100"/>
+                        </StackLayout>
+                    </Grid>
+                    <Frame Grid.Row="2" Margin="10,0,10,0" BorderColor="SteelBlue" HasShadow="False" >
+                        <Label Text="GENERATE NEW ADDRESS" TextColor="SteelBlue" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                    </Frame>
+                    <!--<Label Grid.Row="1" Text="Balance After:-" FontSize="16"   Margin="10,15,0,0" />-->
+                    <!--<Label Grid.Row="2" Text="Fee:-"  FontSize="16"  FontAttributes="Bold" Margin="10,0,0,0"  />-->
+                    <Label Grid.Row="3" Text="Unused addresses"  FontSize="16" Margin="10,15,0,0"  FontAttributes="Bold" HorizontalOptions="Start"   />
+                    <Label Grid.Row="3" Text="Verify address"  FontSize="16" Margin="10,15,0,0"  FontAttributes="Bold" HorizontalOptions="End"   />
+                    <Frame Grid.Row="4" Margin="10" BorderColor="LightGray" HeightRequest="50" HasShadow="False" Padding="10">
+                        <Grid Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="/Q addr1hjciumbacjbcbffs123d2" TextColor="Gray" FontSize="14" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Image Grid.Column="1" Source="CopyIcon" HorizontalOptions="Center" VerticalOptions="Center" Scale="0.75"/>
+                            <Image Grid.Column="2" Source="VerifyIcon" HorizontalOptions="Center" VerticalOptions="Center" Scale="0.75"/>
+                        </Grid>
+                    </Frame>
+                    <Label Grid.Row="5" Text="Used addresses"  FontSize="16" Margin="10,15,0,0"  FontAttributes="Bold"   />
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

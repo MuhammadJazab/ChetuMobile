@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="msgConfirmPassword" xml:space="preserve">
+    <value>Password and Confirm Password must be same.</value>
+  </data>
+  <data name="msgEmptyPasswords" xml:space="preserve">
+    <value>Passwords fields cannot be empty.</value>
+  </data>
+  <data name="msgNetworkIssueMessage" xml:space="preserve">
+    <value>Internet connection not found. Please check &amp; try again.</value>
+    <comment>Internet connection not found. Please check &amp; try again.</comment>
+  </data>
+  <data name="msgPasswordValidation" xml:space="preserve">
+    <value>Password must contain at least 8 characters, including letters and numbers.</value>
+    <comment>Password must contain at least 8 characters, including letters and numbers.</comment>
+  </data>
+  <data name="msgSeedEntryError" xml:space="preserve">
+    <value>Seed Phrase entry fields cannot be empty</value>
+  </data>
+  <data name="msgSeedPhraseSave" xml:space="preserve">
+    <value>Please Save the Seed Phrase.</value>
+  </data>
+  <data name="msgTechnicalErrorOccurred" xml:space="preserve">
+    <value>Technical error occurred, please try again.</value>
+    <comment>Technical error occurred, please try again.</comment>
+  </data>
+  <data name="tstStake" xml:space="preserve">
+    <value>Stake</value>
+  </data>
+  <data name="txtAccounts" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="txtAlert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="txtApy" xml:space="preserve">
+    <value>APY,</value>
+  </data>
+  <data name="txtBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="txtBalance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="txtConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="txtCreate" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="txtEmptyPasswords" xml:space="preserve">
+    <value>Empty Password Fields</value>
+  </data>
+  <data name="txtEnterPassword" xml:space="preserve">
+    <value>Enter Password</value>
+  </data>
+  <data name="txtEnterSeedPhrase" xml:space="preserve">
+    <value>Enter Seed Phrase</value>
+  </data>
+  <data name="txtFaceId" xml:space="preserve">
+    <value>Fingerprint and Face Id</value>
+  </data>
+  <data name="txtFingerprint" xml:space="preserve">
+    <value>Use Fingerprint or Face ID</value>
+  </data>
+  <data name="txtGetHelp" xml:space="preserve">
+    <value>Get Help</value>
+  </data>
+  <data name="txtInvalidConfirmation" xml:space="preserve">
+    <value>Invalid Confirmation</value>
+  </data>
+  <data name="txtLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="txtLogout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="txtNewAccount" xml:space="preserve">
+    <value>New Account</value>
+  </data>
+  <data name="txtNewSeedPhrase" xml:space="preserve">
+    <value>New Seed Phrase</value>
+  </data>
+  <data name="txtNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="txtOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="txtPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="txtPasswordPageText1" xml:space="preserve">
+    <value>Please make sure to use a password you remember.</value>
+  </data>
+  <data name="txtPasswordPageText2" xml:space="preserve">
+    <value>Otherwise you will need to restore the wallet from</value>
+  </data>
+  <data name="txtPasswordPageText3" xml:space="preserve">
+    <value>your original seed phrase</value>
+  </data>
+  <data name="txtPeriod" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="txtPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="txtPrintDescription1" xml:space="preserve">
+    <value>Click “Print” and print out paper instructions and write down </value>
+  </data>
+  <data name="txtPrintDescription2" xml:space="preserve">
+    <value>your 24 words seed carefully. Anyone with access to your </value>
+  </data>
+  <data name="txtPrintDescription3" xml:space="preserve">
+    <value>recovery phrase could take your assets, strode it securely. </value>
+  </data>
+  <data name="txtPrintDescription4" xml:space="preserve">
+    <value>We do no keep a backup of your 24 worlds, if you lose it, </value>
+  </data>
+  <data name="txtPrintDescription5" xml:space="preserve">
+    <value>all coins in your wallet will be gone forever.</value>
+  </data>
+  <data name="txtPrivacy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="txtProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="txtRestore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="txtSecurity" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="txtSeedEntryError" xml:space="preserve">
+    <value>Inadequate Data Entered !</value>
+  </data>
+  <data name="txtSeedId" xml:space="preserve">
+    <value>Seed Id</value>
+  </data>
+  <data name="txtSeedPhraseSave" xml:space="preserve">
+    <value>Save Seed Phrase Entries !</value>
+  </data>
+  <data name="txtSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="txtShowSeedPhrase" xml:space="preserve">
+    <value>Show Seed Phrase</value>
+  </data>
+  <data name="txtStakedAmount" xml:space="preserve">
+    <value>Staked Amount</value>
+  </data>
+  <data name="txtStakingOptions" xml:space="preserve">
+    <value>Other Staking Options</value>
+  </data>
+  <data name="txtSupport" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="txtTerms" xml:space="preserve">
+    <value>Terms Of Use</value>
+  </data>
+  <data name="txtTransactions" xml:space="preserve">
+    <value>Recent Transactions</value>
+  </data>
+  <data name="txtWallet" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="txtWalletName" xml:space="preserve">
+    <value>Enter your new wallet name</value>
+  </data>
+  <data name="txtWecomeText" xml:space="preserve">
+    <value>Welcome !</value>
+  </data>
+</root>

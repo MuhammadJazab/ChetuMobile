@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" 
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             x:Class="DorhniiFoundationWallet.Views.SendCoinPage">
+    <ContentPage.BindingContext>
+        <vm:SendCoinVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid RowSpacing="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>   
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="SteelBlue">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width=".15*"/>
+                        <ColumnDefinition Width=".70*"/>
+                        <ColumnDefinition Width=".15*"/>
+                    </Grid.ColumnDefinitions>
+                    <ImageButton Grid.Column="0" Source="leftarrowWhite" HeightRequest="20" BackgroundColor="Transparent" Command="{Binding BackButtonCommand}"/>
+                    <Label Grid.Column="1" Text="Send Coin" FontSize="Medium" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <ImageButton Grid.Column="2" Source="ScanIcon"  HorizontalOptions="End" VerticalOptions="Center"  BackgroundColor="Transparent"/>
+                </Grid>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" BackgroundColor="LightGray" VerticalOptions="FillAndExpand">
+                        <StackLayout  Orientation="Vertical" Spacing="0" VerticalOptions="Center">
+                            <Label Text="Available Funds" FontSize="18" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="0.000000 DHN"  FontSize="18" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                        </StackLayout>
+                    </Grid>                   
+                    <Label Grid.Row="1" Text="Balance After:-" FontSize="16"   Margin="10,15,0,0" />
+                    <Label Grid.Row="2" Text="Fee:-"  FontSize="16"  FontAttributes="Bold" Margin="10,0,0,0"  />
+                    <Label Grid.Row="3" Text="Adress"  FontSize="16" Margin="10,15,0,0"  FontAttributes="Bold"   />
+                    <Frame Grid.Row="4" Margin="10,5,10,0" Style="{StaticResource PasswordFrameStyle}" HeightRequest="50" >
+                        <Grid Margin="5,0,0,0" BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <cntrl:RendererEntry Grid.Row="1"  Placeholder="Enter Address" />
+                         </Grid>
+                    </Frame>
+                    <Label Grid.Row="5" Text="Amount"  FontSize="16" Margin="10,15,0,0"  FontAttributes="Bold"   />
+                    <Frame Grid.Row="6" Margin="10,5,10,0" Style="{StaticResource PasswordFrameStyle}" HeightRequest="50" >
+                        <Grid Margin="5,0,0,0" BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <cntrl:RendererEntry Grid.Row="1"  Placeholder="Enter Amount"  />
+                        </Grid>
+                    </Frame>
+                    <StackLayout Grid.Row="7" Orientation="Horizontal">
+                        <CheckBox HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="5,5,2,5" Color="Black"/>
+                        <Label Text="See all the assets(including all the token)"  FontSize="14" FontAttributes="Bold"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Frame Grid.Row="8" Margin="10,0,10,0" Style="{StaticResource PasswordFrameStyle}" HeightRequest="50" >
+                        <Grid Margin="5,0,0,0" BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <cntrl:RendererEntry Grid.Row="1"  Placeholder="Select Assets" />
+                        </Grid>
+                    </Frame>
+                    
+                    <Button Grid.Row="9" Text="Continue" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="10,0,10,0" TextColor="White" FontAttributes="Bold" BackgroundColor="SteelBlue"/>
+                </Grid>
+            </Grid>      
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
