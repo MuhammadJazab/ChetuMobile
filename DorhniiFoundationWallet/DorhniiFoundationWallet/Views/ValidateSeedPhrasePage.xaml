@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+             ios:Page.UseSafeArea="true"
+              NavigationPage.HasNavigationBar="False"
+             x:Class="DorhniiFoundationWallet.Views.ValidateSeedPhrasePage">
+    <ContentPage.BindingContext>
+        <vm:ValidateSeedPhraseVM x:Name="vm"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Black}">
+            <Grid Grid.Row="0" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height=".4*"/>
+                    <RowDefinition Height=".1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="{Static resource:Resource.txtSeedPhraseCapital}" Style="{StaticResource WhiteCenterLabelStyle}" />
+                <Frame Padding="0" Grid.Row="1" CornerRadius="10" Margin="0,0,0,0" BackgroundColor="{StaticResource EntryGray}">
+                    <FlexLayout  BindableLayout.ItemsSource="{Binding DataList23,Mode=TwoWay}" Wrap="Wrap"  Direction="Row" JustifyContent="SpaceBetween" AlignItems="Start" AlignContent="SpaceEvenly" BackgroundColor="Transparent">
+                        <BindableLayout.ItemTemplate >
+                            <DataTemplate  >
+                                <Frame Padding="5" Margin="0,5,5,0" CornerRadius="5" BackgroundColor="{StaticResource SeedPhrame}" HasShadow="False" BorderColor="{StaticResource EntryGray}">
+                                    <Label Text="{Binding EntryText}" Style="{StaticResource WhiteCenterLabelStyle}" VerticalOptions="Center" FontSize="18">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnUpperLabelTap}" CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </Frame>
+                <ScrollView Grid.Row="2">
+                    <FlexLayout  BindableLayout.ItemsSource="{Binding SeedListBindable,Mode=TwoWay}" Wrap="Wrap" Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" AlignContent="SpaceEvenly" BackgroundColor="Transparent">
+                        <BindableLayout.ItemTemplate >
+                            <DataTemplate  >
+                                <Frame Padding="5" Margin="0,5,5,0" CornerRadius="5" BackgroundColor="{StaticResource SeedPhrame}" HasShadow="False" BorderColor="{StaticResource EntryGray}">
+                                    <Label Text="{Binding EntryText}" Style="{StaticResource WhiteCenterLabelStyle}" FontSize="18" >
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnLabelTap}" CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </ScrollView>
+                <StackLayout Grid.Row="3" Spacing="0" VerticalOptions="End" Orientation="Horizontal" >
+                    <ImageButton Grid.Row="0" Source="{Binding ForwardAppIcon}" Command="{Binding NextCommandEnter}" HorizontalOptions="EndAndExpand" BackgroundColor="{StaticResource SeedPhrame }" CornerRadius="3"/>
+                </StackLayout>
+                <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

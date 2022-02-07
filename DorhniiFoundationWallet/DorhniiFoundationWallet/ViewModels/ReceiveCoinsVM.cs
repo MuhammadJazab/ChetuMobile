@@ -11,20 +11,24 @@ namespace DorhniiFoundationWallet.ViewModels
     /// </summary>
     public class ReceiveCoinsVM : ObservableObject
     {
-        #region Properties
-        /// <summary>
-        /// This command property is used for back button click event.
-        /// </summary>
+        #region public Properties        
         public ICommand BackButtonCommand { get; set; }
         #endregion
-
         #region Methods
         /// <summary>
-        /// This method is used for receiving coins functionality.
-        /// </summary>
+        ///class constructor Method to click on Back Button
+        /// </summary>       
         public ReceiveCoinsVM()
         {
-            BackButtonCommand = new Command(BackButtonClick);
+            try
+            {
+                BackButtonCommand = new Command(BackButtonClick);
+            }
+            catch(Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+            
         }
 
         /// <summary>
@@ -34,7 +38,7 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                _ = await Application.Current.MainPage.Navigation.PopModalAsync();
             }
             catch (Exception ex)
             {

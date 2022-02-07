@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DorhniiFoundationWallet.Views.ScanQRCode"
+             xmlns:xzing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+              NavigationPage.HasNavigationBar="False"
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame  BackgroundColor="Black">
+                <Label Text="Scan The QR Code" HorizontalTextAlignment="Center" TextColor="White" FontSize="20"/>
+            </Frame>
+            <Label x:Name="scanresultText" TextColor="Black" IsVisible="false"/>
+            
+                <xzing:ZXingScannerView x:Name="scanner" IsScanning="True" IsAnalyzing="True" OnScanResult="QrCoderesult"/>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

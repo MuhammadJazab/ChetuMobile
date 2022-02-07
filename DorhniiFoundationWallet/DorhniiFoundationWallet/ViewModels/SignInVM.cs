@@ -1,10 +1,11 @@
-﻿using DorhniiFoundationWallet.Helpers;
+﻿using Xamarin.Forms;
+using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
 using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
-using Xamarin.Forms;
+
 
 namespace DorhniiFoundationWallet.ViewModels
 {
@@ -13,7 +14,7 @@ namespace DorhniiFoundationWallet.ViewModels
     /// </summary>
     public class SignInVM : ObservableObject
     {
-       
+
         #region Properties
 
         #region Boolean Properties
@@ -99,7 +100,6 @@ namespace DorhniiFoundationWallet.ViewModels
         #endregion
 
         #region Methods
-
         /// <summary>
         /// This method is used for Sign In Functionality
         /// </summary>
@@ -108,8 +108,8 @@ namespace DorhniiFoundationWallet.ViewModels
             CrossEyeCommand = new Command(CrossEyeClick);
             NewAccountCommand = new Command(NewAccountClick);
             NextButtonCommand = new Command(NextButtonClick);
+           
         }
-
         /// <summary>
         /// Method to change the eye icon and password secure 
         /// </summary>
@@ -135,7 +135,6 @@ namespace DorhniiFoundationWallet.ViewModels
                 Crashes.TrackError(ex);
             }
         }
-
         /// <summary>
         /// Method to click on Next Button
         /// </summary>
@@ -151,7 +150,6 @@ namespace DorhniiFoundationWallet.ViewModels
                 Crashes.TrackError(ex);
             }
         }
-
         /// <summary>
         /// Method to click on New Account Label Tap Getsure
         /// </summary>
@@ -166,7 +164,6 @@ namespace DorhniiFoundationWallet.ViewModels
                 Crashes.TrackError(ex);
             }
         }
-
         #endregion
     }
 }

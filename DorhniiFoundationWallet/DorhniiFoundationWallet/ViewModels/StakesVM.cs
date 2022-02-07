@@ -15,23 +15,10 @@ namespace DorhniiFoundationWallet.ViewModels
     public class StakesVM : ObservableObject
     {
         #region Properties
-
-        #region Command Properties
-        /// <summary>
-        /// This property gets and sets the command for Wallet Tab Icon.
-        /// </summary>
-        public ICommand WalletBlackCommand { get; set; }
-
-        /// <summary>
-        /// This property gets and sets the command for Stakes Tab Icon.
-        /// </summary>
-        public ICommand StakesBlackCommand { get; set; }
-
-        /// <summary>
-        /// This property gets and sets the command for Transaction Tab Icon.
-        /// </summary>
+        #region Command Properties       
+        public ICommand WalletBlackCommand { get; set; }      
+        public ICommand StakesBlackCommand { get; set; }       
         public ICommand TransactionBlackCommand { get; set; }
-
         /// <summary>
         /// This property gets and sets the command for Settings Tab Icon.
         /// </summary>
@@ -91,10 +78,7 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public bool StakesBlackVisible
         {
-            get
-            {
-                return stakesblack;
-            }
+            get => stakesblack;
             set
             {
                 if (stakesblack != value)
@@ -109,10 +93,7 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public bool StakesGrayVisible
         {
-            get
-            {
-                return stakesgray;
-            }
+            get => stakesgray;
             set
             {
                 if (stakesgray != value)
@@ -145,10 +126,7 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public bool TransactionGrayVisible
         {
-            get
-            {
-                return transactiongray;
-            }
+            get => transactiongray;
             set
             {
                 if (transactiongray != value)
@@ -163,10 +141,7 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public bool SettingsBlackVisible
         {
-            get
-            {
-                return settingsblack;
-            }
+            get => settingsblack;
             set
             {
                 if (settingsblack != value)
@@ -175,16 +150,10 @@ namespace DorhniiFoundationWallet.ViewModels
                     OnPropertyChanged();
                 }
             }
-        }
-        /// <summary>
-        /// This property gets sets the visiblity of Settings tab Button
-        /// </summary>
+        }       
         public bool SettingGrayVisible
         {
-            get
-            {
-                return settingsgray;
-            }
+            get => settingsgray;
             set
             {
                 if (settingsgray != value)
@@ -194,55 +163,48 @@ namespace DorhniiFoundationWallet.ViewModels
                 }
             }
         }
-
         #endregion
-
-        #region List Properties
-        /// <summary>
-        /// This private property gets or sets the list of stakes added list.
-        /// </summary>
-        public ObservableCollection<StakesListModel> StakesAddedList { get; set; }
-
-        /// <summary>
-        /// This private property gets or sets the list of stakes list.
-        /// </summary>
+        #region List Properties        
+        public ObservableCollection<StakesListModel> StakesAddedList { get; set; }       
         public ObservableCollection<StakesListModel> StakesList { get; set; }
         #endregion
-
         #endregion
-
         #region Methods
-
         /// <summary>
         /// This method is used to display the stakes list and stakes added list
         /// </summary>
         public StakesVM()
         {
-            WalletBlackVisible = true;
-            StakesBlackVisible = false;
-            TransactionBlackVisible = true;
-            SettingsBlackVisible = true;
-
-            WalletGrayVisible = false;
-            StakesGrayVisible = true;
-            TransactionGrayVisible = false;
-            SettingGrayVisible = false;
-            WalletBlackCommand = new Command(WalletBlackButtonClick);
-            StakesBlackCommand = new Command(StakesBlackButtonClick);
-            TransactionBlackCommand = new Command(TransactionBlackButtonClick);
-            SettingsBlackCommand = new Command(SettingBlackButtonClick);
-            StakesAddedList = new ObservableCollection<StakesListModel>();
-            StakesList = new ObservableCollection<StakesListModel>();
-            StakesAddedList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "Open", StakePercentage = "5%", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesAddedList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "Open", StakePercentage = "5%", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesAddedList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "Open", StakePercentage = "5%", Image = ImageSource.FromFile("AppIconImage.png") });
-
-            StakesList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "3 Months", StakePercentage = "10 %", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesList.Add(new StakesListModel() { StakeName = "My Stake 2", StakeAmount = "67,890 $ DHN", StakePeriod = "6 Months", StakePercentage = "17 %", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesList.Add(new StakesListModel() { StakeName = "My Stake 3", StakeAmount = "54,321 $ DHN", StakePeriod = "1 Year", StakePercentage = "24 %", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesList.Add(new StakesListModel() { StakeName = "My Stake 4", StakeAmount = "99,876 $ DHN", StakePeriod = "2 Years", StakePercentage = "31 %", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesList.Add(new StakesListModel() { StakeName = "My Stake 5", StakeAmount = "12,345 $ DHN", StakePeriod = "4 Years", StakePercentage = "38 %", Image = ImageSource.FromFile("AppIconImage.png") });
-            StakesList.Add(new StakesListModel() { StakeName = "My Stake 6", StakeAmount = "54,321 $ DHN", StakePeriod = "8 Years", StakePercentage = "45 %", Image = ImageSource.FromFile("AppIconImage.png") });
+            try
+            {
+                WalletBlackVisible = true;
+                StakesBlackVisible = false;
+                TransactionBlackVisible = true;
+                SettingsBlackVisible = true;
+                WalletGrayVisible = false;
+                StakesGrayVisible = true;
+                TransactionGrayVisible = false;
+                SettingGrayVisible = false;
+                WalletBlackCommand = new Command(WalletBlackButtonClick);
+                StakesBlackCommand = new Command(StakesBlackButtonClick);
+                TransactionBlackCommand = new Command(TransactionBlackButtonClick);
+                SettingsBlackCommand = new Command(SettingBlackButtonClick);
+                StakesAddedList = new ObservableCollection<StakesListModel>();
+                StakesList = new ObservableCollection<StakesListModel>();
+                StakesAddedList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "Open", StakePercentage = "5%", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesAddedList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "Open", StakePercentage = "5%", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesAddedList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "Open", StakePercentage = "5%", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesList.Add(new StakesListModel() { StakeName = "My Stake 1", StakeAmount = "12,345 $ DHN", StakePeriod = "3 Months", StakePercentage = "10 %", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesList.Add(new StakesListModel() { StakeName = "My Stake 2", StakeAmount = "67,890 $ DHN", StakePeriod = "6 Months", StakePercentage = "17 %", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesList.Add(new StakesListModel() { StakeName = "My Stake 3", StakeAmount = "54,321 $ DHN", StakePeriod = "1 Year", StakePercentage = "24 %", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesList.Add(new StakesListModel() { StakeName = "My Stake 4", StakeAmount = "99,876 $ DHN", StakePeriod = "2 Years", StakePercentage = "31 %", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesList.Add(new StakesListModel() { StakeName = "My Stake 5", StakeAmount = "12,345 $ DHN", StakePeriod = "4 Years", StakePercentage = "38 %", Image = ImageSource.FromFile("AppIconImage.png") });
+                StakesList.Add(new StakesListModel() { StakeName = "My Stake 6", StakeAmount = "54,321 $ DHN", StakePeriod = "8 Years", StakePercentage = "45 %", Image = ImageSource.FromFile("AppIconImage.png") });
+            }
+            catch(Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
 
         /// <summary>
@@ -328,12 +290,11 @@ namespace DorhniiFoundationWallet.ViewModels
                 StakesBlackVisible = true;
                 TransactionBlackVisible = true;
                 SettingsBlackVisible = false;
-
                 WalletGrayVisible = false;
                 StakesGrayVisible = false;
                 TransactionGrayVisible = false;
                 SettingGrayVisible = true;
-                await Application.Current.MainPage.Navigation.PushModalAsync(new SettingsPage());
+                await Application.Current.MainPage.Navigation.PushModalAsync(new SettingPageNew());
             }
             catch (Exception ex)
             {

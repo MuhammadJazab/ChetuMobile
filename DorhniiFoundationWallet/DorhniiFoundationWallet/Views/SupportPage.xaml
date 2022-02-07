@@ -9,28 +9,27 @@
         <vm:SupportVM/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" BackgroundColor="SteelBlue">
+                <Grid Grid.Row="0" BackgroundColor="#262629">
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width=".15*"/>
                         <ColumnDefinition Width=".70*"/>
                         <ColumnDefinition Width=".15*"/>
                     </Grid.ColumnDefinitions>
-                    <ImageButton Grid.Column="0" Source="leftarrowWhite" HeightRequest="20" BackgroundColor="Transparent" Command="{Binding BackButtonCommand}"/>
-                    <Label Grid.Column="1" Text="Support" FontSize="Medium" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <ImageButton Grid.Column="0" Source="leftarrowWhite" Scale="0.75" HeightRequest="20" BackgroundColor="Transparent" Command="{Binding BackButtonCommand}"/>
+                    <Label Grid.Column="1" Text="Support" FontSize="Medium" TextColor="White" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                     <!--<ImageButton Grid.Column="2" Source="ScanIcon"  HorizontalOptions="End" VerticalOptions="Center"  BackgroundColor="Transparent"/>-->
                 </Grid>
-               
-                <Frame Grid.Row="1" CornerRadius="0" BorderColor="Black" Padding="0" Margin="20" HasShadow="False">
-                    <cntrl:RendererEditor Placeholder="How can we help you..." Margin="2" PlaceholderColor="Black"  BackgroundColor="White"  HeightRequest="190" TextColor="Black" />
+                <Frame Grid.Row="1" CornerRadius="0"  BackgroundColor="#5e5e5f" Padding="0" Margin="20" HasShadow="False">
+                    <cntrl:RendererEditor Placeholder="How can we help you..." Margin="2" PlaceholderColor="White"   HeightRequest="190" TextColor="White" />
                 </Frame>
-                <Button Margin="20,10,20,20" Grid.Row="2" Text="Submit" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" BackgroundColor="SteelBlue"/>
+                <Button Margin="20,10,20,20" Grid.Row="2" Text="Submit" HorizontalOptions="FillAndExpand" TextColor="Black" FontAttributes="Bold" BackgroundColor="white" BorderColor="Gray"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

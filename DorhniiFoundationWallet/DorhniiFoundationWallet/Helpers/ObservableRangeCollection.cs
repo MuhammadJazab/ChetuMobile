@@ -88,7 +88,10 @@ namespace DorhniiFoundationWallet.Helpers
         public void ReplaceRange(IEnumerable<T> collection)
         {
             if (collection == null)
+            {
                 throw new ArgumentNullException("collection");
+            }
+
             Items.Clear();
             AddRange(collection, NotifyCollectionChangedAction.Reset);
         }

@@ -39,7 +39,6 @@ namespace DorhniiFoundationWallet.Services
                     aPIResponse = JsonConvert.DeserializeObject<ResponseModel>(response.Data);
 
                 }
-
             }
             catch (Exception ex)
             {

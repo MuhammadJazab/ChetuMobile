@@ -11,20 +11,24 @@ namespace DorhniiFoundationWallet.ViewModels
     /// </summary>
     public class SupportVM : ObservableObject
     {
-        #region Properties
-        /// <summary>
-        /// This property gets and sets the command for Back Button.
-        /// </summary>
+        #region Properties        
         public ICommand BackButtonCommand { get; set; }
         #endregion
-
         #region Methods
         /// <summary>
         /// This method is used for support assistance for the user.
         /// </summary>
         public SupportVM()
         {
-            BackButtonCommand = new Command(BackButtonClick);
+            try
+            {
+                BackButtonCommand = new Command(BackButtonClick);
+            }
+            catch(Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+            
         }
 
         /// <summary>
@@ -34,7 +38,7 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                _ = await Application.Current.MainPage.Navigation.PopModalAsync();
             }
             catch (Exception ex)
             {

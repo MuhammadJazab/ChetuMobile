@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" 
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             
              x:Class="DorhniiFoundationWallet.Views.ReceiveCoinPage">
     <ContentPage.BindingContext>
         <vm:ReceiveCoinsVM/>
@@ -39,7 +41,6 @@
                     <Grid Grid.Row="0" BackgroundColor="LightGray" VerticalOptions="FillAndExpand">
                         <StackLayout Margin="10"  Orientation="Vertical" Spacing="0" VerticalOptions="Center">
                             <Label Text="Share this address to receive payments. To protect your privacy, new addresses are generated automatically once you use them." FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                           
                         </StackLayout>
                     </Grid>
                     <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">

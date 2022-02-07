@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using DorhniiFoundationWallet.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,9 +15,12 @@ namespace DorhniiFoundationWallet.Views
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var res = await this.DisplayAlert("Exit ?", "Do you really want to exit the application?", "Yes", "No").ConfigureAwait(false);
+                bool res = await DisplayAlert(Resource.txtExitAlert, Resource.msgExit, Resource.txtYes, Resource.txtNo).ConfigureAwait(false);
 
-                if (res) System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                if (res)
+                {
+                    _ = System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                }
             });
             return true;
         }

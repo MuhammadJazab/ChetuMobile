@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                  
+              NavigationPage.HasNavigationBar="False"
+             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
+             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="DorhniiFoundationWallet.Views.LoginPage">
+    <ContentPage.BindingContext>
+        <vm:LoginPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content >
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="{x:Static resource:Resource.txtLogin}" TextColor="White" FontSize="40" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <Grid Grid.Row="1" VerticalOptions="Center" Margin="0,70,0,0" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Style="{StaticResource EntryFrameStyle}" HeightRequest="55" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Padding="0" Orientation="Horizontal" >
+                            <cntrl:RendererEntry Text="{Binding EnterPassword}" Placeholder="{x:Static resource:Resource.txtPasswordCapital}" PlaceholderColor="Gray" FontSize="15" Style="{StaticResource PasswordEntryStyle}"  HorizontalTextAlignment="Start" WidthRequest="280"/>
+                            <Image Source="{Binding LockIcon}" HorizontalOptions="EndAndExpand" Scale=".75"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Grid.Row="1" Orientation="Vertical" Padding="0" HorizontalOptions="FillAndExpand" Margin="0,0,0,0">
+                        <Label Text="{x:Static resource:Resource.txtPasswordAlert}"  TextColor="White" HorizontalOptions="Center"/>
+                        <Label Text="{x:Static resource:Resource.txtPasswordAlert2}"  TextColor="White" HorizontalOptions="Center" Margin="0,-5,0,0"/>
+                    </StackLayout>
+                    <Frame  Grid.Row="2" Padding="0" WidthRequest="100" HeightRequest="35"   HorizontalOptions="Center" BackgroundColor="#59595b" CornerRadius="5">
+                        <Frame.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#552DF2" Offset="0.1"/>
+                                <GradientStop Color="#3594D2" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <Button Text="{x:Static resource:Resource.txtOk}" Command="{Binding OKCommand}"  HorizontalOptions="Center" TextColor="White" FontSize="14" BackgroundColor="Transparent"/>
+                    </Frame>
+                </Grid>
+                <Label Grid.Row="2" Margin="50" Text="Finger Print or Face id Login" TextColor="White" FontSize="Body" HorizontalOptions="Center" VerticalOptions="End">
+                    <!--<Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TouchIdPopupCommand}"/>
+                    </Label.GestureRecognizers>-->
+                </Label>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
              xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
-             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials" xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
              x:Class="DorhniiFoundationWallet.Views.TransactionPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
         <vm:TransactionVM/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
@@ -21,14 +21,14 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtTransactions}" Style="{StaticResource PasswordPageLabelStyle}" TextColor="Black"/>
+                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtTransactions}" Style="{StaticResource PasswordPageLabelStyle}" TextColor="White"/>
                 </Grid>
                 <Grid Grid.Row="1" RowSpacing="8"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10,10,10">
                     <ListView ItemsSource="{Binding TransactionList}" HorizontalOptions="FillAndExpand"  RowHeight="100" VerticalOptions="CenterAndExpand" SeparatorVisibility="Default" HasUnevenRows="True" SelectionMode="None" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame Padding="10" Margin="0,10,0,0" BorderColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                                    <Frame Padding="10" Margin="0,10,0,0" BackgroundColor="#262629" BorderColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="50*"/>
@@ -39,11 +39,14 @@
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.RowSpan="2" Grid.Column="0" Source="{Binding SendReceiveTransactionImage}" />
-                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding TransactionDescription}" TextColor="Black" FontAttributes="Bold" FontSize="Small"/>
-                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding DateAndTime}" TextColor="Black" HorizontalOptions="EndAndExpand" FontSize="13"/>
-                                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding TransactionAmount}" TextColor="Black" HorizontalOptions="EndAndExpand" FontAttributes="Bold" FontSize="Small"/>
-                                            <Label Grid.Row="1" Grid.Column="3" Text="{Binding TransactionFee}" TextColor="Black" HorizontalOptions="EndAndExpand"/>
+                                            <Image Grid.RowSpan="2" Grid.Column="0" Source="{Binding TransactionTypeImage}" />
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding TransactionType}" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+                                            <Label Grid.Row="1" Grid.Column="1"  Text="{Binding TransactionDateTime}" TextColor="White" HorizontalOptions="EndAndExpand" FontSize="13"/>
+                                            <StackLayout Grid.Row="0" Grid.Column="3" Orientation="Horizontal" >
+                                                <Label  Text="{Binding TransactionAmount}" TextColor="White" HorizontalOptions="EndAndExpand" FontAttributes="Bold" FontSize="Small"/>
+                                                <Label  Text="{Binding CoinName}" TextColor="White" HorizontalOptions="EndAndExpand" FontAttributes="Bold" FontSize="Small"/>
+                                            </StackLayout>
+                                            <Label Grid.Row="1" Grid.Column="3" Text="{Binding FeeDetails}" TextColor="White" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                     </Frame>
                                 </ViewCell>
@@ -51,6 +54,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
+                <View:Loader Grid.Row="1" IsVisible="{Binding IsLoading}"/>
                 <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent"></views:TabbedViewPage>
             </Grid>
         </Grid>

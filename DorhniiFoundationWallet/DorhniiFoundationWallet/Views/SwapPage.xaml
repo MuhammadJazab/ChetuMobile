@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels" 
+             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="DorhniiFoundationWallet.Views.SwapPage">
+    <ContentPage.BindingContext>
+        <vm:SettingVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" BackgroundColor="Transparent" Padding="0" Margin="10,10,10,0" CornerRadius="3" >
+                    <SearchBar TextColor="White" Background="gray"  />
+                </Frame>
+                <ScrollView Grid.Row="1"  Style="{StaticResource TransactionPageScrollViewStyle}">
+                    <StackLayout Orientation="Vertical" Margin="10,10,10,0" >
+                        <StackLayout Orientation="Horizontal" >
+                            <Label  Text="{x:Static resource:Resource.txtSWAPS}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Start"  TextColor="White"/>
+                            <Label  Text="see all" FontSize="Small" FontAttributes="None" HorizontalOptions="EndAndExpand" VerticalOptions="End" TextColor="White"/>
+                        </StackLayout>
+                        <Frame Margin="0,10,0,0" BackgroundColor="#262629" BorderColor="Gray" CornerRadius="5" >
+                            <Grid RowSpacing="8" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Row="0" HasShadow="True" BackgroundColor="Transparent" Padding="8" CornerRadius="5" Margin="0,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                        <!--<Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SupportCommand}"/>
+                                        </Grid.GestureRecognizers>-->
+                                    </Grid>
+                                </Frame>
+                                <Line Grid.Row="1" BackgroundColor="Gray" HeightRequest="1" ></Line>
+                                <Frame Grid.Row="2" HasShadow="True" BackgroundColor="Transparent"  Padding="8" CornerRadius="5"  Margin="0,5,5,0">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                    </Grid>
+                                </Frame>
+                                <Line Grid.Row="3" BackgroundColor="Gray" HeightRequest="1" ></Line>
+                                <Frame Grid.Row="4" BackgroundColor="Transparent" HasShadow="True" Padding="8" CornerRadius="5" Margin="0,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                    </Grid>
+                                </Frame>
+                                <Line Grid.Row="5" BackgroundColor="Gray" HeightRequest="1" ></Line>
+                                <Frame Grid.Row="6" BackgroundColor="Transparent" HasShadow="True" Padding="8" CornerRadius="5" Margin="0,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                        <StackLayout Orientation="Horizontal" >
+                            <Label  Text="{x:Static resource:Resource.txtBRIDGES}" FontSize="25" HorizontalOptions="Start" FontAttributes="Bold" TextColor="White"/>
+                            <Label  Text="{x:Static resource:Resource.txtSeeAll}" FontSize="Small" FontAttributes="None" VerticalOptions="End" HorizontalOptions="EndAndExpand" TextColor="White"/>
+                        </StackLayout>
+                        <Frame Margin="0,10,0,0" BackgroundColor="#262629" BorderColor="Gray" CornerRadius="5" >
+                            <Grid RowSpacing="8" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Row="0" HasShadow="True" BackgroundColor="Transparent" Padding="8" CornerRadius="5"  Margin="0,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                        <!--<Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SupportCommand}"/>
+                                        </Grid.GestureRecognizers>-->
+                                    </Grid>
+                                </Frame>
+                                <Line Grid.Row="2" BackgroundColor="Gray" HeightRequest="1" ></Line>
+                                <Frame Grid.Row="3" HasShadow="True" BackgroundColor="Transparent"  Padding="8" CornerRadius="5"  Margin="0,5,5,0">
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                    </Grid>
+                                </Frame>
+                                <Line Grid.Row="4" BackgroundColor="Gray" HeightRequest="1" ></Line>
+                                <Frame Grid.Row="5" BackgroundColor="Transparent" HasShadow="True" Padding="8" CornerRadius="5" Margin="0,5,5,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2" Source="{Binding PrivacyIcon}" BackgroundColor="White" HeightRequest="35" />
+                                        <Label Grid.Column="1" Grid.Row="0" Text="{Static resource:Resource.txtDORHNIICapital}" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                                        <Label Grid.Column="1" Grid.Row="1" Text="{x:Static resource:Resource.txtSwapMessege}" VerticalOptions="CenterAndExpand" FontSize="Small" FontAttributes="None" TextColor="White"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+                <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

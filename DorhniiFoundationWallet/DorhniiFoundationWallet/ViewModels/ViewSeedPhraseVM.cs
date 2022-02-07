@@ -20,55 +20,61 @@ namespace DorhniiFoundationWallet.ViewModels
     /// </summary>
     public class ViewSeedPhraseVM : ObservableObject
     {
-        #region Properties
-        /// <summary>
-        /// This field intialises the view seed phrase interface service.
-        /// </summary>
-        IGetSeedPhraseService apiService;
-
-        /// <summary>
-        /// This field intialises the response of view seed phrase api request.
-        /// </summary>
-        SeedPhraseViewResponseModel seedListResponse = null;
-
-        /// <summary>
-        /// This property gets or sets the image of the app icon.
-        /// </summary>
-        public string AppIcon { get; set; } = StringConstant.AppIcon;
-
-        /// <summary>
-        /// This public property gets or sets the list of view seed phrases.
-        /// </summary>
-        public ObservableCollection<SeedPhraseListModel> SeedList { get; set; }
-
-        /// <summary>
-        /// This property gets or sets the command for Next Button.
-        /// </summary>
-        public ICommand NextCommand { get; set; }
-
-        /// <summary>
-        /// This property gets or sets the command for Back Button.
-        /// </summary>
-        public ICommand BackCommand { get; set; }
-
-        /// <summary>
-        /// This property gets or sets the command for Print Button.
-        /// </summary>
-        public ICommand PrintCommand { get; set; }
+        #region private properties
+        private bool isSaveSeedAlertVisible;
         #endregion
-
+        #region public  Properties
+        IGetSeedPhraseService apiService;
+        SeedPhraseViewResponseModel seedListResponse = null;
+        public string AppIcon { get; set; } = StringConstant.AppIcon;
+        public ObservableCollection<SeedPhraseListModel> SeedList { get; set; }
+        public ObservableCollection<SeedPhraseListModel> RandomSeedList { get; set; }      
+        public bool IsSaveSeedAlertVisible
+        {
+            get => isSaveSeedAlertVisible;
+            set
+            {
+                isSaveSeedAlertVisible = value;
+                OnPropertyChanged(nameof(IsSaveSeedAlertVisible));
+            }
+        }       
+        public string BackwardAppIcon { get; set; } = StringConstant.BackwardAppIcon;
+        public string SaveSeedAppIcon { get; set; } = StringConstant.SaveSeedAppIcon;
+        public string ForwardAppIcon { get; set; } = StringConstant.ForwardAppIcon;
+        public ICommand BackCommand { get; set; }      
+        public ICommand SaveSeedCommand { get; set; }        
+        public ICommand NextCommand { get; set; }      
+        public ICommand OkButton { get; set; }
+        #endregion      
         #region Method
         /// <summary>
-        /// This method is used to view seed phrases.
+        /// class  Constructor methods.
         /// </summary>
         public ViewSeedPhraseVM()
         {
             try
             {
-                apiService = new GetSeedPhraseService();
-                NextCommand = new Command(NextButtonClick);
+                apiService = new GetSeedPhraseService();                    
                 BackCommand = new Command(BackButtonClick);
-                GetSeedList().ConfigureAwait(true);
+                SaveSeedCommand = new Command(SaveSeedCommandClick);
+                NextCommand = new Command(NextButtonClick);
+                OkButton = new Command(OkButtonClick);
+                _ = GetSeedList().ConfigureAwait(true);
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
+        /// <summary>
+        /// This method is for to save seed phrase in pdf (have to implement)
+        /// </summary>
+        public void SaveSeedCommandClick()
+        {
+            try
+            {
+                //await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhrasePage());
             }
             catch (Exception ex)
             {
@@ -80,6 +86,7 @@ namespace DorhniiFoundationWallet.ViewModels
         /// Methods gets the view seed list
         /// </summary>
         public async Task GetSeedList()
+
         {
             try
             {
@@ -94,19 +101,19 @@ namespace DorhniiFoundationWallet.ViewModels
                     seedListResponse = await apiService.GetSeedPhraseList();
                     if (seedListResponse != null)
                     {
-                        if (seedListResponse.result && seedListResponse.status == 200)
+                        if (seedListResponse.Result && seedListResponse.Status == 200)
                         {
-                            Preferences.Set(StringConstant.SeedId, seedListResponse._id);
-                            if (seedListResponse.seedPhrases != null)
+                            Preferences.Set("Seedid", seedListResponse._id);
+                            if (seedListResponse.SeedPhrases != null)
                             {
-                                foreach (var item in seedListResponse.seedPhrases)
+                                foreach (var item in seedListResponse.SeedPhrases)
                                 {
                                     SeedPhraseListModel viewSeedModel = new SeedPhraseListModel
                                     {
-                                        LabelNumber = item.id.ToString(),
-                                        EntryText = item.val
+                                        LabelNumber = item.Id.ToString(),
+                                        EntryText = item.Val
                                     };
-                                    SeedList.Add(viewSeedModel);
+                                    SeedList.Add(viewSeedModel);                               
                                 }
                             }
                         }
@@ -134,16 +141,14 @@ namespace DorhniiFoundationWallet.ViewModels
             }
         }
 
-
         /// <summary>
-        ///Method to click on Next Button on Seed Label Page
+        /// Method to click on Back Button on to Password setup Page
         /// </summary>
-        public async void NextButtonClick()
+        public async void BackButtonClick()
         {
             try
             {
-                await Application.Current.MainPage.DisplayAlert(Resource.txtSeedPhraseSave, Resource.msgSeedPhraseSave, Resource.txtOk);
-                await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhraseEntry());
+                _ = await Application.Current.MainPage.Navigation.PopModalAsync();
             }
             catch (Exception ex)
             {
@@ -152,13 +157,29 @@ namespace DorhniiFoundationWallet.ViewModels
         }
 
         /// <summary>
-        /// Method to click on Back Button on Seed Label Page
+        ///Method to click on Next Button  to show save seed alert pop up
         /// </summary>
-        public async void BackButtonClick()
+        public void NextButtonClick()
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                IsSaveSeedAlertVisible = true;
+
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
+        /// <summary>
+        ///Method to Close save seed alert and move to validate seed screen
+        /// </summary>
+        public async void OkButtonClick()
+        {
+            try
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new ValidateSeedPhrasePage(SeedList));                
             }
             catch (Exception ex)
             {

@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.Models
 {
-    /// <summary>
-    /// This class use to define class properties for Transaction
-    /// </summary>
     public class TransactionListModel
     {
         public string TransactionTypeImage { get; set; }

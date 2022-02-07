@@ -1,10 +1,5 @@
-﻿using System;
-
-namespace DorhniiFoundationWallet.Models
+﻿namespace DorhniiFoundationWallet.Models
 {
-    /// <summary>
-    /// This class use to define class properties for wallet
-    /// </summary>
     public class WalletModel
     {
         public string WalletAdress { get; set; }

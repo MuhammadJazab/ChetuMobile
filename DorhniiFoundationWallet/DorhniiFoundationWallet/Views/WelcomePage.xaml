@@ -10,26 +10,100 @@
     <ContentPage.BindingContext>
         <vm:WelcomeVM/>
     </ContentPage.BindingContext>
-    <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+    <ContentPage.Content >
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" >
+            <!--<Grid.Background>
+                <LinearGradientBrush StartPoint="0.125,0.125" EndPoint="0,0.0625">
+                    <GradientStop Color="black" Offset="0.0625"/>
+                    <GradientStop Color="#552DF2" Offset="3.1" />
+                </LinearGradientBrush>
+            </Grid.Background>-->
             <Grid HorizontalOptions="FillAndExpand" Margin="50,0,50,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height=".3*"/>
                     <RowDefinition Height=".4*"/>
                     <RowDefinition Height=".3*"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Spacing="0" VerticalOptions="Center">
-                    <Image Source="{Binding AppIcon}" Aspect="AspectFit" Style="{StaticResource AppIconImageStyle}"/>
-                </StackLayout>
+                <Label Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" TextColor="White" FontSize="40" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
                 <Grid Grid.Row="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Label  Grid.Row="0" Text="{x:Static resource:Resource.txtWecomeText}" Style="{StaticResource CenterBlackLabelStyle}" Margin="0,0,0,20"/>
-                    <Button Grid.Row="1" Text="{x:Static resource:Resource.txtCreate}" Command="{Binding CreateButtonCommand}" Style="{StaticResource SteelBlueButtonsStyle}" />
-                    <Button Grid.Row="2" Text="{x:Static resource:Resource.txtRestore}" Command="{Binding RestoreButtonCommand}" Style="{StaticResource SteelBlueButtonsStyle}"/>
+                    <Button Grid.Row="0" Text="{x:Static resource:Resource.txtCreate}" Command="{Binding CreateButtonCommand}" Style="{StaticResource WhiteButtonsStyle}" TextColor="White" HorizontalOptions="Center" WidthRequest="200">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#552DF2" Offset="0.1"/>
+                                <GradientStop Color="#3594D2" Offset="1.0"/> 
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button Grid.Row="1" Text="{x:Static resource:Resource.txtRestore}" Command="{Binding RestoreButtonCommand}" Style="{StaticResource WhiteButtonsStyle}" TextColor="White" HorizontalOptions="Center" WidthRequest="200" Margin="0,20,0,0">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#3594D2" Offset="0.1"/>
+                                <GradientStop Color="#552DF2" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" IsVisible="{Binding IsWalletGateway}">
+                <Grid HorizontalOptions="FillAndExpand" Margin="10,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".15*"/>
+                        <RowDefinition Height=".75*"/>
+                        <RowDefinition Height=".1*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtDORHNIICapital}" TextColor="White" FontSize="40" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout Grid.Row="1" Orientation="Vertical" Margin="0,40,0,0">
+                        <Label Text="{x:Static resource:Resource.txtImportSeedPrivateKay}" FontSize="20" TextColor="DarkGray" HorizontalOptions="Center" />
+                        <Frame VerticalOptions="Center" BorderColor="Gray" HasShadow="False" CornerRadius="5" BackgroundColor="#262629">
+                            <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.4*"/>
+                                    <RowDefinition Height="0.2*"/>
+                                    <RowDefinition Height="0.2*"/>
+                                    <RowDefinition Height="0.2*"/>
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Row="0" Padding="0" BackgroundColor="DarkGray" HeightRequest="90" HasShadow="False" CornerRadius="5">
+                                    <Editor Placeholder="{x:Static resource:Resource.txtSeedPhraseEditor}" Text="{Binding EnteredseedPhrase}" HorizontalOptions="FillAndExpand" FontSize="15" VerticalOptions="FillAndExpand" Keyboard="Text" />
+                                </Frame>
+                                <Grid Grid.Row="1" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtImportSeedPhrase1}" TextColor="DarkGray" FontSize="10"/>
+                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey1}" TextColor="DarkGray" FontSize="10"/>
+                                    <Label Grid.Row="2" Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey2}" TextColor="DarkGray" FontSize="10"/>
+                                </Grid>
+                                <Frame Padding="0" Grid.Row="2" Margin="0,20,0,0" BackgroundColor="DarkGray" HasShadow="False" CornerRadius="5">
+                                    <Editor Placeholder="{x:Static resource:Resource.txtPrivateKeyEditor}"  HorizontalOptions="Start" VerticalOptions="Center"/>
+                                </Frame>
+                                <Grid Grid.Row="3" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtImportPrivateKey}" TextColor="DarkGray" FontSize="10"/>
+                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey1}" TextColor="DarkGray" FontSize="10"/>
+                                    <Label Grid.Row="2" Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey2}" TextColor="DarkGray" FontSize="10"/>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <Button Grid.Row="2" Text="{x:Static resource:Resource.txtCONFIRM}" FontSize="20" FontAttributes="None" Command="{Binding ConfirmButtonCommand}" Style="{StaticResource WhiteButtonsStyle}" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="15,0,15,20">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#552DF2" Offset="0.1"/>
+                                <GradientStop Color="#3594D2" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
                 </Grid>
             </Grid>
         </Grid>

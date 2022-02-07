@@ -67,7 +67,6 @@ namespace DorhniiFoundationWallet.Services
             }
             return responseModel;
         }
-
         /// <summary>
         /// This task is used to get receive transactions history.
         /// </summary>

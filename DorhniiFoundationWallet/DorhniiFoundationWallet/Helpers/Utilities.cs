@@ -1,10 +1,13 @@
-﻿using Microsoft.AppCenter.Crashes;
+﻿using DorhniiFoundationWallet.IServices;
+using DorhniiFoundationWallet.Models;
+using Microsoft.AppCenter.Crashes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.Helpers
 {
@@ -13,6 +16,22 @@ namespace DorhniiFoundationWallet.Helpers
     /// </summary>
     public class Utilities
     {
+        public static WalletListModel WalletList { get; set; }
+        public static bool IsEnrolledFingerprints;//For android touch finger only
+        public delegate void AuthenticationSucceeded();
+        public static event AuthenticationSucceeded OnAuthenticationSucceeded;
+
+        public static string Scannedtext { get; set; }        
+
+        /// <summary>
+        /// get deleget event on authenticationSucceeded.
+        /// </summary>
+        public static void OnAuthenticationSuccessfull()
+        {
+            OnAuthenticationSucceeded();
+        }
+
+
         /// <summary>
         /// Method is used to Encrypt password
         /// </summary>
@@ -66,6 +85,7 @@ namespace DorhniiFoundationWallet.Helpers
             }
             return cipherText;
         }
+
         /// <summary>
         ///Method to check if phone is valid or not
         /// </summary>
@@ -75,7 +95,7 @@ namespace DorhniiFoundationWallet.Helpers
         {
             try
             {
-                bool isPassword = Regex.IsMatch(value, StringConstant.passwordRegex);
+                bool isPassword = Regex.IsMatch(value, StringConstant.PasswordRegex);
                 return isPassword;
             }
             catch (FormatException ex)
@@ -83,6 +103,45 @@ namespace DorhniiFoundationWallet.Helpers
                 Crashes.TrackError(ex);
                 return false;
             }
+        }       
+
+        /// this method use to return authentication type face or touch
+        /// </summary>
+        /// <returns></returns>
+        public static string TouchFaceAuthenticationType()
+        {
+            try
+            {
+                string authenticationType = string.Empty;
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    authenticationType = StringConstant.Touch_ID;
+                }
+                else if (Device.RuntimePlatform == Device.iOS)
+                {
+                    string biometricType = DependencyService.Get<ILocalAuthHelper>().BiometricType();
+                    //Checking biometry type.
+                    switch (biometricType)
+                    {
+                        case StringConstant.Face_ID:
+                            authenticationType = StringConstant.Face_ID;
+                            break;
+                        case StringConstant.Touch_ID:
+                            authenticationType = StringConstant.Touch_ID;
+                            break;
+                        case StringConstant.Passcode:
+                            authenticationType = StringConstant.Passcode;
+                            break;
+                    }
+                }
+                return authenticationType;
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+                return string.Empty;
+            }
         }
+
     }
 }

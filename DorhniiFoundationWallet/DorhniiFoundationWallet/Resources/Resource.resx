@@ -117,19 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="#String" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fggf" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="msgConfirmPassword" xml:space="preserve">
     <value>Password and Confirm Password must be same.</value>
   </data>
   <data name="msgEmptyPasswords" xml:space="preserve">
     <value>Passwords fields cannot be empty.</value>
   </data>
+  <data name="msgExit" xml:space="preserve">
+    <value>Do you want to Exit the Application ?</value>
+  </data>
   <data name="msgNetworkIssueMessage" xml:space="preserve">
     <value>Internet connection not found. Please check &amp; try again.</value>
     <comment>Internet connection not found. Please check &amp; try again.</comment>
   </data>
+  <data name="msgPasswordAlert" xml:space="preserve">
+    <value>Please Enter Valid Password </value>
+  </data>
+  <data name="msgPasswordChanged" xml:space="preserve">
+    <value>Password changed successfully</value>
+  </data>
   <data name="msgPasswordValidation" xml:space="preserve">
-    <value>Password must contain at least 8 characters, including letters and numbers.</value>
+    <value>Password must contain at least 8 max 16 characters and having letters or numbers or both.</value>
     <comment>Password must contain at least 8 characters, including letters and numbers.</comment>
+  </data>
+  <data name="msgRestoreSeedAlert" xml:space="preserve">
+    <value>Please enter all seeds to confirm</value>
+  </data>
+  <data name="msgSeedEntryAlert" xml:space="preserve">
+    <value>Please tap all the Seed</value>
   </data>
   <data name="msgSeedEntryError" xml:space="preserve">
     <value>Seed Phrase entry fields cannot be empty</value>
@@ -141,23 +162,80 @@
     <value>Technical error occurred, please try again.</value>
     <comment>Technical error occurred, please try again.</comment>
   </data>
+  <data name="msgWalletAdressAlert" xml:space="preserve">
+    <value>Please enter or Scan for wallet address</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>ff</value>
+  </data>
   <data name="tstStake" xml:space="preserve">
     <value>Stake</value>
+  </data>
+  <data name="txt12APR" xml:space="preserve">
+    <value>12% APR</value>
+  </data>
+  <data name="txt12Month" xml:space="preserve">
+    <value>12 MONTH</value>
+  </data>
+  <data name="txt2Mnoth" xml:space="preserve">
+    <value>2 month</value>
+  </data>
+  <data name="txt3Month" xml:space="preserve">
+    <value>3 MONTHS</value>
+  </data>
+  <data name="txt9APR" xml:space="preserve">
+    <value>9% APR</value>
   </data>
   <data name="txtAccounts" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="txtAddWallet" xml:space="preserve">
+    <value>Add Wallet</value>
+  </data>
   <data name="txtAlert" xml:space="preserve">
     <value>Alert</value>
+  </data>
+  <data name="txtAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="txtAPR" xml:space="preserve">
+    <value>APR</value>
   </data>
   <data name="txtApy" xml:space="preserve">
     <value>APY,</value>
   </data>
+  <data name="txtAuthentication" xml:space="preserve">
+    <value>AUTHENTICATION</value>
+  </data>
   <data name="txtBack" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="txtBackCapital" xml:space="preserve">
+    <value>BACK</value>
+  </data>
   <data name="txtBalance" xml:space="preserve">
     <value>Balance</value>
+  </data>
+  <data name="txtBalanceCapital" xml:space="preserve">
+    <value>BALANCE</value>
+  </data>
+  <data name="txtBalanceDigit" xml:space="preserve">
+    <value>$ 12,34,5565.00</value>
+  </data>
+  <data name="txtBalanceStake" xml:space="preserve">
+    <value>$12,780.89</value>
+  </data>
+  <data name="txtBRIDGES" xml:space="preserve">
+    <value>BRIDGES</value>
+  </data>
+  <data name="txtChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="txtCONFIRM" xml:space="preserve">
+    <value>CONFIRM</value>
   </data>
   <data name="txtConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
@@ -165,8 +243,26 @@
   <data name="txtCreate" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="txtCreateWallet" xml:space="preserve">
+    <value>Create Wallet</value>
+  </data>
+  <data name="txtDHN" xml:space="preserve">
+    <value>DHN</value>
+  </data>
+  <data name="txtDollar" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="txtDORHNIICapital" xml:space="preserve">
+    <value>DOHRNII</value>
+  </data>
+  <data name="txtDuraction" xml:space="preserve">
+    <value>Duration</value>
+  </data>
   <data name="txtEmptyPasswords" xml:space="preserve">
     <value>Empty Password Fields</value>
+  </data>
+  <data name="txtEndDateButton" xml:space="preserve">
+    <value>END DATE</value>
   </data>
   <data name="txtEnterPassword" xml:space="preserve">
     <value>Enter Password</value>
@@ -174,14 +270,56 @@
   <data name="txtEnterSeedPhrase" xml:space="preserve">
     <value>Enter Seed Phrase</value>
   </data>
+  <data name="txtEnterWalletName" xml:space="preserve">
+    <value>Enter Wallet name</value>
+  </data>
+  <data name="txtERC20" xml:space="preserve">
+    <value>ERC-20</value>
+  </data>
+  <data name="txtExitAlert" xml:space="preserve">
+    <value>Exit Alert ?</value>
+  </data>
   <data name="txtFaceId" xml:space="preserve">
     <value>Fingerprint and Face Id</value>
+  </data>
+  <data name="txtFaceIDCapital" xml:space="preserve">
+    <value>FACE ID</value>
+  </data>
+  <data name="txtFaceIdNotice" xml:space="preserve">
+    <value>Look at camera for Face ID</value>
+  </data>
+  <data name="txtFee" xml:space="preserve">
+    <value>Fee</value>
+  </data>
+  <data name="txtFinferprintNotice" xml:space="preserve">
+    <value>Place your finger for fingerprint reading</value>
   </data>
   <data name="txtFingerprint" xml:space="preserve">
     <value>Use Fingerprint or Face ID</value>
   </data>
+  <data name="txtFingerprintCapital" xml:space="preserve">
+    <value>FINGERPRINT</value>
+  </data>
+  <data name="txtFingerprntLabel" xml:space="preserve">
+    <value>Figerprint</value>
+  </data>
   <data name="txtGetHelp" xml:space="preserve">
     <value>Get Help</value>
+  </data>
+  <data name="txtImportPrivateKey" xml:space="preserve">
+    <value>Please paste or enter your private key</value>
+  </data>
+  <data name="txtImportSeedPhrase1" xml:space="preserve">
+    <value>Please paste or enter your seed phrase</value>
+  </data>
+  <data name="txtImportSeedPhrasePrivateKey1" xml:space="preserve">
+    <value>which you saves earlier</value>
+  </data>
+  <data name="txtImportSeedPhrasePrivateKey2" xml:space="preserve">
+    <value>to retrieve your wallet</value>
+  </data>
+  <data name="txtImportSeedPrivateKay" xml:space="preserve">
+    <value>Import Seed Phrase or Private Key</value>
   </data>
   <data name="txtInvalidConfirmation" xml:space="preserve">
     <value>Invalid Confirmation</value>
@@ -189,11 +327,26 @@
   <data name="txtLanguage" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="txtLogin" xml:space="preserve">
+    <value>LOGIN</value>
+  </data>
   <data name="txtLogout" xml:space="preserve">
     <value>Logout</value>
   </data>
+  <data name="txtMANAGE" xml:space="preserve">
+    <value>MANAGE</value>
+  </data>
+  <data name="txtMyStacking" xml:space="preserve">
+    <value>MY STAKING</value>
+  </data>
+  <data name="txtMyWallet" xml:space="preserve">
+    <value>My Wallet</value>
+  </data>
   <data name="txtNewAccount" xml:space="preserve">
     <value>New Account</value>
+  </data>
+  <data name="txtNewPassword" xml:space="preserve">
+    <value>New Password</value>
   </data>
   <data name="txtNewSeedPhrase" xml:space="preserve">
     <value>New Seed Phrase</value>
@@ -201,11 +354,29 @@
   <data name="txtNext" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="txtNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="txtNull" xml:space="preserve">
+    <value>kubh bh nhi</value>
+  </data>
   <data name="txtOk" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
+  </data>
+  <data name="txtOldPassword" xml:space="preserve">
+    <value>Old Password</value>
   </data>
   <data name="txtPassword" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="txtPasswordAlert" xml:space="preserve">
+    <value>Your password must have 8 character</value>
+  </data>
+  <data name="txtPasswordAlert2" xml:space="preserve">
+    <value>including alphanumeric</value>
+  </data>
+  <data name="txtPasswordCapital" xml:space="preserve">
+    <value>PASSWORD</value>
   </data>
   <data name="txtPasswordPageText1" xml:space="preserve">
     <value>Please make sure to use a password you remember.</value>
@@ -237,17 +408,47 @@
   <data name="txtPrintDescription5" xml:space="preserve">
     <value>all coins in your wallet will be gone forever.</value>
   </data>
-  <data name="txtPrivacy" xml:space="preserve">
+  <data name="txtPrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
+  </data>
+  <data name="txtPrivateKeyEditor" xml:space="preserve">
+    <value>paste or type your private key</value>
   </data>
   <data name="txtProfile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="txtRECEIVECapital" xml:space="preserve">
+    <value>RECEIVE</value>
+  </data>
+  <data name="txtRequestWithdrawlAddress" xml:space="preserve">
+    <value>ETRGSKJGHGHRNCH58JJHJK78JH</value>
+  </data>
+  <data name="txtRequestWithdrwalButton" xml:space="preserve">
+    <value>REQUEST WITHDRAWl</value>
+  </data>
   <data name="txtRestore" xml:space="preserve">
     <value>Restore</value>
   </data>
+  <data name="txtSaveChange" xml:space="preserve">
+    <value>Save Changes</value>
+  </data>
+  <data name="txtSaveSeedAlert1" xml:space="preserve">
+    <value>You understand that by saving this phrase you</value>
+  </data>
+  <data name="txtSaveSeedAlert3" xml:space="preserve">
+    <value>you want to save and continue</value>
+  </data>
+  <data name="txtSaveSeedeAlert2" xml:space="preserve">
+    <value>can print at your own device CLICK OK if</value>
+  </data>
+  <data name="txtSCANCapital" xml:space="preserve">
+    <value>SCAN</value>
+  </data>
   <data name="txtSecurity" xml:space="preserve">
     <value>Security</value>
+  </data>
+  <data name="txtSeeAll" xml:space="preserve">
+    <value>see all</value>
   </data>
   <data name="txtSeedEntryError" xml:space="preserve">
     <value>Inadequate Data Entered !</value>
@@ -255,8 +456,20 @@
   <data name="txtSeedId" xml:space="preserve">
     <value>Seed Id</value>
   </data>
+  <data name="txtSeedPhraseCapital" xml:space="preserve">
+    <value>SEED PHRASE</value>
+  </data>
+  <data name="txtSeedPhraseEditor" xml:space="preserve">
+    <value>paste or type your seed phrase</value>
+  </data>
   <data name="txtSeedPhraseSave" xml:space="preserve">
     <value>Save Seed Phrase Entries !</value>
+  </data>
+  <data name="txtSeedTitle1" xml:space="preserve">
+    <value>REPEAT YOUR SEED</value>
+  </data>
+  <data name="txtSENDCapital" xml:space="preserve">
+    <value>SEND</value>
   </data>
   <data name="txtSettings" xml:space="preserve">
     <value>Settings</value>
@@ -264,28 +477,76 @@
   <data name="txtShowSeedPhrase" xml:space="preserve">
     <value>Show Seed Phrase</value>
   </data>
+  <data name="txtSTAKE" xml:space="preserve">
+    <value>STAKE</value>
+  </data>
+  <data name="txtStakeAddress" xml:space="preserve">
+    <value>ETRGSKJGHGHRNCH58JJHJK78JH</value>
+  </data>
+  <data name="txtStakeAdress" xml:space="preserve">
+    <value>kskllslksdllkgXCVXCVXCVXCVXVXVkldgld</value>
+  </data>
   <data name="txtStakedAmount" xml:space="preserve">
     <value>Staked Amount</value>
+  </data>
+  <data name="txtStakingCapital" xml:space="preserve">
+    <value>STAKING</value>
   </data>
   <data name="txtStakingOptions" xml:space="preserve">
     <value>Other Staking Options</value>
   </data>
+  <data name="txtSuccessAlert" xml:space="preserve">
+    <value>Success !</value>
+  </data>
+  <data name="txtSuccessful" xml:space="preserve">
+    <value>Successful !</value>
+  </data>
   <data name="txtSupport" xml:space="preserve">
     <value>Support</value>
+  </data>
+  <data name="txtSwapMessege" xml:space="preserve">
+    <value>Swap as per your benefit and choice</value>
+  </data>
+  <data name="txtSWAPS" xml:space="preserve">
+    <value>SWAPS</value>
   </data>
   <data name="txtTerms" xml:space="preserve">
     <value>Terms Of Use</value>
   </data>
+  <data name="txtTermsAndConditions" xml:space="preserve">
+    <value>Terms and condition</value>
+  </data>
+  <data name="txtTotalAPR" xml:space="preserve">
+    <value>Total APR Received 10.000 DHN</value>
+  </data>
+  <data name="txtTotalAPReceived" xml:space="preserve">
+    <value>Total APR Received 00.000 DHN</value>
+  </data>
   <data name="txtTransactions" xml:space="preserve">
     <value>Recent Transactions</value>
+  </data>
+  <data name="txtTypePassword" xml:space="preserve">
+    <value>TYPE YOUR PASSWORD</value>
+  </data>
+  <data name="txtUnlockedCapital" xml:space="preserve">
+    <value>UNLOCKED</value>
+  </data>
+  <data name="txtUSD" xml:space="preserve">
+    <value>USD</value>
   </data>
   <data name="txtWallet" xml:space="preserve">
     <value>Wallet</value>
   </data>
+  <data name="txtWalletAddress" xml:space="preserve">
+    <value>WalletAddress</value>
+  </data>
   <data name="txtWalletName" xml:space="preserve">
-    <value>Enter your new wallet name</value>
+    <value>Wallet Name</value>
   </data>
   <data name="txtWecomeText" xml:space="preserve">
     <value>Welcome !</value>
+  </data>
+  <data name="txtYes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

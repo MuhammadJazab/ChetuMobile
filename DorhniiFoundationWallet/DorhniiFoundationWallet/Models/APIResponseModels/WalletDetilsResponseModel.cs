@@ -1,16 +1,20 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 
 namespace DorhniiFoundationWallet.Models.APIResponseModels
 {
-    /// <summary>
-    /// This class use to define class properties for wallet details
-    /// </summary>
     public class WalletDetailsResponseModel : APIResponseModel
     {
-        public string coinIcon { get; set; }
-        public string coinName { get; set; }
-        public string coinShortName { get; set; }
-        public int coinValue { get; set; }
-        public int coinUsdValue { get; set; }
+        [JsonProperty("coinIcon")]
+        public string CoinIcon { get; set; }
+        [JsonProperty("coinName")]
+        public string CoinName { get; set; }
+        [JsonProperty("coinShortName")]
+        public string CoinShortName { get; set; }
+        [JsonProperty("coinValue")]
+        public int CoinValue { get; set; }
+        [JsonProperty("coinUsdValue")]
+        public int CoinUsdValue { get; set; }
+        [JsonProperty("coinStandard")]
+        public string CoinStandard { get; set; }
     }
 }

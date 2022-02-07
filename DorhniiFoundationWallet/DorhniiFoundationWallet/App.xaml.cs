@@ -7,12 +7,23 @@ namespace DorhniiFoundationWallet
 {
     public partial class App : Application
     {
-        public App()
-        {
+       public App()
+       {
             InitializeComponent();
             Preferences.Set(StringConstant.TabKeyId, 1);
-            MainPage = new NavigationPage(new WelcomePage());
-        }
+            MainPage = new NavigationPage(new WalletPage());
+            #region
+            string password = Preferences.Get(StringConstant.DevicePassword, string.Empty);
+            if (!string.IsNullOrEmpty(password))
+            {
+                MainPage = new NavigationPage(new WelcomePage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new WelcomePage());
+            }
+            #endregion
+       }
 
         protected override void OnStart()
         {

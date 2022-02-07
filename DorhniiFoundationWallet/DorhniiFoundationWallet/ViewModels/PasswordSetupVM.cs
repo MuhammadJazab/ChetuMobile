@@ -15,33 +15,18 @@ namespace DorhniiFoundationWallet.ViewModels
     /// </summary>
     public class PasswordSetupVM : ObservableObject
     {
-        #region Properties
         #region Private Properties
         private string password;
         private string confirmPassword;
+        
         #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// This property gets or sets the image of the app icon.
-        /// </summary>
+        #region Public Properties       
         public string AppIcon { get; set; } = StringConstant.AppIcon;
-
-        /// <summary>
-        /// This command property gets or sets the value of create password event.
-        /// </summary>
-        public ICommand CreatePasswordCommand { get; set; }
-
-        /// <summary>
-        /// This property gets or sets the value of confirm password field.
-        /// </summary>
+        public bool userRestore;
+        public ICommand CreatePasswordCommand { get; set; }       
         public string ConfirmPassword
         {
-            get
-            {
-                return confirmPassword;
-            }
+            get => confirmPassword;
             set
             {
                 if (confirmPassword != value)
@@ -51,16 +36,9 @@ namespace DorhniiFoundationWallet.ViewModels
                 }
             }
         }
-
-        /// <summary>
-        /// This property gets or set the value of password field.
-        /// </summary>
         public string Password
         {
-            get
-            {
-                return password;
-            }
+            get => password;
             set
             {
                 if (password != value)
@@ -70,16 +48,24 @@ namespace DorhniiFoundationWallet.ViewModels
                 }
             }
         }
+        public bool IsRestoreValidate { get; private set; }
         #endregion
-        #endregion
-
-        #region Methods
+        #region public Method   
         /// <summary>
-        /// This method is used to setup the passwords.
+        /// This method is used to setup the passwords (class constructor).
         /// </summary>
         public PasswordSetupVM()
         {
-            CreatePasswordCommand = new Command(CreatePasswordClick);
+           try
+            {
+                CreatePasswordCommand = new Command(CreatePasswordClick);
+                
+            }
+            catch(Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+
         }
 
         /// <summary>
@@ -92,15 +78,15 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(ConfirmPassword))
                 {
-                    Application.Current.MainPage.DisplayAlert(Resource.txtEmptyPasswords, Resource.msgEmptyPasswords, Resource.txtOk);
+                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtEmptyPasswords, Resource.msgEmptyPasswords, Resource.txtOk);
                 }
                 else if (!Utilities.IsValidPassword(Password) || !Utilities.IsValidPassword(ConfirmPassword))
                 {
-                    Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgPasswordValidation, Resource.txtOk);
+                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgPasswordValidation, Resource.txtOk);
                 }
                 else if (!(Password == ConfirmPassword))
                 {
-                    Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgConfirmPassword, Resource.txtOk);
+                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgConfirmPassword, Resource.txtOk);
                 }
                 else
                 {
@@ -122,7 +108,7 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
-                bool isPassword = Regex.IsMatch(value.Trim(), StringConstant.passwordRegex);
+                bool isPassword = Regex.IsMatch(value.Trim(), StringConstant.PasswordRegex);
                 return isPassword;
             }
             catch (FormatException ex)
@@ -139,8 +125,21 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
-                Preferences.Set(StringConstant.DevicePassword, Password.Trim());
-                await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhraseLabel());
+                if (PasswordValidation())
+                {
+                    IsRestoreValidate = Preferences.Get("IsRestoreValidate", IsRestoreValidate);
+                    Preferences.Set(StringConstant.DevicePassword, Password.Trim());                  
+                    if (IsRestoreValidate)
+                    {
+                        await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
+                        IsRestoreValidate = false;
+                        Preferences.Set("IsRestoreValidate", IsRestoreValidate);
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhrasePage());
+                    }                                        
+                }
             }
             catch (Exception ex)
             {

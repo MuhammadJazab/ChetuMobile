@@ -1,13 +1,13 @@
-﻿using DorhniiFoundationWallet.Helpers;
+﻿using System;
+using Microsoft.AppCenter.Crashes;
+using DorhniiFoundationWallet.Views;
+using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.IServices;
 using DorhniiFoundationWallet.Models;
 using DorhniiFoundationWallet.Models.APIRequestModels;
 using DorhniiFoundationWallet.Models.APIResponseModels;
 using DorhniiFoundationWallet.Resources;
 using DorhniiFoundationWallet.Services;
-using DorhniiFoundationWallet.Views;
-using Microsoft.AppCenter.Crashes;
-using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,25 +22,70 @@ namespace DorhniiFoundationWallet.ViewModels
     public class AddWalletVM : ObservableObject
     {
 
-        #region Properties
+        #region Private Properties
         IAddWalletService apiService;
         IGetWalletService apiGetService;
         AddWalletResponseModel addWalletResponse = null;
         GetWalletResponseModel getWalletResponse = null;
-        #region Private Properties
+        private ObservableCollection<WalletModel> wallets;
+        private bool isCreateWalletVisible { get; set; }
+        private Command selectedItemCommand;
         private string walletname;
         #endregion
+        #region Public Properties   
+        public ObservableCollection<WalletModel> Wallets
+        {
+            get => wallets ?? (wallets = new ObservableCollection<WalletModel>());
 
-        #region Public Blindable Properties
-        /// <summary>
-        /// This property gets or set the name of the wallet.
-        /// </summary>
-        public string WalletName
+            set
+            {
+                wallets = value;
+                OnPropertyChanged(nameof(Wallets));
+            }
+        }
+        public bool IsCreateWalletVisible
+        {
+            get => isCreateWalletVisible;
+            set
+            {
+                if (isCreateWalletVisible != value)
+                {
+                    isCreateWalletVisible = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public ICommand AddWalletCommand { get; set; }
+        public ICommand CreateWalletCommand { get; set; }
+        public ICommand CloseCreateWalletCommand { get; set; }
+        public string AppIcon { get; set; } = StringConstant.AppIcon;
+        public Command SelectedItemCommand
         {
             get
             {
-                return walletname;
+                if (selectedItemCommand == null)
+                {
+                    selectedItemCommand = new Command(async (selectedItem) =>
+                    {
+                        if (selectedItem != null)
+                        {
+                            WalletModel item = selectedItem as WalletModel;
+                            Preferences.Set("WalletAddress", item.WalletAdress);
+                            await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        }
+                    });
+                }
+                return selectedItemCommand;
             }
+        }
+        public string WalletName
+        {
+            get => walletname;
+
             set
             {
                 if (walletname != value)
@@ -51,110 +96,10 @@ namespace DorhniiFoundationWallet.ViewModels
             }
         }
         #endregion
-
-        #region Image Properties
+        #region Private Methods
         /// <summary>
-        /// This property gets or sets the image of the wallet lists.
+        /// This  constructor method used to  Add Wallet and wallet list
         /// </summary>
-        public string AppIcon { get; set; } = StringConstant.AppIcon;
-        #endregion
-
-        #region List Properties
-        /// <summary>
-        /// This private property gets or sets the list of wallets.
-        /// </summary>
-        private ObservableCollection<WalletModel> wallets;
-
-        /// <summary>
-        /// This public property gets or sets the list of wallets.
-        /// </summary>
-        public ObservableCollection<WalletModel> Wallets
-        {
-            get { return wallets ?? (wallets = new ObservableCollection<WalletModel>()); }
-            set
-            {
-                wallets = value;
-                OnPropertyChanged(nameof(Wallets));
-            }
-        }
-        #endregion
-
-        #region Boolean Properties
-        /// <summary>
-        /// This property gets and sets the visibilty of Create Wallet Popup
-        /// </summary>
-        private bool isCreateWalletVisible { get; set; }
-
-        /// <summary>
-        /// This property gets and sets the visibilty of Create Wallet Popup
-        /// </summary>
-        public bool IsCreateWalletVisible
-        {
-            get
-            {
-                return isCreateWalletVisible;
-            }
-            set
-            {
-                if (isCreateWalletVisible != value)
-                {
-                    isCreateWalletVisible = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        #endregion
-
-        #region Command Properties
-        /// <summary>
-        /// This property gets or sets the command for Adding new wallet.
-        /// </summary>
-        public ICommand AddWalletCommand { get; set; }
-
-        /// <summary>
-        /// This property gets or sets the command for Creating new wallet.
-        /// </summary>
-        public ICommand CreateWalletCommand { get; set; }
-
-        /// <summary>
-        /// This property gets or sets the command for closing or opening create wallet popup.
-        /// </summary>
-        public ICommand CloseCreateWalletCommand { get; set; }
-
-        /// <summary>
-        /// This command property is used for click event on list item.
-        /// </summary>
-        private Command selectedItemCommand;
-        #endregion
-
-        #endregion
-        
-        #region Methods
-
-        /// <summary>
-        /// This method is used to add, create new wallets and show wallets.
-        /// </summary>
-        public AddWalletVM()
-        {
-            try
-            {
-                apiService = new AddWalletService();
-                apiGetService = new GetWalletService();
-                IsCreateWalletVisible = false;
-                AddWalletCommand = new Command(AddWallet);
-                CreateWalletCommand = new Command(CreateWallet);
-                CloseCreateWalletCommand = new Command(CloseWallet);
-                GetWalletList();
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
-
-        /// <summary>
-        /// This method is used to add new wallet.
-        /// </summary>       
         private void AddWallet()
         {
             try
@@ -198,16 +143,16 @@ namespace DorhniiFoundationWallet.ViewModels
 
                     AddWalletRequestModel addWalletRequest = new AddWalletRequestModel
                     {
-                        seedId = "618eb994ee815937fd53f919",                       
-                        walletName= WalletName
+                        SeedId = Preferences.Get("Seedid", string.Empty),
+                        WalletName = WalletName
                     };
 
                     addWalletResponse = await apiService.AddWallet(addWalletRequest);
                     if (addWalletResponse != null)
                     {
-                        if (addWalletResponse.result && addWalletResponse.status == 200)
+                        if (addWalletResponse.Result && addWalletResponse.Status == 200)
                         {
-                            GetWalletList();
+                            _ = GetWalletList();
                             CloseWallet();
                         }
                     }
@@ -252,25 +197,25 @@ namespace DorhniiFoundationWallet.ViewModels
 
                     GetWalletRequestModel getWalletRequest = new GetWalletRequestModel
                     {
-                        seedId = "618eb994ee815937fd53f919"
+                        SeedId = Preferences.Get("Seedid", string.Empty),
                     };
 
                     getWalletResponse = await apiGetService.GetWallet(getWalletRequest);
                     if (getWalletResponse != null)
                     {
-                        if (getWalletResponse.result && getWalletResponse.status == 200)
+                        if (getWalletResponse.Result && getWalletResponse.Status == 200)
                         {
-                            if (getWalletResponse.data != null)
+                            if (getWalletResponse.Data != null)
                             {
-                                foreach (var item in getWalletResponse.data)
+                                foreach (AddWalletResponseModel item in getWalletResponse.Data)
                                 {
                                     WalletModel wallet = new WalletModel
                                     {
                                         WalletAdress = item.WalletAddress,
                                         Qrcode = item.Qrcode,
                                         Balance = item.Balance.ToString(),
-                                        WalletName = item.WalletName, 
-                                        Image= AppIcon
+                                        WalletName = item.WalletName,
+                                        Image = AppIcon
                                     };
                                     Wallets.Add(wallet);
                                 }
@@ -300,31 +245,26 @@ namespace DorhniiFoundationWallet.ViewModels
             }
         }
 
-
+        #endregion
+        #region Public method
         /// <summary>
-        /// This command method is used for click event on list item.
+        /// (Class CONSTRUCTOR)This method is used to add, create new wallets and show wallets.
         /// </summary>
-        public Command SelectedItemCommand
+        public AddWalletVM()
         {
-            get
+            try
             {
-                if (selectedItemCommand==null)
-                {
-                    selectedItemCommand = new Command(async (selectedItem) =>
-                    {
-                        if(selectedItem!=null)
-                        {
-                            var item = selectedItem as WalletModel;
-                            Preferences.Set("WalletAddress", item.WalletAdress);
-                            await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
-                        }
-                        else
-                        {
-                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
-                        }
-                    });
-                }
-                return selectedItemCommand;
+                apiService = new AddWalletService();
+                apiGetService = new GetWalletService();
+                IsCreateWalletVisible = false;
+                AddWalletCommand = new Command(AddWallet);
+                CreateWalletCommand = new Command(CreateWallet);
+                CloseCreateWalletCommand = new Command(CloseWallet);
+                _ = GetWalletList();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
             }
         }
         #endregion

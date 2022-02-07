@@ -11,140 +11,102 @@ namespace DorhniiFoundationWallet.ViewModels
     /// </summary>
     public class TabbedViewVM : ObservableObject
     {
-        #region Properties
+      
         #region Private Properties
         private string walletIcon;
         private string stakesIcon;
         private string transactionIcon;
         private string settingsIcon;
         #endregion
-
+        
         #region Public Properties
-        /// <summary>
-        /// This property gets and sets the image icon of Wallet Tab Icon.
-        /// </summary>
-        public string WalletBlack
-        {
-            get { return walletIcon; }
-            set
-            {
-                walletIcon = value;
-                OnPropertyChanged(nameof(walletIcon));
-            }
-        }
-
-        /// <summary>
-        /// This property gets and sets the image icon of Stakes Tab Icon.
-        /// </summary>
-        public string StakesBlack
-        {
-            get { return stakesIcon; }
-            set
-            {
-                stakesIcon = value;
-                OnPropertyChanged(nameof(stakesIcon));
-            }
-        }
-
-        /// <summary>
-        /// This property gets and sets the image icon of Transaction Tab Icon.
-        /// </summary>
-        public string TransactionBlack
-        {
-            get { return transactionIcon; }
-            set
-            {
-                transactionIcon = value;
-                OnPropertyChanged(nameof(transactionIcon));
-            }
-        }
-
-        /// <summary>
-        /// This property gets and sets the image icon of Settings Tab Icon.
-        /// </summary>
-        public string SettingsBlack
-        {
-            get { return settingsIcon; }
-            set
-            {
-                settingsIcon = value;
-                OnPropertyChanged(nameof(settingsIcon));
-            }
-        }
+        public string WalletIcon { get; set; }        
+        public string StakesIcon { get; set; }
+        public string SwapIcon { get; set; }
+        public string TransactionIcon { get; set; }
+        public string SettingsIcon { get; set; }       
         #endregion
-
         #region Command Properties
-        /// <summary>
-        /// This property gets and sets the command for Wallet Tab Icon.
-        /// </summary>
-        public ICommand WalletBlackCommand { get; set; }
+        public Color TabWalletColour { get; set; }
+        public Color TabStakeColour { get; set; }
+        public Color TabSwapColour { get; set; }
+        public Color TabTransactionColour { get; set; }
+        public Color TabSettingColour { get; set; }
 
-        /// <summary>
-        /// This property gets and sets the command for Stakes Tab Icon.
-        /// </summary>
-        public ICommand StakesBlackCommand { get; set; }
-
-        /// <summary>
-        /// This property gets and sets the command for Transaction Tab Icon.
-        /// </summary>
-        public ICommand TransactionBlackCommand { get; set; }
-
-        /// <summary>
-        /// This property gets and sets the command for Settings Tab Icon.
-        /// </summary>
-        public ICommand SettingsBlackCommand { get; set; }
+        public ICommand SwapCommand { get; set; }        
+        public ICommand WalletCommand { get; set; }      
+        public ICommand StakesCommand { get; set; }       
+        public ICommand TransactionCommand { get; set; }        
+        public ICommand SettingsCommand { get; set; }
         #endregion
-        #endregion
+        
 
         #region Methods
         /// <summary>
-        /// This method is used for tabbed navigation and tab icons.
+        /// This Constructor method is used for tabbed navigation and tab icons.
         /// </summary>
         public TabbedViewVM()
         {
-            WalletBlack = StringConstant.WalletBlack;
-            StakesBlack = StringConstant.StakesBlack;
-            TransactionBlack = StringConstant.TransactionBlack;
-            SettingsBlack = StringConstant.SettingsBlack;
+            TabWalletColour = Color.Transparent;
+            TabStakeColour = Color.Transparent;
+            TabSwapColour = Color.Transparent;
+            TabTransactionColour = Color.Transparent;
+            TabSettingColour = Color.Transparent;
+            WalletIcon = StringConstant.WalletBlack;
+            StakesIcon = StringConstant.StakesBlack;
+            SwapIcon = StringConstant.SwapIcon;
+            TransactionIcon = StringConstant.TransactionBlack;
+            SettingsIcon = StringConstant.SettingsBlack;
             var tabKeyId = Preferences.Get(StringConstant.TabKeyId, 0);
             switch (tabKeyId)
             {
                 case 0:
                 case 1:
-                    WalletBlack = StringConstant.WalletGray;
-                    StakesBlack = StringConstant.StakesBlack;
-                    TransactionBlack = StringConstant.TransactionBlack;
-                    SettingsBlack = StringConstant.SettingsBlack;
+                    TabWalletColour = Color.FromHex("#552DF2");
+                    TabStakeColour = Color.Transparent;
+                    TabSwapColour = Color.Transparent;
+                    TabTransactionColour = Color.Transparent;
+                    TabSettingColour = Color.Transparent;                    
                     break;
                 case 2:
-                    WalletBlack = StringConstant.WalletBlack;
-                    StakesBlack = StringConstant.StakesGray;
-                    TransactionBlack = StringConstant.TransactionBlack;
-                    SettingsBlack = StringConstant.SettingsBlack;
+                    TabWalletColour = Color.Transparent;
+                    TabStakeColour = Color.FromHex("#552DF2");
+                    TabSwapColour = Color.Transparent;
+                    TabTransactionColour = Color.Transparent;
+                    TabSettingColour = Color.Transparent;                    
                     break;
                 case 3:
-                    WalletBlack = StringConstant.WalletBlack;
-                    StakesBlack = StringConstant.StakesBlack;
-                    TransactionBlack = StringConstant.TransactionGray;
-                    SettingsBlack = StringConstant.SettingsBlack;
+                    TabWalletColour = Color.Transparent;
+                    TabStakeColour = Color.Transparent;
+                    TabSwapColour = Color.FromHex("#552DF2");
+                    TabTransactionColour = Color.Transparent;
+                    TabSettingColour = Color.Transparent;                    
                     break;
                 case 4:
-                    WalletBlack = StringConstant.WalletBlack;
-                    StakesBlack = StringConstant.StakesBlack;
-                    TransactionBlack = StringConstant.TransactionBlack;
-                    SettingsBlack = StringConstant.SettingsGray;
+                    TabWalletColour = Color.Transparent;
+                    TabStakeColour = Color.Transparent;
+                    TabSwapColour = Color.Transparent;
+                    TabTransactionColour = Color.FromHex("#552DF2");
+                    TabSettingColour = Color.Transparent;                   
+                    break;
+                case 5:
+                    TabWalletColour = Color.Transparent;
+                    TabStakeColour = Color.Transparent;
+                    TabSwapColour = Color.Transparent;
+                    TabTransactionColour = Color.Transparent;
+                    TabSettingColour = Color.FromHex("552DF2");
                     break;
             }
-            WalletBlackCommand = new Command(WalletBlackButtonClick);
-            StakesBlackCommand = new Command(StakesBlackButtonClick);
-            TransactionBlackCommand = new Command(TransactionBlackButtonClick);
-            SettingsBlackCommand = new Command(SettingsBlackButtonClick);
-        }
-
+            WalletCommand = new Command(WalletButtonClick);
+            StakesCommand = new Command(StakesButtonClick);
+            TransactionCommand = new Command(TransactionButtonClick);
+            SettingsCommand = new Command(SettingButtonClick);
+            SwapCommand = new Command(SwapCommandClick);
+        }        
         /// <summary>
         /// This method is used to navigate to Wallet Tab page.
         /// </summary>
-        public async void WalletBlackButtonClick()
+        public void WalletButtonClick()
         {
             Preferences.Set(StringConstant.TabKeyId, 1);
             Application.Current.MainPage = new NavigationPage(new WalletPage());
@@ -153,28 +115,38 @@ namespace DorhniiFoundationWallet.ViewModels
         /// <summary>
         /// This method is used to navigate to Stakes Tab page.
         /// </summary>
-        public async void StakesBlackButtonClick()
+        public void StakesButtonClick()
         {
             Preferences.Set(StringConstant.TabKeyId, 2);
-            Application.Current.MainPage = new NavigationPage(new StakesPage());
+            Application.Current.MainPage = new NavigationPage(new StakePageNew());
         }
+
+        /// <summary>
+        /// this method used to navigate swap page
+        /// </summary>
+        public void SwapCommandClick()
+        {
+            Preferences.Set(StringConstant.TabKeyId, 3);
+            Application.Current.MainPage = new NavigationPage(new WalletPage());
+        }
+
 
         /// <summary>
         /// This method is used to navigate to Transaction Tab page.
         /// </summary>
-        public async void TransactionBlackButtonClick()
+        public void TransactionButtonClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 3);
+            Preferences.Set(StringConstant.TabKeyId, 4);
             Application.Current.MainPage = new NavigationPage(new TransactionPage());
         }
 
         /// <summary>
         /// This method is used to navigate to Settings Tab page.
         /// </summary>
-        public async void SettingsBlackButtonClick()
+        public void SettingButtonClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 4);
-            Application.Current.MainPage = new NavigationPage(new SettingsPage());
+            Preferences.Set(StringConstant.TabKeyId, 5);
+            Application.Current.MainPage = new NavigationPage(new SettingPageNew());
         }
         #endregion
     }

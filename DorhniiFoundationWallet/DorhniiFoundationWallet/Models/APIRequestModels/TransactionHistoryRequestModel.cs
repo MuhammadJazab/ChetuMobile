@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 
 namespace DorhniiFoundationWallet.Models.APIRequestModels
 {
     /// <summary>
-    /// This class use to define class properties for transaction
+    /// 
     /// </summary>
     public class TransactionHistoryRequestModel
     {
+        [JsonProperty("walletAddress")]
         public string WalletAddress { get; set; }
+        [JsonProperty("transactionType")]
         public string TransactionType { get; set; }
     }
 }

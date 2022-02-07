@@ -1,6 +1,5 @@
 ﻿using DorhniiFoundationWallet.Models.APIResponseModels;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -18,7 +17,7 @@ namespace DorhniiFoundationWallet.Helpers
         // private readonly string apiURL = string.Empty;
         private static readonly object lockInstance = new object();
         private static ServiceHelpers instance = null;
-        ResponseModel responseModel = null;
+        private ResponseModel responseModel = null;
         #endregion
 
         public static ServiceHelpers Instance
