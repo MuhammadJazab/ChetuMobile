@@ -70,6 +70,7 @@
         public const string WalletBlack = "WalletGroup1.png";
         public const string WalletGray = "Walletblack3.png";       
         public const string EditWhite = "EditIconGrayBack.png";
+        public const string SearchIcon = "mSearch.png";
         #endregion
         #region String Constants Values
         public const string PasswordRegex = "^[0-9a-zA-Z]{8,16}$";

@@ -246,7 +246,7 @@ namespace DorhniiFoundationWallet.ViewModels
                 //SendBtn_Clicked = new Command(SendBtn_ClickedCommand);
                 //ScanCommand = new Command(ScanCommandClick);
 
-        _ = GetWalletDetails();
+                 //_ = GetWalletDetails();
             }
             catch(Exception ex)
             {

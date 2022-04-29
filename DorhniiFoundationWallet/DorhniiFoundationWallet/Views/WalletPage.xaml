@@ -1,143 +1,257 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DorhniiFoundationWallet.Views.WalletPage"
-             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
-             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
-            xmlns:xzing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
-             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
-             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             ios:Page.UseSafeArea="true"
-             NavigationPage.HasNavigationBar="False">
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.WalletPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    xmlns:xzing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:WalletViewModel x:Name="WalletPageVM"/>
+        <vm:WalletViewModel x:Name="WalletPageVM" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" >
+        <Grid
+            BackgroundColor="Black"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="140"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Frame BackgroundColor="#262629" >
-                    <Grid Grid.Row="0" Margin="10,0,10,0" >
+                <Frame BackgroundColor="#262629">
+                    <Grid Grid.Row="0" Margin="10,0,10,0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition Height="20" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".3*"/>
+                            <ColumnDefinition Width=".3*" />
                         </Grid.ColumnDefinitions>
-                        <Frame Grid.Row="0" Grid.Column="0" HorizontalOptions="EndAndExpand" Padding="10" CornerRadius="5" HasShadow="False" >
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="10"
+                            CornerRadius="5"
+                            HasShadow="False"
+                            HorizontalOptions="EndAndExpand">
                             <Frame.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#552DF2" Offset="0.1"/>
-                                    <GradientStop Color="#3594D2" Offset="1.0"/>
+                                    <GradientStop Offset="0.1" Color="#552DF2" />
+                                    <GradientStop Offset="1.0" Color="#3594D2" />
                                 </LinearGradientBrush>
                             </Frame.Background>
-                            <Image Source="{Binding PlusAppIcon}" Scale="0.75" />
+                            <Image Scale="0.75" Source="{Binding PlusAppIcon}" />
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AddNewWallet}"/>
+                                <TapGestureRecognizer Command="{Binding AddNewWallet}" />
                             </Frame.GestureRecognizers>
                         </Frame>
-                        <Label Grid.Row="1" Text="{x:Static resource:Resource.txtBalanceCapital}" Style="{StaticResource WalletPageLabel}" FontSize="Large" TextColor="White" />
-                        <StackLayout Grid.Row="2" Orientation="Horizontal"  >
-                            <Label  Text="{Static resource:Resource.txtDollar}" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
-                            <Label  Text="{Binding WalletBalance}" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold" TextColor="White"/>
+                        <Label
+                            Grid.Row="1"
+                            FontSize="Large"
+                            Style="{StaticResource WalletPageLabel}"
+                            Text="{x:Static resource:Resource.txtBalanceCapital}"
+                            TextColor="White" />
+                        <StackLayout Grid.Row="2" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                Text="{Static resource:Resource.txtDollar}"
+                                TextColor="White" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                Text="{Binding WalletBalance}"
+                                TextColor="White" />
                         </StackLayout>
                     </Grid>
                 </Frame>
-                <Grid Grid.Row="1" RowSpacing="10"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10,10,10" IsVisible="{Binding IsWalletListPage}" >
-                    <ListView x:Name="WalletData" ItemsSource="{Binding WalletList}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" SeparatorVisibility="Default" HasUnevenRows="True" SelectionMode="None" >
+                <Grid
+                    Grid.Row="1"
+                    Margin="10,10,10,10"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsWalletListPage}"
+                    RowSpacing="10"
+                    VerticalOptions="CenterAndExpand">
+                    <ListView
+                        x:Name="WalletData"
+                        HasUnevenRows="True"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding WalletList}"
+                        SelectionMode="None"
+                        SeparatorVisibility="Default"
+                        VerticalOptions="CenterAndExpand">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout>
                                         <Grid>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
-                                            <Frame Grid.Row="0" BorderColor="Gray" Style="{Binding EntryFrameStyle}" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="90" CornerRadius="5" IsVisible="{Binding IsCoinVisible}">
+                                            <Frame
+                                                Grid.Row="0"
+                                                Margin="10,10,10,0"
+                                                Padding="5"
+                                                BorderColor="Gray"
+                                                CornerRadius="5"
+                                                HasShadow="False"
+                                                HeightRequest="90"
+                                                IsVisible="{Binding IsCoinVisible}"
+                                                Style="{Binding EntryFrameStyle}">
                                                 <Frame.Background>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,0">
-                                                        <GradientStop Color="#131220" Offset="5"/>
-                                                        <GradientStop Color="#262629" Offset="10"/>
+                                                        <GradientStop Offset="5" Color="#131220" />
+                                                        <GradientStop Offset="10" Color="#262629" />
                                                     </LinearGradientBrush>
                                                 </Frame.Background>
-                                                <Grid Padding="0" >
+                                                <Grid Padding="0">
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="*" />
                                                     </Grid.RowDefinitions>
-                                                    <Grid Grid.Row="0" VerticalOptions="Start" HeightRequest="90" >
+                                                    <Grid
+                                                        Grid.Row="0"
+                                                        HeightRequest="90"
+                                                        VerticalOptions="Start">
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition Width="auto" />
+                                                            <ColumnDefinition Width="auto" />
                                                         </Grid.ColumnDefinitions>
-                                                        <ImageButton Grid.Column="0" Source="{Binding CoinIcon}" BackgroundColor="Transparent" />
-                                                        <Grid Grid.Column="1" VerticalOptions="Center" RowSpacing="0" Padding="0">
+                                                        <ImageButton
+                                                            Grid.Column="0"
+                                                            BackgroundColor="Transparent"
+                                                            Source="{Binding CoinIcon}" />
+                                                        <Grid
+                                                            Grid.Column="1"
+                                                            Padding="0"
+                                                            RowSpacing="0"
+                                                            VerticalOptions="Center">
                                                             <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto"/>
-                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
                                                             <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="auto"/>
-                                                                <ColumnDefinition Width="auto"/>
-                                                                <ColumnDefinition Width="auto"/>
-                                                                <ColumnDefinition Width="auto"/>
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="auto" />
+                                                                <ColumnDefinition Width="auto" />
                                                             </Grid.ColumnDefinitions>
-                                                            <Label Grid.Row="0" Grid.ColumnSpan="5" Text="{Binding CoinName}" VerticalOptions="Center" Style="{StaticResource WhiteCenterLabelStyle}"  HorizontalOptions="StartAndExpand" FontSize="25" FontAttributes="Bold">
-                                                            </Label>
-                                                            <Label Text="{Binding CoinStandard}" Grid.Row="1" TextColor="White" VerticalOptions="Start"/>
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.ColumnSpan="5"
+                                                                FontAttributes="Bold"
+                                                                FontSize="25"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinName}"
+                                                                VerticalOptions="Center" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Text="{Binding CoinStandard}"
+                                                                TextColor="White"
+                                                                VerticalOptions="Start" />
                                                         </Grid>
-                                                        <Grid Grid.Column="3" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+                                                        <Grid
+                                                            Grid.Column="3"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            RowSpacing="0"
+                                                            VerticalOptions="CenterAndExpand">
                                                             <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto"/>
-                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="auto" />
                                                                 <ColumnDefinition Width="auto" />
                                                             </Grid.ColumnDefinitions>
-                                                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding CoinValue}" Style="{StaticResource WhiteCenterLabelStyle}" HorizontalOptions="FillAndExpand" FontSize="Small"/>
-                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding CoinShortName}" Style="{StaticResource WhiteCenterLabelStyle}" FontSize="Small" />
-                                                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding CoinUsdValue}" Style="{StaticResource WhiteCenterLabelStyle}" FontAttributes="None" FontSize="Small"/>
-                                                            <Label Grid.Row="1" Grid.Column="1" Text="{Static resource:Resource.txtUSD}" Style="{StaticResource WhiteCenterLabelStyle}" FontAttributes="None" FontSize="Small"/>
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                FontSize="Small"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinValue}" />
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinShortName}" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Grid.Column="0"
+                                                                FontAttributes="None"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinUsdValue}" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Grid.Column="1"
+                                                                FontAttributes="None"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Static resource:Resource.txtUSD}" />
                                                         </Grid>
                                                     </Grid>
                                                 </Grid>
                                                 <Frame.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
                                                 </Frame.GestureRecognizers>
                                             </Frame>
-                                            <Frame Grid.Row="0" BorderColor="Gray" Style="{Binding EntryFrameStyle}" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="200" CornerRadius="5" IsVisible="{Binding IsCoinDetailVisible}">
+                                            <Frame
+                                                Grid.Row="0"
+                                                Margin="10,10,10,0"
+                                                Padding="5"
+                                                BorderColor="Gray"
+                                                CornerRadius="5"
+                                                HasShadow="False"
+                                                HeightRequest="200"
+                                                IsVisible="{Binding IsCoinDetailVisible}"
+                                                Style="{Binding EntryFrameStyle}">
                                                 <Frame.Background>
                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,0">
-                                                        <GradientStop Color="#131220" Offset="0.0"/>
-                                                        <GradientStop Color="#262629" Offset="0.0"/>
+                                                        <GradientStop Offset="0.0" Color="#131220" />
+                                                        <GradientStop Offset="0.0" Color="#262629" />
                                                     </LinearGradientBrush>
                                                 </Frame.Background>
                                                 <Grid>
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="*" />
                                                     </Grid.RowDefinitions>
-                                                    <Grid Grid.Row="0" VerticalOptions="Start" HeightRequest="90" >
+                                                    <Grid
+                                                        Grid.Row="0"
+                                                        HeightRequest="90"
+                                                        VerticalOptions="Start">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="auto" />
                                                             <ColumnDefinition Width="auto" />
                                                             <ColumnDefinition Width="auto" />
                                                         </Grid.ColumnDefinitions>
-                                                        <ImageButton Grid.Column="0" Source="{Binding CoinIcon}" BackgroundColor="Transparent" />
-                                                        <Grid Grid.Column="1" VerticalOptions="Center" RowSpacing="0" Padding="0">
+                                                        <ImageButton
+                                                            Grid.Column="0"
+                                                            BackgroundColor="Transparent"
+                                                            Source="{Binding CoinIcon}" />
+                                                        <Grid
+                                                            Grid.Column="1"
+                                                            Padding="0"
+                                                            RowSpacing="0"
+                                                            VerticalOptions="Center">
                                                             <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto"/>
-                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="auto" />
@@ -145,127 +259,355 @@
                                                                 <ColumnDefinition Width="auto" />
                                                                 <ColumnDefinition Width="auto" />
                                                             </Grid.ColumnDefinitions>
-                                                            <Label Grid.Row="0" Grid.ColumnSpan="5" Text="{Binding CoinName}" VerticalOptions="Center" Style="{StaticResource WhiteCenterLabelStyle}"  HorizontalOptions="StartAndExpand" FontSize="25" FontAttributes="Bold">
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.ColumnSpan="5"
+                                                                FontAttributes="Bold"
+                                                                FontSize="25"
+                                                                HorizontalOptions="StartAndExpand"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinName}"
+                                                                VerticalOptions="Center">
                                                                 <Label.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1"/>
+                                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
                                                                 </Label.GestureRecognizers>
                                                             </Label>
-                                                            <Label Grid.Row="1" Grid.Column="0" Text="{Binding CoinValue}" Style="{StaticResource WhiteCenterLabelStyle}" FontSize="Small"/>
-                                                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding CoinShortName}" Style="{StaticResource WhiteCenterLabelStyle}" FontSize="Small"/>
-                                                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding CoinUsdValue}" Style="{StaticResource WhiteCenterLabelStyle}" FontAttributes="None" FontSize="Small"/>
-                                                            <Label Grid.Row="1" Grid.Column="3" Text="USD" Style="{StaticResource WhiteCenterLabelStyle}" FontAttributes="None" FontSize="Small"/>
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Grid.Column="0"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinValue}" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Grid.Column="1"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinShortName}" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Grid.Column="2"
+                                                                FontAttributes="None"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="{Binding CoinUsdValue}" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Grid.Column="3"
+                                                                FontAttributes="None"
+                                                                FontSize="Small"
+                                                                Style="{StaticResource WhiteCenterLabelStyle}"
+                                                                Text="USD" />
                                                         </Grid>
-                                                        <Label Text="{Binding CoinStandard}" Grid.Column="3" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                                                        <Label
+                                                            Grid.Column="3"
+                                                            Text="{Binding CoinStandard}"
+                                                            TextColor="White"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </Grid>
-                                                    <Grid Grid.Row="1" Padding="5" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                                                    <Grid
+                                                        Grid.Row="1"
+                                                        Padding="5"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="End">
                                                         <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="*"/>
-                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <Image x:Name="sendBtn" Grid.Row="0" Source="{Binding SendAppIcon}" Grid.Column="0" HorizontalOptions="StartAndExpand" BackgroundColor="#131220">
+                                                        <Image
+                                                            x:Name="sendBtn"
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            BackgroundColor="#131220"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Source="{Binding SendAppIcon}">
                                                             <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" NumberOfTapsRequired="1"/>
+                                                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2" />
                                                             </Image.GestureRecognizers>
                                                         </Image>
-                                                        <Image x:Name="receiveBtn"  Grid.Row="0" Grid.Column="1" Source="{Binding ReceiveAppIcon}"  HorizontalOptions="CenterAndExpand" BackgroundColor="#131220">
+                                                        <Image
+                                                            x:Name="receiveBtn"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            BackgroundColor="#131220"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            Source="{Binding ReceiveAppIcon}">
                                                             <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" NumberOfTapsRequired="1"/>
+                                                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_3" />
                                                             </Image.GestureRecognizers>
                                                         </Image>
-                                                        <ImageButton Grid.Row="0" Grid.Column="2" Source="Group1" Command="{Binding ScanButtonCommand}" HorizontalOptions="EndAndExpand" BackgroundColor="{StaticResource Black}"/>
-                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static resource:Resource.txtSENDCapital}" TextColor="#FFFFFF" FontSize="Small" HorizontalOptions="StartAndExpand"/>
-                                                        <Label Grid.Row="1" Grid.Column="1" Text="{x:Static resource:Resource.txtRECEIVECapital}" TextColor="#FFFFFF" FontSize="Small" HorizontalOptions="CenterAndExpand"/>
-                                                        <Label Grid.Row="1" Grid.Column="2" Text="{x:Static resource:Resource.txtSCANCapital}" TextColor="#FFFFFF" FontSize="Small" HorizontalOptions="EndAndExpand" />
+                                                        <ImageButton
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"
+                                                            BackgroundColor="{StaticResource Black}"
+                                                            Command="{Binding ScanButtonCommand}"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            Source="Group1" />
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            FontSize="Small"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Text="{x:Static resource:Resource.txtSENDCapital}"
+                                                            TextColor="#FFFFFF" />
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.Column="1"
+                                                            FontSize="Small"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            Text="{x:Static resource:Resource.txtRECEIVECapital}"
+                                                            TextColor="#FFFFFF" />
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Grid.Column="2"
+                                                            FontSize="Small"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            Text="{x:Static resource:Resource.txtSCANCapital}"
+                                                            TextColor="#FFFFFF" />
                                                     </Grid>
                                                 </Grid>
                                             </Frame>
-                                            <Frame Grid.Row="0" Margin="0,15,0,0" BackgroundColor="#2F3037" HorizontalOptions="FillAndExpand" HasShadow="False" VerticalOptions="CenterAndExpand" HeightRequest="300" CornerRadius="5" IsVisible="{Binding IsSendPageVisible}">
-                                                <Grid RowSpacing="20" BackgroundColor="#2F3037" >
+                                            <Frame
+                                                Grid.Row="0"
+                                                Margin="0,15,0,0"
+                                                BackgroundColor="#2F3037"
+                                                CornerRadius="5"
+                                                HasShadow="False"
+                                                HeightRequest="300"
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsSendPageVisible}"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Grid BackgroundColor="#2F3037" RowSpacing="20">
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="0.25*"/>
-                                                        <RowDefinition Height="0.2*"/>
-                                                        <RowDefinition Height="0.2*"/>
-                                                        <RowDefinition Height="0.15*"/>
-                                                        <RowDefinition Height="0.2*"/>
+                                                        <RowDefinition Height="0.25*" />
+                                                        <RowDefinition Height="0.2*" />
+                                                        <RowDefinition Height="0.2*" />
+                                                        <RowDefinition Height="0.15*" />
+                                                        <RowDefinition Height="0.2*" />
                                                     </Grid.RowDefinitions>
-                                                    <Frame Padding="0" Grid.Row="0" BackgroundColor="#2F3037" CornerRadius="5" HasShadow="False">
-                                                        <StackLayout Orientation="Horizontal"  >
-                                                            <StackLayout Orientation="Vertical" VerticalOptions="Center"  >
-                                                                <Label Text="{x:Static resource:Resource.txtBalance}" TextColor="White" FontSize="20" FontAttributes="Bold"/>
-                                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center"  >
-                                                                    <Label Text="{Binding CoinValue}" TextColor="White" FontSize="20" FontAttributes="Bold"/>
-                                                                    <Label Text="{Binding CoinShortName}" TextColor="White" FontSize="15" VerticalTextAlignment="End"/>
+                                                    <Frame
+                                                        Grid.Row="0"
+                                                        Padding="0"
+                                                        BackgroundColor="#2F3037"
+                                                        CornerRadius="5"
+                                                        HasShadow="False">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                                                <Label
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="20"
+                                                                    Text="{x:Static resource:Resource.txtBalance}"
+                                                                    TextColor="White" />
+                                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="20"
+                                                                        Text="{Binding CoinValue}"
+                                                                        TextColor="White" />
+                                                                    <Label
+                                                                        FontSize="15"
+                                                                        Text="{Binding CoinShortName}"
+                                                                        TextColor="White"
+                                                                        VerticalTextAlignment="End" />
                                                                 </StackLayout>
-                                                            </StackLayout >
-                                                            <Label Text="{Binding CoinStandard}" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                                            </StackLayout>
+                                                            <Label
+                                                                FontAttributes="Bold"
+                                                                FontSize="20"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Text="{Binding CoinStandard}"
+                                                                TextColor="White"
+                                                                VerticalOptions="Center" />
                                                         </StackLayout>
                                                     </Frame>
-                                                    <Frame Padding="1" Grid.Row="1" CornerRadius="3" BorderColor="Gray">
-                                                        <StackLayout Orientation="Horizontal" BackgroundColor="#262629">
-                                                            <cntrl:RendererEntry  Placeholder="To" WidthRequest="250" Text="{Binding WalletAdressEntered}" TextColor="White" HorizontalOptions="Start" HorizontalTextAlignment="Start" PlaceholderColor="White" FontSize="10"/>
-                                                            <Image  HorizontalOptions="EndAndExpand" Source="Group1" Scale="0.75">
+                                                    <Frame
+                                                        Grid.Row="1"
+                                                        Padding="1"
+                                                        BorderColor="Gray"
+                                                        CornerRadius="3">
+                                                        <StackLayout BackgroundColor="#262629" Orientation="Horizontal">
+                                                            <cntrl:RendererEntry
+                                                                FontSize="10"
+                                                                HorizontalOptions="Start"
+                                                                HorizontalTextAlignment="Start"
+                                                                Placeholder="To"
+                                                                PlaceholderColor="White"
+                                                                Text="{Binding WalletAdressEntered}"
+                                                                TextColor="White"
+                                                                WidthRequest="250" />
+                                                            <Image
+                                                                HorizontalOptions="EndAndExpand"
+                                                                Scale="0.75"
+                                                                Source="Group1">
                                                                 <Image.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_7" NumberOfTapsRequired="1"/>
+                                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_7" />
                                                                 </Image.GestureRecognizers>
                                                             </Image>
                                                         </StackLayout>
                                                     </Frame>
-                                                    <Frame Padding="0" Grid.Row="2" CornerRadius="3" BorderColor="Gray" BackgroundColor="#262629">
-                                                        <cntrl:RendererEntry Placeholder="{x:Static resource:Resource.txtAmount}" Text="{Binding Amount}" FontSize="15" PlaceholderColor="White" TextColor="White"/>
+                                                    <Frame
+                                                        Grid.Row="2"
+                                                        Padding="0"
+                                                        BackgroundColor="#262629"
+                                                        BorderColor="Gray"
+                                                        CornerRadius="3">
+                                                        <cntrl:RendererEntry
+                                                            FontSize="15"
+                                                            Placeholder="{x:Static resource:Resource.txtAmount}"
+                                                            PlaceholderColor="White"
+                                                            Text="{Binding Amount}"
+                                                            TextColor="White" />
                                                     </Frame>
-                                                    <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
-                                                        <Frame Padding="5" Margin="0" HorizontalOptions="Start" WidthRequest="150" BorderColor="Gray" BackgroundColor="#262629">
-                                                            <Label Text="{x:Static resource:Resource.txtDollar}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="White"/>
+                                                    <StackLayout
+                                                        Grid.Row="3"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Orientation="Horizontal"
+                                                        VerticalOptions="Fill">
+                                                        <Frame
+                                                            Margin="0"
+                                                            Padding="5"
+                                                            BackgroundColor="#262629"
+                                                            BorderColor="Gray"
+                                                            HorizontalOptions="Start"
+                                                            WidthRequest="150">
+                                                            <Label
+                                                                HorizontalTextAlignment="Start"
+                                                                Text="{x:Static resource:Resource.txtDollar}"
+                                                                TextColor="White"
+                                                                VerticalTextAlignment="Center" />
                                                         </Frame>
-                                                        <Frame Padding="1" Margin="0" HorizontalOptions="EndAndExpand" WidthRequest="150" BorderColor="Gray" BackgroundColor="#262629">
-                                                            <Label Text="{x:Static resource:Resource.txtFee}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" TextColor="White"/>
+                                                        <Frame
+                                                            Margin="0"
+                                                            Padding="1"
+                                                            BackgroundColor="#262629"
+                                                            BorderColor="Gray"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            WidthRequest="150">
+                                                            <Label
+                                                                HorizontalTextAlignment="Start"
+                                                                Text="{x:Static resource:Resource.txtFee}"
+                                                                TextColor="White"
+                                                                VerticalTextAlignment="Center" />
                                                         </Frame>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="4" Padding="15,0,15,0"  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"  >
-                                                        <Button Text="Back" Clicked="BackBtn_Clicked" BorderColor="Gray" BorderWidth="1" FontSize="15" CornerRadius="5" TextColor="White" BackgroundColor="#262629"/>
-                                                        <Button Text="Send" Clicked="SendBtn_Clicked" BorderWidth="1" TextColor="White" CornerRadius="5" FontSize="15" HorizontalOptions="EndAndExpand">
+                                                    <StackLayout
+                                                        Grid.Row="4"
+                                                        Padding="15,0,15,0"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Orientation="Horizontal"
+                                                        VerticalOptions="Fill">
+                                                        <Button
+                                                            BackgroundColor="#262629"
+                                                            BorderColor="Gray"
+                                                            BorderWidth="1"
+                                                            Clicked="BackBtn_Clicked"
+                                                            CornerRadius="5"
+                                                            FontSize="15"
+                                                            Text="Back"
+                                                            TextColor="White" />
+                                                        <Button
+                                                            BorderWidth="1"
+                                                            Clicked="SendBtn_Clicked"
+                                                            CornerRadius="5"
+                                                            FontSize="15"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            Text="Send"
+                                                            TextColor="White">
                                                             <Button.Background>
                                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                                    <GradientStop Color="#552DF2" Offset="0.1"/>
-                                                                    <GradientStop Color="#3594D2" Offset="1.0"/>
+                                                                    <GradientStop Offset="0.1" Color="#552DF2" />
+                                                                    <GradientStop Offset="1.0" Color="#3594D2" />
                                                                 </LinearGradientBrush>
                                                             </Button.Background>
                                                         </Button>
                                                     </StackLayout>
                                                 </Grid>
                                             </Frame>
-                                            <Frame Grid.Row="0" Margin="0,15,0,0" HeightRequest="330" BackgroundColor="#2F3037" IsVisible="{Binding IsReceivePageVisible}" CornerRadius="5" HasShadow="False" >
+                                            <Frame
+                                                Grid.Row="0"
+                                                Margin="0,15,0,0"
+                                                BackgroundColor="#2F3037"
+                                                CornerRadius="5"
+                                                HasShadow="False"
+                                                HeightRequest="330"
+                                                IsVisible="{Binding IsReceivePageVisible}">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="0.05*"/>
-                                                        <RowDefinition Height="0.70*"/>
-                                                        <RowDefinition Height="0.10*"/>
-                                                        <RowDefinition Height="0.15*"/>
+                                                        <RowDefinition Height="0.05*" />
+                                                        <RowDefinition Height="0.70*" />
+                                                        <RowDefinition Height="0.10*" />
+                                                        <RowDefinition Height="0.15*" />
                                                     </Grid.RowDefinitions>
-                                                    <Image Grid.Row="0" Source="{Binding CrossSign}" HorizontalOptions="End">
+                                                    <Image
+                                                        Grid.Row="0"
+                                                        HorizontalOptions="End"
+                                                        Source="{Binding CrossSign}">
                                                         <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_6" NumberOfTapsRequired="1"/>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_6" />
                                                         </Image.GestureRecognizers>
                                                     </Image>
                                                     <!--<Image  Source="{Binding ScanAppIcon}" HorizontalOptions="Center" Scale="1.25" />-->
-                                                    <xzing:ZXingBarcodeImageView Grid.Row="1" BarcodeFormat="QR_CODE" BarcodeValue="{Binding WalletAdress}" HeightRequest="1000" WidthRequest="100" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+                                                    <xzing:ZXingBarcodeImageView
+                                                        Grid.Row="1"
+                                                        BarcodeFormat="QR_CODE"
+                                                        BarcodeValue="{Binding WalletAdress}"
+                                                        HeightRequest="1000"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="100">
                                                         <xzing:ZXingBarcodeImageView.BarcodeOptions>
-                                                            <zxcm:EncodingOptions/>
+                                                            <zxcm:EncodingOptions />
                                                         </xzing:ZXingBarcodeImageView.BarcodeOptions>
                                                     </xzing:ZXingBarcodeImageView>
-                                                    <Frame Grid.Row="2" Padding="0" BackgroundColor="#262629" CornerRadius="5" BorderColor="Gray">
-                                                        <Label Text="{Binding WalletAdress}" TextColor="White" FontSize="10" Margin="5,0,0,0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-                                                    </Frame >
-                                                    <Frame Grid.Row="3" Margin="10,0,0,0"  WidthRequest="40" HorizontalOptions="StartAndExpand" CornerRadius="5" BorderColor="Gray" BackgroundColor="#262629">
-                                                        <Image  Source="{Binding CopyAppIcon}" Scale="3" HorizontalOptions="Center"  VerticalOptions="Center" BackgroundColor="Transparent"/>
+                                                    <Frame
+                                                        Grid.Row="2"
+                                                        Padding="0"
+                                                        BackgroundColor="#262629"
+                                                        BorderColor="Gray"
+                                                        CornerRadius="5">
+                                                        <Label
+                                                            Margin="5,0,0,0"
+                                                            FontSize="10"
+                                                            HorizontalOptions="Start"
+                                                            HorizontalTextAlignment="Center"
+                                                            Text="{Binding WalletAdress}"
+                                                            TextColor="White"
+                                                            VerticalTextAlignment="Center" />
                                                     </Frame>
-                                                    <Frame Grid.Row="3" Margin="0,0,10,0" WidthRequest="40" CornerRadius="5" BorderColor="Gray" HorizontalOptions="EndAndExpand" BackgroundColor="#552DF2">
-                                                        <Image Source="{Binding ShareApp48Icon}" Scale="3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent"/>
+                                                    <Frame
+                                                        Grid.Row="3"
+                                                        Margin="10,0,0,0"
+                                                        BackgroundColor="#262629"
+                                                        BorderColor="Gray"
+                                                        CornerRadius="5"
+                                                        HorizontalOptions="StartAndExpand"
+                                                        WidthRequest="40">
+                                                        <Image
+                                                            BackgroundColor="Transparent"
+                                                            HorizontalOptions="Center"
+                                                            Scale="3"
+                                                            Source="{Binding CopyAppIcon}"
+                                                            VerticalOptions="Center" />
+                                                    </Frame>
+                                                    <Frame
+                                                        Grid.Row="3"
+                                                        Margin="0,0,10,0"
+                                                        BackgroundColor="#552DF2"
+                                                        BorderColor="Gray"
+                                                        CornerRadius="5"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        WidthRequest="40">
+                                                        <Image
+                                                            BackgroundColor="Transparent"
+                                                            HorizontalOptions="Center"
+                                                            Scale="3"
+                                                            Source="{Binding ShareApp48Icon}"
+                                                            VerticalOptions="Center" />
                                                     </Frame>
                                                 </Grid>
                                             </Frame>
@@ -283,9 +625,12 @@
                     <Label x:Name="scanresultText" TextColor="Black" IsVisible="false"/>
                     <xzing:ZXingScannerView x:Name="scanner" IsScanning="True" IsAnalyzing="True" OnScanResult="QrCoderesult"/>
                 </StackLayout>-->
-                <View:Loader Grid.Row="1" IsVisible="{Binding IsLoading}"/>
-                <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent"></views:TabbedViewPage>
+                <View:Loader Grid.Row="1" IsVisible="{Binding IsLoading}" />
+                <views:TabbedViewPage
+                    Grid.Row="2"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand" />
             </Grid>
         </Grid>
     </ContentPage.Content>
-    </ContentPage>
+</ContentPage>

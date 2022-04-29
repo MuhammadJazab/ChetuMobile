@@ -8,6 +8,10 @@ using Android.Views;
 namespace DorhniiFoundationWallet.Droid
 {
     [Activity(Label = "DorhniiFoundationWallet", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [IntentFilter(new[] { Android.Content.Intent.ActionView },
+                  DataScheme = "wc",
+                  AutoVerify = true,
+                  Categories = new[] { Android.Content.Intent.ActionView, Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable })]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public static MainActivity Instance;
@@ -21,12 +25,13 @@ namespace DorhniiFoundationWallet.Droid
             // Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             LoadApplication(new App());
-            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(11,13,37));
+            //Window.SetStatusBarColor(Android.Graphics.Color.Rgb(11,13,37));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            global::ZXing.Net.Mobile.Forms.Android.Permissionhandler.OnRequestPermissionresult(requestCode, permissions, grantResults);
+            //global::ZXing.Net.Mobile.Forms.Android.Permissionhandler.OnRequestPermissionresult(requestCode, permissions, grantResults);
+            global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }

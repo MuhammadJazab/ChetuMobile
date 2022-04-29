@@ -127,7 +127,7 @@ namespace DorhniiFoundationWallet.ViewModels
         public void SwapCommandClick()
         {
             Preferences.Set(StringConstant.TabKeyId, 3);
-            Application.Current.MainPage = new NavigationPage(new WalletPage());
+            Application.Current.MainPage = new NavigationPage(new DappPage());
         }
 
 

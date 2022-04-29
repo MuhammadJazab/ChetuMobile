@@ -1,49 +1,111 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"             
-             x:Class="DorhniiFoundationWallet.Views.Partials.TabbedViewPage">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DorhniiFoundationWallet.Views.Partials.TabbedViewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels">
     <ContentView.BindingContext>
-        <vm:TabbedViewVM/>
+        <vm:TabbedViewVM />
     </ContentView.BindingContext>
-  <ContentView.Content>
+    <ContentView.Content>
         <Frame BackgroundColor="#262629">
-            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0" HeightRequest="60" >
+            <Grid
+                ColumnSpacing="0"
+                HeightRequest="60"
+                HorizontalOptions="FillAndExpand"
+                RowSpacing="0"
+                VerticalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
                 </Grid.ColumnDefinitions>
-                <Frame Grid.Column="0" Padding="5" VerticalOptions="Center"  Margin="15,15,15,15" CornerRadius="5" BackgroundColor="{Binding TabWalletColour}"  >
-                    <Image Source="{Binding WalletIcon}" Aspect="AspectFit" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" Margin="0,0,0,0" />
+                <Frame
+                    Grid.Column="0"
+                    Margin="15,15,15,15"
+                    Padding="5"
+                    BackgroundColor="{Binding TabWalletColour}"
+                    CornerRadius="5"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="0,0,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        Source="{Binding WalletIcon}"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding WalletCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding WalletCommand}" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Column="1" Padding="5" VerticalOptions="Center"  Margin="15,15,15,15" CornerRadius="5" BackgroundColor="{Binding TabStakeColour}">
-                    <Image Source="{Binding StakesIcon}" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" Margin="0,0,0,0"/>
+                <Frame
+                    Grid.Column="1"
+                    Margin="15,15,15,15"
+                    Padding="5"
+                    BackgroundColor="{Binding TabStakeColour}"
+                    CornerRadius="5"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="0,0,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        Source="{Binding StakesIcon}"
+                        WidthRequest="30" />
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding StakesCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding StakesCommand}" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Column="2" Padding="5"  VerticalOptions="Center"  Margin="15,15,15,15" CornerRadius="5" BackgroundColor="{Binding TabSwapColour}">
-                    <Image Source="{Binding SwapIcon}" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" Margin="0,0,0,0"/>
+                <Frame
+                    Grid.Column="2"
+                    Margin="15,15,15,15"
+                    Padding="5"
+                    BackgroundColor="{Binding TabSwapColour}"
+                    CornerRadius="5"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="0,0,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        Source="{Binding SwapIcon}"
+                        WidthRequest="30" />
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SwapCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding SwapCommand}" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Column="3" Padding="5" VerticalOptions="Center"  Margin="15,15,15,15" CornerRadius="5" BackgroundColor="{Binding TabTransactionColour}">
-                    <Image Source="{Binding TransactionIcon}" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" Margin="0,0,0,0"/>
+                <Frame
+                    Grid.Column="3"
+                    Margin="15,15,15,15"
+                    Padding="5"
+                    BackgroundColor="{Binding TabTransactionColour}"
+                    CornerRadius="5"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="0,0,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        Source="{Binding TransactionIcon}"
+                        WidthRequest="30" />
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TransactionCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding TransactionCommand}" />
                     </Frame.GestureRecognizers>
                 </Frame>
-                <Frame Grid.Column="4" Padding="5" VerticalOptions="Center"  Margin="15,15,15,15" CornerRadius="5" BackgroundColor="{Binding TabSettingColour}">
-                    <Image Source="{Binding SettingsIcon}" Aspect="AspectFit" HeightRequest="30" WidthRequest="30" Margin="0,0,0,0"/>
+                <Frame
+                    Grid.Column="4"
+                    Margin="15,15,15,15"
+                    Padding="5"
+                    BackgroundColor="{Binding TabSettingColour}"
+                    CornerRadius="5"
+                    VerticalOptions="Center">
+                    <Image
+                        Margin="0,0,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="30"
+                        Source="{Binding SettingsIcon}"
+                        WidthRequest="30" />
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SettingsCommand}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding SettingsCommand}" />
                     </Frame.GestureRecognizers>
                 </Frame>
             </Grid>

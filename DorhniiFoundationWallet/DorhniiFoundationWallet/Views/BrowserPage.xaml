@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.BrowserPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:BrowserVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="Black"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Padding="5"
+                    BackgroundColor="Black"
+                    HasShadow="False">
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Image
+                            HeightRequest="24"
+                            Source="vector.png"
+                            WidthRequest="24" />
+
+                    </StackLayout>
+                </Frame>
+                <WebView
+                    Grid.Row="1"
+                    BackgroundColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding SwapUrl}"
+                    VerticalOptions="FillAndExpand" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

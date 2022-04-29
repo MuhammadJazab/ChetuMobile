@@ -268,6 +268,24 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aave.
+        /// </summary>
+        internal static string txtAave {
+            get {
+                return ResourceManager.GetString("txtAave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets. The protocol features Flash Loans, ....
+        /// </summary>
+        internal static string txtAaveDescription {
+            get {
+                return ResourceManager.GetString("txtAaveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         internal static string txtAccounts {
@@ -385,6 +403,24 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Binance Bridge.
+        /// </summary>
+        internal static string txtBinanceBridge {
+            get {
+                return ResourceManager.GetString("txtBinanceBridge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Binance Bridge V2, a brand new bridge service providing access to inter-blockchain liquidity for all popular blockchain networks,....
+        /// </summary>
+        internal static string txtBinanceBridgeDescription {
+            get {
+                return ResourceManager.GetString("txtBinanceBridgeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BRIDGES.
         /// </summary>
         internal static string txtBRIDGES {
@@ -435,6 +471,33 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtCreateWallet {
             get {
                 return ResourceManager.GetString("txtCreateWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Curve.
+        /// </summary>
+        internal static string txtCurve {
+            get {
+                return ResourceManager.GetString("txtCurve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Curve is an exchange liquidity pool on Ethereum designed for: extremely efficient stablecoin trading, low risk, supplemental fee income for liquidity ....
+        /// </summary>
+        internal static string txtCurveDescription {
+            get {
+                return ResourceManager.GetString("txtCurveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DeFi.
+        /// </summary>
+        internal static string txtDeFi {
+            get {
+                return ResourceManager.GetString("txtDeFi", resourceCulture);
             }
         }
         
@@ -799,6 +862,24 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PancakeSwap.
+        /// </summary>
+        internal static string txtPancakeSwap {
+            get {
+                return ResourceManager.GetString("txtPancakeSwap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PancakeSwap is an automated market maker (AMM) — a decentralized finance (DeFi) application that allows users to exchange tokens, providing liquidity....
+        /// </summary>
+        internal static string txtPancakeSwapDescription {
+            get {
+                return ResourceManager.GetString("txtPancakeSwapDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string txtPassword {
@@ -867,6 +948,24 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtPeriod {
             get {
                 return ResourceManager.GetString("txtPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polygon Bridge.
+        /// </summary>
+        internal static string txtPolygonBridge {
+            get {
+                return ResourceManager.GetString("txtPolygonBridge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polygone  bridge is a service providing access to inter-blockchain liquidity for all popular blockchain networks....
+        /// </summary>
+        internal static string txtPolygonBridgeDescription {
+            get {
+                return ResourceManager.GetString("txtPolygonBridgeDescription", resourceCulture);
             }
         }
         
@@ -1285,6 +1384,24 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uniswap exchange.
+        /// </summary>
+        internal static string txtUniswap {
+            get {
+                return ResourceManager.GetString("txtUniswap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uniswap is a popular decentralized trading protocol, known for its role in facilitating automated trading of decentralized finance (DeFi) tokens.....
+        /// </summary>
+        internal static string txtUniswapDescription {
+            get {
+                return ResourceManager.GetString("txtUniswapDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UNLOCKED.
         /// </summary>
         internal static string txtUnlockedCapital {
@@ -1299,6 +1416,42 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtUSD {
             get {
                 return ResourceManager.GetString("txtUSD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venus.
+        /// </summary>
+        internal static string txtVenus {
+            get {
+                return ResourceManager.GetString("txtVenus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Venus is a decentralized finance (DeFi) algorithmic money market and synthetic stablecoin protocol exclusively on Binance Smart Chain....
+        /// </summary>
+        internal static string txtVenusDescription {
+            get {
+                return ResourceManager.GetString("txtVenusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vexchange.
+        /// </summary>
+        internal static string txtVexchange {
+            get {
+                return ResourceManager.GetString("txtVexchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vexchange is a popular decentralized trading protocol, known for its role in facilitating automated trading of decentralized finance (DeFi) tokens....
+        /// </summary>
+        internal static string txtVexchangeDescription {
+            get {
+                return ResourceManager.GetString("txtVexchangeDescription", resourceCulture);
             }
         }
         
@@ -1335,6 +1488,24 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtWecomeText {
             get {
                 return ResourceManager.GetString("txtWecomeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to yearn.finance.
+        /// </summary>
+        internal static string txtYearnFinance {
+            get {
+                return ResourceManager.GetString("txtYearnFinance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yearn Finance (YFI) is a suite of products in Decentralized Finance (DeFi) that provides lending aggregation, yield generation and insurance on the Ethereum blockchain....
+        /// </summary>
+        internal static string txtYearnFinanceDescription {
+            get {
+                return ResourceManager.GetString("txtYearnFinanceDescription", resourceCulture);
             }
         }
         

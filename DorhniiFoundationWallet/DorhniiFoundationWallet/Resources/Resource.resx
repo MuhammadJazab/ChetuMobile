@@ -189,6 +189,12 @@
   <data name="txt9APR" xml:space="preserve">
     <value>9% APR</value>
   </data>
+  <data name="txtAave" xml:space="preserve">
+    <value>Aave</value>
+  </data>
+  <data name="txtAaveDescription" xml:space="preserve">
+    <value>Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets. The protocol features Flash Loans, ...</value>
+  </data>
   <data name="txtAccounts" xml:space="preserve">
     <value>Account</value>
   </data>
@@ -228,6 +234,12 @@
   <data name="txtBalanceStake" xml:space="preserve">
     <value>$12,780.89</value>
   </data>
+  <data name="txtBinanceBridge" xml:space="preserve">
+    <value>Binance Bridge</value>
+  </data>
+  <data name="txtBinanceBridgeDescription" xml:space="preserve">
+    <value>Binance Bridge V2, a brand new bridge service providing access to inter-blockchain liquidity for all popular blockchain networks,...</value>
+  </data>
   <data name="txtBRIDGES" xml:space="preserve">
     <value>BRIDGES</value>
   </data>
@@ -245,6 +257,15 @@
   </data>
   <data name="txtCreateWallet" xml:space="preserve">
     <value>Create Wallet</value>
+  </data>
+  <data name="txtCurve" xml:space="preserve">
+    <value>Curve</value>
+  </data>
+  <data name="txtCurveDescription" xml:space="preserve">
+    <value>Curve is an exchange liquidity pool on Ethereum designed for: extremely efficient stablecoin trading, low risk, supplemental fee income for liquidity ...</value>
+  </data>
+  <data name="txtDeFi" xml:space="preserve">
+    <value>DeFi</value>
   </data>
   <data name="txtDHN" xml:space="preserve">
     <value>DHN</value>
@@ -366,6 +387,12 @@
   <data name="txtOldPassword" xml:space="preserve">
     <value>Old Password</value>
   </data>
+  <data name="txtPancakeSwap" xml:space="preserve">
+    <value>PancakeSwap</value>
+  </data>
+  <data name="txtPancakeSwapDescription" xml:space="preserve">
+    <value>PancakeSwap is an automated market maker (AMM) — a decentralized finance (DeFi) application that allows users to exchange tokens, providing liquidity...</value>
+  </data>
   <data name="txtPassword" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -389,6 +416,12 @@
   </data>
   <data name="txtPeriod" xml:space="preserve">
     <value>Period</value>
+  </data>
+  <data name="txtPolygonBridge" xml:space="preserve">
+    <value>Polygon Bridge</value>
+  </data>
+  <data name="txtPolygonBridgeDescription" xml:space="preserve">
+    <value>Polygone  bridge is a service providing access to inter-blockchain liquidity for all popular blockchain networks...</value>
   </data>
   <data name="txtPrint" xml:space="preserve">
     <value>Print</value>
@@ -528,11 +561,29 @@
   <data name="txtTypePassword" xml:space="preserve">
     <value>TYPE YOUR PASSWORD</value>
   </data>
+  <data name="txtUniswap" xml:space="preserve">
+    <value>Uniswap exchange</value>
+  </data>
+  <data name="txtUniswapDescription" xml:space="preserve">
+    <value>Uniswap is a popular decentralized trading protocol, known for its role in facilitating automated trading of decentralized finance (DeFi) tokens....</value>
+  </data>
   <data name="txtUnlockedCapital" xml:space="preserve">
     <value>UNLOCKED</value>
   </data>
   <data name="txtUSD" xml:space="preserve">
     <value>USD</value>
+  </data>
+  <data name="txtVenus" xml:space="preserve">
+    <value>Venus</value>
+  </data>
+  <data name="txtVenusDescription" xml:space="preserve">
+    <value>Venus is a decentralized finance (DeFi) algorithmic money market and synthetic stablecoin protocol exclusively on Binance Smart Chain...</value>
+  </data>
+  <data name="txtVexchange" xml:space="preserve">
+    <value>Vexchange</value>
+  </data>
+  <data name="txtVexchangeDescription" xml:space="preserve">
+    <value>Vexchange is a popular decentralized trading protocol, known for its role in facilitating automated trading of decentralized finance (DeFi) tokens...</value>
   </data>
   <data name="txtWallet" xml:space="preserve">
     <value>Wallet</value>
@@ -545,6 +596,12 @@
   </data>
   <data name="txtWecomeText" xml:space="preserve">
     <value>Welcome !</value>
+  </data>
+  <data name="txtYearnFinance" xml:space="preserve">
+    <value>yearn.finance</value>
+  </data>
+  <data name="txtYearnFinanceDescription" xml:space="preserve">
+    <value>Yearn Finance (YFI) is a suite of products in Decentralized Finance (DeFi) that provides lending aggregation, yield generation and insurance on the Ethereum blockchain...</value>
   </data>
   <data name="txtYes" xml:space="preserve">
     <value>Yes</value>

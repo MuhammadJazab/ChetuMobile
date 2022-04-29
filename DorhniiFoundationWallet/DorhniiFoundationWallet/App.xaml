@@ -1,24 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
-             x:Class="DorhniiFoundationWallet.App">
+<Application
+    x:Class="DorhniiFoundationWallet.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Colors-->
+            <!--  Colors  -->
             <Color x:Key="EntryGray">#59595b</Color>
             <Color x:Key="White">#FFFFFF</Color>
             <Color x:Key="Black">#000000</Color>
             <Color x:Key="LightGray">#D3D3D3</Color>
             <Color x:Key="SeedPhrame">#222020</Color>
             <Color x:Key="TabViolet">#552DF2</Color>
-            
-            <!-- Define FontFamily-->
-            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+
+            <!--  Define FontFamily  -->
+            <OnPlatform x:Key="BoldFont" x:TypeArguments="x:String">
                 <On Platform="Android" Value="RobotoCondensed-Bold.ttf#Roboto Condensed" />
                 <On Platform="iOS" Value="RobotoCondensed-Bold" />
             </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+            <OnPlatform x:Key="NormalFont" x:TypeArguments="x:String">
                 <On Platform="Android" Value="RobotoCondensed-Regular.ttf#Roboto Condensed" />
                 <On Platform="iOS" Value="RobotoCondensed-Regular" />
             </OnPlatform>
@@ -28,91 +29,92 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="White" />
-                <Setter Property="FontFamily" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Bold" />
                 <Setter Property="FontSize">
-                    <OnIdiom x:TypeArguments="x:Double" Phone="22" Tablet="22"/>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Phone="22"
+                        Tablet="22" />
                 </Setter>
             </Style>
 
-            <Style TargetType="Label" x:Key="WhiteCenterLabelStyle">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="{StaticResource White}"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="WhiteCenterLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
-            <Style TargetType="cntrl:RendererEntry" x:Key="PasswordEntryStyle">
-                <Setter Property="IsPassword" Value="True"/>                
-                <Setter Property="Keyboard" Value="Default"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="PlaceholderColor" Value="{StaticResource LightGray}"/>
-                <Setter Property="FontSize" Value="Medium"/>               
-                <Setter Property="TextColor" Value="{StaticResource White}"/>
+            <Style x:Key="PasswordEntryStyle" TargetType="cntrl:RendererEntry">
+                <Setter Property="IsPassword" Value="True" />
+                <Setter Property="Keyboard" Value="Default" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource LightGray}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
             </Style>
 
-            <Style TargetType="Frame" x:Key="EntryFrameStyle">
-                <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="HeightRequest" Value="50"/>
-                <Setter Property="HasShadow" Value="False"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource EntryGray}"/>
-            </Style>
-
-
-            <Style TargetType="Button" x:Key="WhiteButtonsStyle">
-                <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="TextColor" Value="{StaticResource Black}"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource White}"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Style x:Key="EntryFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryGray}" />
             </Style>
 
 
+            <Style x:Key="WhiteButtonsStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
 
 
 
 
 
 
-            <!--STYLES FOR IMAGES AND IMAGE BUTTONS-->
-            <Style TargetType="Image" x:Key="AppIconImageStyle">
+
+
+            <!--  STYLES FOR IMAGES AND IMAGE BUTTONS  -->
+            <Style x:Key="AppIconImageStyle" TargetType="Image">
                 <Setter Property="Aspect" Value="AspectFit" />
                 <Setter Property="HeightRequest" Value="60" />
             </Style>
-            <Style TargetType="ImageButton" x:Key="EyeCutIconStyle">
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="HeightRequest" Value="30"/>
-                <Setter Property="WidthRequest" Value="30"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Style x:Key="EyeCutIconStyle" TargetType="ImageButton">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Padding" Value="1" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="WidthRequest" Value="30" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
-            <Style TargetType="Image" x:Key="ImageStakesPageStyle">
-                <Setter Property="HeightRequest" Value="35"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Style x:Key="ImageStakesPageStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             </Style>
-            <Style TargetType="ImageButton" x:Key="TabbedViewStyle">
-                <Setter Property="Padding" Value="9"/>
-                <Setter Property="BorderColor" Value="Black"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="CornerRadius" Value="8"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Style x:Key="TabbedViewStyle" TargetType="ImageButton">
+                <Setter Property="Padding" Value="9" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
-            <Style TargetType="ImageButton" x:Key="TabsStyle">
-                <Setter Property="CornerRadius" Value="10"/>
-                <Setter Property="Padding" Value="9"/>
-                <Setter Property="BorderColor" Value="Black"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Style x:Key="TabsStyle" TargetType="ImageButton">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="9" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
 
-            <!--STYLES FOR LABELS-->
-
-
+            <!--  STYLES FOR LABELS  -->
 
 
 
@@ -120,258 +122,264 @@
 
 
 
-            <Style TargetType="Label" x:Key="CenterBlackLabelStyle">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+
+
+            <Style x:Key="CenterBlackLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
 
 
-            <Style TargetType="Label" x:Key="WelcomeLabelStyle">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="WelcomeLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            <Style TargetType="Label" x:Key="PasswordPageLabelStyle">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="TextColor" Value="white"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Style x:Key="PasswordPageLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="white" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             </Style>
-            <Style TargetType="Label" x:Key="SignInPageLabelStyle">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Style x:Key="SignInPageLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
-            <Style TargetType="Label" x:Key="BottomDescriptionLabelStyle">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Style x:Key="BottomDescriptionLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
-            <Style TargetType="Label" x:Key="WalletPageListLabel">
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="FontAttributes" Value="None"/>
+            <Style x:Key="WalletPageListLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="None" />
             </Style>
-            <Style TargetType="Label" x:Key="WalletPageLabel">
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="WalletPageLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            <Style TargetType="Label" x:Key="StakePeriodLabel">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="StakePeriodLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            <Style TargetType="Label" x:Key="StakesPageLabel1">
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="StakesPageLabel1" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            <Style TargetType="Label" x:Key="StakePageLabel2">
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Medium"/>
+            <Style x:Key="StakePageLabel2" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
             </Style>
-            <Style TargetType="Label" x:Key="StakePeriodLabel2">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Medium"/>
-            </Style>
-
-            <!--STYLES FOR BUTTONS-->
-            <Style TargetType="Button" x:Key="SteelBlueButtonsStyle">
-                <Setter Property="CornerRadius" Value="6"/>
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BackgroundColor" Value="Black"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Style x:Key="StakePeriodLabel2" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
             </Style>
 
+            <!--  STYLES FOR BUTTONS  -->
+            <Style x:Key="SteelBlueButtonsStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
 
 
 
-            <Style TargetType="Button" x:Key="WelcomePageButtonsStyle">
-                <Setter Property="CornerRadius" Value="6"/>
-                <Setter Property="WidthRequest" Value="250"/>
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BackgroundColor" Value="SteelBlue"/>
+            <Style x:Key="WelcomePageButtonsStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="WidthRequest" Value="250" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="SteelBlue" />
             </Style>
-            <Style TargetType="Button" x:Key="WelcomePageButtonsStyle2">
-                <Setter Property="CornerRadius" Value="6"/>
-                <Setter Property="WidthRequest" Value="250"/>
-                <Setter Property="TextColor" Value="#063cba"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderColor" Value="White"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BackgroundColor" Value="White"/>
+            <Style x:Key="WelcomePageButtonsStyle2" TargetType="Button">
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="WidthRequest" Value="250" />
+                <Setter Property="TextColor" Value="#063cba" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
-            <Style TargetType="Button" x:Key="SignInPageButtonsStyle">
-                <Setter Property="CornerRadius" Value="15"/>
-                <Setter Property="WidthRequest" Value="300"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BorderColor" Value="DarkGray"/>
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Style x:Key="SignInPageButtonsStyle" TargetType="Button">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="WidthRequest" Value="300" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="BorderColor" Value="DarkGray" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
-            <Style TargetType="Button" x:Key="WalletPageButtonsStyle">
-                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="HeightRequest" Value="20"/>
-                <Setter Property="WidthRequest" Value="20"/>
-            </Style>
-
-            <!--STYLES FOR FRAMES-->
-            <Style TargetType="Frame" x:Key="PasswordFrameStyle">
-                <Setter Property="CornerRadius" Value="6"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="HeightRequest" Value="50"/>
-                <Setter Property="HasShadow" Value="False"/>
-                <Setter Property="BorderColor" Value="DarkGray"/>
-            </Style>
-            <Style TargetType="Frame" x:Key="WalletFrameStyle1">
-                <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="Padding" Value="8"/>
-                <Setter Property="HasShadow" Value="True"/>
-                <Setter Property="BorderColor" Value="LightGray"/>
-            </Style>
-            <Style TargetType="Frame" x:Key="WalletFrameStyle2">
-                <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="HasShadow" Value="True"/>
-                <Setter Property="BorderColor" Value="LightGray"/>
-            </Style>
-            <Style TargetType="Frame" x:Key="FramesStakesPageStyle">
-                <Setter Property="HasShadow" Value="True"/>
-                <Setter Property="BorderColor" Value="DarkGray"/>
-                <Setter Property="Padding" Value="0"/>
+            <Style x:Key="WalletPageButtonsStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="HeightRequest" Value="20" />
+                <Setter Property="WidthRequest" Value="20" />
             </Style>
 
-            <!--STYLES FOR CUSTOM ENTRIES-->
-         
-            <Style TargetType="cntrl:RendererEntry" x:Key="SignInEntryStyle">
-                <Setter Property="WidthRequest" Value="300"/>
-                <Setter Property="Keyboard" Value="Numeric"/>
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="HorizontalTextAlignment" Value="Start"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="PlaceholderColor" Value="White"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <!--  STYLES FOR FRAMES  -->
+            <Style x:Key="PasswordFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BorderColor" Value="DarkGray" />
             </Style>
-            <Style TargetType="cntrl:RendererEntry" x:Key="WalletPageEntryStyle">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="PlaceholderColor" Value="DarkGray"/>
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+            <Style x:Key="WalletFrameStyle1" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Padding" Value="8" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BorderColor" Value="LightGray" />
             </Style>
-
-            <!--STYLES FOR SCROLL VIEW-->
-            <Style TargetType="ScrollView" x:Key="WalletPageScrollViewStyle">
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="0,10,0,10"/>
-
+            <Style x:Key="WalletFrameStyle2" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BorderColor" Value="LightGray" />
             </Style>
-            <Style TargetType="ScrollView" x:Key="TransactionPageScrollViewStyle">
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="0,0,0,0"/>
-
+            <Style x:Key="FramesStakesPageStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BorderColor" Value="DarkGray" />
+                <Setter Property="Padding" Value="0" />
             </Style>
 
-            <!--STYLES FOR LIST VIEW-->
-            <Style TargetType="ListView" x:Key="WalletPageListViewStyle">
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="HeightRequest" Value="400"/>
-            </Style>
-            <Style TargetType="ListView" x:Key="ListViewStakesPageStyle">
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="RowHeight" Value="120"/>
-                <Setter Property="SeparatorVisibility" Value="Default"/>
-                <Setter Property="SelectionMode" Value="None"/>
+            <!--  STYLES FOR CUSTOM ENTRIES  -->
 
+            <Style x:Key="SignInEntryStyle" TargetType="cntrl:RendererEntry">
+                <Setter Property="WidthRequest" Value="300" />
+                <Setter Property="Keyboard" Value="Numeric" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="PlaceholderColor" Value="White" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            <Style TargetType="ListView" x:Key="ListViewTransactionPageStyle">
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="RowHeight" Value="80"/>
-                <Setter Property="SeparatorVisibility" Value="None"/>
-                <Setter Property="SelectionMode" Value="None"/>
-                <Setter Property="HasUnevenRows" Value="True"/>
+            <Style x:Key="WalletPageEntryStyle" TargetType="cntrl:RendererEntry">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="PlaceholderColor" Value="DarkGray" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
-            <!--STYLES FOR STACKLAYOUT VIEW-->
-            <Style TargetType="StackLayout" x:Key="StacklayoutWalletPageViewStyle">
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
-                <Setter Property="Margin" Value="10,0,10,10"/>
-                <Setter Property="BackgroundColor" Value="White"/>
+            <!--  STYLES FOR SCROLL VIEW  -->
+            <Style x:Key="WalletPageScrollViewStyle" TargetType="ScrollView">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="0,10,0,10" />
+
+            </Style>
+            <Style x:Key="TransactionPageScrollViewStyle" TargetType="ScrollView">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+
             </Style>
 
-            <!--STYLES FOR GRID VIEW-->
-            <Style TargetType="Grid" x:Key="GridViewWalletPageStyle1">
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="Margin" Value="0,0,0,0"/>
+            <!--  STYLES FOR LIST VIEW  -->
+            <Style x:Key="WalletPageListViewStyle" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="400" />
             </Style>
-            <Style TargetType="Grid" x:Key="GridViewStakesPageStyle">
-                <Setter Property="Margin" Value="10,10,10,0"/>
+            <Style x:Key="ListViewStakesPageStyle" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="RowHeight" Value="120" />
+                <Setter Property="SeparatorVisibility" Value="Default" />
+                <Setter Property="SelectionMode" Value="None" />
+
             </Style>
-            <Style TargetType="Grid" x:Key="GridViewStakesPageStyle1">
-                <Setter Property="RowSpacing" Value="0"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="Margin" Value="20,20,20,0"/>
+            <Style x:Key="ListViewTransactionPageStyle" TargetType="ListView">
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="RowHeight" Value="80" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="SelectionMode" Value="None" />
+                <Setter Property="HasUnevenRows" Value="True" />
             </Style>
-            <Style TargetType="Grid" x:Key="GridViewTransactionPageStyle1">
-                <Setter Property="RowSpacing" Value="2"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="Margin" Value="0,20,0,20"/>
+
+            <!--  STYLES FOR STACKLAYOUT VIEW  -->
+            <Style x:Key="StacklayoutWalletPageViewStyle" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
+                <Setter Property="Margin" Value="10,0,10,10" />
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
-            <Style TargetType="Grid" x:Key="GridViewStakesPageStyle2">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="RowSpacing" Value="2"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="20,20,0,20"/>
+
+            <!--  STYLES FOR GRID VIEW  -->
+            <Style x:Key="GridViewWalletPageStyle1" TargetType="Grid">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="Margin" Value="0,0,0,0" />
             </Style>
-            <Style TargetType="Grid" x:Key="GridViewSettingsPageStyle">
-                <Setter Property="RowSpacing" Value="2"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
-                <Setter Property="Margin" Value="20,20,20,20"/>
+            <Style x:Key="GridViewStakesPageStyle" TargetType="Grid">
+                <Setter Property="Margin" Value="10,10,10,0" />
             </Style>
+            <Style x:Key="GridViewStakesPageStyle1" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="0" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="20,20,20,0" />
+            </Style>
+            <Style x:Key="GridViewTransactionPageStyle1" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="2" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="0,20,0,20" />
+            </Style>
+            <Style x:Key="GridViewStakesPageStyle2" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="RowSpacing" Value="2" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="20,20,0,20" />
+            </Style>
+            <Style x:Key="GridViewSettingsPageStyle" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="2" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin" Value="20,20,20,20" />
+            </Style>
+            <LinearGradientBrush x:Key="DarkGradient" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0.1" Color="#1A1930" />
+                <GradientStop Offset="1.0" Color="#3C3636" />
+            </LinearGradientBrush>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

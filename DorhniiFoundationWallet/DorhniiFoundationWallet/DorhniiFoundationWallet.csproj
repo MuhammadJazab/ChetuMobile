@@ -18,13 +18,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\MonumentExtendedRegular.otf" />
+    <None Remove="Resources\Fonts\MonumentExtendedUltrabold.otf" />
+    <None Remove="Resources\Fonts\PoppinsRegular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\MonumentExtendedRegular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\MonumentExtendedUltrabold.otf" />
+    <EmbeddedResource Include="Resources\Fonts\PoppinsRegular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.4.0" />
+    <PackageReference Include="Nethereum.Web3" Version="4.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="StyleCop.MSBuild" Version="6.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Json" Version="6.0.0" />
+    <PackageReference Include="WalletConnectSharp.Core" Version="1.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
@@ -71,7 +85,13 @@
     <EmbeddedResource Update="Views\AddWalletPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\BrowserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ChangePasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DappPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Loader.xaml">

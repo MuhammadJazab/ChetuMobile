@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.DappPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customrenderers="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:DappVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid
+            BackgroundColor="Black"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Margin="10,30,5,0"
+                    Padding="5,0,10,0"
+                    BackgroundColor="#29292a"
+                    CornerRadius="3"
+                    HasShadow="False">
+                    <!--  Background="{StaticResource DarkGradient}"  -->
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <customrenderers:RendererEntry
+                            FontFamily="PoppinsRegular"
+                            FontSize="12"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Url"
+                            Placeholder="Search, or enter website URL"
+                            PlaceholderColor="White"
+                            ReturnCommand="{Binding GoCommand}"
+                            Text="{Binding UrlText}"
+                            TextColor="White" />
+                        <Image HorizontalOptions="End" Source="{Binding SearchIcon}" />
+                    </StackLayout>
+                </Frame>
+                <Image
+                    Grid.Column="1"
+                    Margin="0,30,10,0"
+                    HeightRequest="40"
+                    Source="scan.png"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding WCScanCommand}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <ScrollView
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource TransactionPageScrollViewStyle}">
+                    <StackLayout Margin="10,24,10,0" Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                CharacterSpacing="2"
+                                FontFamily="MEUltraBold"
+                                FontSize="18"
+                                HorizontalOptions="Start"
+                                Text="{x:Static resource:Resource.txtSWAPS}"
+                                TextColor="White" />
+                            <Label
+                                FontFamily="PoppinsRegular"
+                                FontSize="Small"
+                                HorizontalOptions="EndAndExpand"
+                                Text="see all"
+                                TextColor="White"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                        <Frame
+                            Margin="0,10,0,0"
+                            Padding="10,30,10,20"
+                            Background="{x:StaticResource DarkGradient}"
+                            CornerRadius="5"
+                            HasShadow="False">
+                            <Grid
+                                HorizontalOptions="FillAndExpand"
+                                RowSpacing="8"
+                                VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Frame
+                                    Grid.Row="0"
+                                    Margin="0,5,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            HeightRequest="40"
+                                            Source="PancakeSwapLogo.png"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtPancakeSwap}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtPancakeSwapDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding PancakeSwapCommand}" NumberOfTapsRequired="1" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Line
+                                    Grid.Row="1"
+                                    Margin="10,10,10,0"
+                                    BackgroundColor="#727074"
+                                    HeightRequest="1" />
+
+                                <Frame
+                                    Grid.Row="2"
+                                    Margin="0,20,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            HeightRequest="40"
+                                            Source="uniswap.png"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtUniswap}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtUniswapDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding UniSwapCommand}" NumberOfTapsRequired="1" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Line
+                                    Grid.Row="3"
+                                    Margin="10,10,10,0"
+                                    BackgroundColor="#727074"
+                                    HeightRequest="1" />
+
+                                <Frame
+                                    Grid.Row="4"
+                                    Margin="0,20,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            HeightRequest="40"
+                                            Source="vexchange.png"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtVexchange}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtVexchangeDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+
+                            </Grid>
+                        </Frame>
+
+                        <StackLayout Margin="0,44,0,0" Orientation="Horizontal">
+                            <Label
+                                CharacterSpacing="2"
+                                FontFamily="MEUltraBold"
+                                FontSize="18"
+                                HorizontalOptions="Start"
+                                Text="{x:Static resource:Resource.txtBRIDGES}"
+                                TextColor="White" />
+                            <Label
+                                FontFamily="PoppinsRegular"
+                                FontSize="Small"
+                                HorizontalOptions="EndAndExpand"
+                                Text="see all"
+                                TextColor="White"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                        <Frame
+                            Margin="0,10,0,0"
+                            Padding="10,30,10,20"
+                            Background="{x:StaticResource DarkGradient}"
+                            CornerRadius="5"
+                            HasShadow="False">
+                            <Grid
+                                HorizontalOptions="FillAndExpand"
+                                RowSpacing="8"
+                                VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Frame
+                                    Grid.Row="0"
+                                    Margin="0,5,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Frame
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HeightRequest="40"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40">
+                                            <Image
+                                                HorizontalOptions="Center"
+                                                Source="bnb.png"
+                                                VerticalOptions="Center" />
+                                        </Frame>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtBinanceBridge}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtBinanceBridgeDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+                                <Line
+                                    Grid.Row="1"
+                                    Margin="10,10,10,0"
+                                    BackgroundColor="#727074"
+                                    HeightRequest="1" />
+
+                                <Frame
+                                    Grid.Row="2"
+                                    Margin="0,20,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Frame
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HeightRequest="40"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40">
+                                            <Image
+                                                HorizontalOptions="Center"
+                                                Source="polygon.png"
+                                                VerticalOptions="Center" />
+                                        </Frame>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtPolygonBridge}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtPolygonBridgeDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+
+                            </Grid>
+                        </Frame>
+
+                        <StackLayout Margin="0,44,0,0" Orientation="Horizontal">
+                            <Label
+                                CharacterSpacing="2"
+                                FontFamily="MEUltraBold"
+                                FontSize="18"
+                                HorizontalOptions="Start"
+                                Text="{x:Static resource:Resource.txtDeFi}"
+                                TextColor="White" />
+                            <Label
+                                FontFamily="PoppinsRegular"
+                                FontSize="Small"
+                                HorizontalOptions="EndAndExpand"
+                                Text="see all"
+                                TextColor="White"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                        <Frame
+                            Margin="0,10,0,0"
+                            Padding="10,30,10,20"
+                            Background="{x:StaticResource DarkGradient}"
+                            CornerRadius="5"
+                            HasShadow="False">
+                            <Grid
+                                HorizontalOptions="FillAndExpand"
+                                RowSpacing="8"
+                                VerticalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Frame
+                                    Grid.Row="0"
+                                    Margin="0,5,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            HeightRequest="40"
+                                            Source="venus.png"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtVenus}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtVenusDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+                                <Line
+                                    Grid.Row="1"
+                                    Margin="10,10,10,0"
+                                    BackgroundColor="#727074"
+                                    HeightRequest="1" />
+
+                                <Frame
+                                    Grid.Row="2"
+                                    Margin="0,20,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            HeightRequest="40"
+                                            Source="aave.png"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtAave}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtAaveDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+                                <Line
+                                    Grid.Row="3"
+                                    Margin="10,10,10,0"
+                                    BackgroundColor="#727074"
+                                    HeightRequest="1" />
+
+                                <Frame
+                                    Grid.Row="4"
+                                    Margin="0,20,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Frame
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            Padding="0"
+                                            CornerRadius="20"
+                                            HasShadow="False"
+                                            HeightRequest="40"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40">
+                                            <Image
+                                                HorizontalOptions="Center"
+                                                Source="curve.png"
+                                                VerticalOptions="Center" />
+                                        </Frame>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtCurve}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtCurveDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+
+                                <Line
+                                    Grid.Row="5"
+                                    Margin="10,10,10,0"
+                                    BackgroundColor="#727074"
+                                    HeightRequest="1" />
+
+                                <Frame
+                                    Grid.Row="6"
+                                    Margin="0,20,10,0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="0,0,6,0"
+                                            HeightRequest="40"
+                                            Source="yearnfinance.png"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            CharacterSpacing="1.5"
+                                            FontFamily="MERegular"
+                                            FontSize="16"
+                                            Text="{x:Static resource:Resource.txtYearnFinance}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontFamily="PoppinsRegular"
+                                            FontSize="9"
+                                            LineHeight="1.1"
+                                            Text="{x:Static resource:Resource.txtYearnFinanceDescription}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </Grid>
+                                </Frame>
+
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+                <views:TabbedViewPage
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

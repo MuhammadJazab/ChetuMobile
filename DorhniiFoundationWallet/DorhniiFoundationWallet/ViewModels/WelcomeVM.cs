@@ -137,7 +137,8 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new PasswordSetupPage());
+                //await Application.Current.MainPage.Navigation.PushModalAsync(new PasswordSetupPage());
+                await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
             }
             catch (Exception ex)
             {
