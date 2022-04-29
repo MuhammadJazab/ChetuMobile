@@ -1,5 +1,10 @@
-﻿using DorhniiFoundationWallet.Helpers;
+﻿using DorhniiFoundationWallet.DependencyServices;
+using DorhniiFoundationWallet.Helpers;
+using DorhniiFoundationWallet.IServices;
+using DorhniiFoundationWallet.Models.APIRequestModels;
+using DorhniiFoundationWallet.Models.APIResponseModels;
 using DorhniiFoundationWallet.Resources;
+using DorhniiFoundationWallet.Services;
 using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
 using System;
@@ -13,16 +18,24 @@ namespace DorhniiFoundationWallet.ViewModels
     /// <summary>
     /// This class is used for setup of passwords.
     /// </summary>
-    public class PasswordSetupVM : ObservableObject
+    public class PasswordSetupVM : BaseViewModel
     {
         #region Private Properties
         private string password;
         private string confirmPassword;
-        
+        ILoginService passwordapiService;
+        PasswordSetupResponseModel PasswordSetupResponseModele = null;
+
         #endregion
-        #region Public Properties       
+
+        #region Public Properties
+        public string DohrniiTextLogo { get; set; } = StringConstant.DohrniiTextLogo;
+        public string EntryLockICon { get; set; } = StringConstant.EntryLockICon;
+        public string BackWardArrowImage { get; set; } = StringConstant.BackwardPasswordPage;
         public string AppIcon { get; set; } = StringConstant.AppIcon;
         public bool userRestore;
+        public bool IsDeviceiOS { get; set; }
+        public ICommand BackButtonCommand { get; set; }
         public ICommand CreatePasswordCommand { get; set; }       
         public string ConfirmPassword
         {
@@ -50,23 +63,49 @@ namespace DorhniiFoundationWallet.ViewModels
         }
         public bool IsRestoreValidate { get; private set; }
         #endregion
-        #region public Method   
+
+        #region Constructor
         /// <summary>
         /// This method is used to setup the passwords (class constructor).
         /// </summary>
         public PasswordSetupVM()
         {
-           try
+            try
             {
                 CreatePasswordCommand = new Command(CreatePasswordClick);
-                
+                passwordapiService = new LoginService();
+                BackButtonCommand = new Command(BackButtonClick);
+                var platform = DeviceInfo.Platform;
+                if (platform == DevicePlatform.iOS)
+                {
+                    IsDeviceiOS = true;
+                }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
 
         }
+        #endregion
+
+        #region public Method
+        /// <summary>
+        /// This method is used to click on Back Button
+        /// </summary>       
+        public async void BackButtonClick()
+        {
+            try
+            {
+                _ = await Application.Current.MainPage.Navigation.PopModalAsync();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
 
         /// <summary>
         /// Method to check the all password validation 
@@ -127,23 +166,59 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (PasswordValidation())
                 {
-                    IsRestoreValidate = Preferences.Get("IsRestoreValidate", IsRestoreValidate);
-                    Preferences.Set(StringConstant.DevicePassword, Password.Trim());                  
-                    if (IsRestoreValidate)
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                     {
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
-                        IsRestoreValidate = false;
-                        Preferences.Set("IsRestoreValidate", IsRestoreValidate);
+                        IsLoading = true;
+                        PasswordSetupRequestModel passwordSeupRequest = new PasswordSetupRequestModel
+                        {
+                            Password = password,
+                            DeviceName = DependencyService.Get<IDeviceIdGetter>().GetDeviceIDDetail(),
+                            Restore= Preferences.Get(StringConstant.IsRestoreValidate, false),
+                        };
+                        PasswordSetupResponseModele = await passwordapiService.CreatePasswrod(passwordSeupRequest);
+                        if (PasswordSetupResponseModele != null)
+                        {
+                            if (PasswordSetupResponseModele.result && PasswordSetupResponseModele.status == 200)
+                            {
+                                Preferences.Set(StringConstant.UserID, PasswordSetupResponseModele.userId);
+
+                                IsRestoreValidate = Preferences.Get(StringConstant.IsRestoreValidate, false); //check did user comes via restore option 
+                                if (IsRestoreValidate)
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtWalletRestored, PasswordSetupResponseModele.message, Resource.txtOk);
+                                    await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
+                                    IsRestoreValidate = false;
+                                    Preferences.Set(StringConstant.IsRestoreValidate, IsRestoreValidate);
+                                }
+                                else
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtWalletCreated, PasswordSetupResponseModele.message, Resource.txtOk);
+                                    await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhrasePage());
+                                }
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, PasswordSetupResponseModele.message, Resource.txtOk);                               
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        }
                     }
                     else
                     {
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhrasePage());
-                    }                                        
+                        await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion

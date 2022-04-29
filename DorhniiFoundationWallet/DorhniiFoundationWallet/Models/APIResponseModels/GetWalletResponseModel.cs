@@ -9,4 +9,4 @@ namespace DorhniiFoundationWallet.Models.APIResponseModels
         public List<AddWalletResponseModel> Data { get; set; }
     }
 }
-    
+

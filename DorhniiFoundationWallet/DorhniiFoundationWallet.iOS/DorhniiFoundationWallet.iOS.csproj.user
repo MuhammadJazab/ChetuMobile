@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Local Device</SelectedDevice>
     <ActiveDebugProfile>Local Device</ActiveDebugProfile>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

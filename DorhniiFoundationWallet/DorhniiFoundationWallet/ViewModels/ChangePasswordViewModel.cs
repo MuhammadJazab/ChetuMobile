@@ -1,9 +1,12 @@
 ﻿using DorhniiFoundationWallet.Helpers;
+using DorhniiFoundationWallet.IServices;
+using DorhniiFoundationWallet.Models.APIRequestModels;
+using DorhniiFoundationWallet.Models.APIResponseModels;
 using DorhniiFoundationWallet.Resources;
+using DorhniiFoundationWallet.Services;
+using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -11,14 +14,22 @@ using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.ViewModels
 {
-   public class ChangePasswordViewModel : ObservableObject
+    /// <summary>
+    /// This clas is used to change Password function
+    /// </summary>
+    public class ChangePasswordViewModel : BaseViewModel
     {
-        #region private properties
+        #region Single Property
+        readonly ILoginService changePasswordApiService;
+        private APIResponseModel APIResponseModel = null;
+
+        #endregion
+
+        #region full Property
         private string oldPassword;
         private string newPassword;
         private string confirmNewPassword;
-        #endregion 
-        #region public  properties
+        public string BackWardArrowImage { get; set; } = StringConstant.BackwardPasswordPage;
         public string OldPassword
         {
             get => oldPassword;
@@ -28,18 +39,6 @@ namespace DorhniiFoundationWallet.ViewModels
                 {
                     oldPassword = value;
                     OnPropertyChanged(nameof(OldPassword));
-                }
-            }
-        }
-        public string NewPassword
-        {
-            get => newPassword;
-            set
-            {
-                if (newPassword != value)
-                {
-                    newPassword = value;
-                    OnPropertyChanged(nameof(NewPassword));
                 }
             }
         }
@@ -55,47 +54,37 @@ namespace DorhniiFoundationWallet.ViewModels
                 }
             }
         }
+        public string NewPassword
+        {
+            get => newPassword;
+            set
+            {
+                if (newPassword != value)
+                {
+                    newPassword = value;
+                    OnPropertyChanged(nameof(NewPassword));
+                }
+            }
+        }
 
-
-        public ICommand SavePassword { get; set; }
         #endregion
+
+        #region Constructor
+
         /// <summary>
         /// Class Constructor
         /// </summary>
         public ChangePasswordViewModel()
         {
             SavePassword = new Command(SavePasswordclick);
-        }
-        public bool PasswordValidation()
-        {
-            bool result = false;
-            try
-            {
-                if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmNewPassword))
-                {
-                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtEmptyPasswords, Resource.msgEmptyPasswords, Resource.txtOk);
-                }
-                else if (!Utilities.IsValidPassword(newPassword) || !Utilities.IsValidPassword(confirmNewPassword))
-                {
-                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgPasswordValidation, Resource.txtOk);
-                }
-                else if (!(newPassword == confirmNewPassword))
-                {
-                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgConfirmPassword, Resource.txtOk);
-                }
-                else
-                {
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-                result = false;
-            }
-            return result;
+            changePasswordApiService = new LoginService();
+            BackButtonCommand = new Command(BackCommandClick);
         }
 
+
+        #endregion
+
+        #region Method
         /// <summary>
         ///Method to check if password is valid or not
         /// </summary>
@@ -112,30 +101,98 @@ namespace DorhniiFoundationWallet.ViewModels
                 return false;
             }
         }
-
+        /// <summary>
+        /// Bacck to setting page
+        /// </summary>
+        public async void BackCommandClick()
+        {
+            try
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new SettingPageNew());
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
         /// <summary>
         /// Save Change Password Method
         /// </summary>
         public async void SavePasswordclick()
         {
-            var devicePassword = Preferences.Get("Password", " ");
-            if (oldPassword == devicePassword && PasswordValidation())
+            try
             {
-                Preferences.Set(StringConstant.DevicePassword, NewPassword.Trim());
-                _= Application.Current.MainPage.DisplayAlert(Resource.txtSuccessful,Resource.msgPasswordChanged, Resource.txtOk);
-                await Application.Current.MainPage.Navigation.PopModalAsync();
-            }
-            else
-            {
-                if(oldPassword == devicePassword)
+                if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmNewPassword) || string.IsNullOrEmpty(oldPassword))
                 {
-                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.msgPasswordValidation, Resource.txtOk);
+                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtEmptyPasswords, Resource.msgEmptyPasswords, Resource.txtOk);
+                }
+                else if (!Utilities.IsValidPassword(newPassword))
+                {
+                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgPasswordValidation, Resource.txtOk);
+                }
+                else if (!(newPassword == confirmNewPassword))
+                {
+                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgConfirmPassword, Resource.txtOk);
                 }
                 else
                 {
-                    _ = Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.msgConfirmPassword, Resource.txtOk);
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
+                        IsLoading = true;
+                        ChangePasswordRequestModel changePasswordRequest = new ChangePasswordRequestModel
+                        {
+                            OldPassword = OldPassword,
+                            NewPassword = NewPassword,
+                            UserId = Preferences.Get(StringConstant.UserID, string.Empty),
+                        };
+                        APIResponseModel = await changePasswordApiService.ChangePassword(changePasswordRequest);
+                        if (APIResponseModel != null)
+                        {
+                            if (APIResponseModel.Result && APIResponseModel.Status == 200)
+                            {
+                                if (APIResponseModel != null)
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtSuccessful, APIResponseModel.Message, Resource.txtOk);
+                                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                                }
+                                else
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, APIResponseModel.Message, Resource.txtOk);                                    
+                                }
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, APIResponseModel.Message, Resource.txtOk);                                
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, APIResponseModel.Message, Resource.txtOk);                            
+                        }
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);                     
+                    }
                 }
             }
+            catch (FormatException ex)
+            {
+                Crashes.TrackError(ex);
+            }
+            finally
+            {
+                IsLoading = false; 
+            }
+
+
         }
+        #endregion
+
+        #region Command
+        public ICommand SavePassword { get; set; }
+        public ICommand BackButtonCommand { get; set; }
+
+        #endregion
     }
 }

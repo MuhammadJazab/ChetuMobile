@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DorhniiFoundationWallet.Views.Loader">
   <ContentView.Content>
-        <StackLayout BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
-            <ActivityIndicator x:Name="activity" Color="SkyBlue" BackgroundColor="Transparent" IsVisible="True" IsRunning="True">
-                <ActivityIndicator.Scale>
-                    <OnPlatform x:TypeArguments="x:Double" iOS="2.0" Android="1.0" />
-                </ActivityIndicator.Scale>
-            </ActivityIndicator>
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="Black" Opacity="0.3"/>
+            <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator IsEnabled="True" IsVisible="True" IsRunning="True" Color="SkyBlue"/>
+            </Grid>
+        </Grid>
     </ContentView.Content>
 </ContentView>

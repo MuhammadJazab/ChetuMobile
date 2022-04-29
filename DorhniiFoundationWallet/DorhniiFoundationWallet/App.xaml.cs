@@ -1,4 +1,6 @@
-﻿using DorhniiFoundationWallet.Helpers;
+﻿
+using DorhniiFoundationWallet.DependencyServices;
+using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -11,19 +13,11 @@ namespace DorhniiFoundationWallet
        {
             InitializeComponent();
             Preferences.Set(StringConstant.TabKeyId, 1);
-            MainPage = new NavigationPage(new WalletPage());
-            #region
-            string password = Preferences.Get(StringConstant.DevicePassword, string.Empty);
-            if (!string.IsNullOrEmpty(password))
-            {
-                MainPage = new NavigationPage(new WelcomePage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new WelcomePage());
-            }
+            #region            
+            bool IsAcountExist = Preferences.Get(StringConstant.AcountFlag, false);
+            MainPage = IsAcountExist ? new NavigationPage(new LoginPage()) : new NavigationPage(new WelcomePage());
             #endregion
-       }
+        }
 
         protected override void OnStart()
         {

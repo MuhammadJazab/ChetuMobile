@@ -15,7 +15,6 @@ namespace DorhniiFoundationWallet.Views
         {
             VM.IsLoading = false;
         }
-
         private void WebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             VM.IsLoading = true;

@@ -8,7 +8,7 @@ namespace DorhniiFoundationWallet.Helpers
     /// <summary>
     /// Class to change the value of property at runtime and reflect changes on UI
     /// </summary>
-    public class ObservableObject : INotifyPropertyChanged
+    public class InotifyPropertyChanged : INotifyPropertyChanged
     {  
         private bool isLoading;
         public bool IsLoading

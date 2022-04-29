@@ -2,24 +2,25 @@
 using DorhniiFoundationWallet.Resources;
 using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
-using System;
+using DorhniiFoundationWallet.Views;
+using System.Windows.Input;
 using Xamarin.Essentials;
+using System;
 using Xamarin.Forms;
-
 namespace DorhniiFoundationWallet.ViewModels
 {
     /// <summary>
     /// This class is for privacy policy
     /// </summary>
-    public class PrivacyPolicyVM : ObservableObject
+    public class PrivacyPolicyVM : BaseViewModel
     {
         #region Private Class Properties
         private string termAndConditionURL;
-        private Command backCommand;
+        public ICommand BackOnPrivacy { get; set; }
         #endregion
 
         #region Public Class Properties
-        
+
         public string TermAndConditionURL
         {
             get { return termAndConditionURL; }
@@ -29,15 +30,24 @@ namespace DorhniiFoundationWallet.ViewModels
                 OnPropertyChanged(nameof(TermAndConditionURL));
             }
         }
-        
+
         #endregion
 
+        #region Constructor
+
+
+
+
+        #endregion
+
+        #region Method
         /// <summary>
         /// This is a class constructor to initialize class property
         /// </summary>
         public PrivacyPolicyVM()
         {
             GetTermAndConditionURL();
+            BackOnPrivacy = new Command(BackCommandClick);
         }
 
         /// <summary>
@@ -75,25 +85,18 @@ namespace DorhniiFoundationWallet.ViewModels
                 });
             }
         }
+        #endregion
 
+        #region Command
         /// <summary>
         /// This command is used for navigate to back Page
         /// </summary>
-        public Command BackCommand
+        public async void BackCommandClick()
         {
-            get
-            {
-                if (backCommand == null)
-                {
-                    backCommand = new Command(async () =>
-                    {
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new SettingPageNew());
-                    });
-                }
+            await Application.Current.MainPage.Navigation.PushModalAsync(new SettingPageNew());
 
-                return backCommand;
-            }
         }
+        #endregion       
     }
 }
 

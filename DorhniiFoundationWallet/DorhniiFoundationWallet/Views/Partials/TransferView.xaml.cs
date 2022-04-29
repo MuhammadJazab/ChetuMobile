@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace DorhniiFoundationWallet.Views.Partials
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TransferView : ContentView
+    {
+        public TransferView()
+        {
+            InitializeComponent();
+        }
+    }
+}

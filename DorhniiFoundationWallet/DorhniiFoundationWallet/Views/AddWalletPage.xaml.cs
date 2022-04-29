@@ -29,7 +29,6 @@ namespace DorhniiFoundationWallet.Views
             return true;
         }
 
-
         private void RendererEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             try

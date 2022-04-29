@@ -4,275 +4,207 @@
              xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels" 
              xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
               xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+             ios:Page.UseSafeArea="true"
+             x:Name="StakePage"
              NavigationPage.HasNavigationBar="False"
              x:Class="DorhniiFoundationWallet.Views.StakePageNew">
     <ContentPage.BindingContext>
         <vm:StakeNewVM x:Name="StakePageVM"/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
-            <Grid RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Frame Grid.Row="0" BackgroundColor="#262629" BorderColor="#302F2F" >
-                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25" HorizontalOptions="Start" VerticalOptions="EndAndExpand" TextColor="White"/>
-                </Frame>
-                <Frame Grid.Row="1" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,20,10,20" HasShadow="False" CornerRadius="5" IsVisible="{Binding IsStakeOptionVisible}" >
-                    <Grid Padding="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.3*"/>
-                            <RowDefinition Height="0.1*"/>
-                            <RowDefinition Height="0.2*"/>
-                            <RowDefinition Height="0.15*"/>
-                            <RowDefinition Height="0.35*"/>
-                        </Grid.RowDefinitions>
-                        <StackLayout  Grid.Row="0" VerticalOptions="Center" Spacing="0" >
-                            <Label Text="{x:Static resource:Resource.txtBalanceCapital}" FontAttributes="Bold" FontSize="20" TextColor="White"/>
-                            <Label Text="{x:Static resource:Resource.txtBalanceStake }" TextColor="Gray" FontSize="25" HorizontalOptions="Start"/>
+        <Grid>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" BackgroundColor="#262629" BorderColor="#302F2F" >
+                        <Label Grid.Row="0" Text="{x:Static resource:Resource.txtStakingCapital}" FontFamily="{StaticResource MonumnentRegular}" FontAttributes="Bold" FontSize="21" HorizontalOptions="Start" VerticalOptions="EndAndExpand" TextColor="White"/>
+                    </Frame>
+                    <Frame Grid.Row="1" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,10,10,10" HasShadow="False" CornerRadius="10" IsVisible="{Binding IsStakeOptionVisible}" >
+                        <ScrollView>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.3*"/>
+                                    <RowDefinition Height="0.15*"/>
+                                    <RowDefinition Height="0.12*"/>
+                                    <RowDefinition Height="0.38*"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout  Grid.Row="0" VerticalOptions="Center" Spacing="0" >
+                                    <Label Text="{x:Static resource:Resource.txtBalanceCapital}" FontFamily="{StaticResource MonumnentRegular}" FontSize="12" TextColor="White"/>
+                                    <Label Text="{Binding UsdValue}" FontFamily="{StaticResource MonumnentRegular}"  FontSize="19" TextColor="White"  HorizontalOptions="Start"/>
+                                </StackLayout>
+                                <Frame  Grid.Row="1" Grid.ColumnSpan="2" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#1F1E1E" BorderColor="DarkGray" >
+                                    <StackLayout Margin="5,0,10,0" Padding="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <cntrl:RendererEntry x:Name="StakeEntry"  Unfocused="StakeEntry_Unfocused" Placeholder="{Binding FormattedAvailableToken}" Text="{Binding StakeAmountEntry}" TextChanged="StakeEntry_TextChanged" FontFamily="Poppins" FontSize="34" PlaceholderColor="White" HorizontalOptions="StartAndExpand" WidthRequest="250" VerticalTextAlignment="Center" TextColor="White"/>
+                                        <Label Text="{Binding CoinShortName}" FontFamily="{StaticResource MonumnentRegular}" FontSize="15" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center"  TextColor="White"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame Grid.Row="2" Grid.Column="0" Padding="0" Margin="0,10,0,0" HorizontalOptions="Start" WidthRequest="120" BackgroundColor="Gray" CornerRadius="5">
+                                    <StackLayout Margin="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{x:Static resource:Resource.txtAPR}" VerticalTextAlignment="Center" FontFamily="Poppins" FontSize="12" VerticalOptions="Center" HorizontalOptions="Start" TextColor="White"/>
+                                        <Label Text="{Binding AprRate}" FontFamily="Poppins" FontSize="12" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="White"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame Padding="0"  Grid.Row="2" Grid.Column="1" Margin="0,10,0,0" HorizontalOptions="EndAndExpand" WidthRequest="150" BackgroundColor="Gray" CornerRadius="5" >
+                                    <StackLayout Margin="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                        <Label Text="{x:Static resource:Resource.txtDuraction}" FontFamily="Poppins" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Center" TextColor="White" />
+                                        <Label Text="{Binding MonthDuration}" FontFamily="Poppins" FontSize="12" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="White" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame Grid.Row="3" Grid.Column="0" Margin="0,0,0,20" Padding="0" WidthRequest="80" HeightRequest="30" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="#1F1E1E" CornerRadius="5" BorderColor="Gray">
+                                    <Label Text="{x:Static resource:Resource.txtBackCapital}" FontFamily="Poppins" FontSize="12" Padding="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  TextColor="White"></Label>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BackOptionClick }" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Frame Margin="0,0,0,20" Grid.Row="3" Grid.Column="1" Padding="0" HasShadow="True"  WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="EndAndExpand" CornerRadius="5" >
+                                    <Frame.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="#93cafd" Offset="0.1"/>
+                                            <GradientStop Color="#7792fc" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+                                    <Label Text="{x:Static resource:Resource.txtSTAKE}" Padding="0" FontAttributes="Bold" FontFamily="{StaticResource MonumnentLight}" FontSize="9" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TakeStakeCommand}" NumberOfTapsRequired="1"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </Grid>
+                        </ScrollView>
+                    </Frame>
+                    <!--<ScrollView Grid.Row="1"  Style="{StaticResource TransactionPageScrollViewStyle}" IsVisible="{Binding IsScrollViewVissible}">
+                        <StackLayout x:Name="StakeMaiPage" BindableLayout.ItemsSource="{Binding StakedDetailList }" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  >
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Frame Grid.Row="1" BackgroundColor="#111219" BorderColor="Gray" Style="{Binding EntryFrameStyle}" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="200" CornerRadius="5" IsVisible="{Binding StakeMainPage}" >
+                                                <Grid RowSpacing="0" BackgroundColor="#111219" Padding="5">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                                                        <StackLayout Orientation="Vertical" HorizontalOptions="Start"  WidthRequest="300" Spacing="0">
+                                                            <Label Padding="0" Text="{Binding StakePeriod}" FontFamily="{StaticResource MonumnentRegular}" FontAttributes="Bold" FontSize="24" Margin="0" TextColor="White"/>
+                                                            <Label Padding="0" Text="{x:Static resource:Resource.txtStakingCapital}" FontFamily="{StaticResource MonumnentRegular}" FontAttributes="Bold" Margin="0" FontSize="24"  TextColor="White"/>
+                                                            <Label Padding="0" Text="{Binding TokenMainBalance}" FontAttributes="None" FontFamily="Poppins" FontSize="18" TextColor="White"/>
+                                                        </StackLayout>
+                                                        <Frame Padding="10,5,10,5"  WidthRequest="70" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="Black" BorderColor="#30DFEA" CornerRadius="4" >
+                                                            <Label Text="{Binding PercentageAPR}" FontAttributes="None" Padding="0" FontFamily="Poppins" FontSize="13" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                                        </Frame>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                                        <Frame Margin="5,0,0,5" Padding="0" WidthRequest="120" HeightRequest="25"    VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
+                                                            <Label Text="{x:Static resource:Resource.txtMANAGE}" Padding="0"  FontFamily="{StaticResource MonumnentRegular}" FontSize="9" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+                                                            <Frame.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.ManageCommand, Source={x:Reference StakeMaiPage}}"  CommandParameter="{Binding}"/>
+                                                            </Frame.GestureRecognizers>
+                                                        </Frame>
+                                                        <Frame Margin="5,0,0,5" Padding="0" HasShadow="True"  WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="EndAndExpand" CornerRadius="5" >
+                                                            <Frame.Background>
+                                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                                    <GradientStop Color="#93cafd" Offset="0.1"/>
+                                                                    <GradientStop Color="#7792fc" Offset="1.0"/>
+                                                                </LinearGradientBrush>
+                                                            </Frame.Background>
+                                                            <Label Text="{x:Static resource:Resource.txtSTAKE}"  Padding="0" FontAttributes="Bold" FontFamily="{StaticResource MonumnentRegular}" FontSize="9" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                                            <Frame.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.StakeCommandMainPage, Source={x:Reference StakePage}}" CommandParameter="{Binding}"/>
+                                                            </Frame.GestureRecognizers>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </Frame>
+                                            <Frame Grid.Row="1" BackgroundColor="#111219" BorderColor="Gray" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="400" CornerRadius="5" 
+                                                    IsVisible="{Binding ManagePageMonth}" >
+                                                <Grid RowSpacing="0" BackgroundColor="#111219" Padding="5">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                                                        <StackLayout Orientation="Vertical" HorizontalOptions="Start" WidthRequest="300" Spacing="0">
+                                                            <Label Padding="0" Text="{Binding StakePeriod}" FontFamily="{StaticResource MonumnentRegular}" FontAttributes="Bold" FontSize="24" Margin="0" HorizontalOptions="FillAndExpand"  TextColor="White"/>
+                                                            <Label Padding="0" Text="{x:Static resource:Resource.txtStakingCapital}" FontFamily="{StaticResource MonumnentRegular}" FontAttributes="Bold" Margin="0" FontSize="24"  TextColor="White"/>
+                                                            <Label Padding="0" Text="{Binding TokenMainBalance}" FontAttributes="None" FontFamily="Poppins" FontSize="18" TextColor="White"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Padding="0" HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                                                        <Frame Padding="5" Margin="0,20,0,20" HorizontalOptions="Start" WidthRequest="90" CornerRadius="3" BackgroundColor="Gray" >
+                                                            <Label Text="{Binding PercentageAPR}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#cccbcc"/>
+                                                        </Frame>
+                                                        <Frame Padding="5" Margin="0,20,0,20" WidthRequest="200" HorizontalOptions="EndAndExpand"  CornerRadius="3" BackgroundColor="Gray" >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="{x:Static resource:Resource.txtTotalAprReceived}" FontFamily="Poppins" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="End" TextColor="#cccbcc" />
+                                                                <Label Text="0 DHN" FontFamily="Poppins" FontSize="12" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" TextColor="White" />
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                    <Grid Grid.Row="3" Padding="0" HeightRequest="160" HorizontalOptions="FillAndExpand" Margin="0,10,10,0" BackgroundColor="Red" >
+                                                        <ScrollView>
+                                                            <StackLayout x:Name="StakeManagePage" BindableLayout.ItemsSource="{Binding ManagePageDetailsList}" BackgroundColor="#111219" HorizontalOptions="FillAndExpand" Padding="5">
+                                                                <BindableLayout.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Frame  BackgroundColor="#111219" HorizontalOptions="FillAndExpand" Padding="5" BorderColor="DarkGray" CornerRadius="5">
+                                                                            <StackLayout Orientation="Horizontal">
+                                                                                <Frame Padding="2" WidthRequest="100"  HorizontalOptions="StartAndExpand" BackgroundColor="#bfbfc1" CornerRadius="2">
+                                                                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                                                                        <Label Text="{Binding StakedAmount}" FontFamily="{StaticResource MonumnentRegular}" VerticalTextAlignment="Center" FontSize="10" TextColor="Black"  />
+                                                                                        <Label Text="DHN" FontFamily="{StaticResource MonumnentRegular}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" FontSize="10" TextColor="Black"/>
+                                                                                    </StackLayout>
+                                                                                </Frame>
+                                                                                <StackLayout Orientation="Horizontal">
+                                                                                    <Label Text="{x:Static resource:Resource.txtEndDate}" FontFamily="Poppins" FontSize="12" TextColor="#97979a" />
+                                                                                    <Label Text="{Binding EndDate}" TextColor="#97979a" Margin="5,0,5,0" FontFamily="Poppins" FontSize="12" />
+                                                                                </StackLayout>
+                                                                                <Image Source="Checked" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" IsVisible="{Binding StakeMatured}"/>
+                                                                            </StackLayout>
+                                                                            <Frame.GestureRecognizers>
+                                                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.UnstakeCommand , Source={x:Reference StakePage}}" CommandParameter="{Binding}"/>
+                                                                            </Frame.GestureRecognizers>
+                                                                        </Frame>
+                                                                    </DataTemplate>
+                                                                </BindableLayout.ItemTemplate>
+                                                            </StackLayout>
+                                                        </ScrollView>
+                                                    </Grid>
+                                                    <Frame  Grid.Row="4" Margin="0,20,0,10" Padding="0" WidthRequest="120" HeightRequest="25" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" CornerRadius="5" BackgroundColor="DarkGray">
+                                                        <Frame.Background>
+                                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                                <GradientStop Color="#93cafd" Offset="0.1"/>
+                                                                <GradientStop Color="#7792fc" Offset="1.0"/>
+                                                            </LinearGradientBrush>
+                                                        </Frame.Background>
+                                                        <Label  Text="{x:Static resource:Resource.txtSTAKE}" FontFamily="{StaticResource MonumnentLight}" FontSize="9"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.StakeCommandManagePage , Source={x:Reference StakePage}}" CommandParameter="{Binding}"/>
+                                                        </Frame.GestureRecognizers>
+                                                    </Frame>
+                                                </Grid>
+                                            </Frame>
+                                        </Grid>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
                         </StackLayout>
-                        <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="2" HorizontalOptions="FillAndExpand" BackgroundColor="#1F1E1E" BorderColor="DarkGray">
-                            <Label Text="{x:Static resource:Resource.txtStakeAdress}" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" TextColor="White"/>
-                        </Frame>
-                        <Frame  Grid.Row="2" Grid.ColumnSpan="2" Padding="2" HorizontalOptions="FillAndExpand" BackgroundColor="#1F1E1E" BorderColor="DarkGray" >
-                            <StackLayout Margin="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                <Label Text="1,000" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" FontSize="25" FontAttributes="Bold" TextColor="White"/>
-                                <Label Text="{x:Static resource:Resource.txtDHN}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" FontSize="25" TextColor="White"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="3" Grid.Column="0" Padding="0"  Margin="0,10,0,0" HorizontalOptions="Start" WidthRequest="120" BackgroundColor="Gray" CornerRadius="5">
-                            <StackLayout Margin="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="{x:Static resource:Resource.txtAPR}" VerticalOptions="Center" HorizontalOptions="Start" TextColor="White"/>
-                                <Label Text="%3.239"  HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Padding="0"  Grid.Row="3" Grid.Column="1" Margin="0,10,0,0" HorizontalOptions="EndAndExpand" WidthRequest="150" BackgroundColor="Gray" CornerRadius="5" >
-                            <StackLayout Margin="5" Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                                <Label Text="{x:Static resource:Resource.txtDuraction}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Center" TextColor="White" />
-                                <Label Text="{x:Static resource:Resource.txt2Mnoth}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="White" />
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="4" Grid.Column="0" Margin="0,0,0,10" Padding="0" WidthRequest="80" HeightRequest="30" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="#1F1E1E" BorderColor="Gray">
-                            <Label Text="{x:Static resource:Resource.txtBackCapital}" Padding="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="White"></Label>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BackOptionClick }" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame Grid.Row="4" Grid.Column="1" Margin="0,0,0,10" Padding="0"   WidthRequest="80" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="DarkGray">
-                            <Frame.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                    <GradientStop Color="#552DF2" Offset="0.1"/>
-                                    <GradientStop Color="#552DF2" Offset="1.0"/>
-                                </LinearGradientBrush>
-                            </Frame.Background>
-                            <Label Text="{x:Static resource:Resource.txtSTAKE}" Padding="0"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="White"/>
-                        </Frame>
-                    </Grid>
-                </Frame>
-                <ScrollView Grid.Row="1"  Style="{StaticResource TransactionPageScrollViewStyle}" IsVisible="{Binding IsScrollViewVissible}">
-                    <StackLayout Orientation="Vertical" Margin="0,10,0,0" >
-                        <Label Text="{x:Static resource:Resource.txtMyStacking}" Margin="10,0,0,0" FontAttributes="Bold" FontSize="20" TextColor="White"/>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Frame Grid.Row="0" BackgroundColor="#262629" BorderColor="Gray" Style="{Binding EntryFrameStyle}" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="200" CornerRadius="5" IsVisible="true" >
-                                <Grid RowSpacing="0" Padding="5">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtUnlockedCapital}" FontAttributes="Bold" FontSize="25" TextColor="White"/>
-                                    <Frame Padding="10,5,10,5" Grid.Row="0" Grid.Column="1" WidthRequest="55" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" BackgroundColor="Black" BorderColor="#30DFEA" CornerRadius="4" >
-                                        <Label Text="9% APR" FontAttributes="None" FontSize="15" Padding="0" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-                                    </Frame>
-                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25"  TextColor="White"/>
-                                    <Label Grid.Row="2" Text="12000 DHN" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Frame Grid.Row="3" Grid.Column="0" Margin="10,0,0,10" Padding="0" WidthRequest="120" HeightRequest="25"    VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
-                                        <Label Text="{x:Static resource:Resource.txtMANAGE}" Padding="0" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"/>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding MangeCommand}" NumberOfTapsRequired="1"/> 
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
-                                    <Frame Grid.Row="3" Grid.Column="1" Margin="0,0,10,10" Padding="0" HasShadow="True"  WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="End" CornerRadius="5" >
-                                        <Frame.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                <GradientStop Color="#552DF2" Offset="0.1"/>
-                                                <GradientStop Color="#3594D2" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Frame.Background>
-                                        <Label Text="{x:Static resource:Resource.txtSTAKE}"  Padding="0" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="White"/>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding StakeCommand}" NumberOfTapsRequired="1"/>
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
-                                </Grid>
-                            </Frame>
-                            <Frame Grid.Row="0" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="300" CornerRadius="5" IsVisible="{Binding IsRequestWithdrawl}" >
-                                <Grid RowSpacing="0" Padding="5">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.5*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txtUnlockedCapital}" FontAttributes="Bold" FontSize="25" TextColor="White"/>
-                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25"  TextColor="White"/>
-                                    <Label Grid.Row="2" Text="12000 DHN" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Frame Padding="2" Grid.Row="3" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" BackgroundColor="Gray" BorderColor="DarkGray" >
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#262629">
-                                            <Label Text="{x:Static resource:Resource.txtRequestWithdrawlAddress}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" TextColor="White"/>
-                                            <Image Margin="5" Source="{Binding CopyAppIcon}" HorizontalOptions="EndAndExpand" BackgroundColor="DarkGray"  />
-                                        </StackLayout>
-                                    </Frame>
-                                    <StackLayout Padding="0" Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal">
-                                        <Frame Padding="0" Margin="0,10,0,0" HorizontalOptions="Start" WidthRequest="60" BackgroundColor="Gray" >
-                                            <Label Text="{x:Static resource:Resource.txt9APR}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
-                                        </Frame>
-                                        <Frame Padding="0" Margin="0,10,0,0" HorizontalOptions="EndAndExpand" BackgroundColor="Gray" >
-                                            <Label Text="{x:Static resource:Resource.txtTotalAPR}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" TextColor="White" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <Frame Grid.Row="5" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="0" WidthRequest="170" HeightRequest="25" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
-                                        <Label Text="{x:Static resource:Resource.txtRequestWithdrwalButton}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"></Label>
-                                    </Frame>
-                                    <Frame Grid.Row="5" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="0" WidthRequest="100" HeightRequest="25" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="DarkGray">
-                                        <Frame.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                <GradientStop Color="#552DF2" Offset="0.1"/>
-                                                <GradientStop Color="#3594D2" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Frame.Background>
-                                        <Label  Text="{x:Static resource:Resource.txtSTAKE}" Padding="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="White"/>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding StakeCommand}" NumberOfTapsRequired="1"/>
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
-                                </Grid>
-                            </Frame>
-                            <Frame Grid.Row="1" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="200" CornerRadius="5" IsVisible="true" >
-                                <Grid RowSpacing="0" Padding="5">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txt3Month}" FontAttributes="Bold" FontSize="25" TextColor="White"/>
-                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25"  TextColor="White"/>
-                                    <Label Grid.Row="2" Text="0.0000 DHN" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Label Grid.Row="0" Grid.Column="1"  HorizontalOptions="EndAndExpand" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Frame Padding="10,5,10,5" Grid.Row="0" Grid.Column="1" WidthRequest="60" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" BackgroundColor="Black" BorderColor="#30DFEA" CornerRadius="4" >
-                                        <Label Text="{x:Static resource:Resource.txt12APR}" FontAttributes="None" FontSize="15" Padding="0" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-                                    </Frame>
-                                    <Frame Grid.Row="3" Grid.Column="0" Margin="10,0,0,10" Padding="0" WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
-                                        <Label Text="{x:Static resource:Resource.txtMANAGE}" Padding="0" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"/>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding TakeStakeCommand}" NumberOfTapsRequired="1"/>
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
-                                    <Frame Grid.Row="3" Margin="0,0,10,10" Padding="0" Grid.Column="1" WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="End" CornerRadius="5">
-                                        <Frame.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                <GradientStop Color="#552DF2" Offset="0.1"/>
-                                                <GradientStop Color="#3594D2" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Frame.Background>
-                                        <Label  Text="{x:Static resource:Resource.txtSTAKE}" Padding="0" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="White"/>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding StakeCommand}" NumberOfTapsRequired="1"/>
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
-                                </Grid>
-                            </Frame>
-                            <Frame Grid.Row="1" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="300" CornerRadius="5" IsVisible="{Binding IsTakingStakeVisible}" >
-                                <Grid RowSpacing="0" Padding="5">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.1*"/>
-                                        <RowDefinition Height="0.5*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txt3Month}" FontAttributes="Bold" FontSize="25" TextColor="White"/>
-                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25"  TextColor="White"/>
-                                    <Label Grid.Row="2" Text="0.0000 DHN" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Frame Padding="2" Grid.Row="3" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" BackgroundColor="Gray" BorderColor="DarkGray" >
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#262629">
-                                            <Label Text="{x:Static resource:Resource.txtStakeAddress}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" TextColor="White"/>
-                                            <Image Margin="5" Source="{Binding CopyAppIcon}" HorizontalOptions="EndAndExpand" BackgroundColor="DarkGray"  />
-                                        </StackLayout>
-                                    </Frame>
-                                    <StackLayout Padding="0" Grid.Row="4" Grid.ColumnSpan="2"  Orientation="Horizontal">
-                                        <Frame Padding="0" Margin="0,10,0,0" HorizontalOptions="Start" WidthRequest="60" BackgroundColor="Gray" >
-                                            <Label Text="{x:Static resource:Resource.txt12APR}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White"/>
-                                        </Frame>
-                                        <Frame Padding="0" Margin="0,10,0,0" HorizontalOptions="EndAndExpand" BackgroundColor="Gray" >
-                                            <Label Text="{x:Static resource:Resource.txtTotalAPReceived}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" TextColor="White" />
-                                        </Frame>
-                                    </StackLayout>
-                                    <Frame Grid.Row="5" Grid.Column="0" Margin="0,0,0,10" Padding="0" WidthRequest="150" HeightRequest="25" VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
-                                        <Label Text="{x:Static resource:Resource.txtEndDateButton}" Padding="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"></Label>
-                                    </Frame>
-                                    <Frame Grid.Row="5" Grid.Column="1" Margin="0,0,0,10" Padding="0" WidthRequest="150" HeightRequest="25" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="DarkGray">
-                                        <Label  Text="{x:Static resource:Resource.txtSTAKE}" Padding="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="Black"/>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding StakeCommand}" NumberOfTapsRequired="1"/>
-                                        </Frame.GestureRecognizers>
-                                    </Frame>
-                                </Grid>
-                            </Frame>
-                            <Frame Grid.Row="2" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="200" CornerRadius="5" IsVisible="true" >
-                                <Grid RowSpacing="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" Text="6 MONTHS" FontAttributes="Bold" FontSize="25" TextColor="White"/>
-                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25"  TextColor="White"/>
-                                    <Label Grid.Row="2" Text="0.0000 DHN" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:Resource.txt12APR}" HorizontalOptions="EndAndExpand" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Frame Margin="10,0,0,10" Padding="0" WidthRequest="120" HeightRequest="25" Grid.Row="3" Grid.Column="0"  VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
-                                        <Label Text="{x:Static resource:Resource.txtMANAGE}" Padding="0" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"></Label>
-                                    </Frame>
-                                    <Frame Grid.Row="3" Margin="0,0,10,10" Padding="0" Grid.Column="1" WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="DarkGray">
-                                        <Label  Text="{x:Static resource:Resource.txtSTAKE}"  Padding="0" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="Black"/>
-                                    </Frame>
-                                </Grid>
-                            </Frame>
-                            <Frame Grid.Row="3" BackgroundColor="#262629" BorderColor="Gray" Padding="5" Margin="10,10,10,0" HasShadow="False" HeightRequest="200" CornerRadius="5" IsVisible="true">
-                                <Grid RowSpacing="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="AUTO"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" Text="{x:Static resource:Resource.txt12Month}" FontAttributes="Bold" FontSize="25" TextColor="White"/>
-                                    <Label Grid.Row="1" Text="{x:Static resource:Resource.txtStakingCapital}" FontAttributes="Bold" FontSize="25"  TextColor="White"/>
-                                    <Label Grid.Row="2" Text="0.0000 DHN" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Static resource:Resource.txt12APR}" HorizontalOptions="EndAndExpand" FontAttributes="None" FontSize="Body" TextColor="White"/>
-                                    <Frame Margin="10,0,0,10" Padding="0" WidthRequest="120" HeightRequest="25" Grid.Row="3" Grid.Column="0"  VerticalOptions="End" HorizontalOptions="Start" BackgroundColor="DarkGray" >
-                                        <Label Text="{x:Static resource:Resource.txtMANAGE}" Padding="0" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Body" TextColor="Black"></Label>
-                                    </Frame>
-                                    <Frame Grid.Row="3" Margin="0,0,10,10" Padding="0" Grid.Column="1" WidthRequest="120" HeightRequest="25" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="DarkGray">
-                                        <Label  Text="{x:Static resource:Resource.txtSTAKE}"  Padding="0" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Body" TextColor="Black"/>
-                                    </Frame>
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </StackLayout>
-                </ScrollView>
-                <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                    </ScrollView>-->
+                    <Label Grid.Row="1" Text="COMING SOON"
+                    VerticalOptions="CenterAndExpand" FontFamily="{StaticResource MonumnentRegular}"
+                    HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="21" FontAttributes="Bold"/>
+                    <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                </Grid>
+                <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

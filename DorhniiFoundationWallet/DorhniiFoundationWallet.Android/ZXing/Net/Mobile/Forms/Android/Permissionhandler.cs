@@ -1,5 +1,4 @@
 ﻿using Android.Content.PM;
-using System;
 
 namespace ZXing.Net.Mobile.Forms.Android
 {
@@ -7,7 +6,7 @@ namespace ZXing.Net.Mobile.Forms.Android
     {
         internal static void OnRequestPermissionresult(int requestCode, string[] permissions, Permission[] grantResults)
         {
-            throw new NotImplementedException();
+            var permision = Permission.Granted;
         }
     }
 }

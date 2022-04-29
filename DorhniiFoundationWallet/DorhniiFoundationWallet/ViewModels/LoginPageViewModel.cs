@@ -1,19 +1,22 @@
 ﻿using DorhniiFoundationWallet.Helpers;
+using DorhniiFoundationWallet.IServices;
+using DorhniiFoundationWallet.Models.APIRequestModels;
+using DorhniiFoundationWallet.Models.APIResponseModels;
 using DorhniiFoundationWallet.Resources;
+using DorhniiFoundationWallet.Services;
 using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using Xamarin.Forms;
 using Xamarin.Essentials;
-using DorhniiFoundationWallet.IServices;
+using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.ViewModels
 {/// <summary>
 /// This class use to Login functionality
 /// </summary>
-    public class LoginPageViewModel : ObservableObject
+    public class LoginPageViewModel : BaseViewModel
     {
         #region Private properties          
         private string enterPassword;
@@ -22,14 +25,20 @@ namespace DorhniiFoundationWallet.ViewModels
         private Command touchIdPopupCommand;
         private string touchFaceType;
         private string touchIdText;
+        ILoginService loginApiService;
+        APIResponseModel APIResponseModel = null;
         #endregion
-        #region public properties        
-        public string LockIcon { get; set; } = StringConstant.LockIcon;        
+        #region public properties
+        public ICommand BackButtonCommand { get; set; }
+        public string DohrniiTextLogo { get; set; } = StringConstant.DohrniiTextLogo;
+        public string BackWardArrowImage { get; set; } = StringConstant.BackwardPasswordPage;
+        public string LockIcon { get; set; } = StringConstant.LockIcon;
         public ICommand PasswordCommand { get; set; }
         public ICommand FingerprintCommand { get; set; }
         public ICommand FaceidCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand OKCommand { get; set; }
+        public bool IsDeviceiOS { get; set; }
         public string TouchIdText
         {
             get => touchIdText;
@@ -56,7 +65,7 @@ namespace DorhniiFoundationWallet.ViewModels
                 isTouchVisible = value;
                 OnPropertyChanged(nameof(IsTouchVisible));
             }
-        }       
+        }
         public string TouchFaceType
         {
             get => touchFaceType;
@@ -83,6 +92,7 @@ namespace DorhniiFoundationWallet.ViewModels
             get
             {
                 if (touchIdPopupCommand == null)
+                {
                     touchIdPopupCommand = new Command(() =>
                     {
                         try
@@ -94,10 +104,13 @@ namespace DorhniiFoundationWallet.ViewModels
                             Crashes.TrackError(ex);
                         }
                     });
+                }
+
                 return touchIdPopupCommand;
             }
         }
         #endregion
+
         #region Public method
         /// <summary>
         /// Cosnructor Login page
@@ -106,7 +119,15 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
+                BackButtonCommand = new Command(BackButtonClick);
+                loginApiService = new LoginService();
                 OKCommand = new Command(LoginClick);
+                var platform = DeviceInfo.Platform;
+                if (platform == DevicePlatform.iOS)
+                {
+                    IsDeviceiOS = true;
+                }
+
                 #region Face Id login
                 if (Device.RuntimePlatform == Device.Android)
                 {
@@ -132,14 +153,13 @@ namespace DorhniiFoundationWallet.ViewModels
                         isTouchFaceAvailable = false;
                     }
                 }
-
                 bool isTouchIDEnabled = Preferences.Get(StringConstant.KEY_IS_TOUCH_FACE_ID_ENABLED, false);
-
                 if (isTouchFaceAvailable && isTouchIDEnabled)
                 {
                     IsTouchVisible = true;
                     Utilities.OnAuthenticationSucceeded -= Utilities_OnAuthenticationSucceeded;
                     Utilities.OnAuthenticationSucceeded += Utilities_OnAuthenticationSucceeded;
+
                     TouchIdText = string.Format("Log in with {0}", Utilities.TouchFaceAuthenticationType());
                     CallTouchFaceID();
                 }
@@ -151,44 +171,25 @@ namespace DorhniiFoundationWallet.ViewModels
 
                 #endregion
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
-
-
         }
-
-        //public class EntryValidatorBehavior : Behavior<Entry>
-        //{
-        //    const string numberRegex = @"^[a-zA-Z]+$";
-
-        //    static readonly BindablePropertyKey IsValidPropertyKey = BindableProperty.CreateReadOnly("IsValid", typeof(bool), typeof(EntryValidatorBehavior), false);
-
-        //    public static readonly BindableProperty IsValidProperty = IsValidPropertyKey.BindableProperty;
-
-        //    public bool IsValid
-        //    {
-        //        get { return (bool)base.GetValue(IsValidProperty); }
-        //        private set { base.SetValue(IsValidPropertyKey, value); }
-        //    }
-
-        //    protected override void OnAttachedTo(Entry bindable)
-        //    {
-        //        bindable.TextChanged += HandleTextChanged;
-        //    }
-
-        //    void HandleTextChanged(object sender, TextChangedEventArgs e)
-        //    {
-        //        IsValid = (Regex.IsMatch(e.NewTextValue, numberRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-        //        ((Entry)sender).Text = IsValid ? e.NewTextValue : e.NewTextValue.Remove(e.NewTextValue.Length - 1);
-        //    }
-
-        //    protected override void OnDetachingFrom(Entry bindable)
-        //    {
-        //        bindable.TextChanged -= HandleTextChanged;
-        //    }
-        //}
+        /// <summary>
+        /// This method is used to click on Back Button
+        /// </summary>       
+        public async void BackButtonClick()
+        {
+            try
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new WelcomePage());
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
 
         /// <summary>
         /// Method to call touch face id popup
@@ -261,25 +262,62 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
-                string myval = Preferences.Get("Password", " ");
-                var pass = EnterPassword.ToString().Trim();
-                if (myval == pass)
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    //Preferences.Set(StringConstant.DevicePassword, EnterPassword.Trim());                    
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
+
+                    IsLoading = true;
+                    LoginRequestModel loginRequest = new LoginRequestModel
+                    {
+                        Password = EnterPassword.Trim(),
+                        UserID = Preferences.Get(StringConstant.UserID, string.Empty),
+                    };
+                    APIResponseModel = await loginApiService.LoginFunction(loginRequest);
+                    if (APIResponseModel != null)
+                    {
+                        if (APIResponseModel.Result && APIResponseModel.Status == 200)
+                        {
+                            if (!IsTouchVisible)
+                            {
+                                var action = await Application.Current.MainPage.DisplayAlert(string.Empty, String.Format(Resource.msgDoYouWantToEnableTouchOrFaceId, touchFaceType), Resource.txtEnable, Resource.txtNotNow);
+                                if (action)
+                                {
+                                    Preferences.Set(StringConstant.KEY_IS_TOUCH_FACE_ID_ENABLED, true);
+                                }
+                                else
+                                {
+                                    Preferences.Set(StringConstant.KEY_IS_TOUCH_FACE_ID_ENABLED, false);
+                                }
+                            }
+                            await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
+
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, APIResponseModel.Message, Resource.txtOk);                            
+                        }
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                    }
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgPasswordAlert, Resource.txtOk);
+                    await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);                 
                 }
             }
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
-        }        
-        #endregion
+            finally
+            {
+                IsLoading = false;
+            }
+        }
 
+        #endregion
+        #region Private Method
         /// <summary>
         /// delegate method to handle authentication successfull event
         /// </summary>       
@@ -297,16 +335,8 @@ namespace DorhniiFoundationWallet.ViewModels
                     {
                         DependencyService.Get<IFingerPrintPopup>().HidePopup();
                     }
-                    string myval = Preferences.Get("Password", " ");
-                    if (myval == EnterPassword)
-                    {
-                        Preferences.Set(StringConstant.DevicePassword, EnterPassword.Trim());                       
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
-                    }
-                    else
-                    {
-                        await Application.Current.MainPage.DisplayAlert(Resource.txtInvalidConfirmation, Resource.msgPasswordAlert, Resource.txtOk);
-                    }
+
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
                 }
                 else
                 {
@@ -315,7 +345,7 @@ namespace DorhniiFoundationWallet.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                 Crashes.TrackError(ex);
             }
             finally
             {
@@ -325,6 +355,6 @@ namespace DorhniiFoundationWallet.ViewModels
                 });
             }
         }
-
+        #endregion
     }
 }

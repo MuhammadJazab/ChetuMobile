@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DorhniiFoundationWallet.Models
 {
-    public class SeedPhraseModel : ObservableObject
+    public class SeedPhraseModel : InotifyPropertyChanged
     {
         public string SeedLabel { get; set; }
         private bool isVisible;

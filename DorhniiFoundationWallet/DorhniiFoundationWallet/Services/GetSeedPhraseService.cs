@@ -32,7 +32,7 @@ namespace DorhniiFoundationWallet.Services
                 if (response.IsSuccess)
                 {
                     seedPhraseResponse = JsonConvert.DeserializeObject<SeedPhraseViewResponseModel>(response.Data);
-                }
+                }                
             }
             catch(Exception ex)
             {

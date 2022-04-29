@@ -18,20 +18,47 @@ namespace DorhniiFoundationWallet.ViewModels
     /// <summary>
     /// This class is used to entry and verify seed phrases.
     /// </summary>
-    public class ValidateSeedPhraseVM : ObservableObject
+    public class ValidateSeedPhraseVM : BaseViewModel
     {
         #region private properties
         private static IVerifySeedPhrasesService apiService;
+        private bool isSaveSeedAlertVisible;
         private Command onLabelTap;
         private Command onUpperLabelTap;
         private int EntryIndex = 0;
         private ObservableCollection<SeedPhraseListModel> dataList23;
         private ObservableCollection<SeedPhraseListModel> seedListBindable;
+        private bool acountFlag;
         #endregion
         #region public Properties
+        public string UserSeedPhrase;
         public string AppIcon { get; set; } = StringConstant.AppIcon;
+        public string SEEDPHRASE { get; set; } = StringConstant.SEEDPHRASE;
+        public string BackwardAppIcon { get; set; } = StringConstant.BackwardAppIcon; 
         public string ForwardAppIcon { get; set; } = StringConstant.ForwardAppIcon;
+        public ICommand BackCommand { get; set; }
         public ICommand NextCommandEnter { get; set; }
+        public ICommand CopyCommand { get; set; }        
+        public ICommand OkButton { get; set; }
+        private double opacityValue;
+        public double OpacityValue
+        {
+            get => opacityValue;
+            set
+            {
+                opacityValue = value;
+                OnPropertyChanged(nameof(OpacityValue));
+            }
+        }
+        public bool IsSaveSeedAlertVisible
+        {
+            get => isSaveSeedAlertVisible;
+            set
+            {
+                isSaveSeedAlertVisible = value;
+                OnPropertyChanged(nameof(IsSaveSeedAlertVisible));
+            }
+        }
         public ObservableCollection<SeedPhraseListModel> DataList23
         {
             get => dataList23;
@@ -59,7 +86,6 @@ namespace DorhniiFoundationWallet.ViewModels
                         EntryText = data2.EntryText,
                         EntryId = EntryIndex,
                         OnLabelTap = OnLabelTap
-
                     });
                 });
                 return onUpperLabelTap;
@@ -96,8 +122,13 @@ namespace DorhniiFoundationWallet.ViewModels
             try
             {
                 apiService = new VerifySeedPhrasesService();
+                BackCommand = new Command(BackButtonClick);
                 NextCommandEnter = new Command(NextCommandEnterClick);
                 DataList23 = new ObservableCollection<SeedPhraseListModel>();
+                CopyCommand = new Command(CopyCommandClick);
+                OkButton = new Command(OkButtonClick);
+                IsSaveSeedAlertVisible = false;
+                opacityValue = 1;
             }
             catch (Exception ex)
             {
@@ -114,8 +145,8 @@ namespace DorhniiFoundationWallet.ViewModels
             try
             {
                 SeedListBindable = new ObservableCollection<SeedPhraseListModel>();
-                List<SeedPhraseListModel> RandomSeedList = seedList.OrderByDescending(V => V.EntryText).ToList();
-                foreach (SeedPhraseListModel item in RandomSeedList)
+
+                foreach (SeedPhraseListModel item in seedList)
                 {
                     SeedListBindable.Add(new SeedPhraseListModel()
                     {
@@ -139,38 +170,39 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (SeedListBindable.Count != 0)
                 {
-                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.msgSeedEntryAlert, Resource.txtOk);
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
+                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.msgSeedEntryAlert, Resource.txtOk);                    
                 }
                 else
                 {
                     if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                     {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = true;
-                        });
+                        IsLoading = true;
                         SeedPhraseVerifyRequestModel seedPhraseVerifyRequestModel = new SeedPhraseVerifyRequestModel
                         {
                             SeedPhrases = new List<SeedPhras>()
                         };
-
+                        int ID = 1;
                         foreach (SeedPhraseListModel item in DataList23)
                         {
-                            SeedPhras seedPhraseItem = new SeedPhras
+                            if (ID < 25)
                             {
-                                Id = Convert.ToInt32(item.EntryId),
-                                Val = item.EntryText.Trim()
-                            };
-                            seedPhraseVerifyRequestModel.SeedPhrases.Add(seedPhraseItem);
+                                SeedPhras seedPhraseItem = new SeedPhras
+                                {
+                                    Id = Convert.ToInt32(ID),
+                                    Val = item.EntryText.Trim(),
+                                };
+                                ID++;
+                                seedPhraseVerifyRequestModel.SeedPhrases.Add(seedPhraseItem);
+                            }
                         }
-                        seedPhraseVerifyRequestModel.SeedId = Preferences.Get("Seedid", string.Empty);
+                        seedPhraseVerifyRequestModel.SeedId = Preferences.Get(StringConstant.SeedId, string.Empty);
                         Models.APIResponseModels.ResponseModel response = await apiService.VerifySeedPhrase(seedPhraseVerifyRequestModel);
                         if (response != null)
                         {
                             if (response.Status == 200 && response.Result)
                             {
-                                await Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
+                                OpacityValue = 0.3;
+                                IsSaveSeedAlertVisible = true;                                                                                                                                                          
                             }
                             else if (response.Status == 400)
                             {
@@ -183,7 +215,7 @@ namespace DorhniiFoundationWallet.ViewModels
                         }
                         else
                         {
-                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
                         }
                     }
                     else
@@ -198,10 +230,62 @@ namespace DorhniiFoundationWallet.ViewModels
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() =>
+                IsLoading = false;
+            }
+        }
+        /// <summary>
+        /// Method to click on Back Button to go on  View Seed  Page
+        /// </summary>
+        public async void BackButtonClick()
+        {
+            try
+            {
+                _ = await Application.Current.MainPage.Navigation.PopModalAsync();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+        /// <summary>
+        ///Method use to copy entered valid seed phrase
+        /// </summary>
+        public async void CopyCommandClick()
+        {
+            try
+            {
+                await Application.Current.MainPage.DisplayAlert("Message !", "Seed Phrase Copied", Resource.txtOk);
+                List<string> copySeedlist = new List<string>();
+                foreach (var item in dataList23)
                 {
-                    IsLoading = false;
-                });
+                    copySeedlist.Add(item.EntryText);
+                }
+                string UserSeedPhrase = string.Join(Environment.NewLine, copySeedlist.ToArray());
+                string copied = string.Copy(UserSeedPhrase.ToString());               
+                await Application.Current.MainPage.DisplayAlert("Security Alert !", "Do not share these seed phrases to anyone", Resource.txtOk);
+                await Clipboard.SetTextAsync(copied);
+                string text = await Clipboard.GetTextAsync();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
+        /// <summary>
+        ///Method to Close save seed alert and move to Login seed screen
+        /// </summary>
+        public async void OkButtonClick()
+        {
+            try
+            {
+                acountFlag = true;
+                Preferences.Set(StringConstant.AcountFlag, acountFlag);
+                await Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
             }
         }
 

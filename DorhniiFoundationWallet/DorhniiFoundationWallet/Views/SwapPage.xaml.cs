@@ -1,5 +1,4 @@
 ﻿using DorhniiFoundationWallet.Resources;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,6 +24,11 @@ namespace DorhniiFoundationWallet.Views
                 }
             });
             return true;
+        }
+
+        private void SearchBar_SearchButtonPressed(object sender, System.EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushModalAsync(new BrowserPage());
         }
     }
 }
