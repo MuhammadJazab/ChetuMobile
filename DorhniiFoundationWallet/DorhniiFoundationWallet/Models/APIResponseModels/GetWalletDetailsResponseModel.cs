@@ -8,8 +8,7 @@ namespace DorhniiFoundationWallet.Models.APIResponseModels
         public string WalletName { get; set; }
         [JsonProperty("qrcode")]
         public string QrCode { get; set; }
-        public int Balance { get; set; }
-        public string walletName { get; set; }
+        public double Balance { get; set; }
         [JsonProperty("data")]
         public List<WalletDetailsResponseModel> Data
         {

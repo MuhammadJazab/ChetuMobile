@@ -2,39 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:view="clr-namespace:DorhniiFoundationWallet.Views"
-             xmlns:res="clr-namespace:DorhniiFoundationWallet.Resources"
+            xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
              xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              NavigationPage.HasNavigationBar="False"
              x:Class="DorhniiFoundationWallet.Views.TermsofUsePage">
     <ContentPage.BindingContext>
         <vm:TermsofUseVM x:Name="VM"/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" BackgroundColor="Black">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width=".6*"/>
-                    <ColumnDefinition Width=".2*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Row="0" HorizontalOptions="StartAndExpand" Margin="5,10,0,0">
-                    <Image Source="Vector" Scale="0.75" Aspect="AspectFit"/>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-                <Label Grid.Column="1" Text="{x:Static res:Resource.txtTermsAndConditions}" Style="{StaticResource CenterHeaderLabelStyle}"/>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid Grid.Row="0">
-                    <WebView Grid.Row="0" Navigated="WebView_Navigated"  Navigating="WebView_Navigating"  Source="{Binding TermAndConditionURL}"/>
+        <Grid>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Padding="5" BackgroundColor="#262629" BorderColor="#302F2F">
+                        <Frame.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0.00005,0.00005">
+                                <GradientStop Color="#260941" Offset="0.1"/>
+                                <GradientStop Color="#1d1c1c" Offset="0.9"/>
+                                <GradientStop Color="#1d1c1c" Offset="0.9"/>
+                            </LinearGradientBrush>
+                        </Frame.Background>
+                        <StackLayout Orientation="Vertical" Spacing="10" >
+                            <ImageButton Source="Vector" Scale="0.5" Command="{Binding BackOnTermOfService}" HorizontalOptions="Start" VerticalOptions="Start" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                            <Label  Text="{x:Static resource:Resource.txtTermsOfService}" FontFamily="{StaticResource MonumnentRegular}" Margin="5,0,0,0" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" TextColor="White" VerticalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </Frame>
+                    <WebView Grid.Row="1" Navigated="WebView_Navigated"  Navigating="WebView_Navigating"  Source="https://dohrnii.io/termsofservice" BackgroundColor="Black"/>
+                    <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
                 </Grid>
-                <view:Loader Grid.Row="0" IsVisible="{Binding IsLoading}"/>
             </Grid>
+            <view:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

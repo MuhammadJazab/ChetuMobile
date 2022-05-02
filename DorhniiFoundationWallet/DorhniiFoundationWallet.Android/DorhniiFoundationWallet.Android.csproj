@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -41,6 +40,9 @@
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,13 +53,13 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <MandroidI18n />
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
-    <MandroidI18n />
-    <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <ItemGroup>
@@ -70,6 +72,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>4.5.0</Version>
+    </PackageReference>
     <PackageReference Include="StyleCop.MSBuild">
       <Version>6.2.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -84,7 +89,11 @@
   <ItemGroup>
     <Compile Include="CustomRenderers\EditorCustomRenderer.cs" />
     <Compile Include="CustomRenderers\EntryCustomerRenderer.cs" />
+    <Compile Include="DependencyServices\DownloadManger.cs" />
+    <Compile Include="DependencyServices\FileDownloadService.cs" />
     <Compile Include="DependencyServices\FingerPrintActivity.cs" />
+    <Compile Include="DependencyServices\GetDeviceID.cs" />
+    <Compile Include="DependencyServices\Message.cs" />
     <Compile Include="FingerprintAuthActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -119,7 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DorhniiFoundationWallet\DorhniiFoundationWallet.csproj">
-      <Project>{A67BF91C-D5F6-4B7C-A7E2-FA138301345E}</Project>
+      <Project>{4C5CB792-10E7-4775-967B-3E64A83FB8FA}</Project>
       <Name>DorhniiFoundationWallet</Name>
     </ProjectReference>
   </ItemGroup>
@@ -181,12 +190,6 @@
     <AndroidResource Include="Resources\drawable\settingsgray.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\supportIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\privacyPolicyIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\walletIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\eyecutIcons1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\termIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\fingerprintwhite.png" />
@@ -380,6 +380,110 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\FingerPrintPopup.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Vexchange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\VerocketImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\MonumentExtended-Light.ttf" />
+    <AndroidAsset Include="Assets\MonumentExtended-Regular.otf" />
+    <AndroidAsset Include="Assets\MonumentExtended-Ultrabold.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\DohrniiTextLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pointingdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pointingup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\PlusApp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\supportIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\privacyPolicyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ProfileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\PasswordChangeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\termIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\FingerPrintIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\BackwardIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ForwardIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\YOURNEWSEEDPHRASE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\SEEDPHRASE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\DownloadSeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\Dohrnii_App_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\Dohrnii_App_Logo_adaptive_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\Dohrnii_App_Logo_adaptive_fore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\Dohrnii_App_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\Dohrnii_App_Logo_adaptive_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\Dohrnii_App_Logo_adaptive_fore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\Dohrnii_App_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\Dohrnii_App_Logo_adaptive_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\Dohrnii_App_Logo_adaptive_fore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Dohrnii_App_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Dohrnii_App_Logo_adaptive_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Dohrnii_App_Logo_adaptive_fore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Dohrnii_App_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Dohrnii_App_Logo_adaptive_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Dohrnii_App_Logo_adaptive_fore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Checked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

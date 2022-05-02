@@ -5,8 +5,6 @@ using DorhniiFoundationWallet.Models.APIResponseModels;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DorhniiFoundationWallet.Services

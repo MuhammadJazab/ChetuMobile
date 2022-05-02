@@ -12,6 +12,7 @@ namespace DorhniiFoundationWallet.Droid
     /// <summary>
     /// FingerprintAuthActivity class
     /// </summary>
+    [System.Obsolete]
     internal class FingerprintAuthActivity : FingerprintManager.AuthenticationCallback
     {
         private Context fingerprinActivity;
@@ -46,9 +47,11 @@ namespace DorhniiFoundationWallet.Droid
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
             }
         }
+
         /// <summary>
         /// Authentication Failed
         /// </summary>
+        [System.Obsolete]
         public override void OnAuthenticationFailed()
         {
             try
@@ -61,10 +64,12 @@ namespace DorhniiFoundationWallet.Droid
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
             }
         }
+
         /// <summary>
         /// Authentication Succeeded
         /// </summary>
         /// <param name="result">status</param>
+        [System.Obsolete]
         public override void OnAuthenticationSucceeded(FingerprintManager.AuthenticationResult result)
         {
             try

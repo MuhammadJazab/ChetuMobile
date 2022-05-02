@@ -33,9 +33,11 @@ namespace DorhniiFoundationWallet.Droid.DependencyServices
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
             }
         }
+
         /// <summary>
         /// Method for show fingerprint Popup
         /// </summary>
+        [Obsolete]
         public void ShowPopup()
         {
             try
@@ -60,6 +62,7 @@ namespace DorhniiFoundationWallet.Droid.DependencyServices
             }
         }
 
+        [Obsolete]
         public void IsFingerPrintCanAuthenticate()
         {
             try
@@ -94,6 +97,8 @@ namespace DorhniiFoundationWallet.Droid.DependencyServices
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
             }
         }
+
+        [Obsolete]
         protected void StartFingerprintService()
         {
             try

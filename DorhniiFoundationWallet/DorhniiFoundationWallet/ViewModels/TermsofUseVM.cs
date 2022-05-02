@@ -3,30 +3,16 @@ using DorhniiFoundationWallet.Resources;
 using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
 using System;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.ViewModels
 {
-    public class TermsofUseVM : ObservableObject
+    public class TermsofUseVM : BaseViewModel
     {
-        #region Private Class Properties
-        private string termAndConditionURL;
-        private Command backCommand;
-        #endregion
-
         #region Public Class Properties
-
-        public string TermAndConditionURL
-        {
-            get { return termAndConditionURL; }
-            set
-            {
-                termAndConditionURL = value;
-                OnPropertyChanged(nameof(TermAndConditionURL));
-            }
-        }
-
+        public ICommand BackOnTermOfService { get; set; }
         #endregion
 
         /// <summary>
@@ -34,62 +20,16 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public TermsofUseVM()
         {
-            GetTermAndConditionURL();
+            BackOnTermOfService = new Command(BackOnTermOfServiceClick);
         }
 
         /// <summary>
-        /// This method use Get the Privacy policy
+        /// This Method is used too Come back on Terms of Service Page
         /// </summary>
-        private async void GetTermAndConditionURL()
+        public async void BackOnTermOfServiceClick()
         {
-            try
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading = true;
-                });
+            await Application.Current.MainPage.Navigation.PushModalAsync(new SettingPageNew());
 
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                {
-
-                    TermAndConditionURL = "https://www.google.co.in/";
-
-                }
-                else
-                {
-                    await App.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
-                }
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-            finally
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading = false;
-                });
-            }
-        }
-
-        /// <summary>
-        /// This command is used for navigate to back Page
-        /// </summary>
-        public Command BackCommand
-        {
-            get
-            {
-                if (backCommand == null)
-                {
-                    backCommand = new Command(async () =>
-                    {
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new SettingPageNew());
-                    });
-                }
-
-                return backCommand;
-            }
         }
     }
 }

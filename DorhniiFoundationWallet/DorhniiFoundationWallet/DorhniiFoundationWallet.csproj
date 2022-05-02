@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -34,13 +34,6 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Behaviours\" />
-    <Folder Include="DependencyServices\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Mono.Android">
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v11.0\Mono.Android.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -54,8 +47,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\ValidateSeedPhrasePage.xaml.cs">
-      <DependentUpon>ValidateSeedPhrasePage.xaml</DependentUpon>
+    <Compile Update="Views\BoxViewDetail.xaml.cs">
+      <DependentUpon>BoxViewDetail.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -71,31 +64,28 @@
     <EmbeddedResource Update="Views\AddWalletPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\BoxViewDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BrowserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ChangePasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Loader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PrivacyPolicy.xaml">
+    <EmbeddedResource Update="Views\Partials\ScanCancel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ScanQRCode.xaml">
+    <EmbeddedResource Update="Views\Partials\TransferView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingPageNew.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StakePageNew.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\SwapPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\TermsofUsePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ValidateSeedPhrasePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
@@ -107,16 +97,10 @@
     <EmbeddedResource Update="Views\PasswordSetupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ReceiveCoinPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SeedPhrasePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\StakesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\SupportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TransactionDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TransactionPage.xaml">

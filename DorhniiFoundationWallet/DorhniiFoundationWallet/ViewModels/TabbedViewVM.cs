@@ -1,5 +1,7 @@
 ﻿using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.Views;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -9,16 +11,8 @@ namespace DorhniiFoundationWallet.ViewModels
     /// <summary>
     /// This class is used for tabbed navigation and tab icons.
     /// </summary>
-    public class TabbedViewVM : ObservableObject
+    public class TabbedViewVM : BaseViewModel
     {
-      
-        #region Private Properties
-        private string walletIcon;
-        private string stakesIcon;
-        private string transactionIcon;
-        private string settingsIcon;
-        #endregion
-        
         #region Public Properties
         public string WalletIcon { get; set; }        
         public string StakesIcon { get; set; }
@@ -32,15 +26,12 @@ namespace DorhniiFoundationWallet.ViewModels
         public Color TabSwapColour { get; set; }
         public Color TabTransactionColour { get; set; }
         public Color TabSettingColour { get; set; }
-
         public ICommand SwapCommand { get; set; }        
         public ICommand WalletCommand { get; set; }      
         public ICommand StakesCommand { get; set; }       
         public ICommand TransactionCommand { get; set; }        
         public ICommand SettingsCommand { get; set; }
         #endregion
-        
-
         #region Methods
         /// <summary>
         /// This Constructor method is used for tabbed navigation and tab icons.
@@ -85,6 +76,7 @@ namespace DorhniiFoundationWallet.ViewModels
                 case 4:
                     TabWalletColour = Color.Transparent;
                     TabStakeColour = Color.Transparent;
+
                     TabSwapColour = Color.Transparent;
                     TabTransactionColour = Color.FromHex("#552DF2");
                     TabSettingColour = Color.Transparent;                   
@@ -102,14 +94,21 @@ namespace DorhniiFoundationWallet.ViewModels
             TransactionCommand = new Command(TransactionButtonClick);
             SettingsCommand = new Command(SettingButtonClick);
             SwapCommand = new Command(SwapCommandClick);
-        }        
+        }
         /// <summary>
         /// This method is used to navigate to Wallet Tab page.
         /// </summary>
         public void WalletButtonClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 1);
-            Application.Current.MainPage = new NavigationPage(new WalletPage());
+            try
+            {
+                Preferences.Set(StringConstant.TabKeyId, 1);
+                Application.Current.MainPage = new NavigationPage(new WalletPage());
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
 
         /// <summary>
@@ -117,8 +116,16 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public void StakesButtonClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 2);
-            Application.Current.MainPage = new NavigationPage(new StakePageNew());
+            try
+            {
+                Preferences.Set(StringConstant.TabKeyId, 2);
+                Application.Current.MainPage = new NavigationPage(new StakePageNew());
+            }
+
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
 
         /// <summary>
@@ -126,18 +133,33 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public void SwapCommandClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 3);
-            Application.Current.MainPage = new NavigationPage(new WalletPage());
-        }
+            try
+            {
+                Preferences.Set(StringConstant.TabKeyId, 3);
+                Application.Current.MainPage = new NavigationPage(new SwapPage());
+            }
 
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
 
         /// <summary>
         /// This method is used to navigate to Transaction Tab page.
         /// </summary>
         public void TransactionButtonClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 4);
-            Application.Current.MainPage = new NavigationPage(new TransactionPage());
+            try
+            {
+                Preferences.Set(StringConstant.TabKeyId, 4);
+                Application.Current.MainPage = new NavigationPage(new TransactionPage());
+            }
+
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
 
         /// <summary>
@@ -145,8 +167,16 @@ namespace DorhniiFoundationWallet.ViewModels
         /// </summary>
         public void SettingButtonClick()
         {
-            Preferences.Set(StringConstant.TabKeyId, 5);
-            Application.Current.MainPage = new NavigationPage(new SettingPageNew());
+            try
+            {
+                Preferences.Set(StringConstant.TabKeyId, 5);
+                Application.Current.MainPage = new NavigationPage(new SettingPageNew());
+            }
+
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
         #endregion
     }

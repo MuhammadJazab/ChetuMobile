@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "dgSpecHash": "alK2qyHwk9CRmUdBLc25qe4CB9+OxgtnfjKd4N7+J88fUTOZV6/dqYdSAq3hyB5BHccDSS67Yi+MwHlqbl+XOQ==",
+  "success": true,
+  "projectFilePath": "D:\\DohrniiGit\\ChetuMobile\\DorhniiFoundationWallet\\DorhniiFoundationWallet.iOS\\DorhniiFoundationWallet.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rohity\\.nuget\\packages\\microsoft.appcenter\\4.5.0\\microsoft.appcenter.4.5.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\microsoft.appcenter.analytics\\4.5.0\\microsoft.appcenter.analytics.4.5.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\microsoft.appcenter.crashes\\4.5.0\\microsoft.appcenter.crashes.4.5.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\stylecop.msbuild\\6.2.0\\stylecop.msbuild.6.2.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\zxing.net.mobile\\2.4.1\\zxing.net.mobile.2.4.1.nupkg.sha512",
+    "C:\\Users\\rohity\\.nuget\\packages\\zxing.net.mobile.forms\\2.3.2\\zxing.net.mobile.forms.2.3.2.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: ZXing.Net.Mobile.Forms from 2.4.1 to 2.3.2. Reference the package directly from the project to select a different version. \r\n DorhniiFoundationWallet.iOS -> DorhniiFoundationWallet -> ZXing.Net.Mobile.Forms (>= 2.4.1) \r\n DorhniiFoundationWallet.iOS -> ZXing.Net.Mobile.Forms (>= 2.3.2)",
+      "libraryId": "ZXing.Net.Mobile.Forms",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
+}

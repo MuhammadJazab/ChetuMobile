@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DorhniiFoundationWallet.Views.Partials.ScanCancel">
+  <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <Button Text="Cancel" TextColor="Black" Margin="10" Clicked="Button_Clicked" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#93cafd" Offset="0.1"/>
+                        <GradientStop Color="#7792fc" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -12,6 +12,9 @@ namespace DorhniiFoundationWallet.Models
         public string TransactionDateTime { get; set; }
         public string TransactionAmount { get; set; }
         public string CoinName { get; set; }
-        public string FeeDetails { get; set; }
+        public string Fee { get; set; }
+        public string FeeCoinShortName { get; set; }
+        public string _id { get; set; }
+        public string TxID { get; set; }
     }
 }

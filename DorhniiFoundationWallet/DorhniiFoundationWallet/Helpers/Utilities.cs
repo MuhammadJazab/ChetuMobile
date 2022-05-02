@@ -2,11 +2,11 @@
 using DorhniiFoundationWallet.Models;
 using Microsoft.AppCenter.Crashes;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.Helpers
@@ -21,7 +21,7 @@ namespace DorhniiFoundationWallet.Helpers
         public delegate void AuthenticationSucceeded();
         public static event AuthenticationSucceeded OnAuthenticationSucceeded;
 
-        public static string Scannedtext { get; set; }        
+        public static int CoinId = 0;
 
         /// <summary>
         /// get deleget event on authenticationSucceeded.
@@ -103,7 +103,7 @@ namespace DorhniiFoundationWallet.Helpers
                 Crashes.TrackError(ex);
                 return false;
             }
-        }       
+        }
 
         /// this method use to return authentication type face or touch
         /// </summary>
@@ -143,5 +143,18 @@ namespace DorhniiFoundationWallet.Helpers
             }
         }
 
+        /// <summary>
+        /// This method is used for the check internet available.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsNetworkAvailable()
+        {
+            bool isNetwork = false;
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                isNetwork = true;
+            }
+            return isNetwork;
+        }
     }
 }

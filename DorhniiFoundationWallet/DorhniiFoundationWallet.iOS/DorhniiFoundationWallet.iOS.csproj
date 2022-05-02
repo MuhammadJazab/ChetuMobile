@@ -50,11 +50,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Dohrnii Stiftung (RJWTX9QMFU)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>DohrniiWalletAdHoc</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -63,59 +63,155 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Dohrnii Stiftung (RJWTX9QMFU)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignProvision>DohrniiWalletAppStore</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRender\KeyboardViewRenderer.cs" />
+    <Compile Include="DependencyServices\GetDeviceID.cs" />
+    <Compile Include="DependencyServices\Message.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include=".editorconfig" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DependencyServices\DownloadManger.cs" />
+    <Compile Include="CustomRender\EntryCustomerRenderer.cs" />
+    <Compile Include="DependencyServices\LocalAuthHelper.cs" />
+    <Compile Include="CustomRender\EditorCustomRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\40.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\58.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\87.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\80.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\120.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\120-1.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\180.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\40-1.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\29.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\58-1.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\40-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\80-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\120-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\180-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\1024-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\512.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\512-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\256.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\48.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\55.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\58-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\87-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\80-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\88.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\100.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\172.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\196.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\216.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\1024-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\16.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\32.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\32-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\64.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\128.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\256-1.png">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
@@ -128,6 +224,15 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Crashes">
+      <Version>4.5.0</Version>
+    </PackageReference>
     <PackageReference Include="StyleCop.MSBuild">
       <Version>6.2.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -135,12 +240,132 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms">
+      <Version>2.3.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <BundleResource Include="Resources\PlusApp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Splash1Android.png" />
+    <BundleResource Include="Resources\VerocketImage.png" />
+    <BundleResource Include="Resources\Vexchange.png" />
+    <BundleResource Include="Resources\Plus36App.png" />
+    <BundleResource Include="Resources\CopyAppIcon.png" />
+    <BundleResource Include="Resources\CopyIconLight.png" />
+    <BundleResource Include="Resources\fingerPink.png" />
+    <BundleResource Include="Resources\plus.png" />
+    <BundleResource Include="Resources\ScanAppIcon.png" />
+    <BundleResource Include="Resources\ShareApp48Icon.png" />
+    <BundleResource Include="Resources\SwapAppIcon.png" />
+    <BundleResource Include="Resources\BackwardIconWhite.png" />
+    <BundleResource Include="Resources\CopyIcon.png" />
+    <BundleResource Include="Resources\editIcon.png" />
+    <BundleResource Include="Resources\EditIconGrayBack.png" />
+    <BundleResource Include="Resources\EditIconWhite.png" />
+    <BundleResource Include="Resources\eye_cut.png" />
+    <BundleResource Include="Resources\eye.png" />
+    <BundleResource Include="Resources\eyecutIcons.png" />
+    <BundleResource Include="Resources\eyecutIcons1.png" />
+    <BundleResource Include="Resources\FaceIdGray.png" />
+    <BundleResource Include="Resources\FaceIdWhite.png" />
+    <BundleResource Include="Resources\FaceIdWhiteLight.png" />
+    <BundleResource Include="Resources\fingerprint.png" />
+    <BundleResource Include="Resources\fingerprintwhite.png" />
+    <BundleResource Include="Resources\ForwardIconWhite.png" />
+    <BundleResource Include="Resources\Group.png" />
+    <BundleResource Include="Resources\Group1.png" />
+    <BundleResource Include="Resources\History.png" />
+    <BundleResource Include="Resources\HistorySmall.png" />
+    <BundleResource Include="Resources\HistroySmall.png" />
+    <BundleResource Include="Resources\languageIcon.png" />
+    <BundleResource Include="Resources\leftarrow.png" />
+    <BundleResource Include="Resources\leftarrowWhite.png" />
+    <BundleResource Include="Resources\lock.png" />
+    <BundleResource Include="Resources\Lock72.png" />
+    <BundleResource Include="Resources\LockLarge.png" />
+    <BundleResource Include="Resources\logoutIcon.png" />
+    <BundleResource Include="Resources\PasswordLockIcon.png" />
+    <BundleResource Include="Resources\PasswordLockWhite.png" />
+    <BundleResource Include="Resources\QrCodeWhite.png" />
+    <BundleResource Include="Resources\QRScan.png" />
+    <BundleResource Include="Resources\receivearrow.png" />
+    <BundleResource Include="Resources\ReceiveTransaction.png" />
+    <BundleResource Include="Resources\rightarrow.png" />
+    <BundleResource Include="Resources\saveIcon.png" />
+    <BundleResource Include="Resources\SaveIconWhite.png" />
+    <BundleResource Include="Resources\SaveWhite.png" />
+    <BundleResource Include="Resources\SaveWhiteGrayBack.png" />
+    <BundleResource Include="Resources\ScanIcon.png" />
+    <BundleResource Include="Resources\sendarrow.png" />
+    <BundleResource Include="Resources\SendTransaction.png" />
+    <BundleResource Include="Resources\SettingGroup3.png" />
+    <BundleResource Include="Resources\settingsgray.png" />
+    <BundleResource Include="Resources\SettingSmall.png" />
+    <BundleResource Include="Resources\SettingWhite.png" />
+    <BundleResource Include="Resources\splash.jpg" />
+    <BundleResource Include="Resources\Splash2Android.png" />
+    <BundleResource Include="Resources\Splash3Android.png" />
+    <BundleResource Include="Resources\Splash4Android.png" />
+    <BundleResource Include="Resources\Splash5Android.png" />
+    <BundleResource Include="Resources\Splash6Android.png" />
+    <BundleResource Include="Resources\Stack.png" />
+    <BundleResource Include="Resources\StackSmall.png" />
+    <BundleResource Include="Resources\stakesblack.png" />
+    <BundleResource Include="Resources\stakesgray.png" />
+    <BundleResource Include="Resources\StakeWhite.png" />
+    <BundleResource Include="Resources\swap.png" />
+    <BundleResource Include="Resources\transactionblack.png" />
+    <BundleResource Include="Resources\transactiongray.png" />
+    <BundleResource Include="Resources\TransactionWhite.png" />
+    <BundleResource Include="Resources\Vector.png" />
+    <BundleResource Include="Resources\Vector1.png" />
+    <BundleResource Include="Resources\Vector2.png" />
+    <BundleResource Include="Resources\VerifyIcon.png" />
+    <BundleResource Include="Resources\walletblack.png" />
+    <BundleResource Include="Resources\Walletblack3.png" />
+    <BundleResource Include="Resources\walletgray.png" />
+    <BundleResource Include="Resources\WalletGroup1.png" />
+    <BundleResource Include="Resources\WalletGroup1Small.png" />
+    <BundleResource Include="Resources\walletIcon.png" />
+    <BundleResource Include="Resources\WalletWhite.png" />
+    <BundleResource Include="Resources\MonumentExtended-Light.ttf" />
+    <BundleResource Include="Resources\MonumentExtended-Regular.otf" />
+    <BundleResource Include="Resources\MonumentExtended-Ultrabold.otf" />
+    <BundleResource Include="Resources\DohrniiApp.png" />
+    <BundleResource Include="Resources\YOURNEWSEEDPHRASE.png" />
+    <BundleResource Include="Resources\ProfileIcon.png" />
+    <BundleResource Include="Resources\BackwardIcon.png" />
+    <BundleResource Include="Resources\FingerPrintIcon.png" />
+    <BundleResource Include="Resources\ForwardIcon.png" />
+    <BundleResource Include="Resources\PasswordChangeIcon.png" />
+    <BundleResource Include="Resources\DownloadSeed.png" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\SEEDPHARE.png" />
+    <BundleResource Include="Resources\SaveSeedICon.png" />
+    <BundleResource Include="Resources\SEEDPHRASE.png" />
+    <BundleResource Include="Resources\supportIcon.png" />
+    <BundleResource Include="Resources\termIcon.png" />
+    <BundleResource Include="Resources\privacyPolicyIcon.png" />
+    <BundleResource Include="Resources\AppIconImage.png" />
+    <BundleResource Include="Resources\CrossSign.png" />
+    <BundleResource Include="Resources\Vector3.png" />
+    <BundleResource Include="Resources\Vector4.png" />
+    <BundleResource Include="Resources\Pointingdown.png" />
+    <BundleResource Include="Resources\Pointingup.png" />
+    <BundleResource Include="Resources\DohrniiTextLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DorhniiFoundationWallet\DorhniiFoundationWallet.csproj">
-      <Project>{A67BF91C-D5F6-4B7C-A7E2-FA138301345E}</Project>
+      <Project>{4C5CB792-10E7-4775-967B-3E64A83FB8FA}</Project>
       <Name>DorhniiFoundationWallet</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>

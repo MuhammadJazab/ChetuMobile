@@ -9,6 +9,7 @@ namespace DorhniiFoundationWallet.Views
         public LoginPage()
         {
             InitializeComponent();
+           
         }
         protected override bool OnBackButtonPressed()
         {

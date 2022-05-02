@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:view="clr-namespace:DorhniiFoundationWallet.Views"
+             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"           
+             NavigationPage.HasNavigationBar="False"
+             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+             x:Class="DorhniiFoundationWallet.Views.TransactionDetailPage">
+    <ContentPage.BindingContext>
+        <vm:TransactionVM x:Name="VM" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0"  Padding="5" BackgroundColor="#262629" BorderColor="#302F2F" >
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0.00005,0.00005">
+                            <GradientStop Color="#260941" Offset="0.1"/>
+                            <GradientStop Color="#1d1c1c" Offset="0.9"/>
+                            <GradientStop Color="#1d1c1c" Offset="0.9"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <ImageButton Source="Vector"  Scale="0.5" Command="{Binding BackCommand}" HorizontalOptions="Start" VerticalOptions="Start" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                        <Label  Text="{x:Static resource:Resource.txtTxDetail}" FontFamily="{StaticResource MonumnentRegular}" Margin="5,0,0,0" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" TextColor="White" VerticalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Frame>
+                <WebView Grid.Row="1" x:Name="TxDetailWeb" Navigated="WebView_Navigated" Navigating="WebView_Navigating" Source="{Binding BlockChainLink}" HeightRequest="200" BackgroundColor="Transparent"/>
+                <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+            </Grid>
+            <view:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

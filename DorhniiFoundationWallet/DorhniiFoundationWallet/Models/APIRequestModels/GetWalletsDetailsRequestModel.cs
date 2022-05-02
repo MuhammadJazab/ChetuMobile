@@ -8,7 +8,5 @@ namespace DorhniiFoundationWallet.Models.APIRequestModels
         public string WalletAddress { get; set; }
         [JsonProperty("seedId")]
         public string SeedId { get; set; }
-      
-
     }
 }

@@ -1,27 +1,68 @@
 ﻿using DorhniiFoundationWallet.Helpers;
-using Xamarin.Forms;
-
 namespace DorhniiFoundationWallet.Models
 {
     /// <summary>
     /// 
     /// </summary>
-    public class WalletListModel : ObservableObject
+    public class WalletListModel : InotifyPropertyChanged
     {
+        public int CoinId { get; set; }                                                                         
+        private int listId;
+        public int ListId
+        {
+            get => listId;
+            set
+            {
+                if (listId != value)
+                {
+                    listId = value;
+                    OnPropertyChanged(nameof(ListId));
+                }
+            }
+        }
+        private string amount;
+        public string Amount
+        {
+            get => amount;
+            set
+            {
+                if (amount != value)
+                {
+                    amount = value;
+                    OnPropertyChanged(nameof(Amount));
+                }
+            }
+        }
+        private string gasAmount;
+        public string GasAmount
+        {
+            get => gasAmount;
+            set
+            {
+                if (gasAmount != value)
+                {
+                    gasAmount = value;
+                    OnPropertyChanged(nameof(GasAmount));
+                }
+            }
+        }
+        private string gasUnit;
+        public string GasUnit
+        {
+            get => gasUnit;
+            set
+            {
+                if (gasUnit != value)
+                {
+                    gasUnit = value;
+                    OnPropertyChanged(nameof(GasUnit));
+                }
+            }
+        }
         private string walletAdressEntered;
-        private int amount;
-        private bool isScannerPageVisible;
-        private bool isWalletListPage;
-        private bool isCoinDetailVisible;
-        private bool isSendPageVisible;
-        private bool isCoinVisible;
-        private bool isReceivePageVisible;
         public string WalletAdressEntered
         {
-            get
-            {
-                return walletAdressEntered;
-            }
+            get => walletAdressEntered;
             set
             {
                 if (walletAdressEntered != value)
@@ -31,60 +72,39 @@ namespace DorhniiFoundationWallet.Models
                 }
             }
         }
-        public int Amount
-        {
-            get
-            {
-                return amount;
-            }
-            set
-            {
-                if (amount != value)
-                {
-                    amount = value;
-                    OnPropertyChanged(nameof(Amount));
-                }
-            }
-        }     
-        public string Walletbalance { get; set; }
+        public double Walletbalance { get; set; }
         public string CoinStandard { get; set; }
         public string CoinName { get; set; }
-        public string CoinValue { get; set; }
-        public string CoinIcon { get; set; }
+        public double CoinValue { get; set; }
+        public string CoinValueString { get; set; }
+        private string coinIcon;
+        public string CoinIcon
+        {
+            get => coinIcon;
+            set
+            {
+                if (coinIcon != value)
+                {
+                    coinIcon = value;
+                    OnPropertyChanged(nameof(CoinIcon));
+                }
+            }
+        }
         public string CoinShortName { get; set; }
+        public string BlockChain { get; set; }
+        public string WalletName { get; set; }
         public string WalletAdress { get; set; }
         public string QrCode { get; set; }
-        public string CoinUsdValue { get; set; }        
+        public double CoinUsdValue { get; set; }
+        public string CoinUsdValueString { get; set; }
         public string ShareApp48Icon { get; set; } = StringConstant.ShareApp48Icon;
         public string SendAppIcon { get; set; } = StringConstant.SendAppIcon;
         public string ReceiveAppIcon { get; set; } = StringConstant.ReceiveAppIcon;
         public string CrossSign { get; set; } = StringConstant.CrossSign;
         public string CopyAppIcon { get; set; } = StringConstant.CopyAppIcon;
         public string ScanAppIcon { get; set; } = StringConstant.ScanAppIcon;
-        public bool IsScannerPageVisible
-        {
-            get => isScannerPageVisible;
-            set
-            {
-                if (isScannerPageVisible != value)
-                {
-                    isScannerPageVisible = value;
-                    OnPropertyChanged(nameof(IsScannerPageVisible));
-                }
-            }
-        }
-        public bool IsWalletListPage
-        {
-            get => isWalletListPage;
-            set
-            {
-                if (isWalletListPage != value)
-                {
-                    isWalletListPage = value;
-                    OnPropertyChanged(nameof(IsWalletListPage));
-                }
-            }
-        }
+        public string ScanImageButton { get; set; } = StringConstant.ScanImageButton; 
+        private bool isCoinVisible;
         public bool IsCoinVisible
         {
             get => isCoinVisible;
@@ -97,6 +117,7 @@ namespace DorhniiFoundationWallet.Models
                 }
             }
         }
+        private bool isCoinDetailVisible;
         public bool IsCoinDetailVisible
         {
             get => isCoinDetailVisible;
@@ -109,6 +130,7 @@ namespace DorhniiFoundationWallet.Models
                 }
             }
         }
+        private bool isSendPageVisible;
         public bool IsSendPageVisible
         {
             get => isSendPageVisible;
@@ -121,9 +143,9 @@ namespace DorhniiFoundationWallet.Models
                 }
             }
         }
+        private bool isReceivePageVisible;
         public bool IsReceivePageVisible
         {
-
             get => isReceivePageVisible;
             set
             {
@@ -134,6 +156,5 @@ namespace DorhniiFoundationWallet.Models
                 }
             }
         }
-
     }
 }

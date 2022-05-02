@@ -1,13 +1,13 @@
-﻿using System;
-using Microsoft.AppCenter.Crashes;
-using DorhniiFoundationWallet.Views;
-using DorhniiFoundationWallet.Helpers;
+﻿using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.IServices;
 using DorhniiFoundationWallet.Models;
 using DorhniiFoundationWallet.Models.APIRequestModels;
 using DorhniiFoundationWallet.Models.APIResponseModels;
 using DorhniiFoundationWallet.Resources;
 using DorhniiFoundationWallet.Services;
+using DorhniiFoundationWallet.Views;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,9 +19,8 @@ namespace DorhniiFoundationWallet.ViewModels
     /// <summary>
     /// This class is used to add, create new wallets and show wallets.
     /// </summary>
-    public class AddWalletVM : ObservableObject
+    public class AddWalletVM : BaseViewModel
     {
-
         #region Private Properties
         IAddWalletService apiService;
         IGetWalletService apiGetService;
@@ -31,8 +30,11 @@ namespace DorhniiFoundationWallet.ViewModels
         private bool isCreateWalletVisible { get; set; }
         private Command selectedItemCommand;
         private string walletname;
+        public bool IsWalletExist;
         #endregion
-        #region Public Properties   
+
+        #region Public Properties
+        public string BalanceFormatted;
         public ObservableCollection<WalletModel> Wallets
         {
             get => wallets ?? (wallets = new ObservableCollection<WalletModel>());
@@ -41,6 +43,19 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 wallets = value;
                 OnPropertyChanged(nameof(Wallets));
+            }
+        }
+        private bool walleteNotExist;
+        public bool WalleteNotExist
+        {
+            get => walleteNotExist;
+            set
+            {
+                if (walleteNotExist != value)
+                {
+                    walleteNotExist = value;
+                    OnPropertyChanged();
+                }
             }
         }
         public bool IsCreateWalletVisible
@@ -58,6 +73,7 @@ namespace DorhniiFoundationWallet.ViewModels
         public ICommand AddWalletCommand { get; set; }
         public ICommand CreateWalletCommand { get; set; }
         public ICommand CloseCreateWalletCommand { get; set; }
+        public string CrossSign { get; set; } = StringConstant.CrossSign; 
         public string AppIcon { get; set; } = StringConstant.AppIcon;
         public Command SelectedItemCommand
         {
@@ -69,8 +85,8 @@ namespace DorhniiFoundationWallet.ViewModels
                     {
                         if (selectedItem != null)
                         {
-                            WalletModel item = selectedItem as WalletModel;
-                            Preferences.Set("WalletAddress", item.WalletAdress);
+                            WalletModel item = selectedItem as WalletModel;                                                       
+                            Preferences.Set(StringConstant.walletAddress, item.WalletAdress);
                             await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
                         }
                         else
@@ -96,6 +112,7 @@ namespace DorhniiFoundationWallet.ViewModels
             }
         }
         #endregion
+
         #region Private Methods
         /// <summary>
         /// This  constructor method used to  Add Wallet and wallet list
@@ -103,8 +120,9 @@ namespace DorhniiFoundationWallet.ViewModels
         private void AddWallet()
         {
             try
-            {
-                IsCreateWalletVisible = true;
+            {                
+
+                IsCreateWalletVisible = true;               
             }
             catch (Exception ex)
             {
@@ -136,34 +154,50 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = true;
-                    });
-
+                    IsLoading = true;                 
                     AddWalletRequestModel addWalletRequest = new AddWalletRequestModel
                     {
-                        SeedId = Preferences.Get("Seedid", string.Empty),
+                        SeedId = Preferences.Get(StringConstant.SeedId, string.Empty),
                         WalletName = WalletName
                     };
-
                     addWalletResponse = await apiService.AddWallet(addWalletRequest);
                     if (addWalletResponse != null)
                     {
                         if (addWalletResponse.Result && addWalletResponse.Status == 200)
                         {
+                            await Application.Current.MainPage.DisplayAlert(Resource.txtSuccessful, addWalletResponse.Message, Resource.txtOk);
+                            IsWalletExist = true;
+                            Preferences.Set(StringConstant.WalletExist, IsWalletExist);
+                            Preferences.Set(StringConstant.EncryptedPrivateKey, addWalletResponse.EncryptedPrivateKey);
+                            WalletModel wallet = new WalletModel
+                            {
+                                WalletAdress = addWalletResponse.WalletAddress,
+                                Qrcode = addWalletResponse.Qrcode,
+                                Balance = addWalletResponse.Balance,
+                                WalletName = addWalletResponse.WalletName,
+                                Image = AppIcon,
+                                PrivateKey = addWalletResponse.PrivateKey,
+                            };
+                            Wallets.Add(wallet);
+                            HideAddwalletButton();
                             _ = GetWalletList();
                             CloseWallet();
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, addWalletResponse.Message, Resource.txtOk);
+                            await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
                         }
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);                       
                     }
                 }
                 else
                 {
                     await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
+
                 }
             }
             catch (Exception ex)
@@ -189,15 +223,12 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = true;
-                    });
+                    IsLoading = true;
                     Wallets = new ObservableCollection<WalletModel>();
 
                     GetWalletRequestModel getWalletRequest = new GetWalletRequestModel
                     {
-                        SeedId = Preferences.Get("Seedid", string.Empty),
+                        SeedId = Preferences.Get(StringConstant.SeedId , string.Empty),
                     };
 
                     getWalletResponse = await apiGetService.GetWallet(getWalletRequest);
@@ -209,13 +240,15 @@ namespace DorhniiFoundationWallet.ViewModels
                             {
                                 foreach (AddWalletResponseModel item in getWalletResponse.Data)
                                 {
+                                    BalanceFormatted = item.Balance.ToString("n2");
                                     WalletModel wallet = new WalletModel
                                     {
                                         WalletAdress = item.WalletAddress,
                                         Qrcode = item.Qrcode,
-                                        Balance = item.Balance.ToString(),
+                                        WalletFormattedBalance = BalanceFormatted,
                                         WalletName = item.WalletName,
-                                        Image = AppIcon
+                                        Image = AppIcon,
+                                        PrivateKey = item.PrivateKey,
                                     };
                                     Wallets.Add(wallet);
                                 }
@@ -224,12 +257,13 @@ namespace DorhniiFoundationWallet.ViewModels
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);                       
                     }
                 }
                 else
                 {
                     await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
+
                 }
             }
             catch (Exception ex)
@@ -238,14 +272,12 @@ namespace DorhniiFoundationWallet.ViewModels
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
 
         #endregion
+
         #region Public method
         /// <summary>
         /// (Class CONSTRUCTOR)This method is used to add, create new wallets and show wallets.
@@ -260,12 +292,21 @@ namespace DorhniiFoundationWallet.ViewModels
                 AddWalletCommand = new Command(AddWallet);
                 CreateWalletCommand = new Command(CreateWallet);
                 CloseCreateWalletCommand = new Command(CloseWallet);
+                HideAddwalletButton();               
+                Preferences.Set(StringConstant.AcountFlag, true);
                 _ = GetWalletList();
             }
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
+        }
+        /// <summary>
+        /// Method use to hide addwallet button for user having on walet already on add wallet page
+        /// </summary>
+        public void HideAddwalletButton()
+        {
+            WalleteNotExist = !Preferences.Get(StringConstant.IstoreAccountHideButton, false) && !Preferences.Get(StringConstant.WalletExist, false);
         }
         #endregion
     }

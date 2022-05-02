@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using UIKit;
+using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.iOS
 {
@@ -22,10 +25,10 @@ namespace DorhniiFoundationWallet.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
-            LoadApplication(new App());
-
+            global::Xamarin.Forms.Forms.Init();            
+            //AppCenter.Start("2feaa84d-4a81-404c-9c90-2b61c0a5eba9" + typeof(Analytics), typeof(Crashes));
+            LoadApplication(new DorhniiFoundationWallet.App());
             return base.FinishedLaunching(app, options);
         }
     }

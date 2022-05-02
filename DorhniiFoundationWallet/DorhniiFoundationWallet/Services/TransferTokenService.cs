@@ -11,31 +11,37 @@ namespace DorhniiFoundationWallet.Services
 {
     public class TransferTokenService : ITransferTokenService
     {
+        /// <summary>
+        /// This service class is used to transfer the Token.
+        /// </summary>
         ServiceHelpers serviceHelpers;
         public TransferTokenService()
         {
             serviceHelpers = ServiceHelpers.Instance;
+        }        
 
-        }
-
-        public async Task<ResponseModel> TranferToken(TransferTokenRequestModel transferTokenRequestModel)
+        /// <summary>
+        /// this task is used to transfer token
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        async Task<TransferTokenResponseModel> ITransferTokenService.TranferToken(TransferTokenRequestModel requestModel)
         {
-            ResponseModel transferTokenStatus = new ResponseModel();
+            TransferTokenResponseModel responseModel = new TransferTokenResponseModel();
             try
             {
-                string serializedRequest = Newtonsoft.Json.JsonConvert.SerializeObject(transferTokenRequestModel);
-                ResponseModel response = await ServiceHelpers.Instance.PostRequest(serializedRequest, StringConstant.TransferTokenAPI, true, null);
-                if (response != null)
+                string jsonRequest = JsonConvert.SerializeObject(requestModel);
+                ResponseModel jsonResponse = await ServiceHelpers.Instance.PostRequest(jsonRequest, StringConstant.TransferTokenAPI, true, null);
+                if (jsonResponse.IsSuccess)
                 {
-                    transferTokenStatus = JsonConvert.DeserializeObject<ResponseModel>(response.Data);
-
+                    responseModel = JsonConvert.DeserializeObject<TransferTokenResponseModel>(jsonResponse.Data);
                 }
             }
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
-            return transferTokenStatus;
+            return responseModel;
         }
     }
 

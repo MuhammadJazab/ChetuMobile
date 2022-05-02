@@ -1,10 +1,7 @@
-﻿using DorhniiFoundationWallet.Resources;
+﻿using DorhniiFoundationWallet.CustomRenderers;
+using DorhniiFoundationWallet.Resources;
+using Microsoft.AppCenter.Crashes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -34,6 +31,36 @@ namespace DorhniiFoundationWallet.Views
                 }
             });
             return true;
+        }
+        /// <summary>
+        /// Method used to Fix the Provide number format
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StakeEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                var entry = sender as RendererEntry;
+                var amnt = Convert.ToDouble(entry.Text).ToString("n2");
+                StakePageVM.StakeAmountEntry = (amnt);
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
+        private void StakeEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            double parsedValue;
+            var entry = sender as RendererEntry;
+
+            if (!double.TryParse(entry.Text, out parsedValue))
+            {
+                entry.Text = "";
+            }
+
         }
     }
 }

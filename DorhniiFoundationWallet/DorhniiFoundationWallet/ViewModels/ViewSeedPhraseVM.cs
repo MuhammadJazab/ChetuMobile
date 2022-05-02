@@ -1,4 +1,5 @@
-﻿using DorhniiFoundationWallet.Helpers;
+﻿using DorhniiFoundationWallet.DependencyServices;
+using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.IServices;
 using DorhniiFoundationWallet.Models;
 using DorhniiFoundationWallet.Models.APIResponseModels;
@@ -7,6 +8,7 @@ using DorhniiFoundationWallet.Services;
 using DorhniiFoundationWallet.Views;
 using Microsoft.AppCenter.Crashes;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,7 +20,7 @@ namespace DorhniiFoundationWallet.ViewModels
     /// <summary>
     /// This class is used to view seed phrases.
     /// </summary>
-    public class ViewSeedPhraseVM : ObservableObject
+    public class ViewSeedPhraseVM : BaseViewModel
     {
         #region private properties
         private bool isSaveSeedAlertVisible;
@@ -27,7 +29,7 @@ namespace DorhniiFoundationWallet.ViewModels
         IGetSeedPhraseService apiService;
         SeedPhraseViewResponseModel seedListResponse = null;
         public string AppIcon { get; set; } = StringConstant.AppIcon;
-        public ObservableCollection<SeedPhraseListModel> SeedList { get; set; }
+        public ObservableCollection<SeedPhraseListModel> SeedList { get; set; }       
         public ObservableCollection<SeedPhraseListModel> RandomSeedList { get; set; }      
         public bool IsSaveSeedAlertVisible
         {
@@ -37,15 +39,17 @@ namespace DorhniiFoundationWallet.ViewModels
                 isSaveSeedAlertVisible = value;
                 OnPropertyChanged(nameof(IsSaveSeedAlertVisible));
             }
-        }       
+        }
+        public string YOURNEWSEEDPHRASE { get; set; } = StringConstant.YOURNEWSEEDPHRASE; 
         public string BackwardAppIcon { get; set; } = StringConstant.BackwardAppIcon;
         public string SaveSeedAppIcon { get; set; } = StringConstant.SaveSeedAppIcon;
         public string ForwardAppIcon { get; set; } = StringConstant.ForwardAppIcon;
         public ICommand BackCommand { get; set; }      
         public ICommand SaveSeedCommand { get; set; }        
         public ICommand NextCommand { get; set; }      
-        public ICommand OkButton { get; set; }
-        #endregion      
+       
+        public SeedPhraseListModel EntryText { get; private set; }
+        #endregion
         #region Method
         /// <summary>
         /// class  Constructor methods.
@@ -53,12 +57,12 @@ namespace DorhniiFoundationWallet.ViewModels
         public ViewSeedPhraseVM()
         {
             try
-            {
+            {             
                 apiService = new GetSeedPhraseService();                    
                 BackCommand = new Command(BackButtonClick);
                 SaveSeedCommand = new Command(SaveSeedCommandClick);
                 NextCommand = new Command(NextButtonClick);
-                OkButton = new Command(OkButtonClick);
+               
                 _ = GetSeedList().ConfigureAwait(true);
             }
             catch (Exception ex)
@@ -71,10 +75,16 @@ namespace DorhniiFoundationWallet.ViewModels
         /// This method is for to save seed phrase in pdf (have to implement)
         /// </summary>
         public void SaveSeedCommandClick()
-        {
+        {                       
             try
             {
-                //await Application.Current.MainPage.Navigation.PushModalAsync(new SeedPhrasePage());
+                List<string> downloadSeed = new List<string>();
+                foreach (var item in SeedList)
+                {
+                    downloadSeed.Add(item.EntryText);
+                }
+                string SeedPhraseSrting = string.Join(Environment.NewLine, downloadSeed.ToArray()); 
+                DependencyService.Get<IDownloader>().DownloadFile(SeedPhraseSrting.ToString());
             }
             catch (Exception ex)
             {
@@ -92,28 +102,24 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = true;
-                    });
-
+                    IsLoading = true;
                     SeedList = new ObservableCollection<SeedPhraseListModel>();
                     seedListResponse = await apiService.GetSeedPhraseList();
                     if (seedListResponse != null)
                     {
                         if (seedListResponse.Result && seedListResponse.Status == 200)
                         {
-                            Preferences.Set("Seedid", seedListResponse._id);
+                            Preferences.Set(StringConstant.SeedId, seedListResponse._id);
                             if (seedListResponse.SeedPhrases != null)
                             {
                                 foreach (var item in seedListResponse.SeedPhrases)
                                 {
                                     SeedPhraseListModel viewSeedModel = new SeedPhraseListModel
                                     {
-                                        LabelNumber = item.Id.ToString(),
+                                        LabelNumber = item.Id.ToString() + ".",
                                         EntryText = item.Val
                                     };
-                                    SeedList.Add(viewSeedModel);                               
+                                    SeedList.Add(viewSeedModel);                                    
                                 }
                             }
                         }
@@ -134,10 +140,7 @@ namespace DorhniiFoundationWallet.ViewModels
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
             }
         }
 
@@ -159,12 +162,11 @@ namespace DorhniiFoundationWallet.ViewModels
         /// <summary>
         ///Method to click on Next Button  to show save seed alert pop up
         /// </summary>
-        public void NextButtonClick()
+        public async void NextButtonClick()
         {
             try
             {
-                IsSaveSeedAlertVisible = true;
-
+                await Application.Current.MainPage.Navigation.PushModalAsync(new ValidateSeedPhrasePage(SeedList));
             }
             catch (Exception ex)
             {
@@ -172,20 +174,8 @@ namespace DorhniiFoundationWallet.ViewModels
             }
         }
 
-        /// <summary>
-        ///Method to Close save seed alert and move to validate seed screen
-        /// </summary>
-        public async void OkButtonClick()
-        {
-            try
-            {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new ValidateSeedPhrasePage(SeedList));                
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
+           
+           
         #endregion
     }
 }

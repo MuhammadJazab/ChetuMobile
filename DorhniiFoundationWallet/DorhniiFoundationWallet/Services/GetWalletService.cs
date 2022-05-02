@@ -5,8 +5,6 @@ using DorhniiFoundationWallet.Models.APIResponseModels;
 using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DorhniiFoundationWallet.Services
@@ -33,7 +31,7 @@ namespace DorhniiFoundationWallet.Services
             try
             {
                 var jsonRequest = JsonConvert.SerializeObject(getWalletRequestModel);
-                var jsonResponse = await ServiceHelpers.Instance.PostRequest(jsonRequest, StringConstant.AddWalletAPI, true, null);
+                var jsonResponse = await ServiceHelpers.Instance.PostRequest(jsonRequest, StringConstant.WalletAPI, true, null);
                 if (jsonResponse.IsSuccess)
                 {
                     responseModel = JsonConvert.DeserializeObject<GetWalletResponseModel>(jsonResponse.Data);

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DorhniiFoundationWallet.IServices
+﻿namespace DorhniiFoundationWallet.IServices
 {
-   public interface IFingerPrintPopup
+    /// <summary>
+    /// This interface is used to fingerPrint Popup
+    /// </summary>
+    public interface IFingerPrintPopup
     {
         void ShowPopup();
         void HidePopup();

@@ -79,11 +79,29 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We will reach out to you as soon as possible.
+        /// </summary>
+        internal static string msgAfterMailSend {
+            get {
+                return ResourceManager.GetString("msgAfterMailSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password and Confirm Password must be same..
         /// </summary>
         internal static string msgConfirmPassword {
             get {
                 return ResourceManager.GetString("msgConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to enable Touch Id or Face Id..
+        /// </summary>
+        internal static string msgDoYouWantToEnableTouchOrFaceId {
+            get {
+                return ResourceManager.GetString("msgDoYouWantToEnableTouchOrFaceId", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string msgNetworkIssueMessage {
             get {
                 return ResourceManager.GetString("msgNetworkIssueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Password is wrong.
+        /// </summary>
+        internal static string msgOldPasswordAlert {
+            get {
+                return ResourceManager.GetString("msgOldPasswordAlert", resourceCulture);
             }
         }
         
@@ -214,6 +241,15 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string String4 {
+            get {
+                return ResourceManager.GetString("String4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stake.
         /// </summary>
         internal static string tstStake {
@@ -223,16 +259,16 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 12% APR.
+        ///   Looks up a localized string similar to 10% APR.
         /// </summary>
-        internal static string txt12APR {
+        internal static string txt10APR {
             get {
-                return ResourceManager.GetString("txt12APR", resourceCulture);
+                return ResourceManager.GetString("txt10APR", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 12 MONTH.
+        ///   Looks up a localized string similar to 12 MONTHS.
         /// </summary>
         internal static string txt12Month {
             get {
@@ -241,11 +277,20 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2 month.
+        ///   Looks up a localized string similar to 15% APR.
         /// </summary>
-        internal static string txt2Mnoth {
+        internal static string txt15APR {
             get {
-                return ResourceManager.GetString("txt2Mnoth", resourceCulture);
+                return ResourceManager.GetString("txt15APR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 20% APR.
+        /// </summary>
+        internal static string txt20APR {
+            get {
+                return ResourceManager.GetString("txt20APR", resourceCulture);
             }
         }
         
@@ -255,6 +300,24 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txt3Month {
             get {
                 return ResourceManager.GetString("txt3Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4% APR.
+        /// </summary>
+        internal static string txt4APR {
+            get {
+                return ResourceManager.GetString("txt4APR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6 MONTHS.
+        /// </summary>
+        internal static string txt6Mnoth {
+            get {
+                return ResourceManager.GetString("txt6Mnoth", resourceCulture);
             }
         }
         
@@ -273,6 +336,15 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtAccounts {
             get {
                 return ResourceManager.GetString("txtAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We will reach you shortly..
+        /// </summary>
+        internal static string txtAcknowledgeSupport {
+            get {
+                return ResourceManager.GetString("txtAcknowledgeSupport", resourceCulture);
             }
         }
         
@@ -385,6 +457,15 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Biometrics Login.
+        /// </summary>
+        internal static string txtBiometricsLogin {
+            get {
+                return ResourceManager.GetString("txtBiometricsLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BRIDGES.
         /// </summary>
         internal static string txtBRIDGES {
@@ -394,11 +475,29 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string txtCancel {
+            get {
+                return ResourceManager.GetString("txtCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         internal static string txtChangePassword {
             get {
                 return ResourceManager.GetString("txtChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Amount.
+        /// </summary>
+        internal static string txtCharge {
+            get {
+                return ResourceManager.GetString("txtCharge", resourceCulture);
             }
         }
         
@@ -421,11 +520,29 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        internal static string txtCopy {
+            get {
+                return ResourceManager.GetString("txtCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         internal static string txtCreate {
             get {
                 return ResourceManager.GetString("txtCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE.
+        /// </summary>
+        internal static string txtCreateCapital {
+            get {
+                return ResourceManager.GetString("txtCreateCapital", resourceCulture);
             }
         }
         
@@ -475,6 +592,15 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Profile.
+        /// </summary>
+        internal static string txtEditProfile {
+            get {
+                return ResourceManager.GetString("txtEditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Empty Password Fields.
         /// </summary>
         internal static string txtEmptyPasswords {
@@ -484,11 +610,56 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable.
+        /// </summary>
+        internal static string txtEnable {
+            get {
+                return ResourceManager.GetString("txtEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Fingerprint or face Id login.
+        /// </summary>
+        internal static string txtEnableFingerprint {
+            get {
+                return ResourceManager.GetString("txtEnableFingerprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Touch Face Id.
+        /// </summary>
+        internal static string txtEnableTouchFaceId {
+            get {
+                return ResourceManager.GetString("txtEnableTouchFaceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date -.
+        /// </summary>
+        internal static string txtEndDate {
+            get {
+                return ResourceManager.GetString("txtEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to END DATE.
         /// </summary>
         internal static string txtEndDateButton {
             get {
                 return ResourceManager.GetString("txtEndDateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Amount.
+        /// </summary>
+        internal static string txtEnterAmount {
+            get {
+                return ResourceManager.GetString("txtEnterAmount", resourceCulture);
             }
         }
         
@@ -516,6 +687,15 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtEnterWalletName {
             get {
                 return ResourceManager.GetString("txtEnterWalletName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ENTER YOUR.
+        /// </summary>
+        internal static string txtENTERYOUR {
+            get {
+                return ResourceManager.GetString("txtENTERYOUR", resourceCulture);
             }
         }
         
@@ -610,11 +790,65 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FLEXIBLE.
+        /// </summary>
+        internal static string txtFlexible {
+            get {
+                return ResourceManager.GetString("txtFlexible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gas fees.
+        /// </summary>
+        internal static string txtGasFee {
+            get {
+                return ResourceManager.GetString("txtGasFee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET HELP.
+        /// </summary>
+        internal static string txtGe {
+            get {
+                return ResourceManager.GetString("txtGe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GENERAL.
+        /// </summary>
+        internal static string txtGENERAL {
+            get {
+                return ResourceManager.GetString("txtGENERAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get Help.
         /// </summary>
         internal static string txtGetHelp {
             get {
                 return ResourceManager.GetString("txtGetHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How can we help you....
+        /// </summary>
+        internal static string txtHowCanI {
+            get {
+                return ResourceManager.GetString("txtHowCanI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How we use your data.
+        /// </summary>
+        internal static string txtHowToUse {
+            get {
+                return ResourceManager.GetString("txtHowToUse", resourceCulture);
             }
         }
         
@@ -637,7 +871,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to which you saves earlier.
+        ///   Looks up a localized string similar to which you saved earlier.
         /// </summary>
         internal static string txtImportSeedPhrasePrivateKey1 {
             get {
@@ -660,6 +894,15 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtImportSeedPrivateKay {
             get {
                 return ResourceManager.GetString("txtImportSeedPrivateKay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Improve security with Password Update.
+        /// </summary>
+        internal static string txtImproveSecurity {
+            get {
+                return ResourceManager.GetString("txtImproveSecurity", resourceCulture);
             }
         }
         
@@ -700,6 +943,15 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mail Sent Successful.
+        /// </summary>
+        internal static string txtMailSuccessful {
+            get {
+                return ResourceManager.GetString("txtMailSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MANAGE.
         /// </summary>
         internal static string txtMANAGE {
@@ -718,7 +970,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My Wallet.
+        ///   Looks up a localized string similar to My Wallets.
         /// </summary>
         internal static string txtMyWallet {
             get {
@@ -768,6 +1020,15 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtNo {
             get {
                 return ResourceManager.GetString("txtNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not now.
+        /// </summary>
+        internal static string txtNotNow {
+            get {
+                return ResourceManager.GetString("txtNotNow", resourceCulture);
             }
         }
         
@@ -871,6 +1132,15 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter Coin amount.
+        /// </summary>
+        internal static string txtPleaseEnterAmount {
+            get {
+                return ResourceManager.GetString("txtPleaseEnterAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Print.
         /// </summary>
         internal static string txtPrint {
@@ -880,7 +1150,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click “Print” and print out paper instructions and write down .
+        ///   Looks up a localized string similar to Please click “Save Button” and keep secure by downloading  .
         /// </summary>
         internal static string txtPrintDescription1 {
             get {
@@ -898,7 +1168,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to recovery phrase could take your assets, strode it securely. .
+        ///   Looks up a localized string similar to recovery phrase could take your assets, store it securely. .
         /// </summary>
         internal static string txtPrintDescription3 {
             get {
@@ -934,7 +1204,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to paste or type your private key.
+        ///   Looks up a localized string similar to Paste/type your private key.
         /// </summary>
         internal static string txtPrivateKeyEditor {
             get {
@@ -970,7 +1240,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to REQUEST WITHDRAWl.
+        ///   Looks up a localized string similar to REQUEST WITHDRAWL.
         /// </summary>
         internal static string txtRequestWithdrwalButton {
             get {
@@ -984,6 +1254,15 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtRestore {
             get {
                 return ResourceManager.GetString("txtRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAVE.
+        /// </summary>
+        internal static string txtSAVE {
+            get {
+                return ResourceManager.GetString("txtSAVE", resourceCulture);
             }
         }
         
@@ -1006,7 +1285,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to you want to save and continue.
+        ///   Looks up a localized string similar to you already saved and continue.
         /// </summary>
         internal static string txtSaveSeedAlert3 {
             get {
@@ -1078,7 +1357,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to paste or type your seed phrase.
+        ///   Looks up a localized string similar to Paste/type your seed phrase....
         /// </summary>
         internal static string txtSeedPhraseEditor {
             get {
@@ -1096,7 +1375,7 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to REPEAT YOUR SEED.
+        ///   Looks up a localized string similar to THIS IS YOUR.
         /// </summary>
         internal static string txtSeedTitle1 {
             get {
@@ -1110,6 +1389,33 @@ namespace DorhniiFoundationWallet.Resources {
         internal static string txtSENDCapital {
             get {
                 return ResourceManager.GetString("txtSENDCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending Funds.
+        /// </summary>
+        internal static string txtSendingFund {
+            get {
+                return ResourceManager.GetString("txtSendingFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sending Funds….
+        /// </summary>
+        internal static string txtSendingFunds {
+            get {
+                return ResourceManager.GetString("txtSendingFunds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SETTINGS.
+        /// </summary>
+        internal static string txtSETTING {
+            get {
+                return ResourceManager.GetString("txtSETTING", resourceCulture);
             }
         }
         
@@ -1186,6 +1492,15 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string txtSubmit {
+            get {
+                return ResourceManager.GetString("txtSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success !.
         /// </summary>
         internal static string txtSuccessAlert {
@@ -1231,6 +1546,24 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Talk to Customer Care.
+        /// </summary>
+        internal static string txtTalkCustomerCare {
+            get {
+                return ResourceManager.GetString("txtTalkCustomerCare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terms of Service.
+        /// </summary>
+        internal static string txtTermOFServices {
+            get {
+                return ResourceManager.GetString("txtTermOFServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Terms Of Use.
         /// </summary>
         internal static string txtTerms {
@@ -1240,11 +1573,20 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Terms and condition.
+        ///   Looks up a localized string similar to Terms of Service.
         /// </summary>
-        internal static string txtTermsAndConditions {
+        internal static string txtTermsOfService {
             get {
-                return ResourceManager.GetString("txtTermsAndConditions", resourceCulture);
+                return ResourceManager.GetString("txtTermsOfService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you.
+        /// </summary>
+        internal static string txtThankYou {
+            get {
+                return ResourceManager.GetString("txtThankYou", resourceCulture);
             }
         }
         
@@ -1267,11 +1609,65 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total APR Received.
+        /// </summary>
+        internal static string txtTotalAprReceived {
+            get {
+                return ResourceManager.GetString("txtTotalAprReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The trasaction on the way.
+        /// </summary>
+        internal static string txtTranferPopUp1 {
+            get {
+                return ResourceManager.GetString("txtTranferPopUp1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here you can see it on explorer:.
+        /// </summary>
+        internal static string txtTranferPopUp2 {
+            get {
+                return ResourceManager.GetString("txtTranferPopUp2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recent Transactions.
         /// </summary>
         internal static string txtTransactions {
             get {
                 return ResourceManager.GetString("txtTransactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send &amp; receive funds.
+        /// </summary>
+        internal static string txtTransactTypeAlert {
+            get {
+                return ResourceManager.GetString("txtTransactTypeAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please choose if you want to send or receive funds.
+        /// </summary>
+        internal static string txtTransactTypeMessege {
+            get {
+                return ResourceManager.GetString("txtTransactTypeMessege", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Details.
+        /// </summary>
+        internal static string txtTxDetail {
+            get {
+                return ResourceManager.GetString("txtTxDetail", resourceCulture);
             }
         }
         
@@ -1285,11 +1681,11 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UNLOCKED.
+        ///   Looks up a localized string similar to Update your profile here.
         /// </summary>
-        internal static string txtUnlockedCapital {
+        internal static string txtUpdateProfile {
             get {
-                return ResourceManager.GetString("txtUnlockedCapital", resourceCulture);
+                return ResourceManager.GetString("txtUpdateProfile", resourceCulture);
             }
         }
         
@@ -1303,11 +1699,56 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VeRocket.
+        /// </summary>
+        internal static string txtVeRocket {
+            get {
+                return ResourceManager.GetString("txtVeRocket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One-Click  Token Swap on VeChain.
+        /// </summary>
+        internal static string txtVeRocketInfo {
+            get {
+                return ResourceManager.GetString("txtVeRocketInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vexchange.
+        /// </summary>
+        internal static string txtVexchange {
+            get {
+                return ResourceManager.GetString("txtVexchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vexchange is a protocol for creating liquidity and trading VIP-180 tokens on VeChain.
+        /// </summary>
+        internal static string txtVexchangeInfo {
+            get {
+                return ResourceManager.GetString("txtVexchangeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallet.
         /// </summary>
         internal static string txtWallet {
             get {
                 return ResourceManager.GetString("txtWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Wallet Address .
+        /// </summary>
+        internal static string txtWalletAddresAlert {
+            get {
+                return ResourceManager.GetString("txtWalletAddresAlert", resourceCulture);
             }
         }
         
@@ -1321,11 +1762,38 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WALLET.
+        /// </summary>
+        internal static string txtWalletCapital {
+            get {
+                return ResourceManager.GetString("txtWalletCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet Created .
+        /// </summary>
+        internal static string txtWalletCreated {
+            get {
+                return ResourceManager.GetString("txtWalletCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallet Name.
         /// </summary>
         internal static string txtWalletName {
             get {
                 return ResourceManager.GetString("txtWalletName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet Restored.
+        /// </summary>
+        internal static string txtWalletRestored {
+            get {
+                return ResourceManager.GetString("txtWalletRestored", resourceCulture);
             }
         }
         
@@ -1339,11 +1807,29 @@ namespace DorhniiFoundationWallet.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WELCOME.
+        /// </summary>
+        internal static string txtWelcomeCapital {
+            get {
+                return ResourceManager.GetString("txtWelcomeCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         internal static string txtYes {
             get {
                 return ResourceManager.GetString("txtYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By using the app, you agree to these terms and conditions.
+        /// </summary>
+        internal static string txtYouAreAgree {
+            get {
+                return ResourceManager.GetString("txtYouAreAgree", resourceCulture);
             }
         }
     }

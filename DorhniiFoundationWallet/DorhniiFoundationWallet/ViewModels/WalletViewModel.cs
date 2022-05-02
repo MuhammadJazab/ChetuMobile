@@ -1,4 +1,5 @@
-﻿using DorhniiFoundationWallet.Helpers;
+﻿using DorhniiFoundationWallet.DependencyServices;
+using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.IServices;
 using DorhniiFoundationWallet.Models;
 using DorhniiFoundationWallet.Models.APIRequestModels;
@@ -6,159 +7,609 @@ using DorhniiFoundationWallet.Models.APIResponseModels;
 using DorhniiFoundationWallet.Resources;
 using DorhniiFoundationWallet.Services;
 using DorhniiFoundationWallet.Views;
+using DorhniiFoundationWallet.Views.Partials;
 using Microsoft.AppCenter.Crashes;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace DorhniiFoundationWallet.ViewModels
 { /// <summary>
   /// This class is used to display wallets , its details and send receive functionality.
   /// </summary>
-    public class WalletViewModel : ObservableObject
+    public class WalletViewModel : BaseViewModel
     {
         GetWalletDetailsResponseModel getWalletDetailsResponse = null;
         IGetWalletDetailsService apiService;
+        IGasEstimateFeeService feeService;
         private static ITransferTokenService transferToken;
-        #region Private Boolean Properties 
-        private bool isSendPageVisible;
         private bool edit;
+        
         private bool saveButton;
-        private bool walletBlack;
-        private bool walletgray;
-        private bool stakesblack;
-        private bool stakesgray;
-        private bool transactionblack;
-        private bool transactiongray;
-        private bool settingsblack;
-        private bool settingsgray;
-        private string walletAdressEntered;
-        private string coinValue;
-        private string coinShortName;
-        private string coinStandard;
-
-
-
-        private int amount;
-        //private bool isSendVisible;
-        private bool isScannerPageVisible;
-        private bool isWalletListPage;
+        private bool Optionscanner = false;
+        private bool scanner = false;
+        public string walletAdress;       
+        private string walletName;
+        private Command selectedItemCommand1;
+        private Command coinPageCommand;
+        private Command sendPageCommand;
+        private Command receivePageCommand;
+        private Command scanCommand;
+        private Command closeSendPageCommand;
+        private Command closeReceivePageCommand;
+        private Command shareAdressCommand;
+        private Command sendButtonCommand;
+        private Command copyAdressCommand;
+        private Command scanButtonCommand;
+        public bool IsOpened { get; set; } = true;
         private ObservableCollection<WalletListModel> walletsList;
-        #endregion
-        #region Public Image Properties
-        public string CoinValue
-        {
-            get => coinValue;
-            set
-            {
-                if (coinValue != value)
-                {
-                    coinValue = value;
-                    OnPropertyChanged(nameof(CoinValue));
-                }
-            }
-        }
-        public string CoinShortName
-        {
-            get => coinShortName;
-            set
-            {
-                if (coinShortName != value)
-                {
-                    coinShortName = value;
-                    OnPropertyChanged(nameof(CoinShortName));
-                }
-            }
-        }
-
-        public string CoinStandard
-        {
-            get => coinStandard;
-            set
-            {
-                if (coinStandard != value)
-                {
-                    coinStandard = value;
-                    OnPropertyChanged(nameof(CoinStandard));
-                }
-            }
-        }
-        public string ShareApp48Icon { get; set; } = StringConstant.ShareApp48Icon;
-        public string PlusAppIcon { get; set; } = StringConstant.PlusAppIcon;       
-        public string SaveIcon { get; set; } = StringConstant.SaveIcon;               
+        #region Image Properties
+        public string PlusAppIcon { get; set; } = StringConstant.PlusAppIcon;
         public string AppIcon { get; set; } = StringConstant.AppIcon;
-        public string RightArrowClickedIcon { get; set; } = StringConstant.RightArrowClickedIcon;
         #endregion
-        #region Command Properties 
-        public ICommand ScanCommand { get; set; }
-        public ICommand BackBtn_Clicked { get; set; }
-        public ICommand SendBtn_Clicked { get; set; }
-        public ICommand CoinNameCommand { get; set; }
-        public ICommand AddNewWallet { get; set; }        
-        public ICommand ArrowCommand { get; set; }      
-        internal static void SendAppIconClick()
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
-        #region Bindable Public Properties        
-        public string txtWalletBalance;
-
-        public bool IsSendPageVisible
-        {
-            get => isSendPageVisible;
-            set
-            {
-                if (isSendPageVisible != value)
-                {
-                    isSendPageVisible = value;
-                    OnPropertyChanged(nameof(IsSendPageVisible));
-                }
-            }
-        }
-        public string WalletAdressEntered
+        #region Command properties                           
+        public ICommand AddNewWallet { get; set; }
+        public ICommand EditWalletName { get; set; }       
+        public ICommand SaveWalletName { get; set; }
+        public ICommand TrasactionStatusCommand { get; set; }
+        public ICommand OKCommand { get; set; }
+        public bool IsWalletnameClicked { get; set; } 
+        public bool IsSavebuttonClick { get; set; }
+        public WalletListModel SelectedWallet { get; set; }
+        public Command SelectedItemCommand1
         {
             get
             {
-                return walletAdressEntered;
-            }
-            set
-            {
-                if (walletAdressEntered != value)
+                try
                 {
-                    walletAdressEntered = value;
-                    OnPropertyChanged(nameof(WalletAdressEntered));
+                    if (selectedItemCommand1 == null)
+                    {
+                        selectedItemCommand1 = new Command(async (selectedItem) =>
+                        {
+                            try
+                            {
+                                if (selectedItem != null)
+                                {
+                                    IsLoading = true;
+                                    if (WalletList != null)
+                                    {
+                                        if (WalletList.Count > 0)
+                                        {
+                                            WalletList.ToList().ForEach(x =>
+                                            {
+                                                x.IsCoinVisible = true;
+                                                x.IsCoinDetailVisible = false;
+                                                x.IsSendPageVisible = false;
+                                                x.IsReceivePageVisible = false;
+                                            });
+                                        }
+                                    }
+                                    WalletListModel item = selectedItem as WalletListModel;
+                                    SelectedWallet = item;
+                                    if (item != null)
+                                    {
+                                        item.IsCoinVisible = false;
+                                        item.IsCoinDetailVisible = true;
+                                        item.IsSendPageVisible = false;
+                                        item.IsReceivePageVisible = false;
+                                        IsLoading = false;
+                                    }
+                                }
+                                else
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.StackTrace);
+                            }
+                        });
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return selectedItemCommand1;
             }
         }
-        public int Amount
+        public Command CoinPageCommand
         {
             get
             {
-                return amount;
+                try
+                {
+                    if (coinPageCommand == null)
+                    {
+                        coinPageCommand = new Command(async (selectedItem) =>
+                        {
+                            if (selectedItem != null)
+                            {
+                                WalletListModel item = selectedItem as WalletListModel;
+                                item.IsCoinVisible = true;
+                                item.IsCoinDetailVisible = false;
+                                item.IsSendPageVisible = false;
+                                item.IsReceivePageVisible = false;
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        });
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return coinPageCommand;
+            }
+        }
+        public Command SendPageCommand
+        {
+            get
+            {
+                if (sendPageCommand == null)
+                {
+                    sendPageCommand = new Command(async (selectedItem) =>
+                    {
+                        if (selectedItem != null)
+                        {
+                            WalletListModel item = selectedItem as WalletListModel;
+                            item.IsCoinVisible = false;
+                            item.IsCoinDetailVisible = false;
+                            item.IsSendPageVisible = true;
+                            item.IsReceivePageVisible = false;
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        }
+                    });
+                }
+                return sendPageCommand;
+            }
+        }
+
+        /// <summary>
+        /// Method use to Open receive page
+        /// </summary>
+        public Command ReceivePageCommand
+        {
+            get
+            {
+                try
+                {
+                    if (receivePageCommand == null)
+                    {
+                        receivePageCommand = new Command(async (selectedItem) =>
+                        {
+                            if (selectedItem != null)
+                            {
+                                WalletListModel item = selectedItem as WalletListModel;
+                                item.IsCoinVisible = false;
+                                item.IsCoinDetailVisible = true;
+                                item.IsSendPageVisible = true;
+                                item.IsReceivePageVisible = true;
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return receivePageCommand;
+            }
+        }
+
+        /// <summary>
+        /// Method use to initiate to open receive page or scanner
+        /// </summary>
+        public Command ScanButtonCommand
+        {
+            get
+            {
+                try
+                {
+                    if (scanButtonCommand == null)
+                    {
+                        scanButtonCommand = new Command(async (selectedItem) =>
+                        {
+                            if (selectedItem != null)
+                            {
+                                var IsStatus = await App.Current.MainPage.DisplayAlert(Resource.txtTransactTypeAlert, Resource.txtTransactTypeMessege, Resource.txtSENDCapital, Resource.txtRECEIVECapital);
+                                if (IsStatus)
+                                {
+                                    IsOpened = false;
+                                    ZXingScannerPage scanPage;
+                                    scanPage = new ZXingScannerPage(null, new ScanCancel());
+                                    scanPage.OnScanResult += (result) =>
+                                    {
+                                        scanPage.IsScanning = true;
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await App.Current.MainPage.Navigation.PopModalAsync();
+                                            WalletListModel content = selectedItem as WalletListModel;
+                                            content.WalletAdressEntered = result.Text;
+                                            walletAdress = result.Text;
+                                            IsLoading = true;
+                                            IsLoading = false;
+                                            Optionscanner = true;
+                                        });
+
+                                    };
+                                    await App.Current.MainPage.Navigation.PushModalAsync(scanPage);
+                                    IsOpened = true;
+                                    WalletListModel item = selectedItem as WalletListModel;
+                                    item.IsCoinVisible = false;
+                                    item.IsCoinDetailVisible = false;
+                                    item.IsSendPageVisible = true;
+                                    item.IsReceivePageVisible = false;
+                                    item.WalletAdressEntered = Preferences.Get(StringConstant.scanAddress, string.Empty);
+                                }
+                                else
+                                {
+                                    WalletListModel item = selectedItem as WalletListModel;
+                                    item.IsCoinVisible = false;
+                                    item.IsCoinDetailVisible = false;
+                                    item.IsSendPageVisible = false;
+                                    item.IsReceivePageVisible = true;
+                                }
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        });
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return scanButtonCommand;
+            }
+        }
+
+        /// <summary>
+        /// /// <summary>
+        /// Method use to Scan wallet address
+        /// </summary>
+        /// </summary>
+        public Command ScanCommand
+        {
+            get
+            {
+                if (scanCommand == null)
+                {
+                    scanCommand = new Command(async (selectedItem) =>
+                    {
+                        if (selectedItem != null && IsOpened)
+                        {
+                            try
+                            {
+                                IsOpened = false;
+                                ZXingScannerPage scanPage;
+                                scanPage = new ZXingScannerPage(null, new ScanCancel());
+                                scanPage.OnScanResult += (result) =>
+                                    {
+                                        scanPage.IsScanning = true;
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await App.Current.MainPage.Navigation.PopModalAsync();
+                                            WalletListModel item = selectedItem as WalletListModel;
+                                            item.WalletAdressEntered = result.Text;
+                                            walletAdress = result.Text;
+                                            IsLoading = true;
+                                            scanner = true;
+                                            IsLoading = false;
+                                        });
+                                    };
+                                await App.Current.MainPage.Navigation.PushModalAsync(scanPage);
+                                IsOpened = true;
+                            }
+                            catch (Exception ex)
+                            {
+                                Crashes.TrackError(ex);
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        }
+                    });
+                }
+                return scanCommand;
+            }
+        }
+
+        /// <summary>
+        /// Method use to Close send page
+        /// </summary>
+        public Command CloseSendPageCommand
+        {
+            get
+            {
+                try
+                {
+                    if (closeSendPageCommand == null)
+                    {
+                        closeSendPageCommand = new Command(async (selectedItem) =>
+                        {
+                            if (selectedItem != null)
+                            {
+                                WalletListModel item = selectedItem as WalletListModel;
+                                item.IsCoinVisible = false;
+                                item.IsCoinDetailVisible = true;
+                                item.IsSendPageVisible = false;
+                                item.IsReceivePageVisible = false;
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return closeSendPageCommand;
+            }
+        }
+
+        /// <summary>
+        /// /// <summary>
+        /// Method use to Close Receive Page
+        /// </summary>
+        /// </summary>
+        public Command CloseReceivePageCommand
+        {
+            get
+            {
+                try
+                {
+                    if (closeReceivePageCommand == null)
+                    {
+                        closeReceivePageCommand = new Command(async (selectedItem) =>
+                        {
+                            if (selectedItem != null)
+                            {
+                                WalletListModel item = selectedItem as WalletListModel;
+                                item.IsCoinVisible = false;
+                                item.IsCoinDetailVisible = true;
+                                item.IsSendPageVisible = false;
+                                item.IsReceivePageVisible = false;
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return closeReceivePageCommand;
+            }
+        }
+
+        /// <summary>
+        /// /// <summary>
+        /// Method use to copy wallet address
+        /// </summary>
+        /// </summary>
+        public Command CopyAdressCommand
+        {
+            get
+            {
+                if (copyAdressCommand == null)
+                {
+                    copyAdressCommand = new Command(async (selectedItem) =>
+                    {
+                        if (selectedItem != null)
+                        {
+                            try
+                            {
+                                var Copied = string.Copy(Preferences.Get(StringConstant.walletAddress, string.Empty));                               
+                                await Clipboard.SetTextAsync(Copied);
+                                DependencyService.Get<IMessage>().ShortAlert("Address Copied");
+                                var text = await Clipboard.GetTextAsync();
+                            }
+                            catch (Exception ex)
+                            {
+                                Crashes.TrackError(ex);
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        }
+                    });
+                }
+                return copyAdressCommand;
+            }
+        }
+
+        /// <summary>
+        /// Method use to share wallet address
+        /// </summary>
+        public Command ShareAdressCommand
+        {
+            get
+            {
+                if (shareAdressCommand == null)
+                {
+                    shareAdressCommand = new Command(async (selectedItem) =>
+                    {
+                        if (selectedItem != null)
+                        {
+                            try
+                            {
+                                await Share.RequestAsync(new ShareTextRequest
+                                {
+                                    Text = Preferences.Get(StringConstant.walletAddress, string.Empty),
+                                    Title = "Share Text"
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                Crashes.TrackError(ex);
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                        }
+                    });
+                }
+                return shareAdressCommand;
+            }
+        }
+
+        /// <summary>
+        /// Method use to initiate send method
+        /// </summary>
+        public Command SendButtonCommand
+        {
+            get
+            {
+                try
+                {
+                    if (sendButtonCommand == null)
+                    {
+                        sendButtonCommand = new Command(async (selectedItem) =>
+                        {
+                            if (selectedItem != null)
+                            {
+                                try
+                                {
+                                    await SendCommandAsync();
+                                }
+                                catch (Exception ex)
+                                {
+                                    Crashes.TrackError(ex);
+                                }
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Crashes.TrackError(ex);
+                }
+                return sendButtonCommand;
+            }
+        }
+        #endregion
+        #region public Properties
+        private string gasFeeMessage;
+        public string GasFeeMessage
+        {
+            get
+            {
+                gasFeeMessage = FeeUnit +"."+ " Please click “OK” to continue.";
+                return gasFeeMessage;
             }
             set
             {
-                if (amount != value)
+                if (gasFeeMessage != value)
                 {
-                    amount = value;
-                    OnPropertyChanged(nameof(Amount));
+                    gasFeeMessage = value;
+                    OnPropertyChanged(nameof(GasFeeMessage));
+                }
+            }
+        }
+        public string scanAdress;
+        public string FeeAmount;
+        public string FeeUnit;
+        private string walletFormattedBalance;
+        public string WalletFormattedBalance
+        {
+            get => walletFormattedBalance;
+            set
+            {
+                if (walletFormattedBalance != value)
+                {
+                    walletFormattedBalance = value;
+                    OnPropertyChanged(nameof(WalletFormattedBalance));
+                }
+            }
+        }
+        private string edItedWalletName;
+        public string EdItedWalletName
+        {
+            get => edItedWalletName;
+            set
+            {
+                if (edItedWalletName != value)
+                {
+                    edItedWalletName = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string WalletName
+        {
+            get => walletName;
+            set
+            {
+                if (walletName != value)
+                {
+                    walletName = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public double txtWalletBalance;
+        public bool exit;
+        public bool error;
+        public bool amountEntrty;
+        private bool isPopup;
+        public bool IsPopup
+        {
+            get => isPopup;
+            set
+            {
+                isPopup = value;
+                OnPropertyChanged(nameof(IsPopup));
+            }
+        }
+        private string trasactionlink;
+        public string Trasactionlink
+        {
+            get => trasactionlink;
+            set
+            {
+                if (trasactionlink != value)
+                {
+                    trasactionlink = value;
+                    OnPropertyChanged();
                 }
             }
         }
 
-        //public bool IsSendVisible
-        //{
-        //    get => isSendVisible;
-        //    set
-        //    {
-        //        isSendVisible = value;
-        //        OnPropertyChanged(nameof(IsSendVisible));
-        //    }
-        //}       
         public bool SaveButton
         {
             get => saveButton;
@@ -170,7 +621,7 @@ namespace DorhniiFoundationWallet.ViewModels
                     OnPropertyChanged();
                 }
             }
-        }       
+        }
         public bool Edit
         {
             get => edit;
@@ -183,7 +634,8 @@ namespace DorhniiFoundationWallet.ViewModels
                 }
             }
         }
-        public string WalletBalance
+      
+        public double WalletBalance
         {
             get => txtWalletBalance;
             set
@@ -192,31 +644,6 @@ namespace DorhniiFoundationWallet.ViewModels
                 {
                     txtWalletBalance = value;
                     OnPropertyChanged();
-                }
-            }
-        }
-        
-        public bool IsScannerPageVisible
-        {
-            get => isScannerPageVisible;
-            set
-            {
-                if (isScannerPageVisible != value)
-                {
-                    isScannerPageVisible = value;
-                    OnPropertyChanged(nameof(IsScannerPageVisible));
-                }
-            }
-        }
-        public bool IsWalletListPage
-        {
-            get => isWalletListPage;
-            set
-            {
-                if (isWalletListPage != value)
-                {
-                    isWalletListPage = value;
-                    OnPropertyChanged(nameof(IsWalletListPage));
                 }
             }
         }
@@ -230,7 +657,7 @@ namespace DorhniiFoundationWallet.ViewModels
             }
         }
         #endregion
-        #region Constructor
+        #region Public methods
         /// <summary>
         /// This Constructor method is used to see the list of coins and coin amount.
         /// </summary>
@@ -238,29 +665,81 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
+                feeService = new GetEstimateFeeService();
                 transferToken = new TransferTokenService();
-                apiService = new GetWalletDetailsService();                                                                    
-                IsWalletListPage = true;                
-                AddNewWallet = new Command(AddNewWalletClick);               
-                BackBtn_Clicked = new Command(BackBtn_ClickedCommand);
-                //SendBtn_Clicked = new Command(SendBtn_ClickedCommand);
-                //ScanCommand = new Command(ScanCommandClick);
-
-        _ = GetWalletDetails();
+                apiService = new GetWalletDetailsService();
+                AddNewWallet = new Command(AddNewWalletClick);
+                EditWalletName = new Command(EditWalletClick);
+                SaveWalletName = new Command(SaveWalletNameClick);
+                TrasactionStatusCommand = new Command(TrasactionStatusCommandClick);
+                OKCommand = new Command(OKCommandClickAsync);
+                SaveButton = true;
+                Edit = false;
+                _ = GetWalletDetails();
+                exit = false;               
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+        public async void TrasactionStatusCommandClick()
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new TransactionDetailPage(Trasactionlink));
+        }
+        public async void OKCommandClickAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
+        }
+
+
+        // this method is used to edit wallet name 
+        public void EditWalletClick()
+        {
+            try
+            {
+                Edit = true;
+                SaveButton = false;
+            }
+            catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
         }
 
-        #endregion
-        #region Public Methods
+        // this method is used to save wallet name.
+        public void SaveWalletNameClick()
+        {
+            try
+            {
+                SaveButton = true;
+                Edit = false;
+                if (!String.IsNullOrEmpty(EdItedWalletName))
+                {
+                    WalletName = EdItedWalletName;
+                }
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
 
+        /// <summary>
+        /// Method used to navigate AddWalletPage screen
+        /// </summary>
         public async void AddNewWalletClick()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
+            try
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new AddWalletPage());
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
+
         /// <summary>
         /// This task is used to get the list of wallet details.
         /// </summary>
@@ -272,16 +751,13 @@ namespace DorhniiFoundationWallet.ViewModels
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = true;
-                    });
+                    IsLoading = true;
                     WalletList = new ObservableCollection<WalletListModel>();
                     GetWalletsDetailsRequestModel getWalletDetailsRequest = new GetWalletsDetailsRequestModel
                     {
-                        SeedId =Preferences.Get("Seedid", string.Empty)
+                        SeedId = Preferences.Get(StringConstant.SeedId, string.Empty)
                     };
-                    getWalletDetailsRequest.WalletAddress = Preferences.Get("WalletAddress", string.Empty);
+                    getWalletDetailsRequest.WalletAddress = Preferences.Get(StringConstant.walletAddress, string.Empty);
                     getWalletDetailsResponse = await apiService.GetWalletDetails(getWalletDetailsRequest);
                     if (getWalletDetailsResponse != null)
                     {
@@ -289,31 +765,37 @@ namespace DorhniiFoundationWallet.ViewModels
                         {
                             if (getWalletDetailsResponse.Data != null)
                             {
-                                Preferences.Set("WalletAdress", getWalletDetailsResponse.WalletAddress);
+                                Preferences.Set(StringConstant.walletAddress, getWalletDetailsResponse.WalletAddress);
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
-                                    WalletBalance = getWalletDetailsResponse.Balance.ToString();                                                                        
+                                    WalletFormattedBalance = getWalletDetailsResponse.Balance.ToString("n2");
+                                    WalletName = getWalletDetailsResponse.WalletName;
                                     foreach (WalletDetailsResponseModel item in getWalletDetailsResponse.Data)
                                     {
                                         WalletListModel wallet = new WalletListModel
                                         {
                                             CoinName = item.CoinName,
-                                            CoinValue = item.CoinValue.ToString(),
-                                            CoinIcon = item.CoinIcon.ToString(),
+                                            CoinValue = Math.Round(item.CoinValue, 2),
+                                            CoinValueString = item.CoinValue.ToString("n2"),
+                                            CoinIcon = "https://" + item.CoinIcon,
                                             CoinShortName = item.CoinShortName,
-                                            CoinUsdValue = item.CoinUsdValue.ToString(),
+                                            CoinUsdValue = Math.Round(item.CoinUsdValue, 2),
+                                            CoinUsdValueString = item.CoinUsdValue.ToString("n2"),
                                             CoinStandard = item.CoinStandard,
                                             QrCode = getWalletDetailsResponse.QrCode,
                                             WalletAdress = getWalletDetailsResponse.WalletAddress,
-                                            Walletbalance = getWalletDetailsResponse.Balance.ToString(),
+                                            Walletbalance = Math.Round(getWalletDetailsResponse.Balance, 2),
+                                            BlockChain = item.BlockChain,
                                         };
-                                        Preferences.Set("CoinShortname", wallet.CoinShortName);
-                                        Preferences.Set("QrCode", getWalletDetailsResponse.QrCode);
+                                        Preferences.Set(StringConstant.CoinShortname, wallet.CoinShortName);
                                         WalletList.Add(wallet);
-                                        foreach (WalletListModel walletItem in WalletList)
-                                        {
-                                            walletItem.IsCoinVisible = true;                                          
-                                        }
+                                    }
+                                    var index = 0;
+                                    foreach (WalletListModel walletItem in WalletList)
+                                    {
+                                        walletItem.IsCoinVisible = true;
+                                        walletItem.ListId = index;
+                                        index++;
                                     }
                                 });
                             }
@@ -341,253 +823,200 @@ namespace DorhniiFoundationWallet.ViewModels
                 });
             }
         }
-                                  
-        /// <summary>
-        /// This command is used to Show CoinDetail and send Option
-        /// </summary>
-        /// <param name="walletLsitModel"></param>
-        public void CoinNameClick(WalletListModel walletListModel)
-        {
-            try
-            {
-                walletListModel.IsCoinVisible = false;
-                walletListModel.IsCoinDetailVisible = true;
-                IsSendPageVisible = false;
-                walletListModel.IsReceivePageVisible = false;
-                //Preferences.Set("CoinShortname", walletListModel.CoinShortName);
-                //Preferences.Set("coinValue", walletListModel.CoinValue);                
-                //Preferences.Set("CoinStandard", walletListModel.CoinStandard);
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
 
         /// <summary>
-        /// This command is used come back on CoinPage 
+        /// Method use to send the coin to any wallet adress
         /// </summary>
-        /// <param name="walletLsitModel"></param>
-        public void CoiName2Click(WalletListModel walletListModel)
+        /// <returns></returns>
+        private async Task SendCommandAsync()
         {
-            try
+            await WalletFeeCalculationMethodAsync();
+            if (!error)
             {
-                walletListModel.IsCoinVisible = true;
-                walletListModel.IsCoinDetailVisible = false;
-                IsSendPageVisible = false;
-                walletListModel.IsReceivePageVisible = false;
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
-
-        /// <summary>
-        /// this Command is used to Show the send Page
-        /// </summary>
-        /// <param name="walletLsitModel"></param>
-        public void SendAppIconClick(WalletListModel walletListModel)
-        {
-            try
-            {
-                //Preferences.Set("CoinShortname", walletListModel.CoinShortName);
-                //Preferences.Set("coinValue", walletListModel.CoinValue);
-                //Preferences.Set("CoinStandard", walletListModel.CoinStandard);
-                //CoinShortName = Preferences.Get("CoinShortname", " ");
-                //CoinValue= Preferences.Get("coinValue", " ");
-                //CoinStandard = Preferences.Get("CoinStandard", " ");
-                walletListModel.IsCoinVisible = false;
-                walletListModel.IsCoinDetailVisible = false;
-                walletListModel.IsSendPageVisible = true;
-                IsSendPageVisible = true;
-                walletListModel.IsReceivePageVisible = false;
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
-
-        /// <summary>
-        /// this method is used to show receive page
-        /// </summary>
-        /// <param name="walletLsitModel"></param>
-        public void ReceiveAppIconlick(WalletListModel walletListModel)
-        {
-            try
-            {
-                walletListModel.IsCoinVisible = walletListModel.IsSendPageVisible = false;
-                walletListModel.IsCoinDetailVisible = walletListModel.IsReceivePageVisible = true;
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
-        public  void BackBtn_ClickedCommand()
-        {
-            WalletListModel walletListModel = new WalletListModel();
-            try
-            {
-                Preferences.Set("CoinShortname", walletListModel.CoinShortName);
-                Preferences.Set("coinValue", walletListModel.CoinValue);
-                Preferences.Set("CoinStandard", walletListModel.CoinStandard);
-                CoinShortName = Preferences.Get("CoinShortname", " ");
-                CoinValue = Preferences.Get("coinValue", " ");
-                CoinStandard = Preferences.Get("CoinStandard", " ");
-                IsSendPageVisible = false;
-                Utilities.WalletList.IsCoinDetailVisible = true;
-            }
-            catch (Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-        }
-
-        /// <summary>
-        /// This command method  is used to Send coin to entered or scaned  walletAdress
-        /// </summary>
-        /// <param name="walletLsitModel"></param>
-            
-        //public async void SendBtn_ClickedCommand()
-        public async Task SendCommandAsync()
-        {
-            try
-            {
-
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                await Application.Current.MainPage.DisplayAlert(Resource.txtGasFee, "This transaction will cost you " + FeeAmount + " " + GasFeeMessage, Resource.txtOk);
                 {
-                    Device.BeginInvokeOnMainThread(() =>
+                    try
                     {
-                        IsLoading = true;
-                    });
-                    TransferTokenRequestModel transferTokenRequestModel = new TransferTokenRequestModel();
-                    
-                    foreach (WalletListModel walletItem in WalletList)
-                    
-                    {
-                        if (walletItem.Amount != 0)
+                        if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                         {
-                            if (string.IsNullOrEmpty(walletItem.WalletAdressEntered))
+                            Device.BeginInvokeOnMainThread(() =>
                             {
-                                if ( !string.IsNullOrEmpty(Utilities.Scannedtext))
+                                IsLoading = true;
+                            });
+                            TransferTokenRequestModel transferTokenRequestModel = new TransferTokenRequestModel();
+                            foreach (WalletListModel walletItem in WalletList)
+                            {
+                                if (Convert.ToDouble(walletItem.Amount) != 0.00)
                                 {
-                                    transferTokenRequestModel.BlockChain = "VECHAIN";
-                                    transferTokenRequestModel.WalletAddressTo = Utilities.Scannedtext;
-                                    transferTokenRequestModel.WalletAddressFrom = Preferences.Get("WalletAddress", string.Empty);
-                                    transferTokenRequestModel.Amount = walletItem.Amount;
-                                    transferTokenRequestModel.CoinShortName = walletItem.CoinShortName;
+                                    if (scanner || Optionscanner)
+                                    {
+                                        transferTokenRequestModel.WalletAddressTo = walletAdress;
+                                        transferTokenRequestModel.WalletAddressFrom = Preferences.Get(StringConstant.walletAddress, string.Empty);
+                                        transferTokenRequestModel.Amount = Convert.ToDouble(walletItem.Amount);
+                                        transferTokenRequestModel.CoinShortName = walletItem.CoinShortName;
+                                        transferTokenRequestModel.BlockChain = walletItem.BlockChain;
+                                        transferTokenRequestModel.Fee = FeeAmount.ToString();
+                                        transferTokenRequestModel.EncryptedPrivateKey= Preferences.Get(StringConstant.EncryptedPrivateKey, string.Empty);
+                                        walletAdress = null;
+                                        scanner = false;
+                                        Optionscanner = false;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        transferTokenRequestModel.WalletAddressTo = walletItem.WalletAdressEntered;
+                                        transferTokenRequestModel.WalletAddressFrom = Preferences.Get(StringConstant.walletAddress, string.Empty);
+                                        transferTokenRequestModel.Amount = Convert.ToDouble(walletItem.Amount);
+                                        transferTokenRequestModel.CoinShortName = walletItem.CoinShortName;
+                                        transferTokenRequestModel.BlockChain = walletItem.BlockChain;
+                                        transferTokenRequestModel.Fee = FeeAmount.ToString();
+                                        transferTokenRequestModel.EncryptedPrivateKey = Preferences.Get(StringConstant.EncryptedPrivateKey, string.Empty);
+                                        break;
+                                    }
+                                }
+                            }
+                            TransferTokenResponseModel response = await transferToken.TranferToken(transferTokenRequestModel);
+                            if (response != null)
+                            {
+                                if (response.Status == 200 && response.Result)
+                                {
+                                    Trasactionlink = StringConstant.VeChainStatLink + response.TxId;
+                                    IsPopup = true;
                                 }
                                 else
                                 {
-                                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, "please enter Valid Wallet Adress", Resource.txtOk);
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, response.Message, Resource.txtOk);
+                                    await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
                                 }
                             }
                             else
                             {
-                                transferTokenRequestModel.BlockChain = "VECHAIN";
-                                transferTokenRequestModel.WalletAddressTo = walletItem.WalletAdressEntered;
-                                transferTokenRequestModel.WalletAddressFrom = Preferences.Get("WalletAddress", string.Empty);
-                                transferTokenRequestModel.Amount = walletItem.Amount;
-                                transferTokenRequestModel.CoinShortName = walletItem.CoinShortName;
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                                await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
+                            await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Crashes.TrackError(ex);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gas Fee Calculation method  for transaction 
+        /// </summary>
+        /// <returns></returns>
+        public async Task WalletFeeCalculationMethodAsync()
+        {
+            try
+            {
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    IsLoading = true;
+                    GasEstimateRequestModel feeCalculateRequestModel = new GasEstimateRequestModel();
+                    foreach (WalletListModel walletItem in WalletList)
+                    {
+                        if (Convert.ToDouble(walletItem.Amount) != 0.00)
+                        {
+                            if (!string.IsNullOrEmpty(walletItem.WalletAdressEntered) && (Convert.ToDouble(walletItem.Amount) <= walletItem.CoinValue))
+
+                            {
+                                if (scanner || Optionscanner)
+                                {
+                                    feeCalculateRequestModel.WalletAddressTo = walletAdress;
+                                    feeCalculateRequestModel.WalletAddressFrom = Preferences.Get(StringConstant.walletAddress, string.Empty);
+                                    feeCalculateRequestModel.Amount = Convert.ToDouble(walletItem.Amount);
+                                    feeCalculateRequestModel.CoinShortName = walletItem.CoinShortName;
+                                    feeCalculateRequestModel.BlockChain = walletItem.BlockChain;
+                                    amountEntrty = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    feeCalculateRequestModel.WalletAddressTo = walletItem.WalletAdressEntered;
+                                    feeCalculateRequestModel.WalletAddressFrom = Preferences.Get(StringConstant.walletAddress, string.Empty);
+                                    feeCalculateRequestModel.Amount = Convert.ToDouble(walletItem.Amount);
+                                    feeCalculateRequestModel.CoinShortName = walletItem.CoinShortName;
+                                    feeCalculateRequestModel.BlockChain = walletItem.BlockChain;
+                                    amountEntrty = true;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                if (Convert.ToDouble(walletItem.Amount) <= walletItem.CoinValue)
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.txtWalletAddresAlert, Resource.txtOk);                                   
+                                    exit = true;
+                                    error = true;
+                                    amountEntrty = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, StringConstant.Insufficientbalance, Resource.txtOk);                                    
+                                    error = true;
+                                    amountEntrty = true;
+                                    break;
+                                }
                             }
                         }
                     }
-                    ResponseModel response = await transferToken.TranferToken(transferTokenRequestModel);
-                    if (response != null)
+                    if (!amountEntrty)
+                    {
+                        await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, Resource.txtEnterAmount, Resource.txtOk);                        
+                        error = true;
+                    }
+                    GasFeeResponseModel response = await feeService.CalculateGasFee(feeCalculateRequestModel);
+                    if (response != null && !exit)
                     {
                         if (response.Status == 200 && response.Result)
                         {
-                            await Application.Current.MainPage.DisplayAlert(Resource.txtSuccessAlert, response.Message, Resource.txtOk);
-                            await Application.Current.MainPage.Navigation.PushModalAsync(new WalletPage());
-                        }
-                        
-                        else
-                        {
-                            await Application.Current.MainPage.DisplayAlert(Resource.txtAlert, response.Message, Resource.txtOk);
-                            Application.Current.MainPage.Navigation.PopAsync(IsSendPageVisible=false);
-                            WalletPage.Loader = false;
+                            foreach (var item in WalletList)
+                            {
+                                item.GasAmount = response.GasConsumed.ToString();
+                                item.GasUnit = response.GasUnit;
+                                FeeAmount = response.GasConsumed;
+                                FeeUnit = response.GasUnit;
+                            }
                         }
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert(string.Empty, response.Message, Resource.txtOk);
-                        Application.Current.MainPage.Navigation.PopAsync(IsSendPageVisible=false);
-                        WalletPage.Loader = false;
+                        if (!exit)
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);                            
+                            error = true;
+                        }
                     }
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
-                    Application.Current.MainPage.Navigation.PopAsync(IsSendPageVisible=false);
-                    WalletPage.Loader = false;
+                    await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);                    
+                    error = true;
                 }
-             }
-            catch (Exception ex)
-             {
-                Crashes.TrackError(ex);
-             }
-         }
-
-        /// <summary>
-        /// This method is used to close Receive coin screen
-        /// </summary>
-        /// <param name="walletLsitModel"></param>
-        public async Task CloseReceivPageCommandAsync(WalletListModel walletListModel)
-        {
-            try
-            {
-                walletListModel.IsReceivePageVisible = false;
             }
             catch (Exception ex)
             {
                 Crashes.TrackError(ex);
             }
-
-        }
-
-        /// Method to click on Wallet Tab Button
-        /// </summary>
-        /// <param name></param>
-        /// <returns></returns>
-        
-
-        /// <summary>
-        /// Method to click on Stakes Tab Button
-        /// </summary>
-        /// <param name></param>
-        /// <returns></returns>
-       
-
-       
-
-       
-
-        /// <summary>
-        /// this command method is used to initiaize  QRcode  Scan method
-        /// </summary>
-        /// <param name="walletListModel"></param>
-        /// <returns></returns>
-        /// 
-        
-        //public  async void  ScanCommandClick()
-       public async Task ScanQR(WalletListModel walletListModel)
-
-        {
-            try
+            finally
             {
-              await Application.Current.MainPage.Navigation.PushModalAsync(new ScanQRCode());
-                //IsScannerPageVisible = true;
-                //IsWalletListPage = false;                
-
+                IsLoading = false;
             }
-            catch(Exception ex)
-            {
-                Crashes.TrackError(ex);
-            }
-            
         }
+        #endregion
     }
-    #endregion
+
 }
