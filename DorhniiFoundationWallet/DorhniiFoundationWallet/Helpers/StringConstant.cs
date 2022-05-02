@@ -3,8 +3,8 @@
     public class StringConstant
     {
         #region API Constant Values        
-        //public const string API_KEY_URL = "https://dohrniifoundationi2-qa.chetu.com/v1/";
-        public const string API_KEY_URL = "https://api.dohrniiwallet.ch/v1/";
+        public const string API_KEY_URL = "https://dohrniifoundationi2-qa.chetu.com/v1/";
+        //public const string API_KEY_URL = "https://api.dohrniiwallet.ch/v1/";
         public const string API_KEY_HttpAuthorization = "Authorization";
         public const string API_KEY_BEARER = "bearer";
         public const string HttpContentType = "Application/json";
@@ -26,13 +26,14 @@
         public const string StakingAvailableBalanceAPI = "wallet/stake/available/token";
         public const string TakeStakeAPI = "wallet/stake";
         public const string GetStakedDetailAPI = "wallet/stake/token/detail";
-        public const string UnStakeTokenAPI = "wallet/unstake";       
+        public const string UnStakeTokenAPI = "wallet/unstake";
+        public const string UpdateWalletNameAPI = "wallet/update";
         #endregion
         #region Used URL link
         public const string VexchanageLink = "Vexchange.io";
         public const string VeRocketLink = "Verocket.com";
-        public const string VeChainStatLink = " https://vechainstats.com/transaction/";
-        //public const string VeChainStatLink = "https://explore-testnet.vechain.org/transactions/";
+        //public const string VeChainStatLink = " https://vechainstats.com/transaction/";
+        public const string VeChainStatLink = "https://explore-testnet.vechain.org/transactions/";
         #endregion
         #region touch face id variables
         public const string KEY_IS_TOUCH_FACE_ID_ENABLED = "IsTouchFaceIDEnable";

@@ -32,9 +32,9 @@
                                     <cntrl:RendererEntry  Placeholder="Edit Wallet Name" Text="{Binding EdItedWalletName}"  Margin="5,0,0,0" FontFamily="Poppins" FontSize="15"  TextColor="White" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" PlaceholderColor="#98989a" />
                                     <Frame HorizontalOptions="Center" CornerRadius="5" Padding="2" BackgroundColor="Black">
                                         <Label Text="save" FontFamily="{StaticResource MonumnentLight}" FontSize="14" HorizontalOptions="EndAndExpand" TextColor="Black"/>
-                                        <Frame.GestureRecognizers>
+                                        <!--<Frame.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding SaveWalletName}" />
-                                        </Frame.GestureRecognizers>
+                                        </Frame.GestureRecognizers>-->
                                         <Frame.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                 <GradientStop Color="#93cafd" Offset="0.1"/>
@@ -44,9 +44,9 @@
                                     </Frame>
                                 </StackLayout>
                                 <Label  Text="{Binding WalletName}" IsVisible="{Binding SaveButton}" FontFamily="{StaticResource MonumnentLight}" FontSize="14" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White">
-                                    <!--<Label.GestureRecognizers>
+                                    <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding EditWalletName}" />
-                                    </Label.GestureRecognizers>-->
+                                    </Label.GestureRecognizers>
                                 </Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >

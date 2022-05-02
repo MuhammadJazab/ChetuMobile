@@ -25,6 +25,8 @@ namespace DorhniiFoundationWallet.ViewModels
     public class WalletViewModel : BaseViewModel
     {
         GetWalletDetailsResponseModel getWalletDetailsResponse = null;
+        IUpdatedateWalletName apiUpdateWalletName;
+        EditWalletNameResponseModel editWalletResponseModel = null;
         IGetWalletDetailsService apiService;
         IGasEstimateFeeService feeService;
         private static ITransferTokenService transferToken;
@@ -634,7 +636,7 @@ namespace DorhniiFoundationWallet.ViewModels
                 }
             }
         }
-      
+
         public double WalletBalance
         {
             get => txtWalletBalance;
@@ -665,12 +667,13 @@ namespace DorhniiFoundationWallet.ViewModels
         {
             try
             {
+                apiUpdateWalletName = new UpdateWalletNameService();
                 feeService = new GetEstimateFeeService();
                 transferToken = new TransferTokenService();
                 apiService = new GetWalletDetailsService();
                 AddNewWallet = new Command(AddNewWalletClick);
                 EditWalletName = new Command(EditWalletClick);
-                SaveWalletName = new Command(SaveWalletNameClick);
+                SaveWalletName = new Command(SaveWalletNameClickAsync);
                 TrasactionStatusCommand = new Command(TrasactionStatusCommandClick);
                 OKCommand = new Command(OKCommandClickAsync);
                 SaveButton = true;
@@ -708,7 +711,7 @@ namespace DorhniiFoundationWallet.ViewModels
         }
 
         // this method is used to save wallet name.
-        public void SaveWalletNameClick()
+        public async void SaveWalletNameClickAsync()
         {
             try
             {
@@ -717,6 +720,54 @@ namespace DorhniiFoundationWallet.ViewModels
                 if (!String.IsNullOrEmpty(EdItedWalletName))
                 {
                     WalletName = EdItedWalletName;
+                    try
+                    {
+                        if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                        {
+                            IsLoading = true;
+
+
+                            EditWalletNameRequestModel editWalletNameRequestModel = new EditWalletNameRequestModel
+                            {
+                                WalletName = EdItedWalletName,
+                                WalletAddress= Preferences.Get(StringConstant.walletAddress, string.Empty),
+                            };
+
+                            editWalletResponseModel = await apiUpdateWalletName.UpdateWalletName(editWalletNameRequestModel);
+                            if (editWalletResponseModel != null)
+                            {
+                                if (editWalletResponseModel.Result && editWalletResponseModel.Status == 200)
+                                {
+                                    if (editWalletResponseModel != null)
+                                    {
+                                        WalletName = editWalletResponseModel.WalletName;
+                                        await Application.Current.MainPage.DisplayAlert(string.Empty, editWalletResponseModel.Message, Resource.txtOk);
+                                    }
+                                }
+                                else
+                                {
+                                    await Application.Current.MainPage.DisplayAlert(string.Empty, editWalletResponseModel.Message, Resource.txtOk);
+                                }
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgTechnicalErrorOccurred, Resource.txtOk);
+                            }
+                        }
+                        else
+                        {
+                            await Application.Current.MainPage.DisplayAlert(string.Empty, Resource.msgNetworkIssueMessage, Resource.txtOk);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Crashes.TrackError(ex);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
                 }
             }
             catch (Exception ex)
