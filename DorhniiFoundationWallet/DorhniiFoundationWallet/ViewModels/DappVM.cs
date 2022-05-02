@@ -181,7 +181,7 @@ namespace DorhniiFoundationWallet.ViewModels
                        Debug.WriteLine(client.URI);
 
                        //This is where am getting the error from
-                       await client.Connect();
+                       //await client.Connect();
 
                        web3 = new Web3(client.CreateProvider(new Uri("https://mainnet.infura.io/v3/65e19a00a52a44fcb9b9f1f8aadbb4e3")));
                    });
