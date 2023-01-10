@@ -67,10 +67,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Distribution: Dohrnii Stiftung (RJWTX9QMFU)</CodesignKey>
+    <CodesignKey>iPhone Distribution: EMTN Structuring S.A. (S32AARWJPK)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>DohrniiWalletAppStore</CodesignProvision>
+    <CodesignProvision>AppStore Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
