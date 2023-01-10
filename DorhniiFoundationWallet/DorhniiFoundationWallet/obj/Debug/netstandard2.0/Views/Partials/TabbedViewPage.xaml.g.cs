@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views.Partials {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\Partials\\TabbedViewPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/Partials/TabbedViewPage.xaml")]
     public partial class TabbedViewPage : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\ScanQRCode.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/ScanQRCode.xaml")]
     public partial class ScanQRCode : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

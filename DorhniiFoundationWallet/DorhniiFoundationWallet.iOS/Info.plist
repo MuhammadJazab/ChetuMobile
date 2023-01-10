@@ -25,7 +25,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Dohrnii Wallet</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.dohrniifoundation.dohrniiwallet</string>
+	<string>io.dohrnii.wallet</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>

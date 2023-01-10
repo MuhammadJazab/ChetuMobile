@@ -2,6 +2,7 @@
 using Microsoft.AppCenter.Crashes;
 using System;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace DorhniiFoundationWallet.ViewModels

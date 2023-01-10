@@ -100,25 +100,28 @@
   <project key="1788482021">
     <configuration>DEBUG;__XAMARIN_ANDROID_v1_0__;__MOBILE__;__ANDROID__;__ANDROID_1__;__ANDROID_2__;__ANDROID_3__;__ANDROID_4__;__ANDROID_5__;__ANDROID_6__;__ANDROID_7__;__ANDROID_8__;__ANDROID_9__;__ANDROID_10__;__ANDROID_11__;__ANDROID_12__;__ANDROID_13__;__ANDROID_14__;__ANDROID_15__;__ANDROID_16__;__ANDROID_17__;__ANDROID_18__;__ANDROID_19__;__ANDROID_20__;__ANDROID_21__;__ANDROID_22__;__ANDROID_23__;__ANDROID_24__;__ANDROID_25__;__ANDROID_26__;__ANDROID_27__;__ANDROID_28__;__ANDROID_29__;__ANDROID_30__</configuration>
   </project>
+  <project key="-1149430080">
+    <configuration>DEBUG;__XAMARIN_ANDROID_v1_0__;__MOBILE__;__ANDROID__;__ANDROID_1__;__ANDROID_2__;__ANDROID_3__;__ANDROID_4__;__ANDROID_5__;__ANDROID_6__;__ANDROID_7__;__ANDROID_8__;__ANDROID_9__;__ANDROID_10__;__ANDROID_11__;__ANDROID_12__;__ANDROID_13__;__ANDROID_14__;__ANDROID_15__;__ANDROID_16__;__ANDROID_17__;__ANDROID_18__;__ANDROID_19__;__ANDROID_20__;__ANDROID_21__;__ANDROID_22__;__ANDROID_23__;__ANDROID_24__;__ANDROID_25__;__ANDROID_26__;__ANDROID_27__;__ANDROID_28__;__ANDROID_29__;__ANDROID_30__</configuration>
+  </project>
   <sourcecode name="EditorCustomRenderer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:59.079</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/09 21:55:21.736</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -165,8 +168,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to Control must begin with the 'this.', 'base.', 'object.' or 'EditorCustomRenderer.' or 'EditorRenderer.' prefix to indicate the intended method call. </context>
         <line>15</line>
-        <index>609</index>
-        <endIndex>615</endIndex>
+        <index>595</index>
+        <endIndex>601</endIndex>
         <startLine>15</startLine>
         <startColumn>17</startColumn>
         <endLine>15</endLine>
@@ -177,23 +180,23 @@
   </sourcecode>
   <sourcecode name="EntryCustomerRenderer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:59.157</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/09 21:55:21.736</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -241,23 +244,23 @@
   </sourcecode>
   <sourcecode name="DownloadManger.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:58.968</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.929</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -305,23 +308,23 @@
   </sourcecode>
   <sourcecode name="FileDownloadService.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:58.686</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.929</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -344,8 +347,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>2</line>
-        <index>22</index>
-        <endIndex>72</endIndex>
+        <index>21</index>
+        <endIndex>71</endIndex>
         <startLine>2</startLine>
         <startColumn>1</startColumn>
         <endLine>2</endLine>
@@ -355,8 +358,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>3</line>
-        <index>75</index>
-        <endIndex>125</endIndex>
+        <index>73</index>
+        <endIndex>123</endIndex>
         <startLine>3</startLine>
         <startColumn>1</startColumn>
         <endLine>3</endLine>
@@ -366,8 +369,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>4</line>
-        <index>128</index>
-        <endIndex>184</endIndex>
+        <index>125</index>
+        <endIndex>181</endIndex>
         <startLine>4</startLine>
         <startColumn>1</startColumn>
         <endLine>4</endLine>
@@ -377,8 +380,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>5</line>
-        <index>187</index>
-        <endIndex>204</endIndex>
+        <index>183</index>
+        <endIndex>200</endIndex>
         <startLine>5</startLine>
         <startColumn>1</startColumn>
         <endLine>5</endLine>
@@ -388,8 +391,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>6</line>
-        <index>207</index>
-        <endIndex>246</endIndex>
+        <index>202</index>
+        <endIndex>241</endIndex>
         <startLine>6</startLine>
         <startColumn>1</startColumn>
         <endLine>6</endLine>
@@ -399,8 +402,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>8</line>
-        <index>251</index>
-        <endIndex>303</endIndex>
+        <index>244</index>
+        <endIndex>296</endIndex>
         <startLine>8</startLine>
         <startColumn>1</startColumn>
         <endLine>8</endLine>
@@ -410,8 +413,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>9</line>
-        <index>306</index>
-        <endIndex>365</endIndex>
+        <index>298</index>
+        <endIndex>357</endIndex>
         <startLine>9</startLine>
         <startColumn>1</startColumn>
         <endLine>9</endLine>
@@ -421,8 +424,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>10</line>
-        <index>368</index>
-        <endIndex>370</endIndex>
+        <index>359</index>
+        <endIndex>361</endIndex>
         <startLine>10</startLine>
         <startColumn>1</startColumn>
         <endLine>10</endLine>
@@ -432,8 +435,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>16</line>
-        <index>493</index>
-        <endIndex>503</endIndex>
+        <index>478</index>
+        <endIndex>488</endIndex>
         <startLine>16</startLine>
         <startColumn>1</startColumn>
         <endLine>16</endLine>
@@ -443,8 +446,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>31</line>
-        <index>1363</index>
-        <endIndex>1413</endIndex>
+        <index>1333</index>
+        <endIndex>1383</endIndex>
         <startLine>31</startLine>
         <startColumn>1</startColumn>
         <endLine>31</endLine>
@@ -454,8 +457,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>36</line>
-        <index>1510</index>
-        <endIndex>1512</endIndex>
+        <index>1475</index>
+        <endIndex>1477</endIndex>
         <startLine>36</startLine>
         <startColumn>1</startColumn>
         <endLine>36</endLine>
@@ -466,23 +469,23 @@
   </sourcecode>
   <sourcecode name="FingerPrintActivity.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:58.874</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.930</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -544,8 +547,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintDialog must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>29</line>
-        <index>819</index>
-        <endIndex>835</endIndex>
+        <index>791</index>
+        <endIndex>807</endIndex>
         <startLine>29</startLine>
         <startColumn>17</startColumn>
         <endLine>29</endLine>
@@ -570,8 +573,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to StartFingerprintService must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>45</line>
-        <index>1215</index>
-        <endIndex>1237</endIndex>
+        <index>1171</index>
+        <endIndex>1193</endIndex>
         <startLine>45</startLine>
         <startColumn>17</startColumn>
         <endLine>45</endLine>
@@ -581,8 +584,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintActivity must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>46</line>
-        <index>1259</index>
-        <endIndex>1277</endIndex>
+        <index>1214</index>
+        <endIndex>1232</endIndex>
         <startLine>46</startLine>
         <startColumn>17</startColumn>
         <endLine>46</endLine>
@@ -592,8 +595,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintActivity must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>47</line>
-        <index>1360</index>
-        <endIndex>1378</endIndex>
+        <index>1314</index>
+        <endIndex>1332</endIndex>
         <startLine>47</startLine>
         <startColumn>56</startColumn>
         <endLine>47</endLine>
@@ -603,8 +606,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintActivity must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>48</line>
-        <index>1526</index>
-        <endIndex>1544</endIndex>
+        <index>1479</index>
+        <endIndex>1497</endIndex>
         <startLine>48</startLine>
         <startColumn>82</startColumn>
         <endLine>48</endLine>
@@ -614,8 +617,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintDialog must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>49</line>
-        <index>1565</index>
-        <endIndex>1581</endIndex>
+        <index>1517</index>
+        <endIndex>1533</endIndex>
         <startLine>49</startLine>
         <startColumn>17</startColumn>
         <endLine>49</endLine>
@@ -625,8 +628,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintDialog must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>50</line>
-        <index>1619</index>
-        <endIndex>1635</endIndex>
+        <index>1570</index>
+        <endIndex>1586</endIndex>
         <startLine>50</startLine>
         <startColumn>17</startColumn>
         <endLine>50</endLine>
@@ -636,8 +639,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintDialog must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>51</line>
-        <index>1682</index>
-        <endIndex>1698</endIndex>
+        <index>1632</index>
+        <endIndex>1648</endIndex>
         <startLine>51</startLine>
         <startColumn>17</startColumn>
         <endLine>51</endLine>
@@ -647,8 +650,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintDialog must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>52</line>
-        <index>1751</index>
-        <endIndex>1767</endIndex>
+        <index>1700</index>
+        <endIndex>1716</endIndex>
         <startLine>52</startLine>
         <startColumn>17</startColumn>
         <endLine>52</endLine>
@@ -658,8 +661,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to fingerPrintDialog must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>57</line>
-        <index>1957</index>
-        <endIndex>1973</endIndex>
+        <index>1901</index>
+        <endIndex>1917</endIndex>
         <startLine>57</startLine>
         <startColumn>17</startColumn>
         <endLine>57</endLine>
@@ -679,8 +682,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>78</line>
-        <index>2833</index>
-        <endIndex>2893</endIndex>
+        <index>2756</index>
+        <endIndex>2816</endIndex>
         <startLine>78</startLine>
         <startColumn>61</startColumn>
         <endLine>78</endLine>
@@ -690,8 +693,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>80</line>
-        <index>2935</index>
-        <endIndex>2985</endIndex>
+        <index>2856</index>
+        <endIndex>2906</endIndex>
         <startLine>80</startLine>
         <startColumn>21</startColumn>
         <endLine>80</endLine>
@@ -701,8 +704,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>84</line>
-        <index>3149</index>
-        <endIndex>3206</endIndex>
+        <index>3066</index>
+        <endIndex>3123</endIndex>
         <startLine>84</startLine>
         <startColumn>21</startColumn>
         <endLine>84</endLine>
@@ -732,8 +735,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to GenerateKey must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>126</line>
-        <index>5277</index>
-        <endIndex>5287</endIndex>
+        <index>5152</index>
+        <endIndex>5162</endIndex>
         <startLine>126</startLine>
         <startColumn>29</startColumn>
         <endLine>126</endLine>
@@ -743,8 +746,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to cipher must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>130</line>
-        <index>5501</index>
-        <endIndex>5506</endIndex>
+        <index>5372</index>
+        <endIndex>5377</endIndex>
         <startLine>130</startLine>
         <startColumn>112</startColumn>
         <endLine>130</endLine>
@@ -754,8 +757,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to CipherInit must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>128</line>
-        <index>5348</index>
-        <endIndex>5357</endIndex>
+        <index>5221</index>
+        <endIndex>5230</endIndex>
         <startLine>128</startLine>
         <startColumn>29</startColumn>
         <endLine>128</endLine>
@@ -765,8 +768,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>110</line>
-        <index>4410</index>
-        <endIndex>4470</endIndex>
+        <index>4301</index>
+        <endIndex>4361</endIndex>
         <startLine>110</startLine>
         <startColumn>61</startColumn>
         <endLine>110</endLine>
@@ -776,8 +779,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>112</line>
-        <index>4512</index>
-        <endIndex>4562</endIndex>
+        <index>4401</index>
+        <endIndex>4451</endIndex>
         <startLine>112</startLine>
         <startColumn>21</startColumn>
         <endLine>112</endLine>
@@ -787,8 +790,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
         <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>116</line>
-        <index>4726</index>
-        <endIndex>4783</endIndex>
+        <index>4611</index>
+        <endIndex>4668</endIndex>
         <startLine>116</startLine>
         <startColumn>21</startColumn>
         <endLine>116</endLine>
@@ -833,8 +836,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to cipher must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>154</line>
-        <index>6273</index>
-        <endIndex>6278</endIndex>
+        <index>6120</index>
+        <endIndex>6125</endIndex>
         <startLine>154</startLine>
         <startColumn>17</startColumn>
         <endLine>154</endLine>
@@ -844,8 +847,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to keyStore must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>159</line>
-        <index>6514</index>
-        <endIndex>6521</endIndex>
+        <index>6356</index>
+        <endIndex>6363</endIndex>
         <startLine>159</startLine>
         <startColumn>17</startColumn>
         <endLine>159</endLine>
@@ -855,8 +858,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to keyStore must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>160</line>
-        <index>6569</index>
-        <endIndex>6576</endIndex>
+        <index>6410</index>
+        <endIndex>6417</endIndex>
         <startLine>160</startLine>
         <startColumn>34</startColumn>
         <endLine>160</endLine>
@@ -866,8 +869,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to keyName must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>160</line>
-        <index>6585</index>
-        <endIndex>6591</endIndex>
+        <index>6426</index>
+        <endIndex>6432</endIndex>
         <startLine>160</startLine>
         <startColumn>50</startColumn>
         <endLine>160</endLine>
@@ -877,17 +880,12 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to cipher must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>161</line>
-        <index>6618</index>
-        <endIndex>6623</endIndex>
+        <index>6458</index>
+        <endIndex>6463</endIndex>
         <startLine>161</startLine>
         <startColumn>17</startColumn>
         <endLine>161</endLine>
         <endColumn>22</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementDocumentationMustBeSpelledCorrectly" ruleCheckId="SA1650">
-        <context>The documentation text within the summary tag contains incorrectly spelled words: 'genrate'</context>
-        <line>173</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
@@ -903,8 +901,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to keyStore must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>177</line>
-        <index>7062</index>
-        <endIndex>7069</endIndex>
+        <index>6886</index>
+        <endIndex>6893</endIndex>
         <startLine>177</startLine>
         <startColumn>17</startColumn>
         <endLine>177</endLine>
@@ -914,8 +912,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to keyStore must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>180</line>
-        <index>7290</index>
-        <endIndex>7297</endIndex>
+        <index>7111</index>
+        <endIndex>7118</endIndex>
         <startLine>180</startLine>
         <startColumn>17</startColumn>
         <endLine>180</endLine>
@@ -925,8 +923,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to keyName must begin with the 'this.', 'base.', 'object.' or 'FingerPrintActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>181</line>
-        <index>7378</index>
-        <endIndex>7384</endIndex>
+        <index>7198</index>
+        <endIndex>7204</endIndex>
         <startLine>181</startLine>
         <startColumn>67</startColumn>
         <endLine>181</endLine>
@@ -937,23 +935,23 @@
   </sourcecode>
   <sourcecode name="GetDeviceID.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:58.780</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.930</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -986,23 +984,23 @@
   </sourcecode>
   <sourcecode name="Message.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-27 19:50:43.738</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.930</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -1014,8 +1012,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="ColonsMustBeSpacedCorrectly" ruleCheckId="SA1024">
         <context>Invalid spacing around the colon.</context>
         <line>6</line>
-        <index>162</index>
-        <endIndex>162</endIndex>
+        <index>157</index>
+        <endIndex>157</endIndex>
         <startLine>6</startLine>
         <startColumn>10</startColumn>
         <endLine>6</endLine>
@@ -1074,187 +1072,25 @@
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="FingerprintAuthActivity.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:41.374</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
-        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
-        <context>The code must not contain multiple blank lines in a row.</context>
-        <line>9</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>1</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>2</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>3</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>4</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>5</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>6</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
-        <context>All using directives must be placed inside of the namespace.</context>
-        <line>7</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>89</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementDocumentationMustBeSpelledCorrectly" ruleCheckId="SA1650">
-        <context>The documentation text within the summary tag contains incorrectly spelled words: 'Auth'</context>
-        <line>16</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The field must have a documentation header.</context>
-        <line>18</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
-        <context>The constructor must have a documentation header.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
-        <context>Adjacent elements must be separated by a blank line.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementParameterDocumentationMustHaveText" ruleCheckId="SA1614">
-        <context>The documentation text within the param tag for the '&lt;param name="cryptoObject" /&gt;' parameter must not be empty.</context>
-        <line>35</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
-        <context>Adjacent elements must be separated by a blank line.</context>
-        <line>35</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CurlyBracketsMustNotBeOmitted" ruleCheckId="SA1503">
-        <context>The body of the if statement must be wrapped in opening and closing curly brackets.</context>
-        <line>42</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementDocumentationHeaderMustBePrecededByBlankLine" ruleCheckId="SA1514">
-        <context>A documentation header must be preceded by a blank line or must be the first item in its scope.</context>
-        <line>30</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
-        <context>All internal methods must be placed after all public methods.</context>
-        <line>55</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
-        <context>All internal methods must be placed after all public methods.</context>
-        <line>73</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
-        <context>The call to fingerprinActivity must begin with the 'this.', 'base.', 'object.' or 'FingerprintAuthActivity.' or 'FingerprintManager.AuthenticationCallback.' prefix to indicate the intended method call. </context>
-        <line>40</line>
-        <index>1342</index>
-        <endIndex>1359</endIndex>
-        <startLine>40</startLine>
-        <startColumn>56</startColumn>
-        <endLine>40</endLine>
-        <endColumn>73</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
-        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>59</line>
-        <index>1985</index>
-        <endIndex>2080</endIndex>
-        <startLine>59</startLine>
-        <startColumn>17</startColumn>
-        <endLine>59</endLine>
-        <endColumn>112</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
-        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>60</line>
-        <index>2099</index>
-        <endIndex>2208</endIndex>
-        <startLine>60</startLine>
-        <startColumn>17</startColumn>
-        <endLine>60</endLine>
-        <endColumn>126</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="DocumentationTextMustContainWhitespace" ruleCheckId="SA1630">
-        <context>The documentation text within the param tag does not contain any whitespace between words, indicating that it most likely does not follow a proper grammatical structure required for documentation text.</context>
-        <line>73</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
   <sourcecode name="MainActivity.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:42.531</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.931</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -1356,8 +1192,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="ClosingParenthesisMustBeSpacedCorrectly" ruleCheckId="SA1009">
         <context>Invalid spacing around the closing parenthesis.</context>
         <line>15</line>
-        <index>567</index>
-        <endIndex>567</endIndex>
+        <index>553</index>
+        <endIndex>553</endIndex>
         <startLine>15</startLine>
         <startColumn>275</startColumn>
         <endLine>15</endLine>
@@ -1417,8 +1253,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to CheckAppPermissions must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>28</line>
-        <index>1162</index>
-        <endIndex>1180</endIndex>
+        <index>1135</index>
+        <endIndex>1153</endIndex>
         <startLine>28</startLine>
         <startColumn>17</startColumn>
         <endLine>28</endLine>
@@ -1428,8 +1264,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to LoadApplication must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>31</line>
-        <index>1433</index>
-        <endIndex>1447</endIndex>
+        <index>1403</index>
+        <endIndex>1417</endIndex>
         <startLine>31</startLine>
         <startColumn>17</startColumn>
         <endLine>31</endLine>
@@ -1474,8 +1310,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to RequestPermissions must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>57</line>
-        <index>2494</index>
-        <endIndex>2511</endIndex>
+        <index>2438</index>
+        <endIndex>2455</endIndex>
         <startLine>57</startLine>
         <startColumn>25</startColumn>
         <endLine>57</endLine>
@@ -1485,8 +1321,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to PackageName must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>50</line>
-        <index>2009</index>
-        <endIndex>2019</endIndex>
+        <index>1960</index>
+        <endIndex>1970</endIndex>
         <startLine>50</startLine>
         <startColumn>84</startColumn>
         <endLine>50</endLine>
@@ -1496,8 +1332,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to PackageName must begin with the 'this.', 'base.', 'object.' or 'MainActivity.' or 'Xamarin.Forms.Platform.Android.FormsAppCompatActivity.' prefix to indicate the intended method call. </context>
         <line>51</line>
-        <index>2150</index>
-        <endIndex>2160</endIndex>
+        <index>2100</index>
+        <endIndex>2110</endIndex>
         <startLine>51</startLine>
         <startColumn>87</startColumn>
         <endLine>51</endLine>
@@ -1507,8 +1343,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="CodeMustNotContainMultipleWhitespaceInARow" ruleCheckId="SA1025">
         <context>The code contains multiple spaces in a row. Only one space is needed.</context>
         <line>55</line>
-        <index>2437</index>
-        <endIndex>2438</endIndex>
+        <index>2383</index>
+        <endIndex>2384</endIndex>
         <startLine>55</startLine>
         <startColumn>61</startColumn>
         <endLine>55</endLine>
@@ -1518,8 +1354,8 @@
       <violation namespace="StyleCop.CSharp.SpacingRules" rule="SemicolonsMustBeSpacedCorrectly" ruleCheckId="SA1002">
         <context>Invalid spacing around the semicolon.</context>
         <line>56</line>
-        <index>2467</index>
-        <endIndex>2467</endIndex>
+        <index>2412</index>
+        <endIndex>2412</endIndex>
         <startLine>56</startLine>
         <startColumn>25</startColumn>
         <endLine>56</endLine>
@@ -1545,23 +1381,23 @@
   </sourcecode>
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:58.452</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/09 21:55:21.738</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -1574,23 +1410,23 @@
   </sourcecode>
   <sourcecode name="SplashActivity.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:40.592</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/09 21:55:21.775</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -1627,8 +1463,8 @@
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
         <context>The call to StartActivity must begin with the 'this.', 'base.', 'object.' or 'SplashActivity.' or 'Activity.' prefix to indicate the intended method call. </context>
         <line>12</line>
-        <index>410</index>
-        <endIndex>422</endIndex>
+        <index>399</index>
+        <endIndex>411</endIndex>
         <startLine>12</startLine>
         <startColumn>13</startColumn>
         <endLine>12</endLine>
@@ -1639,23 +1475,23 @@
   </sourcecode>
   <sourcecode name="Permissionhandler.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-14 22:57:59.894</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:12:23.950</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations>
@@ -1681,53 +1517,210 @@
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="Resource.designer.cs" parser="StyleCop.CSharp.CsParser">
+  <project key="401262418">
+    <configuration>DEBUG;__XAMARIN_ANDROID_v1_0__;__MOBILE__;__ANDROID__;__ANDROID_1__;__ANDROID_2__;__ANDROID_3__;__ANDROID_4__;__ANDROID_5__;__ANDROID_6__;__ANDROID_7__;__ANDROID_8__;__ANDROID_9__;__ANDROID_10__;__ANDROID_11__;__ANDROID_12__;__ANDROID_13__;__ANDROID_14__;__ANDROID_15__;__ANDROID_16__;__ANDROID_17__;__ANDROID_18__;__ANDROID_19__;__ANDROID_20__;__ANDROID_21__;__ANDROID_22__;__ANDROID_23__;__ANDROID_24__;__ANDROID_25__;__ANDROID_26__;__ANDROID_27__;__ANDROID_28__;__ANDROID_29__;__ANDROID_30__</configuration>
+  </project>
+  <sourcecode name="FingerprintAuthActivity.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-19 22:55:29.878</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:38:25.008</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
+        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
+        <context>The code must not contain multiple blank lines in a row.</context>
+        <line>9</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>2</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>3</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>4</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>5</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>6</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="UsingDirectivesMustBePlacedWithinNamespace" ruleCheckId="SA1200">
+        <context>All using directives must be placed inside of the namespace.</context>
+        <line>7</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
+        <context>A closing curly bracket must not be preceded by a blank line.</context>
+        <line>89</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>18</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The constructor must have a documentation header.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
+        <context>Adjacent elements must be separated by a blank line.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementParameterDocumentationMustHaveText" ruleCheckId="SA1614">
+        <context>The documentation text within the param tag for the '&lt;param name="cryptoObject" /&gt;' parameter must not be empty.</context>
+        <line>35</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
+        <context>Adjacent elements must be separated by a blank line.</context>
+        <line>35</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CurlyBracketsMustNotBeOmitted" ruleCheckId="SA1503">
+        <context>The body of the if statement must be wrapped in opening and closing curly brackets.</context>
+        <line>42</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementDocumentationHeaderMustBePrecededByBlankLine" ruleCheckId="SA1514">
+        <context>A documentation header must be preceded by a blank line or must be the first item in its scope.</context>
+        <line>30</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
+        <context>All internal methods must be placed after all public methods.</context>
+        <line>55</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
+        <context>All internal methods must be placed after all public methods.</context>
+        <line>73</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixCallsCorrectly" ruleCheckId="SA1126">
+        <context>The call to fingerprinActivity must begin with the 'this.', 'base.', 'object.' or 'FingerprintAuthActivity.' or 'FingerprintManager.AuthenticationCallback.' prefix to indicate the intended method call. </context>
+        <line>40</line>
+        <index>1303</index>
+        <endIndex>1320</endIndex>
+        <startLine>40</startLine>
+        <startColumn>56</startColumn>
+        <endLine>40</endLine>
+        <endColumn>73</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
+        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
+        <line>59</line>
+        <index>1927</index>
+        <endIndex>2022</endIndex>
+        <startLine>59</startLine>
+        <startColumn>17</startColumn>
+        <endLine>59</endLine>
+        <endColumn>112</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
+        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
+        <line>60</line>
+        <index>2040</index>
+        <endIndex>2149</endIndex>
+        <startLine>60</startLine>
+        <startColumn>17</startColumn>
+        <endLine>60</endLine>
+        <endColumn>126</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="DocumentationTextMustContainWhitespace" ruleCheckId="SA1630">
+        <context>The documentation text within the param tag does not contain any whitespace between words, indicating that it most likely does not follow a proper grammatical structure required for documentation text.</context>
+        <line>73</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="MonoAndroid,Version=v11.0.AssemblyAttributes.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
-      <styleCop>2020-07-03 17:06:24.000</styleCop>
-      <settingsFile>2020-07-03 17:06:24.000</settingsFile>
-      <sourceFile>2022-04-30 17:18:31.292</sourceFile>
-      <parser>2020-07-03 17:06:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2020-07-03 17:06:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>21856127</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2020-07-03 17:06:24.000</StyleCop.CSharp.LayoutRules>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:40:24.246</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
       <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
       <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
       <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2020-07-03 17:06:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
       <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2020-07-03 17:06:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
       <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
     </timestamps>
     <violations />
   </sourcecode>
-  <project key="-1149430080">
-    <configuration>DEBUG;__XAMARIN_ANDROID_v1_0__;__MOBILE__;__ANDROID__;__ANDROID_1__;__ANDROID_2__;__ANDROID_3__;__ANDROID_4__;__ANDROID_5__;__ANDROID_6__;__ANDROID_7__;__ANDROID_8__;__ANDROID_9__;__ANDROID_10__;__ANDROID_11__;__ANDROID_12__;__ANDROID_13__;__ANDROID_14__;__ANDROID_15__;__ANDROID_16__;__ANDROID_17__;__ANDROID_18__;__ANDROID_19__;__ANDROID_20__;__ANDROID_21__;__ANDROID_22__;__ANDROID_23__;__ANDROID_24__;__ANDROID_25__;__ANDROID_26__;__ANDROID_27__;__ANDROID_28__;__ANDROID_29__;__ANDROID_30__</configuration>
-  </project>
+  <sourcecode name="Resource.designer.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2020/07/03 16:36:24.000</styleCop>
+      <settingsFile>2020/07/03 16:36:24.000</settingsFile>
+      <sourceFile>2023/01/10 16:39:31.519</sourceFile>
+      <parser>2020/07/03 16:36:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2020/07/03 16:36:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>0</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2020/07/03 16:36:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2020/07/03 16:36:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2020/07/03 16:36:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
 </stylecopresultscache>

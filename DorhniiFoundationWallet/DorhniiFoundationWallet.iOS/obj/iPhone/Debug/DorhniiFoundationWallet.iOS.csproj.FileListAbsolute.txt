@@ -1,8 +1,0 @@
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\optimized\
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\DorhniiFoundationWallet.iOS.csproj.AssemblyReference.cache
-D:\DohrniiGit\ChetuMobile\DorhniiFoundationWallet\DorhniiFoundationWallet.iOS\obj\iPhone\Debug\DorhniiFoundationWallet.iOS.csproj.CoreCompileInputs.cache

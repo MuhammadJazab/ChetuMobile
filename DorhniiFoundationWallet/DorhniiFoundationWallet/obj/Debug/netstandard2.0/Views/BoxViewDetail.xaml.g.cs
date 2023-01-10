@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\BoxViewDetail.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/BoxViewDetail.xaml")]
     public partial class BoxView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

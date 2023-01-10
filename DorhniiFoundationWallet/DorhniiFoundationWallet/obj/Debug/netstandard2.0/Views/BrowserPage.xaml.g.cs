@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\BrowserPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/BrowserPage.xaml")]
     public partial class BrowserPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

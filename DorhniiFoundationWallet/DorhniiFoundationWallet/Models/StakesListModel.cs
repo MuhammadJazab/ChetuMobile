@@ -9,6 +9,12 @@ namespace DorhniiFoundationWallet.Models
 {
     public class StakesListModel : BaseViewModel
     {
+        public string StakeName { get; set; }
+        public string StakeAmount { get; set; }
+        public string StakePeriod { get; set; }
+        public string StakePercentage { get; set; }
+        public ImageSource Image { get; set; }
+
         public double CoinValue { get; set; }
         public double CoinUsdValue { get; set; }
         public string CoinShortName { get; set; }        
@@ -64,19 +70,19 @@ namespace DorhniiFoundationWallet.Models
                 }
             }
         }
-        private string stakePeriod;
-        public string StakePeriod
-        {
-            get => stakePeriod;
-            set
-            {
-                if (stakePeriod != value)
-                {
-                    stakePeriod = value;
-                    OnPropertyChanged(nameof(StakePeriod));
-                }
-            }
-        }
+        //private string stakePeriod;
+        //public string StakePeriod
+        //{
+        //    get => stakePeriod;
+        //    set
+        //    {
+        //        if (stakePeriod != value)
+        //        {
+        //            stakePeriod = value;
+        //            OnPropertyChanged(nameof(StakePeriod));
+        //        }
+        //    }
+        //}
         private bool page3Month;
         public bool Page3Month
         {

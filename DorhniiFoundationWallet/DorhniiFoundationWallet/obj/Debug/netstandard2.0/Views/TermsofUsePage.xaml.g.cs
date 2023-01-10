@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\TermsofUsePage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/TermsofUsePage.xaml")]
     public partial class TermsofUsePage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

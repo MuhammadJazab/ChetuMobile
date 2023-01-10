@@ -21,6 +21,8 @@ namespace DorhniiFoundationWallet.Helpers
         public delegate void AuthenticationSucceeded();
         public static event AuthenticationSucceeded OnAuthenticationSucceeded;
 
+        public static string Scannedtext { get; set; }
+
         public static int CoinId = 0;
 
         /// <summary>
@@ -30,7 +32,6 @@ namespace DorhniiFoundationWallet.Helpers
         {
             OnAuthenticationSucceeded();
         }
-
 
         /// <summary>
         /// Method is used to Encrypt password

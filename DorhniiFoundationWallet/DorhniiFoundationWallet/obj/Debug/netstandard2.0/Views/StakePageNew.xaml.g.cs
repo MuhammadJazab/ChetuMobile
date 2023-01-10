@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\StakePageNew.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/StakePageNew.xaml")]
     public partial class StakePageNew : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

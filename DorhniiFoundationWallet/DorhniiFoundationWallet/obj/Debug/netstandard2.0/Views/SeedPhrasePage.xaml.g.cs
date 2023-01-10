@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\SeedPhrasePage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/SeedPhrasePage.xaml")]
     public partial class SeedPhrasePage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

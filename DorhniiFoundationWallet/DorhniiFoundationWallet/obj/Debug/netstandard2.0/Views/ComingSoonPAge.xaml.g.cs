@@ -13,7 +13,7 @@
 namespace DorhniiFoundationWallet.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\ComingSoonPAge.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/ComingSoonPAge.xaml")]
     public partial class ComingSoonPAge : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
