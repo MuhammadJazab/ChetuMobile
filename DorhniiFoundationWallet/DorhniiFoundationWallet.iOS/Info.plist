@@ -21,7 +21,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>12</string>
 	<key>CFBundleDisplayName</key>
 	<string>Dohrnii Wallet</string>
 	<key>CFBundleIdentifier</key>
@@ -41,7 +41,7 @@
 	<key>NSLocationUsageDescription</key>
 	<string>Dohrnii wallet would like to access your location</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.6</string>
+	<string>2.0</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
