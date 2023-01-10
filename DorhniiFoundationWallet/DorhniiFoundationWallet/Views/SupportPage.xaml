@@ -1,64 +1,136 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers" 
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels" 
-             xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             x:Class="DorhniiFoundationWallet.Views.SupportPage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.SupportPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:SupportVM x:Name="Support"/>
+        <vm:SupportVM x:Name="Support" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+            <Grid
+                BackgroundColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" BackgroundColor="#262629">
-                        <Grid.ColumnDefinitions >
-                            <ColumnDefinition Width=".15*"/>
-                            <ColumnDefinition Width=".70*"/>
-                            <ColumnDefinition Width=".15*"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".15*" />
+                            <ColumnDefinition Width=".70*" />
+                            <ColumnDefinition Width=".15*" />
                         </Grid.ColumnDefinitions>
-                        <ImageButton Grid.Column="0" Source="{Binding BackWardArrowImage}" Scale="0.4" HeightRequest="20" BackgroundColor="Transparent" Command="{Binding BackButtonCommand}"/>
-                        <Label Grid.Column="1" Text="Support" FontSize="20" FontFamily="{StaticResource MonumnentLight}" TextColor="White" FontAttributes="Bold"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <ImageButton
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            Command="{Binding BackButtonCommand}"
+                            HeightRequest="20"
+                            Scale="0.4"
+                            Source="{Binding BackWardArrowImage}" />
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource MonumnentLight}"
+                            FontSize="20"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Support"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
                     </Grid>
-                    <Frame Grid.Row="1" CornerRadius="0"  BackgroundColor="#5e5e5f" Padding="0" Margin="20" HasShadow="False">
-                        <cntrl:RendererEditor Placeholder="How can we help you?" Text="{Binding MessageText}" FontFamily="Poppins" FontSize="15" PlaceholderColor="White"   HeightRequest="190" TextColor="White" />
+                    <Frame
+                        Grid.Row="1"
+                        Margin="20"
+                        Padding="0"
+                        BackgroundColor="#5e5e5f"
+                        CornerRadius="0"
+                        HasShadow="False">
+                        <cntrl:RendererEditor
+                            FontFamily="Poppins"
+                            FontSize="15"
+                            HeightRequest="190"
+                            Placeholder="How can we help you?"
+                            PlaceholderColor="White"
+                            Text="{Binding MessageText}"
+                            TextColor="White" />
                     </Frame>
-                    <Frame Grid.Row="2" CornerRadius="0"  BackgroundColor="#5e5e5f" Padding="0" Margin="20,5,20,5" HasShadow="False">
-                        <cntrl:RendererEditor Placeholder="Please enter your email address" Text="{Binding UsermailId}"  FontFamily="Poppins" FontSize="15" PlaceholderColor="White"   HeightRequest="45" TextColor="White" MaxLength="20" />
+                    <Frame
+                        Grid.Row="2"
+                        Margin="20,5,20,5"
+                        Padding="0"
+                        BackgroundColor="#5e5e5f"
+                        CornerRadius="0"
+                        HasShadow="False">
+                        <cntrl:RendererEditor
+                            FontFamily="Poppins"
+                            FontSize="15"
+                            HeightRequest="45"
+                            MaxLength="20"
+                            Placeholder="Please enter your email address"
+                            PlaceholderColor="White"
+                            Text="{Binding UsermailId}"
+                            TextColor="White" />
                     </Frame>
-                    <Frame Grid.Row="3" CornerRadius="0"  BackgroundColor="#5e5e5f" Padding="0" Margin="20,5,20,5" HasShadow="False">
-                        <cntrl:RendererEditor Placeholder="Please enter your name" Text="{Binding UserNameEntry}"  FontFamily="Poppins" FontSize="15" PlaceholderColor="White"   HeightRequest="45" TextColor="White" MaxLength="20" />
+                    <Frame
+                        Grid.Row="3"
+                        Margin="20,5,20,5"
+                        Padding="0"
+                        BackgroundColor="#5e5e5f"
+                        CornerRadius="0"
+                        HasShadow="False">
+                        <cntrl:RendererEditor
+                            FontFamily="Poppins"
+                            FontSize="15"
+                            HeightRequest="45"
+                            MaxLength="20"
+                            Placeholder="Please enter your name"
+                            PlaceholderColor="White"
+                            Text="{Binding UserNameEntry}"
+                            TextColor="White" />
                     </Frame>
-                    <Frame Grid.Row="4" Padding="0"  HorizontalOptions="FillAndExpand" HeightRequest="30" Margin="20,15,20,5" CornerRadius="5" >
+                    <Frame
+                        Grid.Row="4"
+                        Margin="20,15,20,5"
+                        Padding="0"
+                        CornerRadius="5"
+                        HeightRequest="30"
+                        HorizontalOptions="FillAndExpand">
                         <Frame.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#93cafd" Offset="0.1"/>
-                                <GradientStop Color="#7792fc" Offset="1.0"/>
+                                <GradientStop Offset="0.1" Color="#93cafd" />
+                                <GradientStop Offset="1.0" Color="#7792fc" />
                             </LinearGradientBrush>
                         </Frame.Background>
-                        <Label Text="Submit" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"                                            
-                                TextColor="Black" FontSize="15" 
-                                FontFamily="{StaticResource MonumnentLight}"  BackgroundColor="Transparent" />
+                        <Label
+                            BackgroundColor="Transparent"
+                            FontFamily="{StaticResource MonumnentLight}"
+                            FontSize="15"
+                            HorizontalOptions="Center"
+                            Text="Submit"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SubmitCommand}"/>
+                            <TapGestureRecognizer Command="{Binding SubmitCommand}" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </Grid>
             </Grid>
-            <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <View:Loader
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

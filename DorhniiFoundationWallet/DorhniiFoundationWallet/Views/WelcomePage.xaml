@@ -1,155 +1,307 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DorhniiFoundationWallet.Views.WelcomePage"
-             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"            
-             xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             NavigationPage.HasNavigationBar="False">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.WelcomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:WelcomeVM/>
+        <vm:WelcomeVM />
     </ContentPage.BindingContext>
-    <ContentPage.Content >
+    <ContentPage.Content>
         <Grid>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" >
+            <Grid
+                BackgroundColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
                 <Grid.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#260941" Offset="0.0"/>
-                        <GradientStop Color="Black" Offset="0.2"/>
-                        <GradientStop Color="Black" Offset="0.8"/>
-                        <GradientStop Color="#260941" Offset="1.5"/>
+                        <GradientStop Offset="0.0" Color="#260941" />
+                        <GradientStop Offset="0.2" Color="Black" />
+                        <GradientStop Offset="0.8" Color="Black" />
+                        <GradientStop Offset="1.5" Color="#260941" />
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="0,60,0,0">
+                <Grid
+                    Margin="0,60,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Image Source="{Binding DohrniiTextLogo}" HorizontalOptions="CenterAndExpand" WidthRequest="174" HeightRequest="30"/>
-                    <StackLayout Grid.Row="1" Orientation="Vertical" Spacing="0" Margin="0,20,0,0" >
-                        <Label Text="{x:Static resource:Resource.txtWalletCapital}" TextColor="White" FontFamily="{StaticResource MonumnentLight}" FontSize="16" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
-                        <Label Text="{Binding VersionNumber}" TextColor="White" FontFamily="Poppins" FontSize="10" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    <Image
+                        HeightRequest="30"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{Binding DohrniiTextLogo}"
+                        WidthRequest="174" />
+                    <StackLayout
+                        Grid.Row="1"
+                        Margin="0,20,0,0"
+                        Orientation="Vertical"
+                        Spacing="0">
+                        <Label
+                            FontFamily="{StaticResource MonumnentLight}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static resource:Resource.txtWalletCapital}"
+                            TextColor="White"
+                            VerticalOptions="EndAndExpand" />
+                        <Label
+                            FontFamily="Poppins"
+                            FontSize="10"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{Binding VersionNumber}"
+                            TextColor="White"
+                            VerticalOptions="EndAndExpand" />
                     </StackLayout>
-                    <Label Grid.Row="2" Text="{x:Static resource:Resource.txtWelcomeCapital}" TextColor="White" FontFamily="{StaticResource MonumnentLight}" FontSize="20" Padding="10" Margin="0,30,0,0" FontAttributes="Bold" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
-                    <Grid Grid.Row="4" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,30,0,0">
+                    <Label
+                        Grid.Row="2"
+                        Margin="0,30,0,0"
+                        Padding="10"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource MonumnentLight}"
+                        FontSize="20"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{x:Static resource:Resource.txtWelcomeCapital}"
+                        TextColor="White"
+                        VerticalOptions="EndAndExpand" />
+                    <Grid
+                        Grid.Row="4"
+                        Margin="0,30,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Frame Grid.Row="0" WidthRequest="181" Padding="5" HorizontalOptions="CenterAndExpand" HeightRequest="30" Margin="10" CornerRadius="5" >
+                        <Frame
+                            Grid.Row="0"
+                            Margin="10"
+                            Padding="5"
+                            CornerRadius="5"
+                            HeightRequest="30"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="181">
                             <Frame.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#93cafd" Offset="0.1"/>
-                                    <GradientStop Color="#7792fc" Offset="1.0"/>
+                                    <GradientStop Offset="0.1" Color="#93cafd" />
+                                    <GradientStop Offset="1.0" Color="#7792fc" />
                                 </LinearGradientBrush>
                             </Frame.Background>
-                            <Label Text="{x:Static resource:Resource.txtCreate}" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"                                                                        
-                                TextColor="White" FontSize="15" 
-                                FontFamily="{StaticResource MonumnentLight}"  BackgroundColor="Transparent" />
+                            <Label
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                Text="{x:Static resource:Resource.txtCreate}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CreateButtonCommand}"/>
+                                <TapGestureRecognizer Command="{Binding CreateButtonCommand}" />
                             </Frame.GestureRecognizers>
                         </Frame>
-                        <Frame Grid.Row="1" WidthRequest="181" HeightRequest="30" Margin="10" Padding="5" HorizontalOptions="CenterAndExpand" CornerRadius="5" >
+                        <Frame
+                            Grid.Row="1"
+                            Margin="10"
+                            Padding="5"
+                            CornerRadius="5"
+                            HeightRequest="30"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="181">
                             <Frame.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#93cafd" Offset="0.1"/>
-                                    <GradientStop Color="#7792fc" Offset="1.0"/>
+                                    <GradientStop Offset="0.1" Color="#93cafd" />
+                                    <GradientStop Offset="1.0" Color="#7792fc" />
                                 </LinearGradientBrush>
                             </Frame.Background>
-                            <Label Text="{x:Static resource:Resource.txtRestore}" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"                                                                             
-                                TextColor="White" FontSize="15" 
-                                FontFamily="{StaticResource MonumnentLight}"  BackgroundColor="Transparent" />
+                            <Label
+                                BackgroundColor="Transparent"
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                Text="{x:Static resource:Resource.txtRestore}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding RestoreButtonCommand}"/>
+                                <TapGestureRecognizer Command="{Binding RestoreButtonCommand}" />
                             </Frame.GestureRecognizers>
                         </Frame>
 
                     </Grid>
                 </Grid>
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" IsVisible="{Binding IsWalletGateway}">
+                <Grid
+                    BackgroundColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsWalletGateway}"
+                    VerticalOptions="FillAndExpand">
                     <Grid.Background>
                         <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                            <GradientStop Color="#260941" Offset="0.0"/>
-                            <GradientStop Color="Black" Offset="0.2"/>
-                            <GradientStop Color="Black" Offset="0.8"/>
-                            <GradientStop Color="#260941" Offset="1.5"/>
+                            <GradientStop Offset="0.0" Color="#260941" />
+                            <GradientStop Offset="0.2" Color="Black" />
+                            <GradientStop Offset="0.8" Color="Black" />
+                            <GradientStop Offset="1.5" Color="#260941" />
                         </LinearGradientBrush>
                     </Grid.Background>
-                    <ImageButton Source="{Binding BackWardArrowImage}" Scale="0.5" Command="{Binding BackButtonCommand}" BackgroundColor="Transparent"
-                             IsVisible="{Binding IsDeviceiOS}" HorizontalOptions="Start" VerticalOptions="Start"/>
-                    <Grid HorizontalOptions="FillAndExpand" Margin="10,0,10,0" VerticalOptions="CenterAndExpand">
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackButtonCommand}"
+                        HorizontalOptions="Start"
+                        IsVisible="{Binding IsDeviceiOS}"
+                        Scale="0.5"
+                        Source="{Binding BackWardArrowImage}"
+                        VerticalOptions="Start" />
+                    <Grid
+                        Margin="10,0,10,0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Image Source="{Binding DohrniiTextLogo}" HorizontalOptions="CenterAndExpand" WidthRequest="174" HeightRequest="30"/>
-                        <StackLayout Grid.Row="1" Orientation="Vertical" Margin="0,40,0,0">
-                            <Label Text="{x:Static resource:Resource.txtImportSeedPrivateKay}" FontFamily="Poppins" FontSize="16" TextColor="DarkGray" HorizontalOptions="CenterAndExpand" />
-                            <Frame VerticalOptions="Center" BorderColor="#260941" HasShadow="False" CornerRadius="5" BackgroundColor="#262629">
-                                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <Image
+                            HeightRequest="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="{Binding DohrniiTextLogo}"
+                            WidthRequest="174" />
+                        <StackLayout
+                            Grid.Row="1"
+                            Margin="0,40,0,0"
+                            Orientation="Vertical">
+                            <Label
+                                FontFamily="Poppins"
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static resource:Resource.txtImportSeedPrivateKay}"
+                                TextColor="DarkGray" />
+                            <Frame
+                                BackgroundColor="#262629"
+                                BorderColor="#260941"
+                                CornerRadius="5"
+                                HasShadow="False"
+                                VerticalOptions="Center">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.4*"/>
-                                        <RowDefinition Height="0.2*"/>
-                                        <RowDefinition Height="0.2*"/>
-                                        <RowDefinition Height="0.2*"/>
+                                        <RowDefinition Height="0.4*" />
+                                        <RowDefinition Height="0.2*" />
+                                        <RowDefinition Height="0.2*" />
+                                        <RowDefinition Height="0.2*" />
                                     </Grid.RowDefinitions>
-                                    <Frame Grid.Row="0" Padding="0" BackgroundColor="#d4d2d2" HeightRequest="90" HasShadow="False" CornerRadius="5">
-                                        <Editor Placeholder="{x:Static resource:Resource.txtSeedPhraseEditor}" TextColor="Gray" FontFamily="Poppins" FontSize="12" Text="{Binding EnteredseedPhrase}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Text" />
+                                    <Frame
+                                        Grid.Row="0"
+                                        Padding="0"
+                                        BackgroundColor="#d4d2d2"
+                                        CornerRadius="5"
+                                        HasShadow="False"
+                                        HeightRequest="90">
+                                        <Editor
+                                            FontFamily="Poppins"
+                                            FontSize="12"
+                                            HorizontalOptions="FillAndExpand"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static resource:Resource.txtSeedPhraseEditor}"
+                                            Text="{Binding EnteredseedPhrase}"
+                                            TextColor="Gray"
+                                            VerticalOptions="FillAndExpand" />
                                     </Frame>
                                     <Grid Grid.Row="1" RowSpacing="0">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" Text="{x:Static resource:Resource.txtImportSeedPhrase1}" FontFamily="Poppins" FontSize="10" TextColor="DarkGray" />
-                                        <Label Grid.Row="2" Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey2}" FontFamily="Poppins" FontSize="10"  TextColor="DarkGray" />
+                                        <Label
+                                            Grid.Row="0"
+                                            FontFamily="Poppins"
+                                            FontSize="10"
+                                            Text="{x:Static resource:Resource.txtImportSeedPhrase1}"
+                                            TextColor="DarkGray" />
+                                        <Label
+                                            Grid.Row="2"
+                                            FontFamily="Poppins"
+                                            FontSize="10"
+                                            Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey2}"
+                                            TextColor="DarkGray" />
                                     </Grid>
-                                    <Frame Padding="0" Grid.Row="2" Margin="0,10,0,0" BackgroundColor="#d4d2d2" HeightRequest="50" HasShadow="False" CornerRadius="5">
-                                        <Editor Placeholder="{x:Static resource:Resource.txtPrivateKeyEditor}" TextColor="Gray" FontFamily="Poppins" FontSize="12" Text="{Binding UserPrivateKey}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                    <Frame
+                                        Grid.Row="2"
+                                        Margin="0,10,0,0"
+                                        Padding="0"
+                                        BackgroundColor="#d4d2d2"
+                                        CornerRadius="5"
+                                        HasShadow="False"
+                                        HeightRequest="50">
+                                        <Editor
+                                            FontFamily="Poppins"
+                                            FontSize="12"
+                                            HorizontalOptions="FillAndExpand"
+                                            Placeholder="{x:Static resource:Resource.txtPrivateKeyEditor}"
+                                            Text="{Binding UserPrivateKey}"
+                                            TextColor="Gray"
+                                            VerticalOptions="FillAndExpand" />
                                     </Frame>
                                     <Grid Grid.Row="3" RowSpacing="0">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" Text="{x:Static resource:Resource.txtImportPrivateKey}" FontFamily="Poppins" FontSize="10" TextColor="DarkGray"/>
-                                        <Label Grid.Row="2" Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey2}" FontFamily="Poppins" FontSize="10" TextColor="DarkGray"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            FontFamily="Poppins"
+                                            FontSize="10"
+                                            Text="{x:Static resource:Resource.txtImportPrivateKey}"
+                                            TextColor="DarkGray" />
+                                        <Label
+                                            Grid.Row="2"
+                                            FontFamily="Poppins"
+                                            FontSize="10"
+                                            Text="{x:Static resource:Resource.txtImportSeedPhrasePrivateKey2}"
+                                            TextColor="DarkGray" />
                                     </Grid>
                                 </Grid>
                             </Frame>
                         </StackLayout>
-                        <Frame Grid.Row="2" WidthRequest="350" HeightRequest="30" Padding="5" Margin="10" HorizontalOptions="CenterAndExpand"  CornerRadius="5" >
+                        <Frame
+                            Grid.Row="2"
+                            Margin="10"
+                            Padding="5"
+                            CornerRadius="5"
+                            HeightRequest="30"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="350">
                             <Frame.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#93cafd" Offset="0.1"/>
-                                    <GradientStop Color="#7792fc" Offset="1.0"/>
+                                    <GradientStop Offset="0.1" Color="#93cafd" />
+                                    <GradientStop Offset="1.0" Color="#7792fc" />
                                 </LinearGradientBrush>
                             </Frame.Background>
-                            <Label Text="{x:Static resource:Resource.txtCONFIRM}" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="CenterAndExpand"                                                                                                        
-                                TextColor="White" FontSize="18" 
-                                FontFamily="{StaticResource MonumnentLight}"/>
+                            <Label
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="18"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static resource:Resource.txtCONFIRM}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ConfirmButtonCommand}"/>
+                                <TapGestureRecognizer Command="{Binding ConfirmButtonCommand}" />
                             </Frame.GestureRecognizers>
                         </Frame>
                     </Grid>
                 </Grid>
             </Grid>
-            <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <View:Loader
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

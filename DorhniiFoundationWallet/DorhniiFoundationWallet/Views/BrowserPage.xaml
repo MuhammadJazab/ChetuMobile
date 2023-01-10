@@ -1,46 +1,58 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:view="clr-namespace:DorhniiFoundationWallet.Views"
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             x:Class="DorhniiFoundationWallet.Views.BrowserPage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.BrowserPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:view="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true">
     <ContentPage.BindingContext>
-        <vm:BrowsePageViewModel x:Name="VM"/>
+        <vm:BrowsePageViewModel x:Name="VM" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,0">
-                    <GradientStop Color="#131220" Offset="0.0"/>
-                    <GradientStop Color="#262629" Offset="0.0"/>
+                    <GradientStop Offset="0.0" Color="#131220" />
+                    <GradientStop Offset="0.0" Color="#262629" />
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" BackgroundColor="Black">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".2*"/>
-                        <ColumnDefinition Width=".6*"/>
-                        <ColumnDefinition Width=".2*"/>
-                    </Grid.ColumnDefinitions>
-                <StackLayout Grid.Row="0" HorizontalOptions="StartAndExpand" Margin="5,10,0,0">
-                    <Image Source="Vector" Scale="0.75" Aspect="AspectFit"/>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".2*" />
+                    <ColumnDefinition Width=".6*" />
+                    <ColumnDefinition Width=".2*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="5,10,0,0"
+                    HorizontalOptions="StartAndExpand">
+                    <Image
+                        Aspect="AspectFit"
+                        Scale="0.75"
+                        Source="Vector" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
             </Grid>
-                <Grid Grid.Row="1">
-                    <Grid Grid.Row="0">
-                        <WebView x:Name="Browser" Grid.Row="0" Navigated="WebView_Navigated"  Navigating="WebView_Navigating" Source="{Binding EnteredUrl}"/>
-                    </Grid>
-                    <view:Loader Grid.Row="0" IsVisible="{Binding IsLoading}"/>
+            <Grid Grid.Row="1">
+                <Grid Grid.Row="0">
+                    <WebView
+                        x:Name="Browser"
+                        Grid.Row="0"
+                        Navigated="WebView_Navigated"
+                        Navigating="WebView_Navigating"
+                        Source="{Binding EnteredUrl}" />
                 </Grid>
+                <view:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" />
             </Grid>
- 
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

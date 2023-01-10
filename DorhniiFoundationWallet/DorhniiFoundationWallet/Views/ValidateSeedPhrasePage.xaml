@@ -1,37 +1,72 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
-             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"           
-             xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="DorhniiFoundationWallet.Views.ValidateSeedPhrasePage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.ValidateSeedPhrasePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:ValidateSeedPhraseVM x:Name="vm"/>
+        <vm:ValidateSeedPhraseVM x:Name="vm" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Black}">
-                <Grid Grid.Row="0" Margin="10,40,10,10" Opacity="{Binding OpacityValue}">
+            <Grid
+                BackgroundColor="{StaticResource Black}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    Grid.Row="0"
+                    Margin="10,40,10,10"
+                    Opacity="{Binding OpacityValue}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height=".4*"/>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height=".4*" />
+                        <RowDefinition Height=".5*" />
+                        <RowDefinition Height=".1*" />
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Orientation="Vertical" Spacing="0" Margin="10" >
-                        <Label  Text="{x:Static resource:Resource.txtENTERYOUR}" TextColor="#c8c7c7" FontFamily="{StaticResource MonumnentLight}" FontSize="13" Style="{StaticResource WhiteCenterLabelStyle}" />
-                        <Image  Source="{Binding SEEDPHRASE}"  />
+                    <StackLayout
+                        Grid.Row="0"
+                        Margin="10"
+                        Orientation="Vertical"
+                        Spacing="0">
+                        <Label
+                            FontFamily="{StaticResource MonumnentLight}"
+                            FontSize="13"
+                            Style="{StaticResource WhiteCenterLabelStyle}"
+                            Text="{x:Static resource:Resource.txtENTERYOUR}"
+                            TextColor="#c8c7c7" />
+                        <Image Source="{Binding SEEDPHRASE}" />
                     </StackLayout>
-                    <Frame Padding="0" Grid.Row="1" CornerRadius="10" Margin="0,0,0,0" BackgroundColor="{StaticResource EntryGray}">
-                        <FlexLayout  BindableLayout.ItemsSource="{Binding DataList23,Mode=TwoWay}" Wrap="Wrap"  Direction="Row" JustifyContent="Start" AlignItems="Start" AlignContent="Start" BackgroundColor="Transparent">
-                            <BindableLayout.ItemTemplate >
-                                <DataTemplate  >
-                                    <Label Text="{Binding EntryText}"  FontFamily="Poppins" FontSize="15" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#c8c7c7" Margin="10,5,10,5">
+                    <Frame
+                        Grid.Row="1"
+                        Margin="0,0,0,0"
+                        Padding="0"
+                        BackgroundColor="{StaticResource EntryGray}"
+                        CornerRadius="10">
+                        <FlexLayout
+                            AlignContent="Start"
+                            AlignItems="Start"
+                            BackgroundColor="Transparent"
+                            BindableLayout.ItemsSource="{Binding DataList23, Mode=TwoWay}"
+                            Direction="Row"
+                            JustifyContent="Start"
+                            Wrap="Wrap">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label
+                                        Margin="10,5,10,5"
+                                        FontFamily="Poppins"
+                                        FontSize="15"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding EntryText}"
+                                        TextColor="#c8c7c7"
+                                        VerticalOptions="Start">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnUpperLabelTap}" CommandParameter="{Binding .}"/>
+                                            <TapGestureRecognizer Command="{Binding OnUpperLabelTap}" CommandParameter="{Binding .}" />
                                         </Label.GestureRecognizers>
                                     </Label>
                                 </DataTemplate>
@@ -39,13 +74,30 @@
                         </FlexLayout>
                     </Frame>
                     <ScrollView Grid.Row="2">
-                        <FlexLayout  BindableLayout.ItemsSource="{Binding SeedListBindable,Mode=TwoWay}" Wrap="Wrap" Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" AlignContent="SpaceEvenly" BackgroundColor="Transparent">
-                            <BindableLayout.ItemTemplate >
-                                <DataTemplate  >
-                                    <Frame Padding="5" Margin="0,5,5,0" CornerRadius="5" BackgroundColor="#222020" HasShadow="False" BorderColor="{StaticResource EntryGray}">
-                                        <Label Text="{Binding EntryText}"  FontFamily="Poppins" FontSize="15" TextColor="#c8c7c7"   >
+                        <FlexLayout
+                            AlignContent="SpaceEvenly"
+                            AlignItems="Center"
+                            BackgroundColor="Transparent"
+                            BindableLayout.ItemsSource="{Binding SeedListBindable, Mode=TwoWay}"
+                            Direction="Row"
+                            JustifyContent="SpaceBetween"
+                            Wrap="Wrap">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame
+                                        Margin="0,5,5,0"
+                                        Padding="5"
+                                        BackgroundColor="#222020"
+                                        BorderColor="{StaticResource EntryGray}"
+                                        CornerRadius="5"
+                                        HasShadow="False">
+                                        <Label
+                                            FontFamily="Poppins"
+                                            FontSize="15"
+                                            Text="{Binding EntryText}"
+                                            TextColor="#c8c7c7">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnLabelTap}" CommandParameter="{Binding .}"/>
+                                                <TapGestureRecognizer Command="{Binding OnLabelTap}" CommandParameter="{Binding .}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Frame>
@@ -53,83 +105,196 @@
                             </BindableLayout.ItemTemplate>
                         </FlexLayout>
                     </ScrollView>
-                    <StackLayout Grid.Row="3" Orientation="Horizontal" >
-                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
-                            <ImageButton  Source="{Binding BackwardAppIcon}"  HorizontalOptions="Start"  CornerRadius="3"/>
-                            <Label  Text="{x:Static resource:Resource.txtBack}" FontFamily="{StaticResource MonumnentLight}" FontSize="10" VerticalOptions="Center" TextColor="SkyBlue" />
+                    <StackLayout Grid.Row="3" Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                            <ImageButton
+                                CornerRadius="3"
+                                HorizontalOptions="Start"
+                                Source="{Binding BackwardAppIcon}" />
+                            <Label
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="10"
+                                Text="{x:Static resource:Resource.txtBack}"
+                                TextColor="SkyBlue"
+                                VerticalOptions="Center" />
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                                <TapGestureRecognizer Command="{Binding BackCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <StackLayout Spacing="10"  HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label  Text="{x:Static resource:Resource.txtNext}" FontFamily="{StaticResource MonumnentLight}" FontSize="10" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="SkyBlue" />
-                            <ImageButton Grid.Row="0" Source="{Binding ForwardAppIcon}"  HorizontalOptions="EndAndExpand"  CornerRadius="3"/>
+                        <StackLayout
+                            HorizontalOptions="EndAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10">
+                            <Label
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="10"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static resource:Resource.txtNext}"
+                                TextColor="SkyBlue"
+                                VerticalOptions="Center" />
+                            <ImageButton
+                                Grid.Row="0"
+                                CornerRadius="3"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{Binding ForwardAppIcon}" />
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NextCommandEnter}"/>
+                                <TapGestureRecognizer Command="{Binding NextCommandEnter}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </StackLayout>
                 </Grid>
-                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" IsVisible="{Binding IsSaveSeedAlertVisible,Mode=TwoWay}">
-                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="400" CornerRadius="10" Margin="10" BorderColor="#7792fc" BackgroundColor="#1b1a26">
-                        <Grid BackgroundColor="#1b1a26" Padding="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                <Grid
+                    Grid.Row="0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsSaveSeedAlertVisible, Mode=TwoWay}"
+                    VerticalOptions="FillAndExpand">
+                    <Frame
+                        Margin="10"
+                        BackgroundColor="#1b1a26"
+                        BorderColor="#7792fc"
+                        CornerRadius="10"
+                        HeightRequest="400"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Grid
+                            Padding="0"
+                            BackgroundColor="#1b1a26"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <StackLayout Grid.Row="0" Orientation="Vertical" HorizontalOptions="Center" Padding="5">
-                                <Label Text="{x:Static resource:Resource.txtSeedTitle1}" Style="{StaticResource WhiteCenterLabelStyle}" FontAttributes="None" FontSize="Small" />
-                                <Label Text="{x:Static resource:Resource.txtSeedPhraseCapital}" Style="{StaticResource WhiteCenterLabelStyle}"/>
+                            <StackLayout
+                                Grid.Row="0"
+                                Padding="5"
+                                HorizontalOptions="Center"
+                                Orientation="Vertical">
+                                <Label
+                                    FontAttributes="None"
+                                    FontSize="Small"
+                                    Style="{StaticResource WhiteCenterLabelStyle}"
+                                    Text="{x:Static resource:Resource.txtSeedTitle1}" />
+                                <Label Style="{StaticResource WhiteCenterLabelStyle}" Text="{x:Static resource:Resource.txtSeedPhraseCapital}" />
                             </StackLayout>
-                            <Frame Grid.Row="1" BackgroundColor="#5e5e5f" WidthRequest="400" HeightRequest="150" HorizontalOptions="Start" VerticalOptions="Start" Padding="0" CornerRadius="5" Background="#5e5e5f" >
-                                <FlexLayout  BindableLayout.ItemsSource="{Binding DataList23,Mode=TwoWay}" Wrap="Wrap"  Direction="Row" JustifyContent="Start" AlignItems="Start" AlignContent="Start" BackgroundColor="Transparent">
-                                    <BindableLayout.ItemTemplate >
-                                        <DataTemplate  >
-                                            <Label Text="{Binding EntryText}" FontFamily="Poppins" FontSize="10" VerticalOptions="Start" HorizontalOptions="Start" TextColor="#c8c7c7" Margin="5">
-                                            </Label>
+                            <Frame
+                                Grid.Row="1"
+                                Padding="0"
+                                Background="#5e5e5f"
+                                BackgroundColor="#5e5e5f"
+                                CornerRadius="5"
+                                HeightRequest="150"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                WidthRequest="400">
+                                <FlexLayout
+                                    AlignContent="Start"
+                                    AlignItems="Start"
+                                    BackgroundColor="Transparent"
+                                    BindableLayout.ItemsSource="{Binding DataList23, Mode=TwoWay}"
+                                    Direction="Row"
+                                    JustifyContent="Start"
+                                    Wrap="Wrap">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label
+                                                Margin="5"
+                                                FontFamily="Poppins"
+                                                FontSize="10"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding EntryText}"
+                                                TextColor="#c8c7c7"
+                                                VerticalOptions="Start" />
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </FlexLayout>
                             </Frame>
-                            <Button Grid.Row="2" Text="{x:Static resource:Resource.txtCopy}" Command="{Binding CopyCommand}" FontFamily="{StaticResource MonumnentLight}" TextColor="Black" CornerRadius="5" FontSize="8" HeightRequest="25" WidthRequest="50" Padding="5" VerticalOptions="FillAndExpand" HorizontalOptions="EndAndExpand">
+                            <Button
+                                Grid.Row="2"
+                                Padding="5"
+                                Command="{Binding CopyCommand}"
+                                CornerRadius="5"
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="8"
+                                HeightRequest="25"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{x:Static resource:Resource.txtCopy}"
+                                TextColor="Black"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest="50">
                                 <Button.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#93cafd" Offset="0.1"/>
-                                        <GradientStop Color="#7792fc" Offset="1.0"/>
+                                        <GradientStop Offset="0.1" Color="#93cafd" />
+                                        <GradientStop Offset="1.0" Color="#7792fc" />
                                     </LinearGradientBrush>
                                 </Button.Background>
                             </Button>
-                            <StackLayout Grid.Row="3"  Orientation="Vertical" Spacing="0" HorizontalOptions="Center">
-                                <Label Text="{x:Static resource:Resource.txtSaveSeedAlert1}" Style="{StaticResource WhiteCenterLabelStyle}" FontFamily="Poppins" FontSize="10" FontAttributes="None"/>
-                                <Label Text="{x:Static resource:Resource.txtSaveSeedeAlert2}" Style="{StaticResource WhiteCenterLabelStyle}" FontFamily="Poppins" FontSize="10" FontAttributes="None"/>
-                                <Label Text="{x:Static resource:Resource.txtSaveSeedAlert3}" Style="{StaticResource WhiteCenterLabelStyle}"  FontFamily="Poppins" FontSize="10" FontAttributes="None"/>
+                            <StackLayout
+                                Grid.Row="3"
+                                HorizontalOptions="Center"
+                                Orientation="Vertical"
+                                Spacing="0">
+                                <Label
+                                    FontAttributes="None"
+                                    FontFamily="Poppins"
+                                    FontSize="10"
+                                    Style="{StaticResource WhiteCenterLabelStyle}"
+                                    Text="{x:Static resource:Resource.txtSaveSeedAlert1}" />
+                                <Label
+                                    FontAttributes="None"
+                                    FontFamily="Poppins"
+                                    FontSize="10"
+                                    Style="{StaticResource WhiteCenterLabelStyle}"
+                                    Text="{x:Static resource:Resource.txtSaveSeedeAlert2}" />
+                                <Label
+                                    FontAttributes="None"
+                                    FontFamily="Poppins"
+                                    FontSize="10"
+                                    Style="{StaticResource WhiteCenterLabelStyle}"
+                                    Text="{x:Static resource:Resource.txtSaveSeedAlert3}" />
                             </StackLayout>
-                            <Frame Grid.Row="4" WidthRequest="60" HeightRequest="30" Margin="10" Padding="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" CornerRadius="5" >
+                            <Frame
+                                Grid.Row="4"
+                                Margin="10"
+                                Padding="0"
+                                CornerRadius="5"
+                                HeightRequest="30"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="60">
                                 <Frame.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#93cafd" Offset="0.1"/>
-                                        <GradientStop Color="#7792fc" Offset="1.0"/>
+                                        <GradientStop Offset="0.1" Color="#93cafd" />
+                                        <GradientStop Offset="1.0" Color="#7792fc" />
                                     </LinearGradientBrush>
                                 </Frame.Background>
-                                <Label Text="{x:Static resource:Resource.txtOk}" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center" 
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
-                                TextColor="Black" FontSize="18" 
-                                FontFamily="{StaticResource MonumnentLight}"  BackgroundColor="Transparent" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontFamily="{StaticResource MonumnentLight}"
+                                    FontSize="18"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static resource:Resource.txtOk}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OkButton}"/>
+                                    <TapGestureRecognizer Command="{Binding OkButton}" />
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </Grid>
                     </Frame>
                 </Grid>
             </Grid>
-            <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <View:Loader
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

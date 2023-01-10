@@ -1,66 +1,139 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
-             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="DorhniiFoundationWallet.Views.SeedPhrasePage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.SeedPhrasePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:ViewSeedPhraseVM x:Name="vm"/>
+        <vm:ViewSeedPhraseVM x:Name="vm" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Black}">
-                <Grid Grid.Row="0" Margin="10,40,10,10" Padding="10" >
+            <Grid
+                BackgroundColor="{StaticResource Black}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    Grid.Row="0"
+                    Margin="10,40,10,10"
+                    Padding="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height=".4*"/>
-                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height=".4*" />
+                        <RowDefinition Height=".1*" />
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Row="0" Orientation="Vertical">
-                        <Image  Source="{Binding YOURNEWSEEDPHRASE}"/>
+                        <Image Source="{Binding YOURNEWSEEDPHRASE}" />
                     </StackLayout>
-                    <FlexLayout Grid.Row="2" BindableLayout.ItemsSource="{Binding SeedList}" Wrap="Wrap" Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" AlignContent="SpaceEvenly" BackgroundColor="Transparent">
-                        <BindableLayout.ItemTemplate >
-                            <DataTemplate  >
-                                <Frame Padding="5" Margin="0,5,5,0"  CornerRadius="3" BackgroundColor="#222020" HasShadow="False" BorderColor="{StaticResource EntryGray}" >
+                    <FlexLayout
+                        Grid.Row="2"
+                        AlignContent="SpaceEvenly"
+                        AlignItems="Center"
+                        BackgroundColor="Transparent"
+                        BindableLayout.ItemsSource="{Binding SeedList}"
+                        Direction="Row"
+                        JustifyContent="SpaceBetween"
+                        Wrap="Wrap">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,5,5,0"
+                                    Padding="5"
+                                    BackgroundColor="#222020"
+                                    BorderColor="{StaticResource EntryGray}"
+                                    CornerRadius="3"
+                                    HasShadow="False">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding LabelNumber}" FontFamily="Poppins" FontSize="15" HorizontalOptions="Start" TextColor="#c8c7c7"  />
-                                        <Label Text="{Binding EntryText}" FontFamily="Poppins" FontSize="15" TextColor="#c8c7c7"  />
+                                        <Label
+                                            FontFamily="Poppins"
+                                            FontSize="15"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding LabelNumber}"
+                                            TextColor="#c8c7c7" />
+                                        <Label
+                                            FontFamily="Poppins"
+                                            FontSize="15"
+                                            Text="{Binding EntryText}"
+                                            TextColor="#c8c7c7" />
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
-                    <StackLayout Grid.Row="3" Spacing="0" VerticalOptions="End" Orientation="Horizontal" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" >
-                        <StackLayout Grid.Row="0" HorizontalOptions="StartAndExpand" Orientation="Horizontal" Spacing="10"   >
-                            <Image  Source="{Binding BackwardAppIcon}" HorizontalOptions="Start" BackgroundColor="Transparent"  />
-                            <Label  Text="{x:Static resource:Resource.txtBack}" FontSize="10" FontFamily="{StaticResource MonumnentLight}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="SkyBlue"/>
+                    <StackLayout
+                        Grid.Row="3"
+                        Margin="0,0,0,0"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="0"
+                        VerticalOptions="End">
+                        <StackLayout
+                            Grid.Row="0"
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10">
+                            <Image
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="Start"
+                                Source="{Binding BackwardAppIcon}" />
+                            <Label
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="10"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{x:Static resource:Resource.txtBack}"
+                                TextColor="SkyBlue"
+                                VerticalOptions="Center" />
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                                <TapGestureRecognizer Command="{Binding BackCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" >
-                            <Image Source="{Binding SaveSeedAppIcon}"  BackgroundColor="Transparent"  />
-                            <Label Text="{x:Static resource:Resource.txtSAVE}" FontSize="10" FontFamily="{StaticResource MonumnentLight}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="SkyBlue" />
+                        <StackLayout
+                            Grid.Row="0"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Image BackgroundColor="Transparent" Source="{Binding SaveSeedAppIcon}" />
+                            <Label
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="10"
+                                HorizontalOptions="EndAndExpand"
+                                Text="{x:Static resource:Resource.txtSAVE}"
+                                TextColor="SkyBlue"
+                                VerticalOptions="Center" />
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SaveSeedCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <StackLayout Grid.Row="0" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="10" >
-                            <Label  Text="{x:Static resource:Resource.txtNext}" FontSize="10" FontFamily="{StaticResource MonumnentLight}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="SkyBlue" />
-                            <Image  Source="{Binding ForwardAppIcon}" BackgroundColor="Transparent"/>
+                        <StackLayout
+                            Grid.Row="0"
+                            HorizontalOptions="EndAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10">
+                            <Label
+                                FontFamily="{StaticResource MonumnentLight}"
+                                FontSize="10"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static resource:Resource.txtNext}"
+                                TextColor="SkyBlue"
+                                VerticalOptions="Center" />
+                            <Image BackgroundColor="Transparent" Source="{Binding ForwardAppIcon}" />
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NextCommand}"/>
+                                <TapGestureRecognizer Command="{Binding NextCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </StackLayout>
                 </Grid>
             </Grid>
-            <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <View:Loader
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

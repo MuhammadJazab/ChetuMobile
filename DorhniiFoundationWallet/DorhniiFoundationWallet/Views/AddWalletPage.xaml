@@ -1,48 +1,92 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels" 
-             xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
-             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources" 
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="DorhniiFoundationWallet.Views.AddWalletPage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.AddWalletPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:cntrl="clr-namespace:DorhniiFoundationWallet.CustomRenderers"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:AddWalletVM/>
+        <vm:AddWalletVM />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="Black">
-                <Grid RowSpacing="0" BackgroundColor="Black" >
+            <Grid
+                BackgroundColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid BackgroundColor="Black" RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" BackgroundColor="#262629" >
-                        <Label Text="{x:Static resource:Resource.txtMyWallet}" FontFamily="{StaticResource MonumnentRegular}" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Grid Grid.Row="0" BackgroundColor="#262629">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource MonumnentRegular}"
+                            FontSize="20"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static resource:Resource.txtMyWallet}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
                     </Grid>
-                    <Grid Grid.Row="1" RowSpacing="8" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Black" Margin="10,10,10,10">
-                        <ListView x:Name="WalletList" ItemsSource="{Binding Wallets}" HorizontalOptions="FillAndExpand" BackgroundColor="Black" RowHeight="100" VerticalOptions="CenterAndExpand" SeparatorVisibility="Default" HasUnevenRows="True" >
+                    <Grid
+                        Grid.Row="1"
+                        Margin="10,10,10,10"
+                        BackgroundColor="Black"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="8"
+                        VerticalOptions="CenterAndExpand">
+                        <ListView
+                            x:Name="WalletList"
+                            BackgroundColor="Black"
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding Wallets}"
+                            RowHeight="100"
+                            SeparatorVisibility="Default"
+                            VerticalOptions="CenterAndExpand">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell >
-                                        <Grid BackgroundColor="Black" >
-                                            <Frame Style="{StaticResource WalletFrameStyle2}" Margin="0,10,0,0" BackgroundColor="Black" BorderColor="Gray" >
+                                    <ViewCell>
+                                        <Grid BackgroundColor="Black">
+                                            <Frame
+                                                Margin="0,10,0,0"
+                                                BackgroundColor="Black"
+                                                BorderColor="Gray"
+                                                Style="{StaticResource WalletFrameStyle2}">
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto"/>
-                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image VerticalOptions="Center" Grid.Column="0" Margin="5" Source="{Binding Image}" HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent"/>
-                                                    <StackLayout Grid.Column="1"  Margin="5">
-                                                        <Label Text="{Binding WalletName}" FontFamily="{StaticResource MonumnentLight}" Style="{StaticResource WalletPageListLabel}" TextColor="White"/>
-                                                        <Label Text="{Binding WalletFormattedBalance}"  FontFamily="{StaticResource MonumnentLight}" Style="{StaticResource WalletPageListLabel}" TextColor="White"/>
+                                                    <Image
+                                                        Grid.Column="0"
+                                                        Margin="5"
+                                                        BackgroundColor="Transparent"
+                                                        HeightRequest="60"
+                                                        Source="{Binding Image}"
+                                                        VerticalOptions="Center"
+                                                        WidthRequest="60" />
+                                                    <StackLayout Grid.Column="1" Margin="5">
+                                                        <Label
+                                                            FontFamily="{StaticResource MonumnentLight}"
+                                                            Style="{StaticResource WalletPageListLabel}"
+                                                            Text="{Binding WalletName}"
+                                                            TextColor="White" />
+                                                        <Label
+                                                            FontFamily="{StaticResource MonumnentLight}"
+                                                            Style="{StaticResource WalletPageListLabel}"
+                                                            Text="{Binding WalletFormattedBalance}"
+                                                            TextColor="White" />
                                                     </StackLayout>
                                                     <Grid.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding BindingContext.SelectedItemCommand, Source={x:Reference WalletList}}" CommandParameter="{Binding}"/>
+                                                        <TapGestureRecognizer Command="{Binding BindingContext.SelectedItemCommand, Source={x:Reference WalletList}}" CommandParameter="{Binding}" />
                                                     </Grid.GestureRecognizers>
                                                 </Grid>
                                             </Frame>
@@ -52,63 +96,123 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-                    <Frame Grid.Row="2" HeightRequest="30" Margin="10" Padding="2" HorizontalOptions="FillAndExpand"  CornerRadius="5" IsVisible="{Binding WalleteNotExist}" >
+                    <Frame
+                        Grid.Row="2"
+                        Margin="10"
+                        Padding="2"
+                        CornerRadius="5"
+                        HeightRequest="30"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding WalleteNotExist}">
                         <Frame.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#93cafd" Offset="0.1"/>
-                                <GradientStop Color="#7792fc" Offset="1.0"/>
+                                <GradientStop Offset="0.1" Color="#93cafd" />
+                                <GradientStop Offset="1.0" Color="#7792fc" />
                             </LinearGradientBrush>
                         </Frame.Background>
-                        <Label Text="{x:Static resource:Resource.txtAddWallet}" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"                                                                      
-                                TextColor="Black" FontSize="15" 
-                                FontFamily="{StaticResource MonumnentLight}"  BackgroundColor="Transparent" />
+                        <Label
+                            BackgroundColor="Transparent"
+                            FontFamily="{StaticResource MonumnentLight}"
+                            FontSize="15"
+                            HorizontalOptions="Center"
+                            Text="{x:Static resource:Resource.txtAddWallet}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding AddWalletCommand}"/>
+                            <TapGestureRecognizer Command="{Binding AddWalletCommand}" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </Grid>
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" IsVisible="{Binding IsCreateWalletVisible }">
-                    <Frame Grid.Row="0" Margin="20" Padding="0" CornerRadius="10" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#262629" >
-                        <Grid HorizontalOptions="FillAndExpand" Margin="5" VerticalOptions="FillAndExpand">
+                <Grid
+                    BackgroundColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsCreateWalletVisible}"
+                    VerticalOptions="FillAndExpand">
+                    <Frame
+                        Grid.Row="0"
+                        Margin="20"
+                        Padding="0"
+                        BackgroundColor="#262629"
+                        CornerRadius="10"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Grid
+                            Margin="5"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" BackgroundColor="#262629" >
-                                <Label Text="{x:Static resource:Resource.txtAddWallet}" FontFamily="{StaticResource MonumnentRegular}" FontSize="15" TextColor="White" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                                <Image Source="{Binding CrossSign}" Margin="10"  HorizontalOptions="End">
+                            <Grid Grid.Row="0" BackgroundColor="#262629">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="{StaticResource MonumnentRegular}"
+                                    FontSize="15"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{x:Static resource:Resource.txtAddWallet}"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                                <Image
+                                    Margin="10"
+                                    HorizontalOptions="End"
+                                    Source="{Binding CrossSign}">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding CloseCreateWalletCommand}"/>
+                                        <TapGestureRecognizer Command="{Binding CloseCreateWalletCommand}" />
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
-                            <Frame Grid.Row="1" Margin="20,0,20,0"  Style="{StaticResource PasswordFrameStyle}" BackgroundColor="#5e5e5f">
-                                <cntrl:RendererEntry Text="{Binding WalletName}" FontFamily="Poppins" FontSize="15"  HeightRequest="100" Placeholder="{x:Static resource:Resource.txtEnterWalletName}" HorizontalTextAlignment="Center" TextChanged="RendererEntry_TextChanged"/>
+                            <Frame
+                                Grid.Row="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="#5e5e5f"
+                                Style="{StaticResource PasswordFrameStyle}">
+                                <cntrl:RendererEntry
+                                    FontFamily="Poppins"
+                                    FontSize="15"
+                                    HeightRequest="100"
+                                    HorizontalTextAlignment="Center"
+                                    Placeholder="{x:Static resource:Resource.txtEnterWalletName}"
+                                    Text="{Binding WalletName}"
+                                    TextChanged="RendererEntry_TextChanged" />
                             </Frame>
-                            <Frame Grid.Row="2" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="30" Margin="20,20,20,0" CornerRadius="5" >
+                            <Frame
+                                Grid.Row="2"
+                                Margin="20,20,20,0"
+                                Padding="0"
+                                CornerRadius="5"
+                                HeightRequest="30"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center">
                                 <Frame.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#93cafd" Offset="0.1"/>
-                                        <GradientStop Color="#7792fc" Offset="1.0"/>
+                                        <GradientStop Offset="0.1" Color="#93cafd" />
+                                        <GradientStop Offset="1.0" Color="#7792fc" />
                                     </LinearGradientBrush>
                                 </Frame.Background>
-                                <Label Text="{x:Static resource:Resource.txtCreateWallet}" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center"                                            
-                                TextColor="Black" FontSize="15" 
-                                FontFamily="{StaticResource MonumnentLight}"  BackgroundColor="Transparent" />
+                                <Label
+                                    BackgroundColor="Transparent"
+                                    FontFamily="{StaticResource MonumnentLight}"
+                                    FontSize="15"
+                                    HorizontalOptions="Center"
+                                    Text="{x:Static resource:Resource.txtCreateWallet}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CreateWalletCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding CreateWalletCommand}" />
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </Grid>
                     </Frame>
                 </Grid>
             </Grid>
-            <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <View:Loader
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,15 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DorhniiFoundationWallet.Views.Loader">
-  <ContentView.Content>
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DorhniiFoundationWallet.Views.Loader"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" BackgroundColor="Black" Opacity="0.3"/>
-            <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
-                <ActivityIndicator IsEnabled="True" IsVisible="True" IsRunning="True" Color="SkyBlue"/>
+            <Grid
+                Grid.Row="0"
+                BackgroundColor="Black"
+                Opacity="0.3" />
+            <Grid
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <ActivityIndicator
+                    IsEnabled="True"
+                    IsRunning="True"
+                    IsVisible="True"
+                    Color="SkyBlue" />
             </Grid>
         </Grid>
     </ContentView.Content>

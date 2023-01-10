@@ -1,41 +1,75 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels" 
-             xmlns:view="clr-namespace:DorhniiFoundationWallet.Views"
-             xmlns:res="clr-namespace:DorhniiFoundationWallet.Resources" 
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="DorhniiFoundationWallet.Views.PrivacyPolicy">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.PrivacyPolicy"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:res="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:view="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:PrivacyPolicyVM x:Name="VM"/>
+        <vm:PrivacyPolicyVM x:Name="VM" />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+        <Grid
+            BackgroundColor="Black"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Frame Grid.Row="0" Padding="5" BackgroundColor="#262629" BorderColor="#302F2F">
+                <Frame
+                    Grid.Row="0"
+                    Padding="5"
+                    BackgroundColor="#262629"
+                    BorderColor="#302F2F">
                     <Frame.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0.00005,0.00005">
-                            <GradientStop Color="#260941" Offset="0.1"/>
-                            <GradientStop Color="#1d1c1c" Offset="0.9"/>
-                            <GradientStop Color="#1d1c1c" Offset="0.9"/>
+                            <GradientStop Offset="0.1" Color="#260941" />
+                            <GradientStop Offset="0.9" Color="#1d1c1c" />
+                            <GradientStop Offset="0.9" Color="#1d1c1c" />
                         </LinearGradientBrush>
                     </Frame.Background>
-                    <StackLayout Orientation="Vertical" Spacing="10" >                        
-                        <ImageButton Source="Vector" Scale="0.5" Command="{Binding BackOnPrivacy}" HorizontalOptions="Start" VerticalOptions="Start" Aspect="AspectFit" BackgroundColor="Transparent"/>
-                        <Label  Text="{x:Static res:Resource.txtPrivacyPolicy}" FontFamily="{StaticResource MonumnentRegular}" Margin="5,0,0,0" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" TextColor="White" VerticalOptions="EndAndExpand" />
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <ImageButton
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Command="{Binding BackOnPrivacy}"
+                            HorizontalOptions="Start"
+                            Scale="0.5"
+                            Source="Vector"
+                            VerticalOptions="Start" />
+                        <Label
+                            Margin="5,0,0,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource MonumnentRegular}"
+                            FontSize="18"
+                            HorizontalOptions="Start"
+                            Text="{x:Static res:Resource.txtPrivacyPolicy}"
+                            TextColor="White"
+                            VerticalOptions="EndAndExpand" />
                     </StackLayout>
                 </Frame>
-                <WebView Grid.Row="1" Navigated="WebView_Navigated"  Navigating="WebView_Navigating"  Source="https://dohrnii.io/privacy" BackgroundColor="Black"/>
-                <view:Loader Grid.Row="1" IsVisible="{Binding IsLoading}" VerticalOptions="Center" />
-                <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                <WebView
+                    Grid.Row="1"
+                    BackgroundColor="Black"
+                    Navigated="WebView_Navigated"
+                    Navigating="WebView_Navigating"
+                    Source="https://dohrnii.io/privacy" />
+                <view:Loader
+                    Grid.Row="1"
+                    IsVisible="{Binding IsLoading}"
+                    VerticalOptions="Center" />
+                <views:TabbedViewPage
+                    Grid.Row="2"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand" />
             </Grid>
         </Grid>
     </ContentPage.Content>

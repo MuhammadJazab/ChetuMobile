@@ -1,62 +1,137 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
-             xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
-             xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
-             xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
-             x:Class="DorhniiFoundationWallet.Views.TransactionPage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             NavigationPage.HasNavigationBar="False">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DorhniiFoundationWallet.Views.TransactionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:View="clr-namespace:DorhniiFoundationWallet.Views"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:resource="clr-namespace:DorhniiFoundationWallet.Resources"
+    xmlns:views="clr-namespace:DorhniiFoundationWallet.Views.Partials"
+    xmlns:vm="clr-namespace:DorhniiFoundationWallet.ViewModels"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
-        <vm:TransactionVM/>
+        <vm:TransactionVM />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+            <Grid
+                BackgroundColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
                 <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="10,10,10,0" >
+                    <Grid Grid.Row="0" Margin="10,10,10,0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50" />
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Text="{x:Static resource:Resource.txtTransactions}" FontSize="20" Margin="0,5,0,0" FontFamily="{StaticResource MonumnentRegular}" Style="{StaticResource PasswordPageLabelStyle}" TextColor="White"/>
+                        <Label
+                            Grid.Row="0"
+                            Margin="0,5,0,0"
+                            FontFamily="{StaticResource MonumnentRegular}"
+                            FontSize="20"
+                            Style="{StaticResource PasswordPageLabelStyle}"
+                            Text="{x:Static resource:Resource.txtTransactions}"
+                            TextColor="White" />
                     </Grid>
-                    <Grid Grid.Row="1" x:Name="TransactionMainPage"  RowSpacing="8"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10,10,10" BackgroundColor="Gray">
-                        <ListView ItemsSource="{Binding TransactionList}" HorizontalOptions="FillAndExpand"  RowHeight="100" VerticalOptions="CenterAndExpand" SeparatorVisibility="Default" HasUnevenRows="True" BackgroundColor="Black" SelectionMode="None" >
+                    <Grid
+                        x:Name="TransactionMainPage"
+                        Grid.Row="1"
+                        Margin="10,10,10,10"
+                        BackgroundColor="Gray"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="8"
+                        VerticalOptions="CenterAndExpand">
+                        <ListView
+                            BackgroundColor="Black"
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding TransactionList}"
+                            RowHeight="100"
+                            SelectionMode="None"
+                            SeparatorVisibility="Default"
+                            VerticalOptions="CenterAndExpand">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Frame Padding="10" Margin="0,10,0,0" BackgroundColor="#262629" BorderColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                                        <Frame
+                                            Margin="0,10,0,0"
+                                            Padding="10"
+                                            BackgroundColor="#262629"
+                                            BorderColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand">
                                             <Grid>
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="50*"/>
-                                                    <RowDefinition Height="50*"/>
+                                                    <RowDefinition Height="50*" />
+                                                    <RowDefinition Height="50*" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="auto"/>
-                                                    <ColumnDefinition Width="auto"/>
-                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Image Grid.RowSpan="2" Grid.Column="0" Source="{Binding TransactionTypeImage}" BackgroundColor="Transparent" />
-                                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TransactionType}" FontFamily="Poppins" TextColor="Gray"  FontSize="12"/>
-                                                <Label Grid.Row="1" Grid.Column="1"  Text="{Binding TransactionDateTime}" FontFamily="Poppins"  FontSize="12" TextColor="White" HorizontalOptions="EndAndExpand"/>
-                                                <StackLayout Grid.Row="0" Grid.Column="3" Orientation="Horizontal">
-                                                    <Label  Text="{Binding TransactionAmount}" TextColor="White" HorizontalOptions="StartAndExpand" FontFamily="Poppins"  FontSize="12"/>
-                                                    <Label  Text="{Binding CoinName}" TextColor="White" HorizontalOptions="EndAndExpand" FontFamily="Poppins"  FontSize="12"/>
-                                                </StackLayout >
-                                                <StackLayout Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
-                                                    <Label  Text="{Binding Fee}" FontFamily="Poppins"  FontSize="12" TextColor="White" HorizontalOptions="EndAndExpand"/>
-                                                    <Label  Text="{Binding FeeCoinShortName}" FontFamily="Poppins"  FontSize="12" TextColor="White" HorizontalOptions="EndAndExpand"/>
+                                                <Image
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="0"
+                                                    BackgroundColor="Transparent"
+                                                    Source="{Binding TransactionTypeImage}" />
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    FontFamily="Poppins"
+                                                    FontSize="12"
+                                                    Text="{Binding TransactionType}"
+                                                    TextColor="Gray" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    FontFamily="Poppins"
+                                                    FontSize="12"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Text="{Binding TransactionDateTime}"
+                                                    TextColor="White" />
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="3"
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        FontFamily="Poppins"
+                                                        FontSize="12"
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Text="{Binding TransactionAmount}"
+                                                        TextColor="White" />
+                                                    <Label
+                                                        FontFamily="Poppins"
+                                                        FontSize="12"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Text="{Binding CoinName}"
+                                                        TextColor="White" />
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="3"
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        FontFamily="Poppins"
+                                                        FontSize="12"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Text="{Binding Fee}"
+                                                        TextColor="White" />
+                                                    <Label
+                                                        FontFamily="Poppins"
+                                                        FontSize="12"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Text="{Binding FeeCoinShortName}"
+                                                        TextColor="White" />
                                                 </StackLayout>
                                             </Grid>
                                             <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.TransactionDetailCommand, Source={x:Reference TransactionMainPage}}" CommandParameter="{Binding}"/>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.TransactionDetailCommand, Source={x:Reference TransactionMainPage}}" CommandParameter="{Binding}" />
                                             </Frame.GestureRecognizers>
                                         </Frame>
                                     </ViewCell>
@@ -64,10 +139,17 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-                    <views:TabbedViewPage Grid.Row="2" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent"></views:TabbedViewPage>
+                    <views:TabbedViewPage
+                        Grid.Row="2"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand" />
                 </Grid>
             </Grid>
-            <View:Loader Grid.Row="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <View:Loader
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
