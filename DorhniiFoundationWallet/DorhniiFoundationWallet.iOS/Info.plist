@@ -51,7 +51,7 @@
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.1</string>
 	<key>Custom Property</key>
 	<string></string>
 	<key>NSFaceIDUsageDescription</key>
