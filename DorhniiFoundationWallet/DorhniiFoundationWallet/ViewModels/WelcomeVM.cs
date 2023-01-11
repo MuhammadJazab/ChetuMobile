@@ -1,5 +1,4 @@
-﻿
-using DorhniiFoundationWallet.Helpers;
+﻿using DorhniiFoundationWallet.Helpers;
 using DorhniiFoundationWallet.IServices;
 using DorhniiFoundationWallet.Models.APIRequestModels;
 using DorhniiFoundationWallet.Models.APIResponseModels;
